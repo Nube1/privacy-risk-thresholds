@@ -1,0 +1,16 @@
+\begin{table}[t]\centering\small
+\caption{Attacks on the audit process. Share of runs in which an unsafe or boundary coordinate is certified, with one coordinate at the full level $\alpha=0.05$ and tolerance 0.12. Seed grinding rows use at most 3{,}000 draws and the capped plug-in bet; post-hoc rows use at most 300 draws and the operator's bet without the control, and the capped plug-in bet with it. Tries is the number of seeds or shadow audits the operator can choose among. Without the control, the rate for several tries is $1-(1-f)^{\rm tries}$ for the single-try rate $f$; with it, the operator has one stream. Script: \nolinkurl{scripts/audit_process_attacks.py}.}\label{tab:audit-process}
+\begin{tabular}{lrrrr}
+\toprule
+Attack on the audit & True risk & Tries & Without control & With control\\\midrule
+Seed grinding or shadow audits & 0.12 & 1 & 0.038 & 0.038 \\
+Seed grinding or shadow audits & 0.12 & 10 & 0.322 & 0.038 \\
+Seed grinding or shadow audits & 0.12 & 100 & 0.979 & 0.038 \\
+Seed grinding or shadow audits & 0.14 & 1 & 0.007 & 0.007 \\
+Seed grinding or shadow audits & 0.14 & 10 & 0.066 & 0.007 \\
+Seed grinding or shadow audits & 0.14 & 100 & 0.495 & 0.007 \\
+Bet chosen after the outcome & 0.14 & 1 & 1.000 & 0.007 \\
+Bet chosen after the outcome & 0.20 & 1 & 1.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}

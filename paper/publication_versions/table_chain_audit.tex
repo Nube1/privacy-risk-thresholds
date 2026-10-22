@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{Choosing the cell-count floor on the synthetic credit register over 20 attack streams, tolerance 0.12, $\alpha=0.05$. The agency declares three attacks before the audit (one release with one reading; six releases with one reading and the loan's history; six releases with a reading per live vintage and the history), and a floor passes only when all three meet the tolerance. Each design audits the floors from 300 down and stops at the first that fails. Entries give each floor chosen with the number of streams in brackets, and the median total number of attacks. The estimated true floor uses 100{,}000 separate targets per coordinate. All designs see the same draws.}
+\label{tab:chain-audit}
+\small
+\begin{tabular}{lrr}
+\toprule
+Design & Floor chosen & Attacks \\
+\midrule
+Estimated true floor & 100 & -- \\
+\midrule
+Gate, release chain at $\alpha$ & 100 (1), 150 (19) & 6{,}422 \\
+Gate, one chain per attack at $\alpha/3$ & 150 (20) & 13{,}764 \\
+Gate, all 39 registered at the start & 150 (19), 200 (1) & 9{,}002 \\
+Fixed sequence, 3{,}000 per coordinate & 100 (4), 150 (16) & 36{,}000 \\
+Fixed sequence, 1{,}000 per coordinate & 100 (2), 150 (15), 200 (3) & 12{,}000 \\
+Looks every 500, Bonferroni over looks & 100 (3), 150 (17) & 10{,}000 \\
+\bottomrule
+\end{tabular}
+\end{table}

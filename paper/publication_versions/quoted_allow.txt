@@ -1,0 +1,8 @@
+# Decimals in jpc_main.tex and jpc_supplement.tex that are inputs, constants or identifiers, not run results.
+10.1214        # DOI prefix of Vovk and Wang (2021), doi:10.1214/20-AOS2020
+2605.07002     # arXiv identifier of Zhou et al. (2026)
+0.00625        # alpha * w = 0.05 * 1/8, the toy coordinate's error share (input constant)
+0.0046         # Monte Carlo SE sqrt(p(1-p)/2000) at p = 0.956, toy audit safe law, gate
+0.0007         # Monte Carlo SE sqrt(p(1-p)/2000) at p = 0.999, toy audit safe law, fixed CP
+0.0016         # Monte Carlo SE sqrt(p(1-p)/2000) at p = 0.005, toy audit null boundary, gate
+0.0017         # Monte Carlo SE sqrt(p(1-p)/2000) at p = 0.0055, toy audit null boundary, fixed CP

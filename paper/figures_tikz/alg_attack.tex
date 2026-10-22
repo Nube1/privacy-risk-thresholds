@@ -1,0 +1,21 @@
+\begin{algorithm}[t]
+\caption{Full-likelihood linkage attack on a programme of releases}\label{alg:attack}
+\begin{algorithmic}[1]
+\Require target $t$ with key $K(t)$; releases $D_1,\ldots,D_V$ with a persistent pseudonym;
+  readings $y_r$ of $\log$ exposure with declared error $\sigma$, $r\in R$, where $R$ holds
+  one reading or one per vintage in which $t$ is live; history
+  $h_v(t)=\mathbf 1\{t\in D_v\}$ if the scenario grants it
+\State $C\gets\{a\in D_1: K(a)=K(t)\}$ \Comment{candidates in the target's key cell}
+\For{$a\in C$}
+  \State $s(a)\gets\sum_{r\in R}\log\phi\bigl((y_r-\log e_a)/\sigma\bigr)$ \Comment{published exposure $e_a$}
+  \If{the scenario grants the history}
+    \For{$v=2,\ldots,V$}
+      \If{$\mathbf 1\{a\in D_v\}\ne h_v(t)$} $s(a)\gets s(a)-30$ \Comment{mismatch in either direction}
+      \EndIf
+    \EndFor
+  \EndIf
+\EndFor
+\State $M\gets\arg\max_{a\in C}s(a)$; name $\hat a$ drawn uniformly from $M$
+\State \Return success $\mathbf 1\{\hat a=t\}$
+\end{algorithmic}
+\end{algorithm}

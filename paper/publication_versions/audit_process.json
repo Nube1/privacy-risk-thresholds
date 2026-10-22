@@ -1,0 +1,74 @@
+{
+ "tolerance": 0.12,
+ "alpha": 0.05,
+ "weight": 1.0,
+ "cap": 3000,
+ "bet_cap": 0.11,
+ "streams": 20000,
+ "rows": [
+  {
+   "attack": "seed grinding or shadow audits",
+   "risk": 0.12,
+   "tries": 1,
+   "without_control": 0.03805000000000003,
+   "with_control": 0.03805,
+   "control": "targets from a committed secret and a later beacon; one registry and one budget per programme"
+  },
+  {
+   "attack": "seed grinding or shadow audits",
+   "risk": 0.12,
+   "tries": 10,
+   "without_control": 0.3215388413063315,
+   "with_control": 0.03805,
+   "control": "targets from a committed secret and a later beacon; one registry and one budget per programme"
+  },
+  {
+   "attack": "seed grinding or shadow audits",
+   "risk": 0.12,
+   "tries": 100,
+   "without_control": 0.9793343106226402,
+   "with_control": 0.03805,
+   "control": "targets from a committed secret and a later beacon; one registry and one budget per programme"
+  },
+  {
+   "attack": "seed grinding or shadow audits",
+   "risk": 0.14,
+   "tries": 1,
+   "without_control": 0.006800000000000028,
+   "with_control": 0.0068,
+   "control": "targets from a committed secret and a later beacon; one registry and one budget per programme"
+  },
+  {
+   "attack": "seed grinding or shadow audits",
+   "risk": 0.14,
+   "tries": 10,
+   "without_control": 0.06595648647433516,
+   "with_control": 0.0068,
+   "control": "targets from a committed secret and a later beacon; one registry and one budget per programme"
+  },
+  {
+   "attack": "seed grinding or shadow audits",
+   "risk": 0.14,
+   "tries": 100,
+   "without_control": 0.49455827790445217,
+   "with_control": 0.0068,
+   "control": "targets from a committed secret and a later beacon; one registry and one budget per programme"
+  },
+  {
+   "attack": "bet chosen after the outcome",
+   "risk": 0.14,
+   "tries": 1,
+   "without_control": 1.0,
+   "with_control": 0.00715,
+   "control": "bet committed to the ledger before the draw"
+  },
+  {
+   "attack": "bet chosen after the outcome",
+   "risk": 0.2,
+   "tries": 1,
+   "without_control": 1.0,
+   "with_control": 0.00035,
+   "control": "bet committed to the ledger before the draw"
+  }
+ ]
+}

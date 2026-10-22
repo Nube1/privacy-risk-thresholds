@@ -1,0 +1,87 @@
+\section{Worksheets for applying the framework}\label{app:worksheets}
+
+The three worksheets below follow the steps of Section \ref{sec:apply}. They are
+meant to be copied into an institution's own templates. Table \ref{tab:record}
+shows Worksheet 3 filled for the synthetic credit register, with the legal basis
+and access route, which are common to its rows, given in the caption.
+
+\subsection*{Worksheet 1. Programme inventory (Step 1)}
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{2.8cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.2cm}@{}}
+\toprule
+Product drawn from the register & Frequency & Population covered & Variables published & Link across vintages (pseudonym, row order, stable attributes) & Access route \\
+\midrule
+ & & & & & \\[10pt]
+ & & & & & \\[10pt]
+ & & & & & \\[10pt]
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Source register: \hrulefill\quad Horizon $m$ (vintages): \hrulefill\quad
+Data owner: \hrulefill
+
+\subsection*{Worksheet 2. Scenario declaration (Step 2), one per scenario}
+
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.2cm}>{\raggedright\arraybackslash}p{9.4cm}@{}}
+\toprule
+Item & Entry \\
+\midrule
+Scenario name and products it holds & \\[6pt]
+Adversary (who, and why it would attack) & \\[6pt]
+Auxiliary information held, with its error & \\[6pt]
+Target set $T$ (prosecutor, journalist or marketer) & \\[6pt]
+Success event (what counts as a correct attack) & \\[6pt]
+Harm class $h$ & \\[6pt]
+Single release or pooled over the horizon & \\[6pt]
+For a pooled scenario: does the adversary know in which vintages the target is present, and why & \\[6pt]
+Stronger adversary for the stress test & \\[6pt]
+Declared by, and date & \\[6pt]
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Worksheet 3. Decision record (Steps 3 to 7), one row per scenario}
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{0.7cm}>{\raggedright\arraybackslash}p{0.7cm}>{\raggedright\arraybackslash}p{1.1cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.7cm}>{\raggedright\arraybackslash}p{1.5cm}@{}}
+\toprule
+Scenario & Legal basis and protected parties & Access route & $\tau$ & $\alpha$ & Attacks $B$ & Upper bound $\overline{R}_{1-\alpha}$ & Falsification tests passed & Decision (pass, fail, invalid, not set) & Remedy if failed \\
+\midrule
+ & & & & & & & & & \\[10pt]
+ & & & & & & & & & \\[10pt]
+ & & & & & & & & & \\[10pt]
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Release owner: \hrulefill\quad Signed on: \hrulefill\quad Expiry: \hrulefill
+
+\noindent Re-assess when: the horizon is reached; a new product is drawn from the
+register; a new public source could serve as auxiliary information; the mechanism
+changes; the record expires.
+
+\subsection*{Checklist before release}
+
+\begin{enumerate}
+\item Every product drawn from the register over the horizon is listed.
+\item Every scenario names its adversary, auxiliary information, target set and harm.
+\item A tolerance, error level, owner and expiry are recorded for every harm, or the
+record says that none has been set.
+\item The legal basis, the protected parties and the access route are recorded
+for every product.
+\item The number of attacks, the error level of each scenario and the order in
+which any grid of levels is tested were fixed before any result was seen.
+\item Pooled scenarios were run with the same auxiliary information as the
+single-release ones, any pooled scenario that adds knowledge (more readings, or
+the target's history across vintages) is reported separately, and all are
+reported.
+\item The decision uses upper bounds, not point estimates.
+\item All six falsification tests were run and their results are filed.
+\item The reviewer is not the analyst, and the release owner signed the record.
+\end{enumerate}

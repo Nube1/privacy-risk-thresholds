@@ -1,0 +1,22 @@
+\begin{algorithm}[t]
+\caption{Fixed-sequence choice of a floor, with confirmation}\label{alg:selection}
+\begin{algorithmic}[1]
+\Require floors $k_1>k_2>\cdots>k_L$ fixed in advance; tolerance $\tau$; level $\alpha$;
+  two independent target draws of size $B$
+\State $\hat k\gets\text{none}$
+\For{$\ell=1,\ldots,L$} \Comment{selection draw}
+  \State run the declared attack on $B$ fresh targets at $k_\ell$; $Y\gets$ successes
+  \If{$\overline R(Y,B;\alpha)>\tau$} \textbf{break} \Comment{first failure ends the search}
+  \EndIf
+  \State $\hat k\gets k_\ell$
+\EndFor
+\If{$\hat k\ne\text{none}$} \Comment{confirmation draw}
+  \For{each $k\ge\hat k$ in increasing order}
+    \State run the attack on $B$ new targets at $k$; $Y'\gets$ successes
+    \If{$\overline R(Y',B;\alpha)\le\tau$} \Return $k$ with its confirmed bound
+    \EndIf
+  \EndFor
+\EndIf
+\State \Return none \Comment{no tested floor meets the tolerance}
+\end{algorithmic}
+\end{algorithm}

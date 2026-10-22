@@ -1,0 +1,24 @@
+\begin{table}[t]
+\centering
+\caption{What sets the programme floor on the synthetic credit register, tolerance 0.12. History: the adversary knows in which vintages the target's loan is live. The floor is chosen by fixed-sequence testing from $k=300$ down on one draw of 4{,}000 targets and confirmed on a second, independent draw (rate, with exact 95 per cent upper bound); where confirmation fails the next stricter level that passes is shown. Loans and exposure are the percentages of the first release kept at that floor. The subgroup floor requires every size class to meet the tolerance, with the largest firms on a stratified draw, from $k=200$ down. The insider reads exposure with error 0.01 on the log scale. In the Floor column ``none'' means no level up to 300 passes, and in the Subgroup column no level up to 200.}
+\label{tab:robust}
+\small\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Adversary & Floor & Confirmation & Loans (\%) & Exposure (\%) & Subgroup \\
+\midrule
+One release, one reading & 1 & 0.084 (0.092) & 100 & 100 & 20 \\
+Six releases, one reading, no history & 1 & 0.083 (0.091) & 100 & 100 & -- \\
+Six releases, one reading, history & 75 & 0.096 (0.104) & 45 & 11 & 200 \\
+Six releases, reading per vintage, no history & 20 & 0.105 (0.114) & 85 & 52 & -- \\
+Six releases, reading per vintage, history & 150 & 0.101 (0.109) & 20 & 4 & none \\
+Insider: exact exposure, history & none & -- & -- & -- & -- \\
+\midrule
+\multicolumn{6}{l}{\emph{Exposure published to one significant figure}}\\
+One release, one reading & 1 & 0.079 (0.086) & 100 & 100 & -- \\
+Six releases, one reading, history & 50 & 0.111 (0.119) & 58 & 20 & -- \\
+Six releases, reading per vintage, history & 150 & 0.085 (0.092) & 20 & 4 & -- \\
+Insider: exact exposure, history & none & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}
+\end{table}

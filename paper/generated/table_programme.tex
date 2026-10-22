@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Four 3-anonymous releases from one sample, 20{,}000 target replicates. No single release contains a unique record. Marginal risks are unconditional; a target suppressed from a release contributes zero to that release and does not narrow the intersection. The pooled adversary intersects the candidate sets of releases 1 to $m$ and selects uniformly from the intersection.}
+\label{tab:comp}
+\begin{tabular}{lrrr}
+\toprule
+& Records released & Marginal risk & Unique share \\
+\midrule
+Release A (district, sex, fine age) & 9{,}648 & 0.0768 & 0.000 \\
+Release B (district, sex, occupation) & 9{,}709 & 0.0711 & 0.000 \\
+Release C (district, ten-year age, six groups) & 9{,}257 & 0.0884 & 0.000 \\
+Release D (sex, ten-year age, occupation) & 10{,}035 & 0.0168 & 0.000 \\
+\midrule
+\multicolumn{4}{l}{\emph{Programme-level quantities}} \\
+Lower bound $\max_i R_i$ & & 0.0884 & \\
+Upper bound $\min(1, \sum_i R_i)$ & & 0.2530 & \\
+Value under independence & & 0.2313 & \\
+Pooled attack, $m = 2$ & & 0.4114 & 0.208 \\
+Pooled attack, $m = 3$ & & 0.4279 & 0.222 \\
+Pooled attack, $m = 4$ & & 0.4581 & 0.260 \\
+\bottomrule
+\end{tabular}
+\end{table}

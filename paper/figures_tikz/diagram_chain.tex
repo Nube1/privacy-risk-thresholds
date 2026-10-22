@@ -1,0 +1,38 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\small,
+  floor/.style={draw,rounded corners=2pt,minimum width=1.5cm,minimum height=0.6cm},
+  coord/.style={draw,minimum width=0.55cm,minimum height=0.45cm,inner sep=1pt},
+  pass/.style={coord,fill=gray!55},
+  fail/.style={coord,pattern=north east lines,pattern color=black!70},
+  skip/.style={coord,draw=gray!60,densely dotted},
+  >=Stealth]
+  \foreach \k/\y in {300/0,200/-1,150/-2,100/-3,75/-4} {
+    \node[floor] (f\k) at (0,\y) {$k=\k$};
+  }
+  % components: single, pooled-history, full
+  \foreach \k/\y/\a/\b/\c in {300/0/pass/pass/pass,200/-1/pass/pass/pass,150/-2/pass/pass/pass,100/-3/pass/pass/fail,75/-4/skip/skip/skip} {
+    \node[\a] at (1.8,\y) {};
+    \node[\b] at (3.0,\y) {};
+    \node[\c] at (4.2,\y) {};
+  }
+  \node[align=center,font=\footnotesize] at (1.8,0.9) {one\\release};
+  \node[align=center,font=\footnotesize] at (3.0,0.9) {pooled,\\history};
+  \node[align=center,font=\footnotesize] at (4.2,0.9) {plus\\readings};
+  \foreach \a/\b in {300/200,200/150,150/100,100/75} {\draw[->] (f\a) -- (f\b);}
+  \node[anchor=west,align=left] at (5.0,-2) {last floor that passed:\\ chosen floor $k=150$};
+  \node[anchor=west,align=left] at (5.0,-3) {one attack fails: chain stops};
+  \node[anchor=west,align=left] at (5.0,-4) {never opened};
+  % legend
+  \node[pass] at (-0.3,-5.3) {}; \node[anchor=west] at (0.05,-5.3) {certified};
+  \node[fail] at (2.0,-5.3) {}; \node[anchor=west] at (2.35,-5.3) {not certified within the cap};
+  \node[skip] at (7.6,-5.3) {}; \node[anchor=west] at (7.95,-5.3) {not audited};
+\end{tikzpicture}
+\caption{A release chain chooses the cell-count floor. Floors are audited from the
+strictest down; at each floor every declared attack is a coordinate audited on
+fresh targets at the full error level, and the floor passes only if all of them
+certify. The chain stops at the first floor that fails and chooses the last one
+that passed (Algorithm~\ref{alg:chain}). The pattern shown is the one most streams
+followed in the credit-register audit of the companion article.}
+\label{fig:chain}
+\end{figure}

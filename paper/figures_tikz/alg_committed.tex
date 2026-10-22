@@ -1,0 +1,14 @@
+\begin{algorithm}[t]
+\caption{One committed audit draw}\label{alg:committed}
+\begin{algorithmic}[1]
+\Require registered coordinate $i$ with commitment $c_i=H(s)$ to an operator secret $s$
+  and a beacon round $\beta$ named at registration; draw index $b$; hash-chained ledger $\mathcal L$
+\State operator chooses bet $q$ from the ledger alone
+\State $\mathcal L.\textsc{append}(\text{bet},i,b,q)$ \Comment{recorded before the target exists}
+\State registry checks $H(s)=c_i$ and reads beacon value $\beta$
+\State target seed $\gets\mathrm{HMAC}_s(\beta\,\|\,i\,\|\,b)$; draw target $t_{i,b}$ from the registered law
+\State run the attack code whose digest was registered; $X\gets$ success on $t_{i,b}$
+\State $\mathcal L.\textsc{append}(\text{outcome},i,b,X)$; update $E_{i,b}$ with $(X,q)$
+\State publish or time-stamp the ledger head outside the operator's control
+\end{algorithmic}
+\end{algorithm}

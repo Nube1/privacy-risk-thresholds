@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+*.egg-info/
+.venv/
+artifacts/
+notebooks/executed.ipynb
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc

@@ -1,0 +1,123 @@
+\section{Worked examples}\label{sec:worked}
+
+The examples below take one step of the method at a time and carry it through
+with the numbers of this paper, so that an analyst can reproduce each figure by
+hand. Every number comes from the runs reported in Sections \ref{sec:eval} and
+\ref{sec:security}, and \nolinkurl{scripts/worked_examples.py} recomputes all of
+them into \nolinkurl{artifacts-robustness/worked_examples.json}.
+Examples \ref{ex:bound} and \ref{ex:selection} show how a floor is decided,
+Example \ref{ex:history} shows the attack that the floor must resist, Examples
+\ref{ex:zero} to \ref{ex:length} show how many attacks an audit costs, and
+Examples \ref{ex:grinding} and \ref{ex:dp} show what can go wrong and how the
+result compares with differential privacy.
+
+\begin{example}[One coordinate, one bound]\label{ex:bound}
+Take the single-release attack with one exposure reading at $k_{\min} = 1$, the
+first row of Table \ref{tab:robust}. On the confirmation draw the attack named
+the right loan for 337 of 4{,}000 targets, a rate of 0.084. Rule \eqref{eq:admiss}
+compares the exact one-sided 95 per cent upper bound with the tolerance; that
+bound is the 0.95 quantile of the $\mathrm{Beta}(337+1,\,4000-337)$
+distribution, which is 0.092. The tolerance is
+0.12, so the bound meets it with a margin of $1 - 0.092/0.12 = 0.23$, and the
+file passes for this adversary with no suppression. The decision uses the bound,
+not the rate: had the rate been 0.115 with the same number of targets, the bound
+would have been 0.123 and the release would have failed, as the next example shows.
+\end{example}
+
+\begin{example}[Choosing a floor when the confirmation fails]\label{ex:selection}
+For the adversary who pools six vintages, holds one reading and knows the
+target's history, Algorithm \ref{alg:selection} tests the floors from 300 down on
+the selection draw of 4{,}000 targets each. The upper bounds are 0.042 at 300,
+0.059 at 200, 0.073 at 150, 0.081 at 100, 0.101 at 75 and 0.111 at 50, all below
+0.12, and 0.139 at 40, which fails. The search stops there and selects 50, the
+last floor that passed. On the independent confirmation draw the same attack at
+50 succeeded for 458 of 4{,}000 targets, a rate of 0.115 with a bound of 0.123,
+above the tolerance. The algorithm therefore moves to the next stricter floor,
+75, where 384 of 4{,}000 targets were named, a rate of 0.096 with a bound of
+0.104, which passes. The floor for this adversary is 75, as Table
+\ref{tab:robust} reports. Falling back to 75 keeps the error bound, because 75
+had already passed at selection; choosing 40 or 30 after seeing these numbers
+would not.
+\end{example}
+
+\begin{example}[The history attack on one cell]\label{ex:history}
+Consider the four loans of Figure \ref{fig:history}, all in the target's key cell,
+with published log exposures 12.0 for the target $t$, 12.7 for $a$, 12.25 for
+$b$ and 11.6 for $c$. The adversary's reading of the target is 12.30, with
+standard deviation 0.6. Without the history, Algorithm \ref{alg:attack} scores
+each loan by the normal density of the reading, and the normalised posteriors are
+0.277 for $t$, 0.251 for $a$, 0.313 for $b$ and 0.159 for $c$. The adversary names
+$b$, which is wrong, and with a posterior below one half it would not act on the
+claim. With the history, $b$ and $c$ are excluded, because $b$ is live in a
+vintage where the target is not and $c$ is absent from one where the target is
+live. Only $t$ and $a$ remain, with posteriors 0.524 and 0.476. The adversary now
+names the target and, with a posterior above one half, acts. Nothing in any
+single release changed; the gain comes entirely from the pattern of appearances
+across vintages, which is why pooled attacks need coordinates of their own.
+\end{example}
+
+\begin{example}[How many attacks certify a coordinate with no successes]\label{ex:zero}
+Proposition \ref{prop:cert} gives the fixed-sample count: with no success in $B$
+attacks the bound meets $\tau$ when $B \ge \log\alpha/\log(1-\tau)$. At
+$\tau = 0.12$ and $\alpha = 0.05$ this is $2.996/0.128 = 23.4$, so 24 attacks. If
+the coordinate carries only a third of the error budget, as each attack does when
+three are split equally, $\alpha$ becomes $0.05/3$ and the count rises to
+$\lceil 4.094/0.128\rceil = 33$. Splitting the budget is therefore cheap when the
+risk is far below the tolerance: the count grows with the logarithm of the number
+of coordinates, not in proportion to it. The release chain of Algorithm
+\ref{alg:chain} avoids even this cost, because a floor that fails ends the search
+and each attack keeps the full level.
+\end{example}
+
+\begin{example}[The betting gate, draw by draw]\label{ex:gate}
+In Algorithm \ref{alg:chain} a coordinate certifies when its evidence $E$ reaches
+$1/\alpha = 20$. Fix the bet at $q = 0.05$ with $\tau = 0.12$. Each failed attack
+multiplies $E$ by $(1-q)/(1-\tau) = 0.95/0.88 = 1.080$, and each success
+multiplies it by $q/\tau = 0.05/0.12 = 0.417$. Starting from $E = 1$, a run of
+failures reaches 20 after $\log 20/\log 1.080 = 39.1$ draws, so on the 40th. One
+success sets the evidence back by a factor of 0.417, which takes
+$\log(1/0.417)/\log 1.080 = 11.4$ further failures to recover. An attack that
+succeeds on one target in twenty gains about 0.029 in $\log E$ per draw and so
+certifies after about a hundred draws on average, while one that succeeds on one
+in nine never gains ground: at
+$p = 0.116$ the expected change in $\log E$ per draw is negative for this bet.
+The auditor may look at $E$ after every draw and stop at the first crossing
+without any correction, which a fixed-sample bound does not allow.
+\end{example}
+
+\begin{example}[Why the release chain stops at 150]\label{ex:length}
+Near the tolerance the cost of certification is set by the gap between the true
+risk and $\tau$. With the best fixed bet, the expected number of draws is about
+$\log(1/\alpha)$ divided by the Kullback--Leibler divergence between
+$\mathrm{Bernoulli}(p)$ and $\mathrm{Bernoulli}(\tau)$ (the expected-length
+proposition of the companion article). For the full pooled attack at
+$k_{\min} = 150$, where the true risk is 0.091, that is about 720 draws, well
+within the cap of 3{,}000. At $k_{\min} = 100$ the true risk is 0.116, only 0.004
+below the tolerance, and the same calculation gives about 43{,}000 draws. The
+release chain of Figure \ref{fig:chain} therefore certifies 150 in almost every
+stream and 100 only by chance. The floor of 100 is safe, but an audit of any
+practical size cannot show it.
+\end{example}
+
+\begin{example}[What seed grinding buys an operator]\label{ex:grinding}
+Table \ref{tab:audit-process} reports that an honest audit of a coordinate whose
+true risk equals the tolerance certifies it falsely in 3.8 per cent of runs. An
+operator who can try ten seeds and report the first that passes succeeds with
+probability $1 - (1 - 0.038)^{10} = 0.32$, and with a hundred seeds
+$1 - (1-0.038)^{100} = 0.98$. The stated error level of 0.05 then means nothing.
+Algorithm \ref{alg:committed} removes the choice: the targets are fixed by a
+secret committed at registration and by a beacon value published later, so the
+operator has one stream per coordinate and the rate returns to 0.038.
+\end{example}
+
+\begin{example}[The same tolerance under differential privacy]\label{ex:dp}
+Suppose instead that a release were $(\varepsilon,\delta)$-differentially private
+with $\varepsilon = 1$ and $\delta = 10^{-6}$, and that a declared attack succeeds
+3 per cent of the time when the target's record is replaced by another. The
+hypothesis-testing bound of Section \ref{sec:dp} caps that attack's success at
+$e^{1}\times 0.03 + 10^{-6} = 0.082$, below the tolerance of 0.12, and the same
+cap holds for every attack at once, declared or not. The gate cannot give that
+guarantee: its certificate covers the attacks that were registered. What it can
+do is certify releases, such as the suppressed loan-level files of this paper,
+that have no privacy parameter at all.
+\end{example}

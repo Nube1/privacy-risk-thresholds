@@ -1,0 +1,28 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\small,node distance=0.45cm,
+  stp/.style={draw,rounded corners=2pt,align=center,minimum width=7cm,minimum height=0.7cm},
+  gate/.style={draw,diamond,aspect=2.2,align=center,inner sep=1pt,fill=gray!15},
+  >=Stealth]
+  \node[stp] (s1) {1. List the programme: releases, horizon,\\access route, legal basis, protected parties};
+  \node[stp,below=of s1] (s2) {2. Declare the scenarios, before any audit};
+  \node[stp,below=of s2] (s3) {3. Set the tolerance, owner, $\alpha$ and expiry};
+  \node[stp,below=of s3] (s4) {4. Plan the measurement: order of settings,\\sample sizes, error shares};
+  \node[stp,below=of s4] (s5) {5. Measure per release and pooled,\\on fresh targets};
+  \node[stp,below=of s5] (s6) {6. Test the model behind the number};
+  \node[gate,below=0.6cm of s6] (g) {every declared\\bound meets\\its tolerance?};
+  \node[stp,minimum width=3.4cm] (rel) at ($(g.south)+(-2.4,-1.2)$) {7. Release and file\\the decision record};
+  \node[stp,minimum width=3.4cm,pattern=north east lines,pattern color=gray!40] (no) at ($(g.south)+(2.4,-1.2)$) {Do not release;\\change the product};
+  \draw[->] (s1)--(s2); \draw[->] (s2)--(s3); \draw[->] (s3)--(s4); \draw[->] (s4)--(s5); \draw[->] (s5)--(s6); \draw[->] (s6)--(g);
+  \draw[->] (g.west) -| node[near start,above]{yes} (rel.north);
+  \draw[->] (g.east) -| node[near start,above]{no} (no.north);
+  \draw[->,dashed] (no.east) -- ++(0.5,0) |- node[near start,right,align=left]{\scriptsize new product,\\\scriptsize new audit} (s1.east);
+  \draw[->,densely dotted] (rel.west) -- ++(-0.5,0) |- node[near start,left,align=right]{\scriptsize new vintage\\\scriptsize or expiry} (s4.west);
+\end{tikzpicture}
+\caption{The assessment of a release programme as a decision process. Solid
+arrows follow the seven steps of Section~\ref{sec:apply} and Algorithm~\ref{alg:protocol}; the dotted arrow is the
+re-assessment at each new vintage or at expiry, which draws on the programme's
+remaining error budget; the dashed arrow is a change of product, such as moving
+from loan-level files to aggregates or to secure access, which needs a new audit.}
+\label{fig:protocol}
+\end{figure}

@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{What the two models learned from the development attacks. Log losses are the binomial log loss per development attack on the training and held-out floors; the epoch is where held-out loss was lowest. Errors compare each model's frozen prediction with the true risk, estimated from 100{,}000 separate targets, over the 39 coordinates of the release grid. The predicted floor is the last floor, from $k=300$ down, at which every predicted risk lies below the tolerance; the start floor is one step stricter.}
+\label{tab:neural-fit}
+\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+ & \multicolumn{2}{c}{Log loss} & & \multicolumn{2}{c}{Error against truth} & \multicolumn{2}{c}{Floor}\\
+\cmidrule(lr){2-3}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+Model & Training & Held out & Epoch & Mean & Largest & Predicted & Start \\
+\midrule
+Network, two hidden layers & 0.3240 & 0.3482 & 1146 & 0.008 & 0.031 & 100 & 150 \\
+Logistic model & 0.3245 & 0.3480 & 2067 & 0.004 & 0.027 & 100 & 150 \\
+\bottomrule
+\end{tabular}
+\end{table}

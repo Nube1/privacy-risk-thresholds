@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Minimum cell counts against the simulated risk of the declared adversary. The average uses 12{,}000 uniformly drawn targets with $\overline{R}_{0.95}$ its one-sided Clopper--Pearson bound. The worst target is taken over the listed number of targets in minimum-size cells, each estimated from 250 replicates, and is reported with a one-sided 95 per cent lower bound carrying a Bonferroni correction for the number of targets examined. The last column is the share of those targets whose individual lower bound exceeds $1/k$.}
+\label{tab:kanon}
+\small
+\begin{tabular}{rrrrrrrrr}
+\toprule
+$k_{\min}$ & Kept & Share & $1/k$ & Average & $\overline{R}_{0.95}$ &
+Targets & Worst (bound) & Share above $1/k$ \\
+\midrule
+3 & 5{,}426 & 0.541 & 0.3333 & 0.2573 & 0.2640 & 250 & 0.900 (0.817) & 0.748 \\
+5 & 3{,}361 & 0.335 & 0.2000 & 0.1852 & 0.1911 & 250 & 0.868 (0.778) & 0.492 \\
+10 & 1{,}555 & 0.155 & 0.1000 & 0.1129 & 0.1178 & 230 & 0.744 (0.638) & 0.326 \\
+20 & 484 & 0.048 & 0.0500 & 0.0787 & 0.0828 & 60 & 0.768 (0.675) & 0.267 \\
+\bottomrule
+\end{tabular}
+\end{table}

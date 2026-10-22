@@ -1,0 +1,1539 @@
+{
+ "alpha": 0.05,
+ "tolerance": 0.12,
+ "cap": 3000,
+ "planned": 1000,
+ "bet_cap": 0.11,
+ "seeds": 20,
+ "levels": [
+  300,
+  200,
+  150,
+  100,
+  75,
+  50,
+  40,
+  30,
+  20,
+  15,
+  10,
+  5,
+  1
+ ],
+ "released": {
+  "300": 2218,
+  "200": 3845,
+  "150": 5553,
+  "100": 9214,
+  "75": 12182,
+  "50": 15827,
+  "40": 17534,
+  "30": 20257,
+  "20": 23113,
+  "15": 24690,
+  "10": 26019,
+  "5": 26885,
+  "1": 27167
+ },
+ "truth": {
+  "single": {
+   "300": {
+    "rate": 0.00992,
+    "trials": 100000,
+    "lower": 0.009315005473796727,
+    "upper": 0.010553668029809013
+   },
+   "200": {
+    "rate": 0.01194,
+    "trials": 100000,
+    "lower": 0.011275987896296287,
+    "upper": 0.012632540930090771
+   },
+   "150": {
+    "rate": 0.01523,
+    "trials": 100000,
+    "lower": 0.014480043515681988,
+    "upper": 0.016008261964349353
+   },
+   "100": {
+    "rate": 0.02183,
+    "trials": 100000,
+    "lower": 0.02093319343460227,
+    "upper": 0.022754687759196222
+   },
+   "75": {
+    "rate": 0.02634,
+    "trials": 100000,
+    "lower": 0.025356189615851066,
+    "upper": 0.027351411130278586
+   },
+   "50": {
+    "rate": 0.03331,
+    "trials": 100000,
+    "lower": 0.03220636233144269,
+    "upper": 0.03444081294197318
+   },
+   "40": {
+    "rate": 0.03847,
+    "trials": 100000,
+    "lower": 0.03728636273030772,
+    "upper": 0.039680501451319836
+   },
+   "30": {
+    "rate": 0.0462,
+    "trials": 100000,
+    "lower": 0.044907116215206974,
+    "upper": 0.04751928582904069
+   },
+   "20": {
+    "rate": 0.05754,
+    "trials": 100000,
+    "lower": 0.05610452236667817,
+    "upper": 0.05900120709341109
+   },
+   "15": {
+    "rate": 0.06334,
+    "trials": 100000,
+    "lower": 0.06183802409334876,
+    "upper": 0.06486736300440997
+   },
+   "10": {
+    "rate": 0.07116,
+    "trials": 100000,
+    "lower": 0.0695740110845964,
+    "upper": 0.07277091564683517
+   },
+   "5": {
+    "rate": 0.07895,
+    "trials": 100000,
+    "lower": 0.07728588486263366,
+    "upper": 0.08063858435270718
+   },
+   "1": {
+    "rate": 0.08583,
+    "trials": 100000,
+    "lower": 0.08410090389141672,
+    "upper": 0.0875831619540337
+   }
+  },
+  "pooling_alone": {
+   "300": {
+    "rate": 0.04038,
+    "trials": 100000,
+    "lower": 0.03916828738287362,
+    "upper": 0.041618462238003986
+   },
+   "200": {
+    "rate": 0.05453,
+    "trials": 100000,
+    "lower": 0.05313062596582731,
+    "upper": 0.05595528155093456
+   },
+   "150": {
+    "rate": 0.06311,
+    "trials": 100000,
+    "lower": 0.061610589175705104,
+    "upper": 0.0646348114821084
+   },
+   "100": {
+    "rate": 0.07936,
+    "trials": 100000,
+    "lower": 0.0776919118395739,
+    "upper": 0.08105253332088701
+   },
+   "75": {
+    "rate": 0.09266,
+    "trials": 100000,
+    "lower": 0.09086970277948624,
+    "upper": 0.09447396315080583
+   },
+   "50": {
+    "rate": 0.11073,
+    "trials": 100000,
+    "lower": 0.10879140787349378,
+    "upper": 0.11269120190979871
+   },
+   "40": {
+    "rate": 0.1196,
+    "trials": 100000,
+    "lower": 0.1175948598457173,
+    "upper": 0.1216272322760655
+   },
+   "30": {
+    "rate": 0.13303,
+    "trials": 100000,
+    "lower": 0.1309307959242979,
+    "upper": 0.1351505131254383
+   },
+   "20": {
+    "rate": 0.15181,
+    "trials": 100000,
+    "lower": 0.14959106946517595,
+    "upper": 0.15404914567937988
+   },
+   "15": {
+    "rate": 0.16186,
+    "trials": 100000,
+    "lower": 0.15958198685139588,
+    "upper": 0.1641576433118698
+   },
+   "10": {
+    "rate": 0.17383,
+    "trials": 100000,
+    "lower": 0.17148568885882512,
+    "upper": 0.17619324486827445
+   },
+   "5": {
+    "rate": 0.18315,
+    "trials": 100000,
+    "lower": 0.18075691276576672,
+    "upper": 0.18556147890187447
+   },
+   "1": {
+    "rate": 0.1884,
+    "trials": 100000,
+    "lower": 0.18598047041060925,
+    "upper": 0.19083761597858198
+   }
+  },
+  "full_pooled": {
+   "300": {
+    "rate": 0.06175,
+    "trials": 100000,
+    "lower": 0.060265874132031716,
+    "upper": 0.06325960673307135
+   },
+   "200": {
+    "rate": 0.0786,
+    "trials": 100000,
+    "lower": 0.07693928697386301,
+    "upper": 0.08028520277794837
+   },
+   "150": {
+    "rate": 0.0913,
+    "trials": 100000,
+    "lower": 0.08952164296504847,
+    "upper": 0.09310210256005766
+   },
+   "100": {
+    "rate": 0.11619,
+    "trials": 100000,
+    "lower": 0.11421000179243515,
+    "upper": 0.11819228929038461
+   },
+   "75": {
+    "rate": 0.13312,
+    "trials": 100000,
+    "lower": 0.1310201907216822,
+    "upper": 0.13524111308286155
+   },
+   "50": {
+    "rate": 0.15561,
+    "trials": 100000,
+    "lower": 0.153368345810999,
+    "upper": 0.15787164811668164
+   },
+   "40": {
+    "rate": 0.16938,
+    "trials": 100000,
+    "lower": 0.16705984096171053,
+    "upper": 0.1717193516393059
+   },
+   "30": {
+    "rate": 0.18865,
+    "trials": 100000,
+    "lower": 0.18622922925218352,
+    "upper": 0.1910888426010499
+   },
+   "20": {
+    "rate": 0.21274,
+    "trials": 100000,
+    "lower": 0.21020687666305876,
+    "upper": 0.21528979492275285
+   },
+   "15": {
+    "rate": 0.22863,
+    "trials": 100000,
+    "lower": 0.22603006715978782,
+    "upper": 0.2312456811794999
+   },
+   "10": {
+    "rate": 0.2442,
+    "trials": 100000,
+    "lower": 0.24153973517063462,
+    "upper": 0.2468751087519739
+   },
+   "5": {
+    "rate": 0.25659,
+    "trials": 100000,
+    "lower": 0.2538851276684087,
+    "upper": 0.2593089966969981
+   },
+   "1": {
+    "rate": 0.26316,
+    "trials": 100000,
+    "lower": 0.260432641262077,
+    "upper": 0.26590110159157004
+   }
+  }
+ },
+ "true_floor": 100,
+ "unresolved_levels": [],
+ "summary": {
+  "release_chain": {
+   "floors": [
+    150,
+    100,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "at_true_floor": 1,
+   "unsafe_choices": 0,
+   "median_attacks": 6422.0,
+   "mean_attacks": 6187.15
+  },
+  "adversary_chains": {
+   "floors": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "at_true_floor": 0,
+   "unsafe_choices": 0,
+   "median_attacks": 13764.0,
+   "mean_attacks": 13713.4
+  },
+  "frozen_gate": {
+   "floors": [
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    200,
+    150,
+    150
+   ],
+   "at_true_floor": 0,
+   "unsafe_choices": 0,
+   "median_attacks": 9001.5,
+   "mean_attacks": 8536.3
+  },
+  "fixed_cp_cap": {
+   "floors": [
+    150,
+    100,
+    100,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    100,
+    150,
+    100,
+    150,
+    150,
+    150,
+    150
+   ],
+   "at_true_floor": 4,
+   "unsafe_choices": 0,
+   "median_attacks": 36000.0,
+   "mean_attacks": 37800.0
+  },
+  "fixed_cp_planned": {
+   "floors": [
+    150,
+    100,
+    100,
+    150,
+    200,
+    150,
+    150,
+    150,
+    200,
+    150,
+    150,
+    200,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150
+   ],
+   "at_true_floor": 2,
+   "unsafe_choices": 0,
+   "median_attacks": 12000.0,
+   "mean_attacks": 11850.0
+  },
+  "looks": {
+   "floors": [
+    150,
+    100,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    150,
+    100,
+    150,
+    100,
+    150,
+    150,
+    150,
+    150
+   ],
+   "at_true_floor": 3,
+   "unsafe_choices": 0,
+   "median_attacks": 10000.0,
+   "mean_attacks": 10350.0
+  }
+ },
+ "per_adversary_floors": {
+  "single": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "pooling_alone": [
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   75,
+   50,
+   75
+  ],
+  "full_pooled": [
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150,
+   150
+  ]
+ },
+ "operating_characteristics": {
+  "0": {
+   "replications": 400,
+   "unsafe_choices": 0,
+   "unsafe_rate": 0.0,
+   "floors": {
+    "100": 17,
+    "150": 377,
+    "200": 6
+   }
+  },
+  "0.01": {
+   "replications": 400,
+   "unsafe_choices": 6,
+   "unsafe_rate": 0.015,
+   "floors": {
+    "100": 6,
+    "150": 270,
+    "200": 123,
+    "300": 1
+   }
+  },
+  "0.02": {
+   "replications": 400,
+   "unsafe_choices": 0,
+   "unsafe_rate": 0.0,
+   "floors": {
+    "150": 62,
+    "200": 270,
+    "300": 68
+   }
+  }
+ },
+ "per_seed": [
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 4911,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13054,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 7382
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 9000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 100,
+    "attacks": 8095,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": true
+     },
+     {
+      "k": 75,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 10918,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 6938
+   },
+   "fixed_cp_cap": {
+    "floor": 100,
+    "attacks": 45000
+   },
+   "fixed_cp_planned": {
+    "floor": 100,
+    "attacks": 15000
+   },
+   "looks": {
+    "floor": 100,
+    "attacks": 13000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 6524,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13774,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9225
+   },
+   "fixed_cp_cap": {
+    "floor": 100,
+    "attacks": 45000
+   },
+   "fixed_cp_planned": {
+    "floor": 100,
+    "attacks": 15000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 4723,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13008,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9174
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 9000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 8025,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 15564,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 10943
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 200,
+    "attacks": 9000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 11500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 5595,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13664,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9129
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 6447,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 15228,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9177
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 7090,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 15424,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9768
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 6967,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 15541,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9072
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 200,
+    "attacks": 9000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 4687,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13158,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 8123
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 9000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 6901,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 14293,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 8931
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 9500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 7171,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 15588,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 10025
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 200,
+    "attacks": 9000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 7078,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13764,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9417
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 4561,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 10699,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 7601
+   },
+   "fixed_cp_cap": {
+    "floor": 100,
+    "attacks": 45000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 100,
+    "attacks": 13000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 6277,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13024,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 8363
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 4388,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 11528,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 6391
+   },
+   "fixed_cp_cap": {
+    "floor": 100,
+    "attacks": 45000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 100,
+    "attacks": 13000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 5274,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 13764,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 7909
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 8500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 6397,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 15229,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 200,
+    "attacks": 4761
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10000
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 6641,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 15598,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 50,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 8750
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 10500
+   }
+  },
+  {
+   "release_chain": {
+    "floor": 150,
+    "attacks": 5991,
+    "audited": [
+     {
+      "k": 300,
+      "passed": true
+     },
+     {
+      "k": 200,
+      "passed": true
+     },
+     {
+      "k": 150,
+      "passed": true
+     },
+     {
+      "k": 100,
+      "passed": false
+     }
+    ]
+   },
+   "adversary_chains": {
+    "floor": 150,
+    "attacks": 11448,
+    "per_adversary": {
+     "single": 1,
+     "pooling_alone": 75,
+     "full_pooled": 150
+    }
+   },
+   "frozen_gate": {
+    "floor": 150,
+    "attacks": 9647
+   },
+   "fixed_cp_cap": {
+    "floor": 150,
+    "attacks": 36000
+   },
+   "fixed_cp_planned": {
+    "floor": 150,
+    "attacks": 12000
+   },
+   "looks": {
+    "floor": 150,
+    "attacks": 9000
+   }
+  }
+ ]
+}

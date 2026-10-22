@@ -1,0 +1,44 @@
+name: refresh evidence
+
+on:
+  push:
+    branches: [main]
+    paths: ["src/**", "configs/paper.json", "scripts/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e ".[dev]"
+      - run: privacy-risk-run --config configs/paper.json --output artifacts-paper
+      - run: python scripts/rebuild_evidence.py --artifacts artifacts-paper --publish paper/generated
+      - run: python scripts/realdata_replication.py
+      - run: python scripts/realdata_neural_pilot.py
+      - run: python scripts/realdata_neural_comparison.py
+      - run: python scripts/plot_realdata_neural.py
+      - run: python scripts/check_realdata_paper.py
+      - run: python scripts/adaptive_audit_comparison.py --output paper/publication_versions/adaptive_audit_toy.json
+      - run: python scripts/adaptive_audit_chain.py
+      - run: python scripts/programme_robustness.py
+      - run: python scripts/robustness_table.py
+      - run: python scripts/audit_process_attacks.py
+      - run: python scripts/estimand_check.py
+      - run: python -m privacy_risk.neural_pipeline --output artifacts-neural
+      - run: python scripts/neural_results.py
+      - run: python scripts/worked_examples.py
+      - run: python scripts/check_paper_numbers.py --artifacts artifacts-paper --paper paper/bis_ifc_full.tex
+      - name: Commit the refreshed evidence
+        run: |
+          git config user.name "refresh-evidence"
+          git config user.email "actions@users.noreply.github.com"
+          git add artifacts-paper artifacts-real paper/generated paper/figures paper/diagrams paper/publication_versions/*.json
+          git diff --cached --quiet || git commit -m "Refresh evidence from the paper configuration"
+          git push

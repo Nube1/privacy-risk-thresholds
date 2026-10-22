@@ -1,0 +1,32 @@
+{
+  "adaptive_registration": {
+    "conditional_rate": 0.00526,
+    "null_crossings": 10,
+    "registrations": 1902,
+    "runs": 2000
+  },
+  "alternative": 0.03,
+  "family_alpha": 0.05,
+  "local_weight": 0.125,
+  "scenario_results": {
+    "boundary": {
+      "anytime_pass_rate": 0.005,
+      "cap": 300,
+      "fixed_cp_pass_rate_at_cap": 0.0055,
+      "median_first_pass_if_pass": 75,
+      "replications": 2000,
+      "risk": 0.12
+    },
+    "safe": {
+      "anytime_pass_rate": 0.956,
+      "cap": 300,
+      "fixed_cp_pass_rate_at_cap": 0.999,
+      "median_first_pass_if_pass": 98,
+      "replications": 2000,
+      "risk": 0.04
+    }
+  },
+  "scope": "Independent Bernoulli toy laws; not an evaluation on real releases",
+  "seed": 2709,
+  "tolerance": 0.12
+}

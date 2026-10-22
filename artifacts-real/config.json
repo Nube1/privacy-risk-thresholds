@@ -1,0 +1,47 @@
+{
+  "alpha": 0.05,
+  "attack_replicates": {
+    "real": 1500
+  },
+  "real": {
+    "composition_kmin": 3,
+    "composition_targets": 5000,
+    "covariate_sd": 0.5,
+    "education_widths": [
+      1,
+      4
+    ],
+    "experience_widths": [
+      1,
+      10
+    ],
+    "key_error": 0.1,
+    "loan_aggregates": [
+      [
+        "area",
+        "occupancy",
+        "income_band"
+      ],
+      [
+        "area",
+        "occupancy"
+      ]
+    ],
+    "min_cell_counts": [
+      1,
+      5,
+      10
+    ],
+    "minimum_release_size": 500,
+    "per_target_cap": 80,
+    "per_target_replicates": 200,
+    "puma_widths": [
+      1,
+      10,
+      100
+    ],
+    "sampling_fraction": 0.05,
+    "stronger_covariate_factor": 0.5
+  },
+  "seed": 20260904
+}

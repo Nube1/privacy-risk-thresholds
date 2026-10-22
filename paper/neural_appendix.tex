@@ -1,0 +1,151 @@
+\section{Mathematical details for the audited margin vector}\label{app:neural}
+
+\paragraph{Exploratory real-data runs.} The repository also holds a
+state-held-out pilot of the proposal model on the public Census file and a later
+comparison of linear, neural and quadratic proposers on the same file
+(\texttt{scripts/realdata\_neural\_pilot.py} and
+\texttt{scripts/realdata\_neural\_comparison.py}). Their linear baselines were
+not trained to convergence and their differences lie within bootstrap intervals,
+so they are not evidence for or against the procedure, and nothing in this paper
+rests on them.
+
+\paragraph{Experiment and estimand.}
+Let $\mathcal D$ contain all development observations, candidate generation,
+neural fitting, tuning, scenario definitions and proposed releases. Conditional
+on $\mathcal D$, the shortlist $\Theta_0$, its cardinality $C$, and all
+sample sizes $B_{\theta j}\geq1$ are fixed. An audit draw $Z_{\theta ji}$
+includes the target, auxiliary data when freshly sampled, and any randomness
+in the declared attack. The measurable success indicator
+$S_{\theta ji}=s_{\theta j}(Z_{\theta ji})$ is one exactly when the declared
+harm criterion is met. For fixed $(\theta,j)$ assume the draws are identically
+distributed and independent conditional on $\mathcal D$, with law
+$P_{\theta j}$. Thus
+\begin{equation}
+ r_j(\theta)=\int s_{\theta j}(z)\,dP_{\theta j}(z),\qquad
+ K_{\theta j}=\sum_{i=1}^{B_{\theta j}}S_{\theta ji}\mid\mathcal D
+ \sim\operatorname{Binom}(B_{\theta j},r_j(\theta)).
+ \label{eq:neural-experiment}
+\end{equation}
+The risk is conditional on a frozen release and on the audit design. If target
+records or auxiliary files are reused, the resulting dependent observations
+must be treated as one sampling unit or justified by another valid confidence
+procedure. Independence across distinct $(\theta,j)$ pairs is unnecessary.
+For a finite population sampled without replacement, the binomial assumption
+is inappropriate unless the attack design supplies independent replacement
+draws; a hypergeometric or design-based bound is needed instead.
+
+\paragraph{Exact inversion.}
+Write $b=B_{\theta j}$, $k=K_{\theta j}$,
+$\gamma=\alpha/(Cn)$, and
+$F_p(k)=\sum_{t=0}^{k}\binom{b}{t}p^t(1-p)^{b-t}$. For $k<b$,
+$F_p(k)$ is continuous and strictly decreasing in $p\in(0,1)$.
+The upper endpoint $u(k)$ is the unique solution of $F_{u(k)}(k)=\gamma$;
+set $u(b)=1$. The binomial--beta identity gives
+\begin{equation}
+ F_p(k)=1-I_p(k+1,b-k),\qquad
+ u(k)=F^{-1}_{\operatorname{Beta}(k+1,b-k)}(1-\gamma).
+ \label{eq:neural-inversion}
+\end{equation}
+For any fixed true $p$, the event $\{u(K)<p\}$ is a lower-tail set of
+integer counts: by monotonicity it equals $\{F_p(K)<\gamma\}$, apart from
+the harmless equality boundary. If $k_*$ is the largest count in this set,
+$\Pr_p\{u(K)<p\}=F_p(k_*)<\gamma$; if the set is empty the probability is
+zero. Hence $\Pr_p\{p\leq u(K)\}\geq1-\gamma$ for every $p\in[0,1]$.
+The possible strict inequality reflects the discreteness of the count.
+
+\paragraph{Familywise selection.}
+Define the event
+\begin{equation}
+ E=\bigcap_{\theta\in\Theta_0}\bigcap_{j\in\mathcal J}
+ \{r_j(\theta)\leq\overline r_{\theta j}\}.
+ \label{eq:neural-good-event}
+\end{equation}
+Conditional on every development history for which the assumptions hold,
+$\Pr(E^c\mid\mathcal D)\leq\sum_{\theta,j}\gamma=\alpha$.
+Any measurable decision rule $\widehat\theta$ using the complete vector of
+final bounds, including the choice of the greatest utility among accepted
+candidates, satisfies the deterministic implication
+\begin{equation}
+ E\ \Longrightarrow\
+ \bigl[\widehat\theta\text{ accepted}\bigr]\ \Longrightarrow\
+ \max_{j\in\mathcal J}\frac{r_j(\widehat\theta)}{\tau_j}\leq1.
+ \label{eq:neural-implication}
+\end{equation}
+The probability of a false certification is therefore at most $\alpha$
+conditionally and, by $\Pr(E^c)=\E[\Pr(E^c\mid\mathcal D)]$, unconditionally.
+This is a frequentist guarantee for the declared finite family; it is not a
+posterior probability that a particular accepted release is safe. An audit
+outcome used to add candidates, alter scenarios, retrain the network or select
+sample sizes destroys the conditioning argument unless a separate sequential
+or adaptive design is proved valid.
+
+\paragraph{Budget and an illustrative calculation.}
+At $k=0$, equation \eqref{eq:neural-inversion} simplifies to
+$u(0)=1-\gamma^{1/b}$. Consequently $u(0)\leq\tau$ if and only if
+$(1-\tau)^b\leq\gamma$, equivalently
+\begin{equation}
+ b\geq\left\lceil\frac{\log\gamma}{\log(1-\tau)}\right\rceil.
+ \label{eq:neural-budget-proof}
+\end{equation}
+For illustration only, $C=4$, $n=2$, $\alpha=0.05$ and $\tau=0.12$ give
+$\gamma=0.00625$ and $b=40$. The zero-success endpoint is approximately
+$0.11916$ at $b=40$, but approximately $0.12202$ at $b=39$.
+These numbers do not establish the risk of any real release. The total number
+of attack trials is $\sum_{\theta,j}B_{\theta j}$; when each of $Cn$ pairs
+uses the same $b$, it is $Cnb$. For small $\tau$,
+$-\log(1-\tau)=\tau+O(\tau^2)$, so the zero-success requirement grows as
+$\log(Cn/\alpha)/\tau$ per pair. The neural output dimension changes this
+multiplicity even when its input feature dimension $d$ stays fixed.
+
+\paragraph{Neural objective and its limits.}
+Let $\pi_j(x)=\Pr(Y_j=1\mid X=x)$ in the development distribution. For a
+positive weight $w_j(x)$ depending only on $x$ and $j$, the conditional
+expected binary cross entropy at a predicted probability $q$ is
+\begin{equation}
+ \ell_x(q)=-w_j(x)[\pi_j(x)\log q+(1-\pi_j(x))\log(1-q)],
+ \quad \ell_x'(q)=w_j(x)\frac{q-\pi_j(x)}{q(1-q)},
+ \label{eq:neural-proper}
+\end{equation}
+with $\ell_x''(q)>0$ at its unique minimum $q=\pi_j(x)$ whenever
+$0<\pi_j(x)<1$. Outcome-dependent weights instead change that minimiser.
+The implemented one-hidden-layer ReLU model is fitted by ordinary
+backpropagation of this objective \citep[ch.~6]{goodfellow2016}; the gradients are
+textbook ones, and fitting does not make the predictions exact. Write $W_1$ and
+$W_2$ for its fitted input-to-hidden and hidden-to-output weight matrices. Then
+ReLU's Lipschitz constant of one and sigmoid's scalar derivative at most
+$1/4$ give the predictor sensitivity bound
+$\|\widehat{\boldsymbol r}(x)-\widehat{\boldsymbol r}(x')\|_2
+\leq\|W_2\|_2\|W_1\|_2\|x-x'\|_2/4$.
+It controls changes in \emph{predictions}, not errors relative to actual
+risks, and is no substitute for the audit.
+
+\paragraph{The input dimension.}
+Suppose, as an additional assumption, the true conditional risk is
+$L$-Lipschitz in $\|\cdot\|_\infty$ on $[0,1]^d$. A grid of spacing
+$h\leq\epsilon/L$ lets a value at a nearby grid point approximate the
+true risk to within $\epsilon$, requiring at most
+$(1+\lceil L/\epsilon\rceil)^d$ grid points. Estimating those values adds
+sampling cost at each point; the grid count alone already grows exponentially
+in $d$. If no regularity links unsampled inputs to observed inputs, two risk
+functions can agree on every observed feature vector and disagree arbitrarily
+at an unobserved vector, so there is no distribution-free uniform interpolation
+guarantee. Structural assumptions may help prediction, but the finite-family
+audit guarantee above does not rely on them.
+
+\paragraph{Distribution shift.}
+Using $\mathrm{TV}(P,Q)=\sup_A|P(A)-Q(A)|$ on the complete audit-draw space,
+the layer-cake representation for any success function $0\leq s\leq1$ yields
+$|\E_Qs-\E_Ps|\leq\mathrm{TV}(P,Q)$. If a justified deterministic bound
+$\mathrm{TV}(P_{\theta j},Q_{\theta j})\leq\delta_{\theta j}$ holds for
+all inspected pairs, a simultaneous deployed-risk bound is
+\begin{equation}
+ \overline r^{\rm deploy}_{\theta j}
+ =\min\{1,\overline r_{\theta j}+\delta_{\theta j}\},\qquad
+ T^{\rm deploy}(\theta)=\min_j\left(1-
+ \frac{\overline r^{\rm deploy}_{\theta j}}{\tau_j}\right).
+ \label{eq:neural-shift}
+\end{equation}
+The same familywise probability applies because the TV inequality holds
+pointwise on the simultaneous coverage event. A TV estimate, itself uncertain,
+needs its own valid upper bound and error allocation. A distance between neural
+feature embeddings alone cannot establish a TV bound on the full experiment.

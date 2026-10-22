@@ -1,0 +1,31 @@
+{
+  "status": "FAIL",
+  "reason": "per-release upper bound is within tolerance, but the upper bound on the pooled risk of the declared programme exceeds the release tolerance",
+  "upper_risk": 0.08063808061286659,
+  "assessment_date": "2026-09-04",
+  "threshold": {
+    "tolerance": 0.12,
+    "owner": "Named accountable owner",
+    "expiry_date": "2027-09-04",
+    "adversary": "declared key error plus one noisy covariate",
+    "harm_class": "confidential microdata",
+    "alpha": 0.05
+  },
+  "chosen_setting": "20-year bands, 3 groups, k_min = 20",
+  "point_estimate": 0.0675,
+  "replicates": 1200,
+  "release_status": "PASS",
+  "release_reason": "upper risk bound is within tolerance",
+  "programme": {
+    "pooled_risk": 0.4581373258333512,
+    "union_upper_bound": 0.25304062783167247,
+    "marginals_bound_the_programme": false,
+    "upper_within_programme_tolerance": true,
+    "programme_tolerance_used_by_validation": 0.5,
+    "pooled_upper_bound": 0.463974255251962,
+    "pooled_upper_exceeds_release_tolerance": true,
+    "note": "Marginal risks do not bound a pooled attack. A programme needs its own tolerance and its own joint simulation."
+  },
+  "adversary": "ErrorModel(age_error=0.15, occupation_error=0.1, covariate_sd=0.75, assumed_sd=None)",
+  "interpretation": "Synthetic evidence only. A PASS is conditional on the declared adversary and the stated tolerance; it is not authority to release real data."
+}

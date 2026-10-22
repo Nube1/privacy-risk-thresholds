@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{The neural release pipeline on the synthetic credit register, 20 attack streams, tolerance 0.12, $\alpha=0.05$. Every design is a release chain over the three declared attacks on the same final draws; they differ only in where the bets and the start floor come from. The network and the logistic model are fitted to development attacks on separate seeds and fixed before the final audit. Entries give each floor chosen with the number of streams in brackets, and the median number of attacks.}
+\label{tab:neural-pipeline}
+\small
+\begin{tabular}{lrr}
+\toprule
+Source of bets and start & Floor chosen & Attacks \\
+\midrule
+Running-rate bets, chain from 300 & 100 (1), 150 (19) & 6{,}422 \\
+Logistic bets, chain from 300 & 100 (2), 150 (18) & 5{,}572 \\
+Network bets, chain from 300 & 100 (2), 150 (18) & 5{,}620 \\
+Logistic bets and start floor & 100 (1), 150 (19) & 5{,}019 \\
+Network bets and start floor & 100 (1), 150 (19) & 5{,}044 \\
+\bottomrule
+\end{tabular}
+\end{table}

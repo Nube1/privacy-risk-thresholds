@@ -1,0 +1,163 @@
+\section{Multiscale proposal models and audited distribution shift}
+\label{sec:multiscale-extension}
+This extension separates three mathematical objects: the unknown attack law,
+the fitted proposal function, and a confidence bound from new attack trials.
+Its results do not replace the registered sequential gate. In particular,
+a derivative of a neural network describes its response to an input change;
+it does not bound an adversary's true success probability. The new software is
+\texttt{privacy\_risk.multiscale}. All new numerical demonstrations use synthetic
+laws and do not modify the earlier public-data results.
+
+\subsection{An arbitrary dimensional risk vector}
+Let $x\in\mathcal X=\prod_{j=1}^d[\ell_j,u_j]$ describe a release and its
+registered threat model, with $u_j>\ell_j$. For coordinate $i\in\{1,\ldots,m\}$,
+let $A_i(Z,x)\in\{0,1\}$ be the declared attack success event. Define
+\begin{equation}
+ r_i(x;P_i)=\int A_i(z,x)\,dP_i(z),\qquad
+ z_i(x)=1-r_i(x;P_i)/\tau_i,\quad 0<\tau_i<1.
+\end{equation}
+A coordinate includes its target population, information available to the
+attacker, attack algorithm and harm. These components cannot change silently
+when the feature vector changes. Eligibility is the intersection of all
+registered inequalities $r_i\le\tau_i$, rather than an average over harms.
+The scalar $\min_i z_i$ records the limiting margin, but a report retains the
+whole vector so that a favourable component cannot conceal another violation.
+
+\subsection{Finite functional wavelet dictionary}
+Normalize $v_j=(x_j-\ell_j)/(u_j-\ell_j)$ and define
+\begin{equation}
+ \psi(t)=(1-t^2)e^{-t^2/2},\qquad
+ \psi'(t)=(t^3-3t)e^{-t^2/2}.
+\end{equation}
+For levels $a=0,\ldots,J-1$ and centres
+$c_{ak}=(k+1/2)2^{-a}$, $k=0,\ldots,2^a-1$, the feature map is
+\begin{equation}
+ \Phi_J(x)=\big(v_j,\psi(2^a(v_j-c_{ak}))\big)_{j,a,k}
+ \in\mathbb R^{D},\qquad D=d\,2^J.
+\end{equation}
+The dictionary captures localized changes at several scales and retains the
+normalized identity coordinates. It is neither an orthogonal wavelet transform
+nor an exact interpolant. On a bounded interval the atoms need not be orthogonal.
+An exact interpolation claim would require specified nodes, an invertible
+collocation matrix and a conditioning estimate, none of which follows from
+using a wavelet-shaped activation. Tensor products of all atoms cost
+exponentially in $d$; the coordinatewise dictionary avoids that construction.
+Cross-feature interactions arise in the dense network. Its computational benefit
+is a choice of representation, not a universal approximation-error guarantee.
+
+Put $s_j=(u_j-\ell_j)^{-1}$. Each feature depends on a single raw input, so the
+feature Jacobian has orthogonal columns. Since
+$|\psi'|\le C_\psi=3\sqrt3 e^{-3/2}+3e^{-1/2}$,
+\begin{equation}
+ \|D\Phi_J(x)\|_2\le L_\Phi=
+ \max_j s_j\left(1+C_\psi^2\sum_{a=0}^{J-1}2^a4^a\right)^{1/2}.
+\end{equation}
+The bound follows by separately maximizing $|t|^3e^{-t^2/2}$ and
+$3|t|e^{-t^2/2}$. Integration on a line segment in the convex box establishes
+$\|\Phi_J(x)-\Phi_J(y)\|_2\le L_\Phi\|x-y\|_2$.
+Increasing resolution increases $L_\Phi$ and may worsen robustness; fine scales
+are not automatically an improvement.
+
+\subsection{Deep counted likelihood and explicit sensitivities}
+For column-vector notation let $h_0=\Phi_J(x)$,
+$h_l=\operatorname{ReLU}(W_lh_{l-1}+b_l)$, $l=1,\ldots,L$, and
+$f_\theta(x)=\sigma(W_{L+1}h_L+b_{L+1})\in(0,1)^m$.
+For development counts $k_{ni}$ out of $b_{ni}$ trials, fit
+\begin{equation}
+ \mathcal L(\theta)= -\frac{1}{\sum_{n,i}b_{ni}}
+ \sum_{n,i}\{k_{ni}\log f_{ni}+(b_{ni}-k_{ni})\log(1-f_{ni})\}
+ +\frac\lambda2\sum_l\|W_l\|_F^2.
+\end{equation}
+Binomial counts retain different trial denominators. Treating all observed
+fractions as equally precise generally changes this objective. If the counts
+are dependent, the expression is a working loss, not an independent binomial
+likelihood. Training, early-stopping validation and final audits must use
+separate groups; neither LLM proposals nor final certification trials provide
+training labels.
+
+Away from ReLU kinks the raw-input derivative is
+\begin{equation}
+ Df_\theta(x)=D_\sigma W_{L+1}D_LW_L\cdots D_1W_1D\Phi_J(x),
+\end{equation}
+where $D_l$ contains activation indicators and
+$D_\sigma=\operatorname{diag}(f_i(1-f_i))$. The implementation stores transposed
+weights because observations are rows. At ReLU kinks it uses the zero
+subgradient. For logits clipped to $[-35,35]$, it additionally sets the
+logit derivative to zero outside that interval. Thus it differentiates the
+actual deployed predictor, rather than an unclipped surrogate.
+
+Because ReLU and clipping are one-Lipschitz and $\sigma'\le1/4$,
+\begin{equation}
+ \|f_\theta(x)-f_\theta(y)\|_2\le
+ L_f\|x-y\|_2,\quad L_f=\tfrac14 L_\Phi\prod_{l=1}^{L+1}\|W_l\|_2.
+\end{equation}
+This global bound is conservative; local Jacobians can be much smaller.
+For coordinate $i$, the proposal margin derivative is
+$D\widehat z_i=-Df_i/\tau_i$. A useful sensitivity report gives raw units,
+feature ranges, point derivatives and the spectral bound. It never labels
+$\widehat z_i$ an audited margin. If a separate uniform approximation guarantee
+$\sup_x|r_i(x)-f_i(x)|\le\epsilon_i$ were established, the triangle inequality
+would imply $r_i(y)\le f_i(x)+L_f\|y-x\|+\epsilon_i$. A held-out mean log loss
+does not establish that uniform guarantee.
+
+\subsection{A finite-family audit with a stated shift radius}
+Fix the family, sample sizes and weights before final outcomes are observed.
+For coordinate $i$, let $K_i\sim\operatorname{Bin}(n_i,p_i)$ under audit law
+$P_i$, and let $Q_i$ be the intended deployment attack law. Assume an externally
+justified total-variation bound
+\begin{equation}
+ \operatorname{TV}(P_i,Q_i)=\sup_E|P_i(E)-Q_i(E)|\le\rho_i.
+\end{equation}
+For weights $w_i>0$, $\sum_iw_i\le1$, use the exact one-sided
+Clopper--Pearson bound
+\begin{equation}
+ U_i=\begin{cases}
+ \operatorname{Beta}^{-1}(1-\alpha w_i;K_i+1,n_i-K_i),&K_i<n_i,\\
+ 1,&K_i=n_i.
+ \end{cases}
+ \quad U_i^Q=\min\{1,U_i+\rho_i\}.
+\end{equation}
+With probability at least $1-\alpha$, all deployment risks obey
+$r_i(Q_i)\le U_i^Q$. To prove this, each binomial bound fails with probability
+at most $\alpha w_i$; the union bound controls their simultaneous failure.
+On the complementary event, the definition of total variation applied to the
+attack-success event gives $r_i(Q_i)\le p_i+\rho_i\le U_i+\rho_i$.
+No independence across coordinates is needed. Independent Bernoulli trials
+within each coordinate, a fixed sample size and a fixed target law are needed.
+Random data-dependent radii require their own simultaneous error budget.
+A feature displacement and a model Lipschitz bound do not justify a TV radius.
+
+The shifted audited position is $z_i^Q=1-U_i^Q/\tau_i$; all must be nonnegative.
+This is a conditional statistical guarantee given the external shift model,
+not proof that the radius is true or that unregistered harms are absent.
+At zero successes, $U_i=1-(\alpha w_i)^{1/n_i}$, so passage requires
+\begin{equation}
+ n_i\ge\left\lceil\frac{\log(\alpha w_i)}
+ {\log(1-\tau_i+\rho_i)}\right\rceil,\qquad 0\le\rho_i<\tau_i.
+\end{equation}
+If $\rho_i\ge\tau_i$, zero observed successes cannot supply a finite passing
+budget. Repeatedly inspecting these fixed-size bounds and stopping at passage
+invalidates their stated coverage; use the existing sequential gate instead.
+
+\subsection{Audit cost and scaling}
+For positive costs $c_i$, set $a_i=c_i/[-\log(1-\tau_i+\rho_i)]$.
+Ignoring integer ceilings, minimize
+$C(w)=\sum_i a_i\log(1/(\alpha w_i))$ over positive weights summing to one.
+The Lagrangian derivative is $-a_i/w_i+\nu=0$; summing gives
+\begin{equation}
+ w_i^*=a_i/\sum_ja_j.
+\end{equation}
+The Hessian is diagonal with entries $a_i/w_i^2>0$, proving a unique minimum.
+The integer plan rounds upward and checks the exact zero-success inequality.
+It is a planning rule conditional on zero successes, not a promised audit cost
+under positive risk and not an optimizer of the discontinuous integer objective.
+Freeze weights from costs and declared tolerances before audit outcomes.
+
+Feature construction costs $O(Nd2^J)$. A dense network forward pass costs
+$O(N\sum_l d_{l-1}d_l)$; storing every raw-input sensitivity additionally costs
+$O(Nmd)$ for the output alone. The implementation supports arbitrary $d$ but
+limits $J$ to eight to avoid accidental dictionary growth. Dimension-free
+statistical safety does not imply dimension-free computational or predictive
+accuracy. LLM scenario injections continue through the existing review and
+measured-development-evidence pipeline; modifying a dictionary or threat law
+requires a new proposal-model version and new final audits.

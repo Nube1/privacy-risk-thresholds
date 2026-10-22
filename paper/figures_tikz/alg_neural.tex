@@ -1,0 +1,23 @@
+\begin{algorithm}[t]
+\caption{The neural release pipeline}\label{alg:neural}
+\begin{algorithmic}[1]
+\Require declared attacks $a_1,\ldots,a_J$; release grid $k_1>\cdots>k_L$; tolerance
+  $\tau$; level $\alpha$; reserve share $\omega$; bet cap $c<\tau$
+\State run each $a_j$ on $n$ development targets at every floor of a dense grid, on
+  seeds the final audit never uses; record counts $K_{kj}$ \Comment{stage 1}
+\State compute features $x_k$ of each floor from the register alone (floor, share
+  kept, mean cell size, share of loans not live in every vintage)
+\State fit $f_\theta$ by the binomial log likelihood of $K_{kj}$ out of $n$, with
+  held-out floors for early stopping \Comment{stage 2}
+\State $\hat r_{kj}\gets f_\theta(x_{k})_j$ for the release grid; $q_{kj}\gets\min\{\hat r_{kj},c\}$
+\State $\hat k\gets$ last floor, from $k_1$ down, with $\max_j\hat r_{kj}<\tau$; start
+  $k_s\gets$ the floor one step stricter than $\hat k$
+\State freeze $\{q_{kj}\}$, $k_s$ and their digest in the ledger \Comment{stage 3}
+\State run Algorithm~\ref{alg:chain} from $k_s$ down with weight $1-\omega$ and the frozen
+  bets \Comment{stage 4}
+\If{the chain fails at $k_s$}
+  \State run Algorithm~\ref{alg:chain} from $k_1$ down with weight $\omega$
+\EndIf
+\State \Return the certified floor, or none
+\end{algorithmic}
+\end{algorithm}

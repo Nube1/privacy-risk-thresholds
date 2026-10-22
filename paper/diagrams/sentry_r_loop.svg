@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 330" width="900" height="330">
+ <title>SENTRY-R proposal, measured training, and independent audit</title>
+ <rect width="900" height="330" fill="#fff"/>
+ <g font-family="Arial, sans-serif" font-size="17" fill="#1b2a4a">
+  <rect x="24" y="32" width="250" height="84" rx="10" fill="#f5f7fa" stroke="#1b2a4a" stroke-width="2"/>
+  <text x="43" y="64" font-weight="bold">LLM scenario proposal</text><text x="43" y="91" font-size="14">schema + named review</text>
+  <rect x="325" y="32" width="250" height="84" rx="10" fill="#f5f7fa" stroke="#1b2a4a" stroke-width="2"/>
+  <text x="343" y="64" font-weight="bold">Observed attacks</text><text x="343" y="91" font-size="14">measured development counts</text>
+  <rect x="626" y="32" width="250" height="84" rx="10" fill="#f5f7fa" stroke="#1b2a4a" stroke-width="2"/>
+  <text x="644" y="64" font-weight="bold">Deep proposal model</text><text x="644" y="91" font-size="14">rank candidate settings</text>
+  <rect x="626" y="208" width="250" height="84" rx="10" fill="#fff8f5" stroke="#a84f39" stroke-width="2"/>
+  <text x="644" y="240" font-weight="bold">Fresh attack audit</text><text x="644" y="267" font-size="14">simultaneous risk bounds</text>
+  <rect x="325" y="208" width="250" height="84" rx="10" fill="#fff8f5" stroke="#a84f39" stroke-width="2"/>
+  <text x="343" y="240" font-weight="bold">Release decision</text><text x="343" y="267" font-size="14">all coordinates must pass</text>
+ </g>
+ <g fill="none" stroke="#a84f39" stroke-width="3" marker-end="url(#arrow)">
+  <path d="M275 74 H318"/><path d="M576 74 H619"/><path d="M751 117 V200"/><path d="M624 250 H582"/>
+ </g>
+ <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#a84f39"/></marker></defs>
+ <text x="30" y="165" fill="#555" font-family="Arial, sans-serif" font-size="15">Proposal text never supplies training labels or a release certificate.</text>
+</svg>

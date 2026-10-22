@@ -1,0 +1,227 @@
+\section{Applying the framework to a central bank release programme}\label{sec:apply}
+
+This section sets out how a central bank can apply the framework to its own
+releases. It assumes no reading of the derivations. Each step names what the
+institution must decide, who decides it, what evidence the step produces, and
+where in the paper the method is justified. Appendix \ref{app:worksheets} holds
+blank worksheets for each step, and Table \ref{tab:record} shows them filled for
+the synthetic credit register.
+
+\subsection{Roles}\label{sec:apply-roles}
+
+Four roles are needed, and the first and third should not be held by the same
+person.
+\begin{description}
+\item[Release owner.] A named senior officer, for example the chair of a
+statistics release committee, who sets the tolerance, signs the decision and owns
+the residual risk.
+\item[Data owner.] The business area that collects the source register and knows
+which products are drawn from it, how often, and under what legal basis.
+\item[Disclosure analyst.] The statistician who declares the scenarios, runs the
+attack simulation and computes the bounds. The analyst owns the correctness of the
+calculation, not the decision.
+\item[Reviewer.] A person outside the production line, in the risk, audit or
+methodology function, who checks that the scenarios are plausible and that the
+falsification tests of Section \ref{sec:falsify} were run.
+\end{description}
+The analyst and the data owner sit in the first of the three lines of defence,
+the reviewer in the second, and internal audit, which checks the filed record
+and the audit controls of Section \ref{sec:security}, in the third (Section
+\ref{sec:gov}).
+
+
+\subsection{Seven steps}\label{sec:apply-steps}
+
+Figure \ref{fig:protocol} shows the seven steps as a decision process, and
+Algorithm \ref{alg:protocol} states them compactly. Two loops matter. The dotted
+loop is the re-assessment at each new vintage or at the expiry of the decision,
+which starts again at the planning step and draws on what remains of the
+programme's error budget. The dashed loop is a change of product: when no setting
+meets the tolerance, as for loan-level files against an adversary who knows loan
+histories (Section \ref{sec:eval-programme}), the institution moves to another
+product, such as aggregate tables or access in a secure setting, and assesses it
+from the start.
+
+\input{figures_tikz/diagram_protocol}
+\input{figures_tikz/alg_protocol}
+
+
+\paragraph{Step 1. List the programme, not the release.}
+Start from the source register, not from the product about to be published. List
+every product drawn from it over the planning horizon: monthly or quarterly
+aggregates, supervisory publications, research extracts, data shared with other
+authorities, and answers to ad hoc requests. For each product record its
+frequency, the population it covers, the variables it publishes, and whether any
+identifier or stable ordering persists from one vintage to the next. A persistent
+pseudonym, a stable row order or a unique combination of rarely changing
+attributes lets an adversary match records across vintages, which is the condition that Proposition \ref{prop:nopool} requires. With a persistent pseudonym the products are, for the adversary, one release on the union of their keys (Remark \ref{rem:finer}). Declare a horizon $m$,
+the number of vintages the assessment covers. Worksheet 1 records the inventory.
+
+\paragraph{Step 2. Declare the scenarios.}
+For each product, and for each combination of products an outsider could hold
+together, write down who the adversary is, what it knows, which records it
+targets and what harm follows if it succeeds (Section \ref{sec:experiment}). For a
+pooled scenario, say whether the adversary knows when the target's record is
+present in each vintage, and why (Section \ref{sec:eval-threat}). The
+declaration should be specific enough that someone can disagree with it. Table
+\ref{tab:apply-map} gives starting declarations for release types common in
+central banks. They are illustrations to be adapted, not a statement of what any
+institution does. Worksheet 2 records each scenario.
+
+\paragraph{Step 3. Set the tolerance.}
+For each harm class the release owner sets a tolerance $\tau$, an error level
+$\alpha$, an expiry date and the horizon $m$ of Step 1, and records the legal
+basis, the parties the tolerance protects and the access route of the product
+(Definition \ref{def:thresh}). The tolerance is the institution's written reading
+of when identification is reasonably likely for that adversary and route. Two routes lead to a number. The direct route states the
+largest probability of successful exposure the institution will accept for that
+harm, taking account of its confidentiality duty and the public value of the
+release. The indirect route states the relative weight the institution places on
+harm against lost utility and reads the implied tolerance off the risk--utility
+frontier (Proposition \ref{prop:tau}, Table \ref{tab:tau}). Either way, the
+tolerance is written down before the risk is measured, and a programme tolerance
+is set alongside the per-release one. Where the institution has not yet agreed a
+tolerance for a harm, the record says so and no decision is made on that harm,
+as in the last rows of Table \ref{tab:record}.
+
+\paragraph{Step 4. Plan the measurement.}
+Decide how many simulated attacks each scenario needs before running any. With no
+observed success, certifying a tolerance $\tau$ at error level $\alpha$ needs
+about $\log(1/\alpha)/\tau$ independent attacks, roughly $3/\tau$ at
+$\alpha = 0.05$ \citep{hanley1983}; Table \ref{tab:cert} gives exact counts. A
+tolerance of $10^{-3}$ needs 2{,}995 attacks, and one of $10^{-5}$ needs
+299{,}572, so a very small tolerance can be expensive to certify by simulation.
+If the release must pass every one of a fixed set of scenarios or subgroups, each
+may be assessed at level $\alpha$, because that is an intersection--union test
+(Section \ref{sec:gov}); divide $\alpha$ among them only when their bounds are to
+be reported as one simultaneous statement. If a level such as a minimum cell
+count is to be chosen from a grid, fix the order in which the levels are tested
+before any result is seen (Proposition \ref{prop:fixedseq}). If scenarios may be added after results
+are seen, for example because a reviewer proposes a stronger adversary, use a
+registered spending sequence rather than a fixed split (Section
+\ref{sec:sequential} and the companion article).
+
+\paragraph{Step 5. Measure, per release and pooled.}
+Run the declared attacks on the release as it would be published, on fresh
+targets, and compute the exact upper bound $\overline{R}_{1-\alpha}$ for each
+scenario (Section \ref{sec:est}). Then run the pooled attack over the programme
+of Step 1, holding the same auxiliary information, and compute its bound in the
+same way (Section \ref{sec:comp}). Report separately any pooled attack that adds
+knowledge, such as more readings or the target's history across vintages. The
+attacks must be reported side by side. Tables \ref{tab:decomp} and
+\ref{tab:robust} show why: on the synthetic register, pooling with one reading
+adds nothing unless the adversary knows the loan's history, and part of the
+remaining excess comes from the adversary holding more readings, and a committee
+needs to know which it is protecting against. Where a level is chosen from a
+grid, audit the chosen level again on fresh targets. Report what the chosen
+level keeps in volume, such as the share of exposure and of large borrowers, as
+well as the share of records.
+
+\paragraph{Step 6. Test the model behind the number.}
+Before the bound is used, run the falsification tests of Section
+\ref{sec:falsify}: calibration of the linkage posterior, the population-frequency
+model, a stronger adversary, monotonicity of the mechanism, the composition test
+and temporal transport. A failed test makes the assessment invalid, not failed:
+the institution cannot release on it and must repair the model first.
+
+\paragraph{Step 7. Decide, record and re-assess.}
+Apply rule \eqref{eq:admiss}: the release passes a scenario only if the upper
+bound, not the point estimate, is at or below the tolerance, and it passes
+overall only if it passes every declared scenario, pooled ones included. Where
+the programme fails, the release fails, even if it passes on its own. File the
+decision record (Worksheet 3). Re-assess when the programme is about to pass its
+horizon, when a new product is drawn from the same register, when a new public
+source could serve as auxiliary information, when the mechanism changes, and at
+expiry.
+
+\subsection{Release types common in central banks}\label{sec:apply-map}
+
+Table \ref{tab:apply-map} maps six release types to the objects of Steps 2 to 5.
+The first column of the table is the product; the others say whom the adversary
+targets, what it plausibly holds, which harm is at stake, which measure of this
+paper applies, and where a pooled scenario arises.
+
+\begin{table}[!t]
+\centering
+\caption{Starting declarations for release types common in central banks. The
+entries are illustrations to be adapted to each institution's products, legal
+basis and users; they do not describe the practice of any institution.}
+\label{tab:apply-map}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.6cm}@{}}
+\toprule
+Release type & Targets & Adversary holds & Harm & Measure in this paper & Pooled scenario \\
+\midrule
+Aggregates from a credit register (by sector, region, size) & Borrowers in small cells; lenders in concentrated cells & A firm's sector, region and size from public filings; a lender's own book & Identification of a borrower; a lender's position revealed & Prosecutor risk by cell (Section \ref{sec:three}); residual disclosure from totals (Appendix \ref{app:derivations}) & Monthly vintages; differencing of consecutive months \\
+Loan-level research extract & Every borrower in the extract & Key fields and a noisy reading of exposure from other sources & Identification; attribute disclosure of arrears & Linkage attack of Section \ref{sec:eval-threat}; attribute rule & Successive extracts for the same project; extracts for different projects \\
+Supervisory statistics by bank group & Individual banks & Each bank's own figures; published annual reports & A bank's confidential figure recovered & Contribution from totals; dominance and $p\%$ rules \citep{hundepool2012} & Quarterly series; tables that share a margin \\
+Payment and transaction statistics & Merchants or payers in thin cells & Merchant category and location; own transactions & Identification; commercial information revealed & Prosecutor risk by cell; minimum contributor count & Daily or weekly series of the same cells \\
+Household or firm survey microdata & Respondents & Demographic or firm characteristics from registers or social media & Identification; attribute disclosure of wealth or debt & Journalist and marketer measures (Section \ref{sec:three}); frequency model (Section \ref{sec:est}) & Survey waves; the public file and a scientific-use file \\
+Answers to ad hoc data requests & Units in the requested breakdown & Everything already published from the same register & Identification by differencing & Differencing posterior (Appendix \ref{app:derivations}) & Each answer pooled with every earlier publication \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{When a release fails}\label{sec:apply-fail}
+
+A failed scenario does not end the matter. It tells the committee what to change,
+and the record should state which remedy was chosen and why. The remedies fall
+into five groups.
+\begin{enumerate}
+\item \emph{Change the key.} Coarsen the published breakdown, or withdraw the
+field that the adversary uses most (Table \ref{tab:ablation} shows how far each
+field moves the risk on the synthetic register).
+\item \emph{Raise the floor.} Increase the minimum cell count or add a dominance
+rule, choosing the level by fixed-sequence testing on the upper bound of the
+pooled scenario and confirming it on fresh targets (Table \ref{tab:robust}).
+\item \emph{Break the link between vintages.} Rotate pseudonyms, change the row order,
+or publish some products less often, so that the pooled adversary cannot match
+records across vintages. Rotation is a control on linkability, not
+pseudonymisation in the legal sense, and the pseudonym should be a keyed hash
+under a key held apart from the release team. It helps only if the published
+fields cannot relink the records; on the synthetic credit register the key and
+the exact exposure relink every loan, and with exposure rounded to one
+significant figure about one loan in ten (Section \ref{sec:eval-programme}).
+\item \emph{Add noise.} Use a formal mechanism and account for its budget over the
+horizon, remembering that its guarantee bounds posterior odds rather than naming a
+linkage probability (Section \ref{sec:dp}).
+\item \emph{Change the access route or the product.} Move the product from public
+or scientific-use release to a secure research environment, where the risk is
+governed by access controls and output checking rather than by the release alone
+\citep{desai2016}, or publish aggregates in place of loan-level records. On the
+synthetic credit register this is the realistic remedy against an adversary who
+knows loan histories, because the floors that meet the tolerance keep a small
+share of the exposure (Section \ref{sec:eval-programme}).
+\end{enumerate}
+Shortening the horizon $m$ is also a remedy, but only if the institution is prepared
+to stop the series or re-assess it at the new horizon.
+
+\subsection{Starting small}\label{sec:apply-pilot}
+
+An institution does not need to apply the framework to every product at once. A
+workable start is one register and one product family over one quarter:
+\begin{enumerate}
+\item choose the register whose products are published most often;
+\item complete Worksheet 1 for it and agree a horizon;
+\item agree one tolerance, for identification, with a named owner;
+\item run one per-release and one pooled attack, with the sample sizes of Step 4;
+\item file one decision record and present it to the release committee beside the
+current method, so the committee can see where the two disagree.
+\end{enumerate}
+The pipeline that produces this paper runs the attacks and
+writes the record. It needs, for each product, the published file or its
+specification, the key fields, the auxiliary variables the adversary is declared to
+hold and the tolerance. Section \ref{sec:real} shows the demographic path of the
+code applied to two public files, which is the pattern for adapting it to an
+institution's own data; the credit path has so far run only on the synthetic
+register.
+
+\subsection{What the framework does not decide}\label{sec:apply-limits}
+
+The framework makes a decision reproducible; it does not make it for the
+institution. It cannot say whether a declared adversary is realistic, whether a
+tolerance is legally or ethically right, or whether a release is worth its risk.
+Those remain judgements for the release owner. What it adds is that each judgement
+is written down, owned and dated, and that the number it is compared with carries
+its uncertainty and covers the whole programme.

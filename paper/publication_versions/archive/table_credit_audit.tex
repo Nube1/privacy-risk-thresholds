@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\caption{The registered gate on the synthetic credit register at tolerance 0.12 and $\alpha=0.05$, over 20 seeds. Each policy has a single-release and a pooled coordinate, each with weight $1/10$; the pooled coordinate is registered only after the single-release coordinate certifies. Each coordinate draws its own fresh targets, at most 3{,}000. Share is the fraction of seeds in which the coordinate certifies; attacks is the median number used. The last column is the fraction of seeds in which a family frozen in advance, with 3{,}000 attacks per coordinate and Bonferroni-corrected Clopper--Pearson bounds, certifies both coordinates.}
+\label{tab:credit-audit}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+ & & \multicolumn{2}{c}{Single release} & \multicolumn{2}{c}{Pooled} & Fixed \\
+Policy & Kept & Share & Attacks & Share & Attacks & Share \\
+\midrule
+no suppression & 32{,}581 & 1.00 & 498 & 0.00 & 3{,}000 & 0.00 \\
+$k$-anonymity, $k=5$ & 32{,}351 & 1.00 & 523 & 0.00 & 3{,}000 & 0.00 \\
+$k$-anonymity, $k=10$ & 31{,}615 & 1.00 & 353 & 0.00 & 3{,}000 & 0.00 \\
+$k$-anonymity, $k=40$ & 23{,}068 & 1.00 & 130 & 0.30 & 3{,}000 & 0.45 \\
+$k$-anonymity, $k=50$ & 20{,}389 & 1.00 & 122 & 0.95 & 1{,}224 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}

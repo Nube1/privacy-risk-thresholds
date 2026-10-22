@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\caption{What the attack needs, and what happens when the adversary's model is wrong. The upper block withdraws auxiliary information from the adversary one field at a time; the lower block keeps all four fields and misstates the dispersion of its exposure reading. Calibration error is the gap between the average posterior the adversary reports and the share of its guesses that are right. Both blocks use $k$-anonymity at $k=5$.}
+\label{tab:ablation}
+\small
+\begin{tabular}{lrrrr}
+\toprule
+Adversary holds & Fields & Risk & Precision & Calibration error \\
+\midrule
+all four fields & 4 & 0.081 & 0.672 & 0.000 \\
+no exposure reading & 3 & 0.025 & -- & 0.002 \\
+no size class & 3 & 0.042 & 0.500 & 0.002 \\
+region and exposure only & 2 & 0.004 & -- & 0.001 \\
+\midrule
+assumed $\sigma$ $\times$ 0.5 & 4 & 0.079 & 0.384 & 0.073 \\
+assumed $\sigma$ $\times$ 1 & 4 & 0.079 & 0.667 & 0.003 \\
+assumed $\sigma$ $\times$ 2 & 4 & 0.079 & 1.000 & 0.039 \\
+\bottomrule
+\end{tabular}
+\end{table}

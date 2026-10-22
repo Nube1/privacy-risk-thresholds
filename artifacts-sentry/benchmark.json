@@ -1,0 +1,211 @@
+{
+  "status": "synthetic only; not a comparison on real releases",
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110
+  ],
+  "train_rows": 320,
+  "stopping_rows": 100,
+  "test_rows": 2000,
+  "epoch_cap": 6000,
+  "patience": 150,
+  "width": 24,
+  "schema_sha256": "08c4a6fbfd8b890f3d51d3983e404469c18239d029aa0a0229d3f55f58baacf2",
+  "summary": [
+    {
+      "model": "Logistic",
+      "mean_test_log_loss": 0.2556076706213672,
+      "sd_test_log_loss": 0.0043198501911849594,
+      "mean_test_brier": 0.07271314529739761,
+      "sd_test_brier": 0.0017064066104554,
+      "best_epoch_min": 404,
+      "best_epoch_max": 898
+    },
+    {
+      "model": "Three-layer ReLU",
+      "mean_test_log_loss": 0.2576046590457969,
+      "sd_test_log_loss": 0.004706093543742994,
+      "mean_test_brier": 0.07352519659464271,
+      "sd_test_brier": 0.0018327050316215652,
+      "best_epoch_min": 79,
+      "best_epoch_max": 402
+    }
+  ],
+  "paired_difference_deep_minus_logistic": {
+    "mean": 0.0019969884244296493,
+    "sd": 0.0014401472622769722,
+    "min": 0.00043559772494977667,
+    "max": 0.005021950610119119,
+    "seeds_deep_lower": 0
+  },
+  "replicates": [
+    {
+      "seed": 101,
+      "test_sha256": "cb521fde831c5a7ca8aef25d6c52a825d0c5993b546c0548ab83a8f957ebda26",
+      "Logistic": {
+        "test_log_loss": 0.2588348836078805,
+        "test_brier": 0.07420158012425437,
+        "best_epoch": 592,
+        "stopping_log_loss": 0.2433616716305215
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.25927048133283026,
+        "test_brier": 0.07451443231911889,
+        "best_epoch": 101,
+        "stopping_log_loss": 0.24280664509637853
+      }
+    },
+    {
+      "seed": 102,
+      "test_sha256": "534a5fc7f23f085049cb707779164f7bf683afb59ee855087cc3cc9f5902dbd9",
+      "Logistic": {
+        "test_log_loss": 0.25670915005898953,
+        "test_brier": 0.07337029635626598,
+        "best_epoch": 429,
+        "stopping_log_loss": 0.2787025778234588
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.26173110066910865,
+        "test_brier": 0.07480506024327177,
+        "best_epoch": 402,
+        "stopping_log_loss": 0.28485507093483686
+      }
+    },
+    {
+      "seed": 103,
+      "test_sha256": "5982b979deed0832022157c1a5f5ad7bde1765162492c46e885eff393c6c2815",
+      "Logistic": {
+        "test_log_loss": 0.2547494084233901,
+        "test_brier": 0.07237764322710427,
+        "best_epoch": 898,
+        "stopping_log_loss": 0.2528862298172253
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.2552311940866793,
+        "test_brier": 0.07288394509826278,
+        "best_epoch": 121,
+        "stopping_log_loss": 0.2512864074280578
+      }
+    },
+    {
+      "seed": 104,
+      "test_sha256": "37c4e16a0e2508dbb6264ae173c04ce7902386d46f15a5f4f5fcd21c496cbd53",
+      "Logistic": {
+        "test_log_loss": 0.2567160371492194,
+        "test_brier": 0.0729394743047667,
+        "best_epoch": 434,
+        "stopping_log_loss": 0.23842518918881156
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.2592038160794331,
+        "test_brier": 0.07387647596278997,
+        "best_epoch": 89,
+        "stopping_log_loss": 0.23840828010648338
+      }
+    },
+    {
+      "seed": 105,
+      "test_sha256": "7f53da9fa8f16d1e4d4c0c4d72c710ea1f46b8bf2fd87e986478fe6c963a9e2d",
+      "Logistic": {
+        "test_log_loss": 0.2472630984810058,
+        "test_brier": 0.06933214829479273,
+        "best_epoch": 884,
+        "stopping_log_loss": 0.25285872735371756
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.24923030852280106,
+        "test_brier": 0.07002244515935235,
+        "best_epoch": 185,
+        "stopping_log_loss": 0.2568212399526617
+      }
+    },
+    {
+      "seed": 106,
+      "test_sha256": "390dcdbc19716a776f5738bb3e13eee27ef1116a9cdf24ef42adb95e451bbf7d",
+      "Logistic": {
+        "test_log_loss": 0.25323740735141015,
+        "test_brier": 0.07156905723861869,
+        "best_epoch": 874,
+        "stopping_log_loss": 0.2766033456454694
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.2542219382101982,
+        "test_brier": 0.07231375621695081,
+        "best_epoch": 79,
+        "stopping_log_loss": 0.27689774522864014
+      }
+    },
+    {
+      "seed": 107,
+      "test_sha256": "77a7c9424a16dbff2eeeb2bb797416500c85a7bfd32c4af7f4f1aecbbfc7ec67",
+      "Logistic": {
+        "test_log_loss": 0.26328631051355983,
+        "test_brier": 0.07556799676990557,
+        "best_epoch": 404,
+        "stopping_log_loss": 0.26595553729029087
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.2648372277456325,
+        "test_brier": 0.07628144542094463,
+        "best_epoch": 117,
+        "stopping_log_loss": 0.266818476533042
+      }
+    },
+    {
+      "seed": 108,
+      "test_sha256": "06d7bb14e1709f738cbcbe73f9ef4685619d6d1987a259c8b26a0fe9fdd904bc",
+      "Logistic": {
+        "test_log_loss": 0.25178869198137405,
+        "test_brier": 0.07139634233677537,
+        "best_epoch": 612,
+        "stopping_log_loss": 0.23993102836125585
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.2528897220515131,
+        "test_brier": 0.07183456684905831,
+        "best_epoch": 102,
+        "stopping_log_loss": 0.2404979978638169
+      }
+    },
+    {
+      "seed": 109,
+      "test_sha256": "42ea3ddf344cf4c43018e2394ce402858db7cca5ee2e302aff226cbe6a71a6d2",
+      "Logistic": {
+        "test_log_loss": 0.25796438557096296,
+        "test_brier": 0.07358800162335666,
+        "best_epoch": 607,
+        "stopping_log_loss": 0.2483287689434755
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.2614914969523609,
+        "test_brier": 0.07522378118772738,
+        "best_epoch": 156,
+        "stopping_log_loss": 0.24938449278311492
+      }
+    },
+    {
+      "seed": 110,
+      "test_sha256": "e05b2496fc70842b4191a288c12704e1e323ffa24a87c41b21889b3614f6267a",
+      "Logistic": {
+        "test_log_loss": 0.2555273330758799,
+        "test_brier": 0.07278891269813577,
+        "best_epoch": 468,
+        "stopping_log_loss": 0.23915751254723244
+      },
+      "Three-layer ReLU": {
+        "test_log_loss": 0.2579393048074116,
+        "test_brier": 0.07349605748895033,
+        "best_epoch": 80,
+        "stopping_log_loss": 0.23778581174190955
+      }
+    }
+  ]
+}

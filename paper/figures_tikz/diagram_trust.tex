@@ -1,0 +1,37 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\small,
+  box/.style={draw,align=center,minimum height=0.9cm,text width=3.0cm},
+  tcb/.style={box,fill=gray!15},
+  adv/.style={box,pattern=north east lines,pattern color=gray!45},
+  lbl/.style={font=\scriptsize,fill=white,inner sep=1pt},
+  >=Stealth]
+  \node[adv] (op) at (-1.2,0) {Operator $\mathcal A_{\rm op}$:\\registers, bets, stops};
+  \node[tcb] (reg) at (4.6,0) {Registry and\\budget ledger (T1)};
+  \node[tcb] (code) at (8.6,0) {Attack code\\digest (T3)};
+  \node[tcb] (rand) at (4.6,-2.0) {Committed secret\\and beacon (T2)};
+  \node[tcb] (decl) at (8.6,-2.0) {Declared\\coordinates\\per release (T4)};
+  \node[tcb] (time) at (8.6,-3.6) {Time source (T5)};
+  \node[box] (conf) at (-1.2,-2.0) {Confidential\\register};
+  \node[box] (rel) at (-1.2,-5.4) {Released files};
+  \node[adv] (data) at (4.6,-5.4) {Outside adversary\\$\mathcal A_{\rm data}$};
+  \node[draw,dashed,thick,inner sep=7pt,fit=(reg)(rand)(code)(decl)(time)] (tcbbox) {};
+  \node[anchor=south east,font=\footnotesize] at (tcbbox.north east) {trusted computing base};
+  \draw[->] (op) -- node[lbl,above=3pt]{commits bets} (reg);
+  \draw[->] (reg) -- (code);
+  \draw[->] (reg) -- (rand);
+  \draw[->] (rand) -- node[lbl,below=3pt,align=center]{draws targets,\\runs attacks} (conf);
+  \draw[->] (conf) -- node[lbl,left=2pt]{release} (rel);
+  \draw[->] (rel) -- node[lbl,above=4pt]{reads} (data);
+  \draw[->,densely dotted,thick] (op) -- node[lbl,left=2pt]{no direct path} (conf);
+\end{tikzpicture}
+\caption{Trust boundaries of the audit. The outside adversary sees only the
+released files. The operator reaches the confidential register only through the
+registry, which draws targets from committed randomness, records each bet before
+the attack runs, runs attack code fixed by its digest and keeps one budget per
+programme (Algorithm~\ref{alg:committed}). Everything inside the dashed box must
+be trusted for the error bound to hold against the operator; the dotted arrow is
+the path that complete mediation forbids. Hatching marks the two adversaries and
+grey fill the trusted parts.}
+\label{fig:trust}
+\end{figure}

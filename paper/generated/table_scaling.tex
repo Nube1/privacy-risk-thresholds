@@ -1,0 +1,16 @@
+\begin{table}[t]
+\centering
+\caption{Does the pooling gap survive at other register sizes? The same four releases, the same keys and the same minimum cell count, rebuilt on registers of four sizes with the sampling fraction held fixed. Larger registers are safer release by release, because the key classes grow. The pooled attack falls more slowly, so the ratio of the pooled risk to the bound the marginals imply rises with size rather than falling. The gap the paper is about is not an artefact of the size chosen for the main study.}
+\label{tab:scaling}
+\small
+\begin{tabular}{rrrrrrr}
+\toprule
+Population & Sample & Largest marginal & Pooled, 2 releases & Pooled, 4 & Boole bound & Ratio \\
+\midrule
+50{,}000 & 2{,}362 & 0.113 & 0.454 & 0.623 & 0.398 & 1.57 \\
+100{,}000 & 5{,}056 & 0.102 & 0.458 & 0.561 & 0.328 & 1.71 \\
+200{,}000 & 10{,}035 & 0.088 & 0.411 & 0.458 & 0.253 & 1.81 \\
+400{,}000 & 20{,}079 & 0.062 & 0.320 & 0.332 & 0.162 & 2.05 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,239 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{natbib}
+\bibliographystyle{plainnat}
+\usepackage[expansion=false]{microtype}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\emergencystretch}{3em}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}[proposition]{Corollary}
+\newtheorem{lemma}[proposition]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{assumption}{Assumption}
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ind}[1]{\mathbf{1}\{#1\}}
+
+
+\title{\bfseries Online appendix: case studies and a neural procedure for proposing settings\\
+\large to ``Governing privacy risk across repeated statistical releases''}
+
+\author{Ronald Rethabile Malamule Mahomane\thanks{Corresponding author:
+\texttt{ron@basisenergygroup.com}. This is an author manuscript, not a BIS or IFC publication.}\\
+\small Department of Computing, Mathematical and Statistical Sciences,
+University of Namibia, Windhoek\\
+\small School of Pathology, Faculty of Health Sciences,
+University of the Witwatersrand, Johannesburg\\
+\small Basis Energy, Victoria, Australia}
+
+\date{Author manuscript: September 2026}
+
+\begin{document}
+\maketitle
+
+\noindent This online appendix goes with the author manuscript ``Governing privacy risk across repeated statistical releases: probability models, programme tolerances and accountable decisions''. It holds material that the main text refers to but does not need: case studies from other data products, and a neural procedure for proposing candidate settings, with its variant SENTRY-R. Nothing here enters the results of the main text. Where this appendix refers to the main text it names the section or result rather than giving a number. Every numerical table here is produced by the packaged pipeline in the companion repository.
+
+\section{Case studies from other data products}\label{sec:cases}
+
+The cases below are not pooled into one empirical estimate. They concern
+different data products, adversaries and harm classes, and the published evidence
+does not support a common denominator. Each case identifies which component of
+the proposed decision record would have made the public claim more precise.
+Table \ref{tab:cases} records that mapping. Each row reads from left to right:
+what was released and how it was attacked, the object of the framework that
+describes the attack, and what the case teaches about the decision record. The
+last column carries the point of the table: in each case the public claim lacked
+a part of the record, such as a declared adversary, a programme guarantee, a
+decision owner or a stated residual risk. The first row is the credit register
+of the main text (the section on a granular credit register), treated there with measurements; the
+other four are not central bank cases and are described here without new
+measurements.
+
+\begin{table}[htbp]
+\centering
+\caption{Case studies mapped to the framework}
+\label{tab:cases}
+\small
+\begin{tabular}{p{2.7cm}p{3.0cm}p{3.1cm}p{4.1cm}}
+\toprule
+Case & Release and attack & Mathematical object & Governance lesson \\
+\midrule
+Granular credit register & Loan-level file, aggregates and monthly revisions &
+Identification, predictive value of an alleged relationship, attribute and
+residual disclosure, differencing & One lever does not govern five risks; each
+needs its own target set and tolerance. \\
+Netflix Prize & Sparse ratings linked to outside ratings & Posterior linkage
+$p_{tj}$ and pooled auxiliary information & ``Anonymous'' identifiers do not
+define an adversary or bound posterior success. \\
+US Census 2020 & Published tabulations and database reconstruction & Programme
+composition and formal privacy accounting & Repeated exact statistics require
+a programme guarantee, not isolated marginal checks. \\
+England and Wales Census 2021 & Tables protected by record swapping and cell-key
+perturbation & Mechanism risk--utility frontier & Operational protection must be
+paired with an explicit scenario, uncertainty statement and decision owner. \\
+HIPAA de-identification & Safe Harbor or Expert Determination & Rule-based versus
+scenario-based threshold & A legal route is not itself a numerical probability;
+Expert Determination makes assumptions and residual risk reviewable. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Sparse behavioural data: the Netflix Prize}
+
+The Netflix Prize data replaced direct identifiers with pseudonymous user
+numbers, but the released rating vectors were high-dimensional and sparse.
+\citet{narayanan2008} showed that a small amount of auxiliary rating information
+could link records across datasets. In the notation of the main text (the unified linkage experiment), the released identifier was irrelevant to the attack:
+$Z_t$ contained a few ratings and approximate dates, $L_{tj}$ measured their
+agreement with candidate records, and the largest posterior in
+the maximum-posterior rule of the main text determined the match. The case therefore illustrates the
+failure of exchangeability, not merely the presence of sample uniques.
+
+The defensible retrospective test is not whether the file was anonymised. It is:
+for a prespecified distribution of auxiliary ratings and date error, what is the
+distribution of $\max_j p_{tj}$ across targets, and what simultaneous upper bound
+lies below the owned tolerance? A modern replication should vary the number of
+auxiliary ratings, their popularity, the date tolerance and the abstention
+threshold. Those variables define a family of attacks; choosing only an easy one
+after seeing the outcome would not validate the release.
+
+\subsection{Repeated official statistics: the 2020 US Census}
+
+The US Census Bureau adopted a disclosure avoidance system built on differential
+privacy \citep{abowd2018} after demonstrating that many published tabulations can support database
+reconstruction \citep{garfinkel2019,abowd2022,abowd2023}. This is the
+institutional case closest to the proposition of the main text that marginal risks do not bound pooled risk. The threat does not
+arise because one table has a large marginal linkage risk. It arises because many
+accurate, overlapping constraints describe the same underlying population.
+
+The framework makes two distinctions. First, reconstruction, membership inference
+and correct named-person linkage are different events and must not be reported
+under one risk label. Second, a formal privacy accountant governs the programme
+mechanism, whereas $\sum_i R_i$ governs only a union of declared single-release
+attacks. The policy debate over accuracy remains a risk--utility choice, but the
+protection claim and its unit of composition are now explicit. The appropriate
+empirical study would compare redistricting, small-area and demographic estimands
+under alternative privacy-loss budgets, then report subgroup-specific utility
+losses beside the programme guarantee. \citet{ruggles2019} set out the costs of
+the change for social and economic research, and \citet{kenny2021} find that the
+new system biases the population of mixed precincts used in redistricting.
+
+\subsection{Layered operational protection: Census 2021 in England and Wales}
+
+The Office for National Statistics describes protection of Census 2021 outputs
+through record swapping and the cell-key method, together with checks against
+disclosure in tables \citep{ons2022}. This is not evidence that the release has a
+universal linkage probability, nor need it be. It is evidence of a layered
+mechanism $M_\theta$ whose tuning changes both tabular accuracy and the
+information available to an intruder.
+
+For governance, what is missing is a declared attack experiment. An evaluation
+could draw targets from separately stated population groups, expose the attacker
+to realistic public registers, reproduce the cell-key and swapping randomness,
+and calculate $\overline{R}_{1-\alpha}$ for each protected group. The mechanism
+parameters, the seeds policy, the table family and the expiry date would then be
+part of the governance threshold $G$ defined in the main text. That turns a process description into a
+reproducible release decision, without implying that the mechanism offers
+differential privacy unless it does.
+
+\subsection{Health data: HIPAA Safe Harbor and Expert Determination}
+
+US health-data guidance recognises two routes for de-identification: removal of
+specified identifiers under Safe Harbor, and Expert Determination that the risk
+of identification is very small, using generally accepted statistical and
+scientific principles \citep{hhs2012}. The contrast maps directly to this paper.
+Safe Harbor constrains the released variables; Expert Determination is a
+scenario-conditioned judgement about residual risk. Neither phrase alone fixes
+$T$, $a$, $h$, $\tau$ or $\alpha$.
+
+A complete determination would therefore file the population and target set, the
+accessible auxiliary sources, the linkage rule, the harm class, the estimate, the
+uncertainty bound and the review horizon. Where data are released repeatedly to
+the same recipient, the determination must count the accumulated products as part
+of what the adversary holds. This does not replace legal judgement. It makes the
+empirical premises of that judgement capable of expiry, challenge and
+replication.
+
+\subsection{A common case-study protocol}
+
+Across the five settings, a comparable prospective study has seven steps:
+
+\begin{enumerate}
+\item freeze the release mechanism, and define neighbouring or alternative
+confidential states where a formal guarantee is claimed;
+\item specify the target population, the auxiliary information and the abstention
+rule;
+\item separate linkage, membership, attribute and reconstruction success events;
+\item simulate or execute attacks with the mechanism randomness and the shared
+data dependencies preserved;
+\item estimate target and subgroup risks with simultaneous uncertainty bounds;
+\item measure utility on prespecified authorised analyses, including subgroup
+error rather than only an aggregate score; and
+\item assess the complete release programme, then file the governed tuple $G$.
+\end{enumerate}
+
+The resulting studies would be comparable in design while keeping different
+numerical scales where the estimands genuinely differ.
+
+\input{neural_section}
+\input{sentry_r_section}
+\input{neural_appendix}
+\input{sentry_r_appendix}
+\input{multiscale_extension}
+
+\begin{thebibliography}{99}
+
+\bibitem[Abowd(2018)]{abowd2018}
+Abowd, J M (2018): ``The U.S. Census Bureau adopts differential privacy'', in \emph{Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, p 2867, ACM, New York.
+
+\bibitem[Abowd et~al.(2022)]{abowd2022}
+Abowd, J M, R Ashmead, R Cumings-Menon, S Garfinkel, M Heineck, C Heiss, R Johns, D Kifer, P Leclerc, A Machanavajjhala, B Moran, W Sexton, M Spence and P Zhuravlev (2022): ``The 2020 Census Disclosure Avoidance System TopDown Algorithm'', \emph{Harvard Data Science Review}, Special Issue 2.
+
+\bibitem[Abowd et~al.(2023)]{abowd2023}
+Abowd, J M, T Adams, R Ashmead, D Darais, S Dey, S L Garfinkel, N Goldschlag, D Kifer, P Leclerc, E Lew, S Moore, R A Rodr\'iguez, R N Tadros and L Vilhuber (2023): ``A simulated reconstruction and reidentification attack on the 2010 US Census: full technical report'', US Census Bureau Center for Economic Studies Working Paper, no CES-23-63.
+
+\bibitem[Bates et~al.(2021)]{bates2021}
+Bates, S, A N Angelopoulos, L Lei, J Malik and M I Jordan (2021): ``Distribution-free, risk-controlling prediction sets'', \emph{Journal of the ACM}, vol 68, no 6, pp 1--34.
+
+\bibitem[Garfinkel et~al.(2019)]{garfinkel2019}
+Garfinkel, S, J M Abowd and C Martindale (2019): ``Understanding database reconstruction attacks on public data'', \emph{Communications of the ACM}, vol 62, no 3, pp 46--53.
+
+\bibitem[Goodfellow et~al.(2016)]{goodfellow2016}
+Goodfellow, I, Y Bengio and A Courville (2016): \emph{Deep Learning}, MIT Press, Cambridge, MA.
+
+\bibitem[Guo et~al.(2017)]{guo2017}
+Guo, C, G Pleiss, Y Sun and K Q Weinberger (2017): ``On calibration of modern neural networks'', \emph{Proceedings of Machine Learning Research}, vol 70, pp 1321--1330.
+
+\bibitem[Kenny et~al.(2021)]{kenny2021}
+Kenny, C T, S Kuriwaki, C McCartan, E T R Rosenman, T Simko and K Imai (2021): ``The use of differential privacy for census data and its impact on redistricting: the case of the 2020 U.S. Census'', \emph{Science Advances}, vol 7, no 41, eabk3283.
+
+\bibitem[Narayanan and Shmatikov(2008)]{narayanan2008}
+Narayanan, A and V Shmatikov (2008): ``Robust de-anonymization of large sparse datasets'', in \emph{Proceedings of the 2008 IEEE Symposium on Security and Privacy}, pp 111--125.
+
+\bibitem[ONS(2022)]{ons2022}
+Office for National Statistics (2022): ``Protecting personal data in Census 2021 results'', Methodology article, Newport.
+
+\bibitem[Ruggles et~al.(2019)]{ruggles2019}
+Ruggles, S, C Fitch, D Magnuson and J Schroeder (2019): ``Differential privacy and census data: implications for social and economic research'', \emph{AEA Papers and Proceedings}, vol 109, pp 403--408.
+
+\bibitem[HHS(2012)]{hhs2012}
+US Department of Health and Human Services (2012): ``Guidance regarding methods for de-identification of protected health information in accordance with the HIPAA Privacy Rule'', Office for Civil Rights, Washington, DC.
+
+\end{thebibliography}
+
+\end{document}

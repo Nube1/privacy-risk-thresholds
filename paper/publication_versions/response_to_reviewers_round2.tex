@@ -1,0 +1,270 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\newcommand{\point}[2]{\par\medskip\textbf{#1} \emph{#2}\par}
+\newcommand{\reply}{\textbf{Response.} }
+
+\title{\bfseries Response to the reviewers}
+\author{Ronald Rethabile Malamule Mahomane\\[2pt]
+\small Department of Computing, Mathematical and Statistical Sciences, University of Namibia, Windhoek\\
+\small School of Pathology, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg\\
+\small Basis Energy, Victoria, Australia\\
+\small \texttt{ron@basisenergygroup.com}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+\sloppy
+
+\section*{Scope}
+This letter answers a pre-submission review of two manuscripts by a panel of seven
+referees: sequential statistics, statistical disclosure control, differential privacy,
+central bank statistics, machine learning, reproducibility, and a general referee who
+took the part of Reviewer~2. The manuscripts are
+\begin{itemize}
+\item \emph{Adaptive certification of attack-conditional disclosure risk across release
+programmes}, with its supplement, for the Journal of Privacy and Confidentiality
+(the article); and
+\item \emph{Governing privacy risk across repeated statistical releases: probability
+models, programme tolerances and accountable decisions}, a long-form author manuscript
+for IFC Working Paper consideration (the long form).
+\end{itemize}
+Titles changed in revision; the first-round reports use the old ones. The full reports,
+including a second-round check by Reviewer~2, are in \texttt{docs/panel\_review/} of the
+repository.
+
+\section*{Summary of changes}
+Four changes alter what the manuscripts claim.
+\begin{enumerate}
+\item \textbf{The pooled credit-register excess is split into its two causes.} In the
+original attack the pooled adversary held one exposure reading per vintage, so it held
+six times the auxiliary information of the single-release adversary. A new table
+(long form, Table~12; article, Table~3) changes one factor
+at a time on the same targets. With no suppression the rate is 0.079 for one release
+and one reading and 0.209 for the full pooled attack. Extra readings alone give 0.132;
+pooling the six vintages with one reading gives 0.136, with an upper bound of 0.145,
+above the tolerance of 0.12. The programme finding survives, but both manuscripts now
+attribute only part of the gap to pooling.
+\item \textbf{The cell-count floor is chosen by the upper bound, on a finer grid.} The
+old headline chose $k_{\min}=50$ by point estimate, and 50 was the top of the grid. The
+revised run adds a fine grid (20 to 100) and applies the exact upper bound (long form, Table~13). The smallest
+tested floor that meets the tolerance is now 40, which keeps 23,068 loans against 32,581
+with no floor.
+\item \textbf{Noisy counts are composed across vintages.} The pooled column for the
+noisy-count policies had repeated the single-release value. Each vintage now draws fresh
+noise and the adversary combines the readings, so the programme spends six times the
+stated $\varepsilon$. The count rows measure class uniqueness, not loan identification,
+and both manuscripts now say they cannot be compared with the loan tolerance.
+\item \textbf{The article runs its gate on a disclosure problem.} A new experiment
+(\texttt{scripts/adaptive\_audit\_credit.py}, article Table~2) registers a
+single-release and a pooled coordinate for five policies on the synthetic credit
+register, over 20 seeds, and compares the gate with a frozen fixed-sample family at the
+same maximum budget. Every policy passes its single-release coordinate. Only $k=50$
+passes the pooled coordinate with high probability (19 of 20 seeds). At equal budget the
+frozen family certifies more often; the gate stops earlier.
+\end{enumerate}
+The code changes behind these results, and the repository fixes, are listed at the end.
+
+\section*{Reviewer 2}
+
+\point{R2.1 (major).}{Theorem 1 is online alpha-spending over test supermartingales, and
+the relevant literature is not cited.}
+\reply Agreed. The article has a new related-work section (Section~2) that cites
+alpha-investing (Foster and Stine 2008), online familywise error control (Tian and
+Ramdas 2021, Statistical Methods in Medical Research), test martingales and e-values
+(Shafer et al.\ 2011; Vovk and Wang 2021; Ramdas et al.\ 2023), betting confidence
+sequences (Howard et al.\ 2021; Waudby-Smith and Ramdas 2024) and Ville (1939). A remark
+after the theorem states the reduction to online Bonferroni and names what the article
+adds: the coordinate definition, the attack-sampling condition, the pooled-coordinate
+requirement, the audit-cost rule and the measured application.
+
+\point{R2.2 (major).}{The paper hands the novelty judgement to the referee.}
+\reply Every such sentence is deleted, including those on priority, ``the journal
+mathematics'' and the author's status. The abstract ends with a statement of what the
+gate requires and costs.
+
+\point{R2.3 (major).}{Proposition 1 is an intersection attack; Ganta et al.\ is not
+cited; the construction needs a shared identifier; $q$ has three meanings.}
+\reply The article states a formal threat model (Assumption~1) in which each release
+carries a pseudonym constant across vintages and the adversary knows the target's full
+quasi-identifier vector. The proposition uses the long form's construction, with $s$
+for the alphabet size, and is described as a standard non-composition example that
+fixes the estimand, citing Sweeney (2002), Wang and Fung (2006), Ganta, Kasiviswanathan
+and Smith (2008) and Dinur and Nissim (2003). The long form now states the same
+pseudonym condition in its proposition and in the credit-register threat model, and
+notes that a rotating pseudonym would make the pooled figures overstate the risk.
+
+\point{R2.4 (major).}{The gate is never run on a disclosure problem.}
+\reply Partly addressed. The new credit-register experiment above runs the gate with
+adaptive registration and compares it with a frozen family at equal budget. Not done: a
+run on the public Census file, comparison with the beta-binomial confidence sequence and
+with an adaptive-bet e-process, and a case with reused targets. The article says so. The
+experiment also does not exercise adaptive registration in a way a frozen family could
+not match, because every single-release coordinate certified in every seed; the article
+states this.
+
+\point{R2.5 (major).}{The overlap with the long form is not disclosed in the
+manuscript.}
+\reply The long form is cited as a reference. A first-page footnote names the results
+reproduced from it and the results that are new (the theorem, the weights and cost
+propositions, the toy audit and the credit-register audit). The carried-over tables are
+cut to the decomposition table the argument needs, and the supplement repeats the
+statement. The cover letter will repeat it again and mention the Lisbon presentation.
+
+\point{R2.6 (major).}{The neural section does not belong in the article.}
+\reply The main text now has one paragraph: any predictor may supply the bet if it is
+fixed before the outcome is seen, and validity does not depend on its accuracy. The
+network, its gradient, the Lipschitz bound (now with the input-standardisation factor)
+and the benchmark are in the supplement. The benchmark was rerun to convergence over ten
+seeds on a third held-out set: logistic regression has test log loss 0.2556 and the
+three-layer network 0.2576, so the old claim that depth helps is withdrawn.
+
+\point{R2.7 (major).}{Replacing $\alpha$ by $\alpha/q$ after inspection is invalid.}
+\reply Corrected in the long form: $\alpha/q$ applies to a family fixed before any
+outcome is seen; hypotheses added after inspection need a registered spending sequence,
+as in the article.
+
+\point{R2.8 (major).}{The long form is too long and lists ten contributions.}
+\reply Partly addressed. The contribution list has four items, the unsupported and
+overstated sentences are reworded, the four non-central-bank case studies and the neural
+material are in appendices, and a reader's guide sends a central bank reader to the
+governance rule, the credit evaluation and the protocol. The full reordering was not
+done. The paper is 74 pages, because the decision record, two new tables and the added
+caveats outweigh what moved.
+
+\point{R2.9 (major).}{The article is not organised as a journal article.}
+\reply It now runs: introduction with contributions, related work, setting and threat
+model, gate and theory, experiments, discussion and limitations, conclusion. Terms are
+defined before use.
+
+\point{R2.10 (minor).}{References are thin or incomplete.}
+\reply The article's list grew from 8 to 56 entries and the supplement now has its own list of 16; the long form grew from 61 to 109. Each added work is cited where it supports a sentence, and each entry was checked against its Crossref, OpenAlex or publisher record. Bates et al.\ is cited as
+J.\ ACM 68(6); Xu et al.\ as NeurIPS 2024; Fellegi--Sunter is no longer cited for
+attacker models (Duncan and Lambert 1989 is). Zhou et al.\ (arXiv:2605.07002, May 2026)
+was checked on arXiv by the differential privacy referee and is kept. Still open:
+Elliot and Dale (1999) is left out of the article until its record is confirmed; the
+long form lacks a report number for Duncan et al.\ (2001) and does not yet cite Lambert
+(1993). The long-form bibliography is alphabetical by first author.
+
+\point{R2.11 (minor).}{Affiliations and corresponding author.}
+\reply Both article files carry the full affiliation block and the corresponding
+author's email.
+
+\point{R2.12 (minor).}{Notation.}
+\reply Fixed as requested, with further changes after the second round: the
+Clopper--Pearson bound is $\overline{R}(Y,B;\lambda)$, so $U$ is only the population,
+$K_v$ only the key and $\gamma$ only a stopping time; $\alpha$ is defined where first
+used; the abstract says ``at least its tolerance''.
+
+\point{R2.13 (minor).}{Unclear table entries.}
+\reply ``Unique share'' is dropped with its table. The $k=5$ pooled figure is explained
+as Monte Carlo variation of 58 in 4,000 targets that reverses on a second draw. The
+decision illustration uses the upper bound.
+
+\point{R2.14 (minor).}{Monte Carlo standard errors in the toy audit.}
+\reply Added. The overall false-certification rate is reported against $\alpha$ with its
+standard error, and the adaptive-registration run is described as another estimate of
+the single-coordinate rate, since the streams are independent.
+
+\point{R2.15 (minor).}{Unlabelled and uncited figures.}
+\reply The pooling figure is labelled and cited; the SENTRY-R diagram moved to the
+supplement; the composition figure was dropped.
+
+\point{R2.16 (minor).}{Undefined terms, puffery, meta-commentary.}
+\reply SENTRY-R and LLM are defined at first use. The listed phrases are removed from
+both manuscripts, together with the further stock phrases the second round found. The
+network output is no longer called ``trust''; the quantity $1-\overline{R}_i/\tau_i$ is
+the audited margin.
+
+\point{R2.17 (minor).}{The two titles give no sign the papers are companions.}
+\reply Both titles now refer to repeated releases or release programmes, and each
+manuscript names the other.
+
+\section*{Second round}
+Reviewer~2's second-round check found ten further problems, all now fixed: the article
+had merged the coarse and fine grids and read low audit power at $k=40$ as evidence of
+excess risk; it claimed an advantage for adaptive registration that its experiment does
+not test; ``about half and half'' omitted an interaction of 0.020; the long form called
+noisy counts admissible while its own caption says they measure a different event; the
+decision record lacked a caveat on selection across floors and named the wrong vintage;
+a two-release pooled figure was compared only with the four-release bound (it is 2.8
+times the bound of 0.148 for its own two releases); the self-citation gave no route to
+the manuscript; Foster and Stine was cited for alpha-spending; and the superseded short
+note is now marked as such in its source. Two reported problems were not errors: the
+long-form bibliography is in order (entries with one first author sort by co-author),
+and the toy audit's two runs of 10 in 2,000 use separate random draws.
+
+\section*{Other referees: main points}
+\begin{longtable}{@{}p{0.9cm}p{7.8cm}p{6.4cm}@{}}
+\toprule
+Ref. & Point & Outcome\\\midrule\endhead
+1.1 & The anytime certification cost (12,417 against 2,995) is the price of a uniform
+mixture, not of monitoring. & Corrected in the long form's text and in the generated
+table caption.\\
+1.2--1.4 & Certification should hold at first crossing; the budget can be off by one;
+registered weights can be changed. & Code fixed: the coordinate stops at first crossing,
+its specification is immutable, each outcome is logged with its bet, and the budget is
+checked against the crossing trial. New tests.\\
+1.5--1.8 & Measurability wording, predictable coordinate index, relaxed-denominator bet
+range, supplement wording. & Fixed in the article and supplement.\\
+2.1--2.3 & Stale falsification figures; wrong census row; credit record breaks the
+paper's own rule. & Fixed.\\
+2.4, 2.5 & The census adversary reads the key exactly; the journalist figure rests on an
+assumed sampling fraction. & Captions and text corrected; $\hat\rho$ reported for
+fractions from 0.05 (0.225) to 0.001 (0.0016).\\
+2.6, 2.7 & Pooled gap from extra readings; counts not composed. & New decomposition,
+composed counts, bound-based choice (see summary).\\
+2.9--2.12 & $k$-anonymity overreach; journalist measure misnamed; dispersion drift;
+contributor rules. & Reworded; $\rho$ renamed and El Emam and Dankar cited; drift noted;
+dominance and $p\%$ rules named and secondary suppression labelled heuristic. Not done:
+$E[1/F\mid f=1]$ is not reported.\\
+2.15 & Notation clashes in the long form. & Not done.\\
+3.1, 3.2 & Composition prior art; shared identifier. & Fixed in both manuscripts.\\
+3.3, 3.4 & DP with $\delta>0$; overclaim about formal privacy. & Fixed.\\
+3.5, 3.6 & Position against privacy auditing; what JPC needs for novelty. & Auditing
+literature cited and the asymmetry stated. Not done: comparison with Zhou et al.\ and
+Xu et al.\ at equal budget.\\
+4.1--4.3 & Abstract without a recommendation; point-estimate headline; two runs mixed. &
+New abstract; bound-based choice; separate draws stated once.\\
+4.4, 4.5 & Title and neural material; length and order. & Retitled and moved to
+appendices; full reorder not done.\\
+4.6--4.8 & No filled decision record; practice claims unsourced; synthetic caveat. &
+Decision record (Table~15) with a programme horizon; AnaCredit wording checked against
+Regulation (EU) 2016/867; an unverifiable Bank of England citation removed; caveats
+added.\\
+5.1--5.4 & SENTRY-R audit not frozen; undertrained baseline; LLM supplies its own
+provenance; owner and expiry missing. & Code fixed: alpha, planned trials, owner, expiry
+and development evidence are frozen and checked; an optional ledger refuses a second
+audit; provenance is set by the caller. Benchmark rerun.\\
+5.10--5.12 & Separation only documented; depth unsupported; the word ``trust''. & Text now
+says what the code enforces and what it does not. Module names kept for compatibility.\\
+6.1--6.3 & Stale manifest; missing CI; weak number checker. & Manifest regenerated and
+tested; workflows added; checker matches whole numbers and has a mode for the article's
+quoted figures.\\
+6.4--6.12 & Stale section numbers, non-reproducible figures, NaN in JSON, CLI errors. &
+Fixed.\\
+\bottomrule
+\end{longtable}
+
+\section*{Code and repository}
+All 146 tests pass and \texttt{ruff} is clean. The main changes: the missing
+\texttt{colab\_setup.py} was restored, so the test suite runs; \texttt{evaluation.py}
+adds the fixed-readings attack, composed noisy counts and the bound-based choice;
+\texttt{adaptive\_audit.py} and \texttt{sentry\_r.py} carry the fixes above;
+\texttt{reporting.py} writes strict JSON and figures without creation dates, and two new
+tables; \texttt{check\_paper\_numbers.py} has the stricter full mode and the new quoted
+mode; \texttt{rebuild\_evidence.py} can publish tables to \texttt{paper/generated};
+\texttt{.github/workflows} holds the CI and refresh workflows the README described. The
+paper run in \texttt{artifacts-paper/} was regenerated; apart from the new results, every
+number is unchanged except the transport-bound figures for the admissible count release
+(0.004 and 0.027), which follow from composing the counts.
+
+\end{document}

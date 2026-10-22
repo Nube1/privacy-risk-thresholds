@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Conventional risk summaries for the unprotected release ($N = 200{,}000$, $\pi = 0.05$, $n = 10{,}035$).}
+\label{tab:measures}
+\begin{tabular}{llr}
+\toprule
+Measure & Experiment described & Value \\
+\midrule
+Prosecutor, mean $1/f_k$ & uniform choice among released candidates & 0.4663 \\
+Prosecutor, $\max 1/f_k$ & worst released record & 1.0000 \\
+Share of records with $f_k = 1$ & sample uniqueness & 0.2719 \\
+Marketer, $D_I/n$ & identity \eqref{eq:marksamp}, same experiment & 0.4663 \\
+Plug-in $n^{-1}\sum_i 1/F_{K(i)}$ & population frequencies assumed known & 0.0636 \\
+Marketer, unconditional \eqref{eq:markpop} & membership unknown, $\pi$ applied & 0.0233 \\
+$\pi$ times the plug-in measure & neither experiment; reported anyway & 0.0032 \\
+Uniqueness probability $\rho$, truth & $\Prob(F_k = 1 \mid f_k = 1)$, computed & 0.0227 \\
+Uniqueness probability $\rho$, model-based & fitted negative binomial for $F_k$ & 0.0274 \\
+Journalist, naive $\pi$ & sampling fraction used as the risk & 0.0500 \\
+\bottomrule
+\end{tabular}
+\end{table}

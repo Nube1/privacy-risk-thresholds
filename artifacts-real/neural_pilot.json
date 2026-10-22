@@ -1,0 +1,84 @@
+{
+  "limits": "Predicts one declared attack on public Census states; models were never trained on final-audit outcomes and their predictions are not risk upper bounds.",
+  "rows": {
+    "test": 54,
+    "train": 160,
+    "validation": 42
+  },
+  "scores": {
+    "constant_train_rate": {
+      "brier": 0.24527767198350695,
+      "log_loss": 0.6836786057378711
+    },
+    "deep_3_layer": {
+      "best_epoch": 26,
+      "brier": 0.22123567065780075,
+      "log_loss": 0.6337924811562251,
+      "mean_predicted": 0.4345875411645373,
+      "observed_success_rate": 0.42824074074074076
+    },
+    "logistic": {
+      "best_epoch": 312,
+      "brier": 0.22066321789871599,
+      "log_loss": 0.63232116352565,
+      "mean_predicted": 0.43255136031678854,
+      "observed_success_rate": 0.42824074074074076
+    }
+  },
+  "seed": 20260904,
+  "split_groups": {
+    "test": [
+      "state-11",
+      "state-14",
+      "state-21",
+      "state-24",
+      "state-25",
+      "state-40",
+      "state-42",
+      "state-5",
+      "state-50"
+    ],
+    "train": [
+      "state-1",
+      "state-10",
+      "state-12",
+      "state-16",
+      "state-17",
+      "state-18",
+      "state-2",
+      "state-20",
+      "state-22",
+      "state-26",
+      "state-28",
+      "state-29",
+      "state-3",
+      "state-30",
+      "state-31",
+      "state-32",
+      "state-33",
+      "state-37",
+      "state-38",
+      "state-39",
+      "state-4",
+      "state-41",
+      "state-43",
+      "state-45",
+      "state-48",
+      "state-7",
+      "state-8",
+      "state-9"
+    ],
+    "validation": [
+      "state-0",
+      "state-13",
+      "state-19",
+      "state-23",
+      "state-27",
+      "state-36",
+      "state-6"
+    ]
+  },
+  "status": "public Census state-held-out pilot; no cross-institution validation",
+  "test_sha256": "5670fbd6802fa4c6ded7de25cdd8d4712919799ad2e822aad3542b4602fb0488",
+  "trials_per_scenario": 80
+}

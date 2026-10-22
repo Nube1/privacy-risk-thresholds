@@ -1,0 +1,37 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1.05cm,y=0.62cm,font=\small,
+  live/.style={draw,fill=gray!55,minimum width=0.8cm,minimum height=0.42cm},
+  gone/.style={draw,pattern=north east lines,pattern color=gray!70,minimum width=0.8cm,minimum height=0.42cm},
+  lab/.style={anchor=east}]
+  % header
+  \foreach \m in {1,...,6} {\node at (\m,1) {$v=\m$};}
+  % target
+  \node[lab] at (0.4,0) {target $t$};
+  \foreach \m/\s in {1/live,2/live,3/live,4/live,5/gone,6/gone} {\node[\s] at (\m,0) {};}
+  % candidates
+  \node[lab] at (0.4,-1.2) {candidate $a$};
+  \foreach \m/\s in {1/live,2/live,3/live,4/live,5/gone,6/gone} {\node[\s] at (\m,-1.2) {};}
+  \node[lab] at (0.4,-2.2) {candidate $b$};
+  \foreach \m/\s in {1/live,2/live,3/live,4/live,5/live,6/live} {\node[\s] at (\m,-2.2) {};}
+  \node[lab] at (0.4,-3.2) {candidate $c$};
+  \foreach \m/\s in {1/live,2/live,3/gone,4/gone,5/gone,6/gone} {\node[\s] at (\m,-3.2) {};}
+  % verdicts
+  \node[anchor=west] at (6.7,-1.2) {kept: same pattern};
+  \node[anchor=west] at (6.7,-2.2) {excluded: live where $t$ is absent};
+  \node[anchor=west] at (6.7,-3.2) {excluded: absent where $t$ is live};
+  \draw[dashed] (0.5,-0.6) -- (11.4,-0.6);
+  % legend
+  \node[live,minimum width=0.5cm] (l1) at (1.2,-4.5) {};
+  \node[anchor=west] at (1.5,-4.5) {published in that vintage};
+  \node[gone,minimum width=0.5cm] (l2) at (6.2,-4.5) {};
+  \node[anchor=west] at (6.5,-4.5) {not published (left, or suppressed)};
+\end{tikzpicture}
+\caption{How the pooled adversary uses a loan's history. All four loans share the
+target's key cell. An adversary who knows the vintages in which the target is
+live keeps only candidates whose pattern of appearances matches the target's in
+every vintage, and then ranks the survivors by its exposure readings
+(Algorithm~\ref{alg:attack}). Shade and hatching both mark the two states, so the
+figure reads in black and white.}
+\label{fig:history}
+\end{figure}

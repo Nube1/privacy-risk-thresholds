@@ -1,0 +1,289 @@
+{
+  "tolerance": 0.12,
+  "alpha": 0.05,
+  "weight_per_slot": 0.1,
+  "slots": 10,
+  "cap": 3000,
+  "fixed_trials": 3000,
+  "seed": 20260929,
+  "threshold_log_e": 5.298317366548036,
+  "registered": 10,
+  "weight_spent": 0.9999999999999999,
+  "sequential": [
+    {
+      "policy": "none",
+      "label": "no suppression",
+      "released": 32581,
+      "single": {
+        "registered": true,
+        "certified": true,
+        "trials": 723,
+        "successes": 56,
+        "rate_at_stop": 0.07745504840940526,
+        "rate_full_stream": 0.069
+      },
+      "pooled": {
+        "registered": true,
+        "certified": false,
+        "trials": 3000,
+        "successes": 661,
+        "rate_at_stop": 0.22033333333333333,
+        "rate_full_stream": 0.22033333333333333
+      },
+      "eligible": false
+    },
+    {
+      "policy": "k_anonymity_5",
+      "label": "$k$-anonymity, $k=5$",
+      "released": 32351,
+      "single": {
+        "registered": true,
+        "certified": true,
+        "trials": 308,
+        "successes": 17,
+        "rate_at_stop": 0.05519480519480519,
+        "rate_full_stream": 0.06666666666666667
+      },
+      "pooled": {
+        "registered": true,
+        "certified": false,
+        "trials": 3000,
+        "successes": 641,
+        "rate_at_stop": 0.21366666666666667,
+        "rate_full_stream": 0.21366666666666667
+      },
+      "eligible": false
+    },
+    {
+      "policy": "k_anonymity_10",
+      "label": "$k$-anonymity, $k=10$",
+      "released": 31615,
+      "single": {
+        "registered": true,
+        "certified": true,
+        "trials": 747,
+        "successes": 59,
+        "rate_at_stop": 0.07898259705488621,
+        "rate_full_stream": 0.06133333333333333
+      },
+      "pooled": {
+        "registered": true,
+        "certified": false,
+        "trials": 3000,
+        "successes": 586,
+        "rate_at_stop": 0.19533333333333333,
+        "rate_full_stream": 0.19533333333333333
+      },
+      "eligible": false
+    },
+    {
+      "policy": "k_anonymity_40",
+      "label": "$k$-anonymity, $k=40$",
+      "released": 23068,
+      "single": {
+        "registered": true,
+        "certified": true,
+        "trials": 218,
+        "successes": 11,
+        "rate_at_stop": 0.05045871559633028,
+        "rate_full_stream": 0.03766666666666667
+      },
+      "pooled": {
+        "registered": true,
+        "certified": true,
+        "trials": 1730,
+        "successes": 159,
+        "rate_at_stop": 0.09190751445086705,
+        "rate_full_stream": 0.095
+      },
+      "eligible": true
+    },
+    {
+      "policy": "k_anonymity_50",
+      "label": "$k$-anonymity, $k=50$",
+      "released": 20389,
+      "single": {
+        "registered": true,
+        "certified": true,
+        "trials": 118,
+        "successes": 3,
+        "rate_at_stop": 0.025423728813559324,
+        "rate_full_stream": 0.033
+      },
+      "pooled": {
+        "registered": true,
+        "certified": true,
+        "trials": 1039,
+        "successes": 89,
+        "rate_at_stop": 0.08565928777670838,
+        "rate_full_stream": 0.09
+      },
+      "eligible": true
+    }
+  ],
+  "fixed_sample": [
+    {
+      "policy": "none",
+      "label": "no suppression",
+      "single": {
+        "trials": 3000,
+        "successes": 207,
+        "upper": 0.08178514969009186,
+        "certified": true
+      },
+      "pooled": {
+        "trials": 3000,
+        "successes": 661,
+        "upper": 0.24043024741620198,
+        "certified": false
+      },
+      "eligible": false
+    },
+    {
+      "policy": "k_anonymity_5",
+      "label": "$k$-anonymity, $k=5$",
+      "single": {
+        "trials": 3000,
+        "successes": 200,
+        "upper": 0.07926760977069952,
+        "certified": true
+      },
+      "pooled": {
+        "trials": 3000,
+        "successes": 641,
+        "upper": 0.23355937386840062,
+        "certified": false
+      },
+      "eligible": false
+    },
+    {
+      "policy": "k_anonymity_10",
+      "label": "$k$-anonymity, $k=10$",
+      "single": {
+        "trials": 3000,
+        "successes": 184,
+        "upper": 0.07349751954546628,
+        "certified": true
+      },
+      "pooled": {
+        "trials": 3000,
+        "successes": 586,
+        "upper": 0.21462462024780293,
+        "certified": false
+      },
+      "eligible": false
+    },
+    {
+      "policy": "k_anonymity_40",
+      "label": "$k$-anonymity, $k=40$",
+      "single": {
+        "trials": 3000,
+        "successes": 113,
+        "upper": 0.047548768255516155,
+        "certified": true
+      },
+      "pooled": {
+        "trials": 3000,
+        "successes": 285,
+        "upper": 0.1096076260123959,
+        "certified": true
+      },
+      "eligible": true
+    },
+    {
+      "policy": "k_anonymity_50",
+      "label": "$k$-anonymity, $k=50$",
+      "single": {
+        "trials": 3000,
+        "successes": 99,
+        "upper": 0.042339996585033124,
+        "certified": true
+      },
+      "pooled": {
+        "trials": 3000,
+        "successes": 270,
+        "upper": 0.10428581109037331,
+        "certified": true
+      },
+      "eligible": true
+    }
+  ],
+  "note": "Synthetic register; each coordinate uses its own fresh target stream.",
+  "replications": {
+    "none": {
+      "seeds": 20,
+      "single": {
+        "registered_share": 1.0,
+        "certified_share": 1.0,
+        "median_trials": 498.5
+      },
+      "pooled": {
+        "registered_share": 1.0,
+        "certified_share": 0.0,
+        "median_trials": 3000.0
+      },
+      "fixed_eligible_share": 0.0,
+      "sequential_eligible_share": 0.0
+    },
+    "k_anonymity_5": {
+      "seeds": 20,
+      "single": {
+        "registered_share": 1.0,
+        "certified_share": 1.0,
+        "median_trials": 523.5
+      },
+      "pooled": {
+        "registered_share": 1.0,
+        "certified_share": 0.0,
+        "median_trials": 3000.0
+      },
+      "fixed_eligible_share": 0.0,
+      "sequential_eligible_share": 0.0
+    },
+    "k_anonymity_10": {
+      "seeds": 20,
+      "single": {
+        "registered_share": 1.0,
+        "certified_share": 1.0,
+        "median_trials": 353.5
+      },
+      "pooled": {
+        "registered_share": 1.0,
+        "certified_share": 0.0,
+        "median_trials": 3000.0
+      },
+      "fixed_eligible_share": 0.0,
+      "sequential_eligible_share": 0.0
+    },
+    "k_anonymity_40": {
+      "seeds": 20,
+      "single": {
+        "registered_share": 1.0,
+        "certified_share": 1.0,
+        "median_trials": 130.5
+      },
+      "pooled": {
+        "registered_share": 1.0,
+        "certified_share": 0.3,
+        "median_trials": 3000.0
+      },
+      "fixed_eligible_share": 0.45,
+      "sequential_eligible_share": 0.3
+    },
+    "k_anonymity_50": {
+      "seeds": 20,
+      "single": {
+        "registered_share": 1.0,
+        "certified_share": 1.0,
+        "median_trials": 122.5
+      },
+      "pooled": {
+        "registered_share": 1.0,
+        "certified_share": 0.95,
+        "median_trials": 1224.5
+      },
+      "fixed_eligible_share": 1.0,
+      "sequential_eligible_share": 0.95
+    }
+  }
+}

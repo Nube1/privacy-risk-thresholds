@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Choosing the minimum cell count. Each level applies $k$-anonymity with that floor; kept is the number of loans released in the first vintage. The coarse and fine grids use separate target draws. A level meets the tolerance of 0.12 when the exact upper bound, not the point estimate, is at or below it.}
+\label{tab:kchoice}
+\small
+\begin{tabular}{rlrrrrr}
+\toprule
+$k_{\min}$ & Grid & Kept & Release & Upper & Pooled & Upper \\
+\midrule
+1 & coarse & 27{,}167 & 0.080 & 0.088 & 0.267 & 0.279 \\
+5 & coarse & 26{,}885 & 0.077 & 0.084 & 0.268 & 0.280 \\
+10 & coarse & 26{,}019 & 0.072 & 0.079 & 0.233 & 0.244 \\
+20 & coarse & 23{,}113 & 0.057 & 0.064 & 0.215 & 0.226 \\
+50 & coarse & 15{,}827 & 0.033 & 0.038 & 0.162 & 0.172 \\
+20 & fine & 23{,}113 & 0.059 & 0.065 & 0.201 & 0.212 \\
+30 & fine & 20{,}257 & 0.046 & 0.052 & 0.191 & 0.202 \\
+40 & fine & 17{,}534 & 0.036 & 0.041 & 0.165 & 0.175 \\
+50 & fine & 15{,}827 & 0.032 & 0.036 & 0.153 & 0.163 \\
+75 & fine & 12{,}182 & 0.029 & 0.034 & 0.127 & 0.136 \\
+100 & fine & 9{,}214 & 0.023 & 0.027 & 0.116 & 0.125 \\
+\bottomrule
+\end{tabular}
+\end{table}

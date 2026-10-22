@@ -1,0 +1,847 @@
+{
+  "census": {
+    "chosen": "state_code, puma/10, education/4, experience/10, k_min = 5",
+    "composition": {
+      "coverage": [
+        0.8126,
+        0.0944,
+        0.835,
+        0.37
+      ],
+      "independence": 0.3322302279154802,
+      "marginal": [
+        0.13756159597700796,
+        0.029608571428571383,
+        0.11775350836379485,
+        0.09559745254745136
+      ],
+      "marginal_lower": 0.13756159597700796,
+      "marginal_unique_share": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "minimum_cell": 3,
+      "pooled": [
+        0.13756159597700796,
+        0.18360837624455753,
+        0.7063173753940111,
+        0.7089138523733448
+      ],
+      "releases": [
+        {
+          "marginal": 0.13756159597700796,
+          "name": "geography and schooling",
+          "released": 23870,
+          "unique_share": 0.0
+        },
+        {
+          "marginal": 0.029608571428571383,
+          "name": "geography and experience",
+          "released": 2812,
+          "unique_share": 0.0
+        },
+        {
+          "marginal": 0.11775350836379485,
+          "name": "state, schooling and experience",
+          "released": 24468,
+          "unique_share": 0.0
+        },
+        {
+          "marginal": 0.09559745254745136,
+          "name": "area detail and schooling",
+          "released": 10885,
+          "unique_share": 0.0
+        }
+      ],
+      "targets": 5000,
+      "union_upper": 0.3805211283168255,
+      "unique_share": [
+        0.0,
+        0.0322,
+        0.607,
+        0.607
+      ]
+    },
+    "file": "census2000",
+    "frontier": [
+      24,
+      23,
+      14,
+      22
+    ],
+    "full_key": {
+      "cells": 27390,
+      "file": "census2000",
+      "max_reciprocal_frequency": 1.0,
+      "mean_reciprocal_frequency": 0.9284431036236059,
+      "median_cell_size": 1.0,
+      "records": 29501,
+      "released": 29501,
+      "unique_cells": 25454,
+      "unique_share": 0.8628182095522186
+    },
+    "grid": [
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 1,
+          "puma": 1
+        },
+        "exact_matching": 0.9284431036236059,
+        "label": "state_code, puma, education, experience, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.9733333333333334,
+        "risk_declared": 0.9633333333333334,
+        "risk_stronger": 0.9733333333333334,
+        "risk_upper": 0.9847193655417906,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 1
+        },
+        "exact_matching": 0.5966238432595505,
+        "label": "state_code, puma, education, experience/10, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.8046666666666666,
+        "risk_declared": 0.7206666666666667,
+        "risk_stronger": 0.8046666666666666,
+        "risk_upper": 0.8362113488089964,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 1
+        },
+        "exact_matching": 0.16914387633769323,
+        "label": "state_code, puma, education, experience/10, k_min = 5",
+        "losses": {
+          "income by education": 0.3732616625465258,
+          "income by experience": 0.3270111035088331,
+          "income by state": 0.3262707841596165
+        },
+        "min_cell_count": 5,
+        "released": 3364,
+        "retained": 0.11403003288024134,
+        "risk": 0.44066666666666665,
+        "risk_declared": 0.346,
+        "risk_stronger": 0.44066666666666665,
+        "risk_upper": 0.4821885576003914,
+        "utility": -0.3421811834049919
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 1,
+          "puma": 1
+        },
+        "exact_matching": 0.8753940544388326,
+        "label": "state_code, puma, education/4, experience, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.9446666666666667,
+        "risk_declared": 0.922,
+        "risk_stronger": 0.9446666666666667,
+        "risk_upper": 0.9617358523296826,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 1
+        },
+        "exact_matching": 0.44147656011660624,
+        "label": "state_code, puma, education/4, experience/10, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.6873333333333334,
+        "risk_declared": 0.6073333333333333,
+        "risk_stronger": 0.6873333333333334,
+        "risk_upper": 0.7249639494851117,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 1
+        },
+        "exact_matching": 0.15761293920803124,
+        "label": "state_code, puma, education/4, experience/10, k_min = 5",
+        "losses": {
+          "income by education": 0.3530152799170325,
+          "income by experience": 0.2715707541892681,
+          "income by state": 0.12629014904015934
+        },
+        "min_cell_count": 5,
+        "released": 8965,
+        "retained": 0.30388800379648145,
+        "risk": 0.42866666666666664,
+        "risk_declared": 0.32266666666666666,
+        "risk_stronger": 0.42866666666666664,
+        "risk_upper": 0.47011619376081715,
+        "utility": -0.25029206104882
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 1
+        },
+        "exact_matching": 0.08729281767955802,
+        "label": "state_code, puma, education/4, experience/10, k_min = 10",
+        "losses": {
+          "income by education": 0.4067995417087437,
+          "income by experience": 0.5984181274977038,
+          "income by state": 0.4529283423029127
+        },
+        "min_cell_count": 10,
+        "released": 905,
+        "retained": 0.030676926205891325,
+        "risk": 0.30733333333333335,
+        "risk_declared": 0.196,
+        "risk_stronger": 0.30733333333333335,
+        "risk_upper": 0.3466124541975192,
+        "utility": -0.4860486705031201
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 1,
+          "puma": 10
+        },
+        "exact_matching": 0.8531236229280363,
+        "label": "state_code, puma/10, education, experience, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.934,
+        "risk_declared": 0.91,
+        "risk_stronger": 0.934,
+        "risk_upper": 0.9527359117850657,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 10
+        },
+        "exact_matching": 0.44093420562014846,
+        "label": "state_code, puma/10, education, experience/10, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.6833333333333333,
+        "risk_declared": 0.5833333333333334,
+        "risk_stronger": 0.6833333333333333,
+        "risk_upper": 0.7211145044934227,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 10
+        },
+        "exact_matching": 0.13258834189066748,
+        "label": "state_code, puma/10, education, experience/10, k_min = 5",
+        "losses": {
+          "income by education": 0.3301203512422857,
+          "income by experience": 0.24488386624960393,
+          "income by state": 0.26329617221085166
+        },
+        "min_cell_count": 5,
+        "released": 9933,
+        "retained": 0.3367004508321752,
+        "risk": 0.4046666666666667,
+        "risk_declared": 0.3006666666666667,
+        "risk_stronger": 0.4046666666666667,
+        "risk_upper": 0.44589791696446746,
+        "utility": -0.2794334632342471
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 10
+        },
+        "exact_matching": 0.078007800780078,
+        "label": "state_code, puma/10, education, experience/10, k_min = 10",
+        "losses": {
+          "income by education": 0.45345943098628283,
+          "income by experience": 0.4048904731996124,
+          "income by state": 0.5335093004757323
+        },
+        "min_cell_count": 10,
+        "released": 3333,
+        "retained": 0.11297922104335446,
+        "risk": 0.2966666666666667,
+        "risk_declared": 0.202,
+        "risk_stronger": 0.2966666666666667,
+        "risk_upper": 0.3356189516718226,
+        "utility": -0.46395306822054255
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 1,
+          "puma": 10
+        },
+        "exact_matching": 0.7632622622961933,
+        "label": "state_code, puma/10, education/4, experience, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.8866666666666667,
+        "risk_declared": 0.8346666666666667,
+        "risk_stronger": 0.8866666666666667,
+        "risk_upper": 0.9112810488693639,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 1,
+          "puma": 10
+        },
+        "exact_matching": 0.18641618497109827,
+        "label": "state_code, puma/10, education/4, experience, k_min = 5",
+        "losses": {
+          "income by education": 0.3718214510916118,
+          "income by experience": 0.5056856670873315,
+          "income by state": 0.4886603570479602
+        },
+        "min_cell_count": 5,
+        "released": 692,
+        "retained": 0.023456831971797567,
+        "risk": 0.49466666666666664,
+        "risk_declared": 0.374,
+        "risk_stronger": 0.49466666666666664,
+        "risk_upper": 0.536217109005468,
+        "utility": -0.4553891584089678
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 10
+        },
+        "exact_matching": 0.3053116843496831,
+        "label": "state_code, puma/10, education/4, experience/10, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.5873333333333334,
+        "risk_declared": 0.43933333333333335,
+        "risk_stronger": 0.5873333333333334,
+        "risk_upper": 0.627808375804437,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 10
+        },
+        "exact_matching": 0.116509607147228,
+        "label": "state_code, puma/10, education/4, experience/10, k_min = 5",
+        "losses": {
+          "income by education": 0.08722589124515452,
+          "income by experience": 0.1282236081585975,
+          "income by state": 0.13387181456079628
+        },
+        "min_cell_count": 5,
+        "released": 16342,
+        "retained": 0.5539473238195315,
+        "risk": 0.3566666666666667,
+        "risk_declared": 0.2633333333333333,
+        "risk_stronger": 0.3566666666666667,
+        "risk_upper": 0.39715753787601404,
+        "utility": -0.11644043798818277
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 10
+        },
+        "exact_matching": 0.06804178944548621,
+        "label": "state_code, puma/10, education/4, experience/10, k_min = 10",
+        "losses": {
+          "income by education": 0.38557313399817983,
+          "income by experience": 0.23440121387198443,
+          "income by state": 0.3235955548350511
+        },
+        "min_cell_count": 10,
+        "released": 7466,
+        "retained": 0.2530761669095963,
+        "risk": 0.2713333333333333,
+        "risk_declared": 0.16266666666666665,
+        "risk_stronger": 0.2713333333333333,
+        "risk_upper": 0.30940964092232326,
+        "utility": -0.31452330090173847
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 1,
+          "puma": 100
+        },
+        "exact_matching": 0.8347513643605301,
+        "label": "state_code, puma/100, education, experience, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.9213333333333333,
+        "risk_declared": 0.9006666666666666,
+        "risk_stronger": 0.9213333333333333,
+        "risk_upper": 0.9418514634775687,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 100
+        },
+        "exact_matching": 0.4281888749533914,
+        "label": "state_code, puma/100, education, experience/10, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.6566666666666666,
+        "risk_declared": 0.5846666666666667,
+        "risk_stronger": 0.6566666666666666,
+        "risk_upper": 0.6953694919338524,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 100
+        },
+        "exact_matching": 0.12180394376828002,
+        "label": "state_code, puma/100, education, experience/10, k_min = 5",
+        "losses": {
+          "income by education": 0.3365902615476575,
+          "income by experience": 0.2377979031525369,
+          "income by state": 0.26225939606946613
+        },
+        "min_cell_count": 5,
+        "released": 10599,
+        "retained": 0.3592759567472289,
+        "risk": 0.378,
+        "risk_declared": 0.264,
+        "risk_stronger": 0.378,
+        "risk_upper": 0.4188710944469663,
+        "utility": -0.2788825202565535
+      },
+      {
+        "coarsening": {
+          "education": 1,
+          "experience": 10,
+          "puma": 100
+        },
+        "exact_matching": 0.06926698049764626,
+        "label": "state_code, puma/100, education, experience/10, k_min = 10",
+        "losses": {
+          "income by education": 0.3871397316536671,
+          "income by experience": 0.4701090180362427,
+          "income by state": 0.5240688755241449
+        },
+        "min_cell_count": 10,
+        "released": 4461,
+        "retained": 0.15121521304362565,
+        "risk": 0.29,
+        "risk_declared": 0.20666666666666667,
+        "risk_stronger": 0.29,
+        "risk_upper": 0.32873561265895607,
+        "utility": -0.46043920840468494
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 1,
+          "puma": 100
+        },
+        "exact_matching": 0.7418053625300838,
+        "label": "state_code, puma/100, education/4, experience, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.8826666666666667,
+        "risk_declared": 0.836,
+        "risk_stronger": 0.8826666666666667,
+        "risk_upper": 0.9076965009199391,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 1,
+          "puma": 100
+        },
+        "exact_matching": 0.17079889807162535,
+        "label": "state_code, puma/100, education/4, experience, k_min = 5",
+        "losses": {
+          "income by education": 0.3503748464907361,
+          "income by experience": 0.38112101859672315,
+          "income by state": 0.46335696428312734
+        },
+        "min_cell_count": 5,
+        "released": 1452,
+        "retained": 0.04921867055354056,
+        "risk": 0.48533333333333334,
+        "risk_declared": 0.354,
+        "risk_stronger": 0.48533333333333334,
+        "risk_upper": 0.5269132963777594,
+        "utility": -0.39828427645686215
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 100
+        },
+        "exact_matching": 0.29649842378224467,
+        "label": "state_code, puma/100, education/4, experience/10, k_min = 1",
+        "losses": {
+          "income by education": 0.0,
+          "income by experience": 0.0,
+          "income by state": 0.0
+        },
+        "min_cell_count": 1,
+        "released": 29501,
+        "retained": 1.0,
+        "risk": 0.506,
+        "risk_declared": 0.41533333333333333,
+        "risk_stronger": 0.506,
+        "risk_upper": 0.5474953287208,
+        "utility": -0.0
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 100
+        },
+        "exact_matching": 0.10931513409961686,
+        "label": "state_code, puma/100, education/4, experience/10, k_min = 5",
+        "losses": {
+          "income by education": 0.124954112397772,
+          "income by experience": 0.13293491424807147,
+          "income by state": 0.13408992803458075
+        },
+        "min_cell_count": 5,
+        "released": 16704,
+        "retained": 0.5662180943018881,
+        "risk": 0.3406666666666667,
+        "risk_declared": 0.248,
+        "risk_stronger": 0.3406666666666667,
+        "risk_upper": 0.3808167009255496,
+        "utility": -0.1306596515601414
+      },
+      {
+        "coarsening": {
+          "education": 4,
+          "experience": 10,
+          "puma": 100
+        },
+        "exact_matching": 0.06151645207439199,
+        "label": "state_code, puma/100, education/4, experience/10, k_min = 10",
+        "losses": {
+          "income by education": 0.36794693201214995,
+          "income by experience": 0.2387823565964469,
+          "income by state": 0.3238623768693862
+        },
+        "min_cell_count": 10,
+        "released": 8388,
+        "retained": 0.28432934476797395,
+        "risk": 0.23933333333333334,
+        "risk_declared": 0.164,
+        "risk_stronger": 0.23933333333333334,
+        "risk_upper": 0.276086787472172,
+        "utility": -0.31019722182599435
+      }
+    ],
+    "grid_bound": {
+      "comparisons": 72,
+      "family_alpha": 0.05,
+      "method": "Bonferroni one-sided exact binomial",
+      "per_comparison_alpha": 0.0006944444444444445
+    },
+    "implied_tolerances": [
+      {
+        "kappa": 0.25,
+        "retained": 1.0,
+        "setting": "state_code, puma/100, education/4, experience/10, k_min = 1",
+        "tolerance": 0.5474953287208
+      },
+      {
+        "kappa": 0.5,
+        "retained": 1.0,
+        "setting": "state_code, puma/100, education/4, experience/10, k_min = 1",
+        "tolerance": 0.5474953287208
+      },
+      {
+        "kappa": 1.0,
+        "retained": 0.5662180943018881,
+        "setting": "state_code, puma/100, education/4, experience/10, k_min = 5",
+        "tolerance": 0.3808167009255496
+      },
+      {
+        "kappa": 2.0,
+        "retained": 0.28432934476797395,
+        "setting": "state_code, puma/100, education/4, experience/10, k_min = 10",
+        "tolerance": 0.276086787472172
+      },
+      {
+        "kappa": 5.0,
+        "retained": 0.28432934476797395,
+        "setting": "state_code, puma/100, education/4, experience/10, k_min = 10",
+        "tolerance": 0.276086787472172
+      },
+      {
+        "kappa": 10.0,
+        "retained": 0.28432934476797395,
+        "setting": "state_code, puma/100, education/4, experience/10, k_min = 10",
+        "tolerance": 0.276086787472172
+      }
+    ],
+    "journalist": {
+      "dispersion": 0.397163021415294,
+      "fitted_mean_cell": 0.8860543223834452,
+      "key_space": 665896,
+      "rho_model": 0.22519054939890365,
+      "sampling_fraction": 0.05,
+      "truth_available": false
+    },
+    "key_space": 665896,
+    "source": "US Census 2000 public use microdata sample, distributed with the wooldridge package",
+    "worst_target": {
+      "alpha_per_target": 0.000625,
+      "individual_lower_bounds": [
+        0.42483486944164095,
+        0.45946320812715497,
+        0.6473963847200659,
+        0.5094241182607133,
+        0.4544990195962433,
+        0.09702824556141776,
+        0.0,
+        0.40517414611783886,
+        0.6945326433508061,
+        0.06726140110013971,
+        0.7210194678937667,
+        0.08414012287663422,
+        0.17723719428386595,
+        0.45946320812715497,
+        0.6526020259389624,
+        0.07565289375219138,
+        0.40027345463463226,
+        0.5447482349670008,
+        0.12327905286867549,
+        0.7856491247609306,
+        0.12327905286867549,
+        0.19097067677779,
+        0.7531286899412224,
+        0.07565289375219138,
+        0.03887271590942304,
+        0.4544990195962433,
+        0.5599785569952644,
+        0.48936979370731776,
+        0.1277074687219519,
+        0.5295731857538195,
+        0.43964102528276117,
+        0.6318241840314425,
+        0.5957378201624688,
+        0.1726789950619861,
+        0.07988524507388896,
+        0.2326549315210226,
+        0.023673576156510508,
+        0.49938520655805724,
+        0.42483486944164095,
+        0.5346254575680676,
+        0.07988524507388896,
+        0.6266480209038037,
+        0.0,
+        0.7531286899412224,
+        0.42976449205582085,
+        0.042812648019325536,
+        0.6421982672395454,
+        0.042812648019325536,
+        0.4943745727669293,
+        0.3035147262389307,
+        0.0,
+        0.20017324518175725,
+        0.40517414611783886,
+        0.7423832949198079,
+        0.05488327785186638,
+        0.6787471909403946,
+        0.6945326433508061,
+        0.5854884934769852,
+        0.0927126753627186,
+        0.5599785569952644,
+        0.7103969763569447,
+        0.40517414611783886,
+        0.3661326142908417,
+        0.1726789950619861,
+        0.10571342198142145,
+        0.18638325991457327,
+        0.24200834146197003,
+        0.7157034608842108,
+        0.9548195850052813,
+        0.4843708517369215,
+        0.7370268768503345,
+        0.4544990195962433,
+        0.5447482349670008,
+        0.2373277618980396,
+        0.27498022828166974,
+        0.09702824556141776,
+        0.11446547318068784,
+        0.1818053596199974,
+        0.616316992573607,
+        0.5295731857538195
+      ],
+      "maximum": 0.98,
+      "maximum_lower_bound": 0.9250847430083526,
+      "mean": 0.42793749999999997,
+      "smallest_cell": 5,
+      "targets": 80
+    }
+  },
+  "loans": {
+    "denied": {
+      "base_rate": 0.1228600201409869,
+      "column": "denied",
+      "homogeneous_positive_share": 0.006545820745216516,
+      "homogeneous_share": 0.12235649546827794,
+      "released": 1986
+    },
+    "file": "loan_applications",
+    "identification": {
+      "mean_posterior": 0.12982498372136891,
+      "rate": 0.134,
+      "successes": 201,
+      "trials": 1500,
+      "upper": 0.14933335699534236
+    },
+    "late": {
+      "base_rate": 0.029707955689828803,
+      "column": "late",
+      "homogeneous_positive_share": 0.003524672708962739,
+      "homogeneous_share": 0.29607250755287007,
+      "released": 1986
+    },
+    "residual": [
+      {
+        "cells": 48,
+        "cells_below_minimum": 20,
+        "cells_below_minimum_share": 0.4166666666666667,
+        "columns": [
+          "area",
+          "occupancy",
+          "income_band"
+        ],
+        "exposed_amount_share": 0.02225878696466932,
+        "minimum": 3,
+        "single_record_cells": 16,
+        "single_record_share": 0.3333333333333333
+      },
+      {
+        "cells": 3,
+        "cells_below_minimum": 0,
+        "cells_below_minimum_share": 0.0,
+        "columns": [
+          "area",
+          "occupancy"
+        ],
+        "exposed_amount_share": 0.0,
+        "minimum": 3,
+        "single_record_cells": 0,
+        "single_record_share": 0.0
+      }
+    ],
+    "source": "Boston Fed mortgage application study, distributed with the wooldridge package",
+    "structure": {
+      "cells": 150,
+      "file": "loan_applications",
+      "max_reciprocal_frequency": 1.0,
+      "mean_reciprocal_frequency": 0.07552870090634439,
+      "median_cell_size": 2.0,
+      "records": 1986,
+      "released": 1986,
+      "unique_cells": 63,
+      "unique_share": 0.03172205438066465
+    }
+  }
+}

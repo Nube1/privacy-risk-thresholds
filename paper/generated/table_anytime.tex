@@ -1,0 +1,13 @@
+\begin{table}[t]
+\centering
+\caption{The cost of watching the run. The fixed-sample column is the number of successless attacks that certifies the tolerance at one prearranged sample size. The anytime column is the number that certifies it while the institution monitors and may stop whenever it likes, using the confidence sequence of Proposition \ref{prop:anytime} with a uniform prior. The last column is the ratio. It is the price of that mixture, which stays able to certify after a success is seen, and not of monitoring itself: a predeclared point alternative at zero risk is also anytime-valid and certifies after the fixed-sample count, but can never certify once a success occurs.}
+\label{tab:anytime}
+\begin{tabular}{rrrrr}
+\toprule
+Tolerance $\tau$ & $\alpha$ & Fixed sample & Anytime & Ratio \\
+\midrule
+0.01 & 0.05 & 299 & 984 & 3.3 \\
+0.001 & 0.05 & 2{,}995 & 12{,}417 & 4.1 \\
+\bottomrule
+\end{tabular}
+\end{table}

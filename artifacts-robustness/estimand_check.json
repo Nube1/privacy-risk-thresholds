@@ -1,0 +1,26 @@
+{
+ "targets": 20000,
+ "rows": [
+  {
+   "k": 5,
+   "credit_table": 0.07615,
+   "evaluation_table": 0.08055,
+   "difference": -0.004400000000000001,
+   "se_difference": 0.0026871255553099858
+  },
+  {
+   "k": 10,
+   "credit_table": 0.0699,
+   "evaluation_table": 0.0685,
+   "difference": 0.0013999999999999985,
+   "se_difference": 0.0025379296680562292
+  },
+  {
+   "k": 20,
+   "credit_table": 0.05575,
+   "evaluation_table": 0.05385,
+   "difference": 0.001899999999999999,
+   "se_difference": 0.0022758747219475857
+  }
+ ]
+}

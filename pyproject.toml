@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "privacy-risk-thresholds"
+version = "0.7.0"
+description = "Neural release pipeline and registered audit for programme-level disclosure risk, with reproducible experiments"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "pandas>=2.0", "scipy>=1.10", "matplotlib>=3.7",
+                "wooldridge==0.5.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4", "pytest-cov>=4.1", "ruff>=0.5,<0.6", "nbformat>=5.9", "nbconvert>=7.10", "jupyter>=1.0"]
+
+[project.scripts]
+privacy-risk-neural = "privacy_risk.neural_pipeline:main"
+privacy-risk-run = "privacy_risk.pipeline:main"
+privacy-risk-neural-demo = "privacy_risk.neural_trust:main"
+sentry-r = "privacy_risk.sentry_r:cli"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q --cov=privacy_risk --cov-report=term-missing --cov-fail-under=85"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

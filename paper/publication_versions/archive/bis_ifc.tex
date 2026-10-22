@@ -1,0 +1,85 @@
+% SUPERSEDED. Kept for provenance only; do not build, submit or quote from it.
+% Its SENTRY-R benchmark figures come from an undertrained baseline. bis_ifc.pdf in
+% this folder is the build of ../bis_ifc_full.tex, not of this file.
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=24mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,booktabs,graphicx,xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[numbers]{natbib}
+\definecolor{deepred}{RGB}{151,40,38}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries\color{deepred}}{\thesection}{.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{deepred}}{\thesubsection}{.6em}{}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\E}{\mathbb E}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Governing privacy risk across repeated statistical releases\par}
+\vspace{5mm}
+{\large Measured attacks, explicit tolerances and an auditable trust position\par}
+\vspace{6mm}
+Ronald Rethabile Malamule Mahomane\\
+University of Namibia; University of the Witwatersrand; Basis Energy
+\end{center}
+\vspace{4mm}
+\noindent\textbf{Abstract.} A release can satisfy its own disclosure rule and still add substantial risk to a programme of overlapping releases. We set out a decision procedure for statistical agencies and central banks: specify an attack and a target population, estimate its success probability with uncertainty, set a harm-specific tolerance and audit the pooled release history. Evidence from a synthetic register, a simulated granular credit register and two public microdata files demonstrates that marginal checks do not certify a pooled programme. A trainable neural model, SENTRY-R, can rank settings and an LLM can suggest new attacks; neither is used as release evidence without measured attack outcomes. We identify the sampling and governance records needed for a defensible decision. The neural extension remains a synthetic demonstration rather than a demonstrated improvement in an operational release programme.\\
+\textbf{Keywords:} official statistics; disclosure control; repeated releases; attack audit; privacy risk.
+
+\section{Why the unit of decision is the programme}
+Central banks and statistical offices can use suppression, coarsening, noise and access controls, but the remaining question is whether a particular release meets an institution's declared risk appetite. A numeric protection setting alone does not answer it. The relevant probability is conditional on what the attacker knows, which target is being attacked and which previous vintages are available. Prior work supplies probabilistic linkage methods and formal privacy concepts \citep{fellegi1969,dwork2014}. Here the object is an operating decision with an accountable tolerance.
+
+Write $j=(a,h,g,v)$ for an attacker, harm, target group and vintage, and let $\theta$ be the release setting. Given a declared sampling law $P_{\theta j}$ for target and auxiliary information, define
+\begin{equation}\label{eq:risk}
+r_j(\theta)=\E_{P_{\theta j}}[\mathbf1\{\text{attack succeeds}\}],\qquad
+r_{\mathrm{pool},j}(\theta)=\E[\mathbf1\{\text{attack on pooled releases succeeds}\}].
+\end{equation}
+Pooled success is a distinct experiment: two records that remain ambiguous in each table may be identified by intersecting the tables' candidate sets. Although the union bound $\max_i r_i\leq\Prob(\bigcup_i\{\text{single-release success}\})\leq\min(1,\sum_i r_i)$ is sharp, its event is not the pooled-attack event. In fact, complementary partial keys can have low marginal success while their joint key identifies a target. A programme requires an explicitly simulated pooled attack.
+
+\section{What the existing evidence shows}
+The full study uses a 200,000-record synthetic population with a 5\% released sample, a separate simulated credit register and two public microdata files. Table~\ref{tab:cases} selects directly reproducible figures from that study. The table reports attack success under the declared simulation, not the probability of a real person being identified in a particular institution. The two public files supply realistic released data shapes but do not supply confidential source populations or actual attacker auxiliary files.
+
+\begin{table}[h]
+\centering\small
+\caption{Existing experiments; the neural model was not evaluated on these programmes.}\label{tab:cases}
+\begin{tabular}{p{.39\linewidth}rrp{.24\linewidth}}
+\toprule
+Experiment & Marginal & Pooled & Consequence\\\midrule
+Four 3-anonymous synthetic releases & sum $0.253$ & $0.4581$ & pooled attack exceeds marginal union ceiling, which concerns a different event\\
+Simulated credit register, no suppression & $0.079$ & $0.209$ & one-release gate can pass while programme gate fails\\
+Simulated credit register, $k=10$ & $0.055$ & $0.194$ & coarsening helps, but overlapping vintages still matter\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+On the public Census sample of 29,501 records, one frontier setting retains 28.4\% of the file; exact key matching yields risk 0.0615, while a separately specified noisy-key and income-informed attacker yields estimated success 0.2400 and one-sided upper bound 0.2588. These are different attacks, so their difference is not a failure of estimation. They show why a committee must name its attacker and information sources. For a granular credit programme, seven protection settings were compared using one declared adversarial evaluation; the pooled result changes which setting satisfies a programme-level tolerance.
+
+\section{A release gate the institution can sign}
+For each risk coordinate, commission $B_j$ independent attack trials and observe $K_j$ successes. Let $U_j$ be an upper confidence bound for $r_j$, with simultaneous coverage for all coordinates and candidate settings under review. A particularly transparent bound is the exact one-sided binomial bound: at $K_j=0$ and per-coordinate error level $\gamma$, $U_j=1-\gamma^{1/B_j}$ \citep{clopper1934}. Observing zero successes therefore does not certify a small risk automatically. If there are $M$ predeclared tests and Bonferroni allocation $\gamma=\alpha/M$, the smallest zero-success sample size that can pass tolerance $\tau$ is
+\begin{equation}\label{eq:budget}
+B\geq\left\lceil\frac{\log(\alpha/M)}{\log(1-\tau)}\right\rceil.
+\end{equation}
+For a four-setting shortlist with two risk coordinates, $\alpha=0.05$ and $\tau=0.12$, this is 40 independent attacks per coordinate. Under the declared sampling law, selecting the most useful eligible release after the simultaneous audit preserves the familywise error guarantee; selection before and after the audit must be distinguished.
+
+The institution declares tolerances $\tau_j$ before interpreting results. Define the displayed trust position $z_j=1-U_j/\tau_j$, and the gate $T(\theta)=\min_jz_j(\theta)$. An unaudited coordinate fails. The decision record should contain the attack definition, sampling unit, outcome counts, uncertainty bound, pooled and marginal coordinates, tolerances, utility assessment, accountable owner and expiry. A mechanism parameter such as $k$ or $\varepsilon$ does not replace any of these fields.
+
+\begin{figure}[h]\centering
+\includegraphics[width=.92\linewidth]{../diagrams/sentry_r_loop.pdf}
+\caption{SENTRY-R ranks release settings and enriches attack scenarios. Measured attacks and the release audit retain decision authority.}
+\end{figure}
+
+\section{Scaling the search while preserving the decision}
+SENTRY-R represents each candidate with $d$ measured or declared input features and predicts an $n$-coordinate risk vector with a neural network. An LLM may suggest auxiliary information, pooling patterns or target groups. A proposed attack is admitted only after a schema check, a documented threat-model review and observed development attacks. The model learns from measured counts, never from generated success labels. It ranks candidates; it does not certify them.
+
+A seed-19 toy comparison used 320 training rows, 100 held-out toy-programme rows and two risk coordinates: validation log loss was 0.3436 for logistic regression and 0.2780 for a three-layer ReLU network. These figures are only a synthetic software and modelling demonstration. Future operational evidence requires held-out entire programmes, pooled-vintage attacks, worst-group calibration and a fixed-budget comparison against simple predictors. The full mathematical paper and repository document the attack model, formulas, generated tables and code.
+
+\section{Decision implications}
+The practical change is to evaluate a release history rather than grant each new file a clean slate. Preserve access logs and versions, specify plausible auxiliary information, measure pooled attacks and set a tolerance for each harm class. If the model encounters a new attack pattern, open a new measured audit rather than accepting its predicted safety score. Statistical evidence and policy authority meet only at the signed release record. The present evidence demonstrates the need for that separation; it does not establish a universal numeric tolerance or prove protection against an attacker outside the stated scenario law.
+
+\vspace{3mm}\noindent\emph{Author-prepared manuscript for BIS/IFC consideration. It is not a BIS or IFC publication, and any conference word limit or template must be applied to the intended event.}
+\begin{thebibliography}{9}\small
+\bibitem{fellegi1969} Fellegi, I. P. and Sunter, A. B. (1969), ``A theory for record linkage'', \emph{Journal of the American Statistical Association} 64, 1183--1210.
+\bibitem{dwork2014} Dwork, C. and Roth, A. (2014), \emph{The Algorithmic Foundations of Differential Privacy}, Foundations and Trends in Theoretical Computer Science 9, 211--407.
+\bibitem{clopper1934} Clopper, C. J. and Pearson, E. S. (1934), ``The use of confidence or fiducial limits illustrated in the case of the binomial'', \emph{Biometrika} 26, 404--413.
+\end{thebibliography}
+\end{document}

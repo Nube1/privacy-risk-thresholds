@@ -1,0 +1,31 @@
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[font=\small,node distance=0.5cm and 1.8cm,
+  stage/.style={draw,rounded corners=2pt,align=center,text width=2.8cm,minimum height=1.1cm},
+  dev/.style={stage,fill=gray!15},
+  final/.style={stage,pattern=north east lines,pattern color=gray!40},
+  frozen/.style={stage,double,double distance=1.2pt},
+  >=Stealth]
+  \node[dev] (a) {1. Development\\attacks on a dense\\floor grid, own seeds};
+  \node[dev,right=of a] (b) {2. Network fitted by\\binomial likelihood\\(logistic baseline)};
+  \node[frozen,right=of b] (c) {3. Frozen plan\\bets and start floor,\\with its digest};
+  \node[final,below=1.3cm of c] (d) {4. Release chain\\on fresh targets};
+  \node[stage,left=of d] (e) {Floor certified,\\or none};
+  \node[stage,left=of e] (f) {Reserve chain\\from $k=300$ if the\\first floor fails};
+  \draw[->] (a) -- node[above,font=\scriptsize]{counts} (b);
+  \draw[->] (b) -- node[below,font=\scriptsize]{predictions} (c);
+  \draw[->] (c) -- node[right,font=\scriptsize]{fixed before outcomes} (d);
+  \draw[->] (d) -- (e);
+  \draw[->,dashed] (d.south) -- ++(0,-0.5) -| node[near end,left,font=\scriptsize]{first floor fails} (f.south);
+  \draw[->,dashed] (f) -- (e);
+  \draw[densely dotted,thick] ($(a.north west)+(-0.25,0.35)$) rectangle ($(b.south east)+(0.25,-0.35)$);
+  \node[anchor=south west,font=\scriptsize] at ($(a.north west)+(-0.25,0.35)$) {development evidence only};
+\end{tikzpicture}
+\caption{The neural release pipeline. Grey boxes use development attacks only;
+the double box is the plan, frozen with its digest before any final outcome
+exists; the hatched box is the only stage whose outcomes can certify a floor. The
+network's predictions choose the bets and the floor at which the release chain
+starts, so a poor network costs attacks but cannot raise the chance of certifying
+an unsafe floor.}
+\label{fig:neural-pipeline}
+\end{figure}

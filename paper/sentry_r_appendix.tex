@@ -1,0 +1,68 @@
+\section{SENTRY-R derivations and adaptive development}\label{app:sentry}
+
+\paragraph{Gradients.} The depth-$L$ network is fitted by ordinary
+backpropagation of the count loss \eqref{eq:sentry-count-loss}. The only
+non-standard term is the output-logit derivative, $b\sigma(a)-k$ for a count of
+$k$ successes in $b$ trials, which follows from the chain rule; the rest is
+textbook \citep[ch.~6]{goodfellow2016}, and the package checks the derivatives
+by finite differences. Adam changes the update rule, not the gradients.
+
+\paragraph{Adaptive proposal rounds and a fixed final experiment.}
+A language model, human analyst or hyperparameter search may use the measured
+\emph{development} history repeatedly. Let $T$ be an almost surely finite
+stopping time for that history, and condition on $\mathcal D=\mathcal F_T$.
+Let the now fixed finite family have $M(\mathcal D)=C(\mathcal D)n(\mathcal D)$
+positive coordinates, with $\gamma(\mathcal D)=\alpha/M(\mathcal D)$.
+Assume for every fixed pair that its \emph{new final} count has conditional
+law
+$K_{\theta j}\mid\mathcal D\sim\mathrm{Binom}(B_{\theta j},r_j(\theta))$,
+where $B_{\theta j}$, the release, tolerance, sampling frame and attack were
+fixed by $\mathcal D$ and the final draws were not used to construct it.
+By the exact inversion of Appendix \ref{app:neural},
+\begin{equation}
+ \Pr\!\left\{r_j(\theta)>\overline r_{\theta j}\mid\mathcal D\right\}
+ \leq\gamma(\mathcal D),\qquad
+ \Pr\!\left\{\exists(\theta,j):r_j(\theta)>\overline r_{\theta j}
+               \mid\mathcal D\right\}\leq\alpha.
+ \label{eq:sentry-adaptive-development}
+\end{equation}
+The second inequality is a union bound \emph{conditional} on the complete
+adaptive development history; the number and identity of pairs may depend on
+that history. On its complementary event, every accepted candidate satisfies
+every declared tolerance. Integrating over $\mathcal D$ proves an
+unconditional error probability no greater than $\alpha$. No claim follows
+for scenarios omitted from the declared family or for a final audit that has
+influenced development. In particular, feeding a final audit result back to
+an LLM and then trying another candidate with the same nominal $\alpha$
+is an unaccounted additional selection step. The code refuses a second audit
+of one freeze when a ledger is kept, but it does not stop a new freeze after
+an audit has been seen.
+
+\paragraph{Why measured trials cannot be replaced by language-model labels.}
+The proper-scoring identity in \eqref{eq:sentry-proper} assumes
+$\E[K_{ij}\mid X_i=x,B_{ij}=b]=b\pi_j(x)$. Replacing $K_{ij}$ by a
+model-generated estimate $\widetilde K_{ij}$ changes the minimiser to
+$\E[\widetilde K_{ij}/B_{ij}\mid X_i=x]$, which need not equal
+$\pi_j(x)$. A prompt that asserts a small risk is therefore no statistical
+evidence of small risk, even when its prose is plausible. The software
+refuses generated success counts, sets the proposal's model name and prompt
+hash itself, and refuses a final audit that reuses a development evidence
+identifier. These checks rest on labels the caller supplies, so source
+integrity and experimental independence still require institutional checks.
+
+\paragraph{Sensitivity versus validity.}
+The network acts on standardised inputs $u_k=(x_k-\mu_k)/s_k$, with training
+means $\mu_k$ and scales $s_k>0$, so
+$\|u-u'\|_2\leq\max_k s_k^{-1}\|x-x'\|_2$. For a fixed network with widths
+$q_m$, the spectral-norm bound in raw features is
+\begin{equation}
+ \|\widehat{\boldsymbol r}(x)-\widehat{\boldsymbol r}(x')\|_2
+ \leq\frac14\left(\prod_{m=1}^{L+1}\|W_m\|_2\right)
+ \max_k s_k^{-1}\,\|x-x'\|_2.
+ \label{eq:sentry-lipschitz}
+\end{equation}
+It uses ReLU's unit Lipschitz constant and sigmoid's derivative at most $1/4$.
+The bound is for \emph{predictions} at fixed weights. It provides no bound on
+$\|\widehat{\boldsymbol r}-\boldsymbol r\|$ or on risk under new auxiliary
+information. The certification statement is instead obtained from fresh
+final audit data and the declared experimental law.

@@ -1,0 +1,25 @@
+\begin{algorithm}[t]
+\caption{Release chain with the registered betting gate}\label{alg:chain}
+\begin{algorithmic}[1]
+\Require floors $k_1>\cdots>k_L$ and declared attacks $a_1,\ldots,a_J$, both fixed before
+  any outcome; tolerance $\tau$; chain weight $w$; bet cap $c<\tau$; draw cap $B$
+\State register the chain in the programme ledger, spending $w$ once
+\State $\hat k\gets\text{none}$
+\For{$\ell=1,\ldots,L$}
+  \For{$j=1,\ldots,J$} \Comment{open coordinate $(k_\ell,a_j)$ only now}
+    \State $\log E\gets0$; $Y\gets0$
+    \For{$b=1,\ldots,B$}
+      \State $q\gets\min\{(Y+\tfrac12)/b,\,c\}$ \Comment{bet fixed before the outcome}
+      \State draw a fresh target; $X\gets$ success of $a_j$ at $k_\ell$
+      \State $\log E\gets\log E+X\log(q/\tau)+(1-X)\log\{(1-q)/(1-\tau)\}$; $Y\gets Y+X$
+      \If{$\log E\ge\log\{1/(\alpha w)\}$} mark certified; \textbf{break}
+      \EndIf
+    \EndFor
+    \If{not certified} \Return $\hat k$ \Comment{the floor fails; stop the chain}
+    \EndIf
+  \EndFor
+  \State $\hat k\gets k_\ell$ \Comment{every declared attack certified}
+\EndFor
+\State \Return $\hat k$
+\end{algorithmic}
+\end{algorithm}

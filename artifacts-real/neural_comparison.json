@@ -1,0 +1,911 @@
+{
+  "attacks_per_scenario": 60,
+  "precisions": [
+    0.15,
+    0.5,
+    1.5
+  ],
+  "results": [
+    {
+      "paired_comparisons": {
+        "one_layer": {
+          "reference_minus_contender": 0.0038353549079356286,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.0017496255227634988,
+            0.005360196409347376
+          ]
+        },
+        "quadratic_logistic": {
+          "reference_minus_contender": 0.004803033586244565,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.0032607581487035867,
+            0.005959336556819301
+          ]
+        },
+        "quadratic_vs_three_layer": {
+          "reference_minus_contender": -0.0023241868422434475,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            -0.003332806158554834,
+            -0.0012956213354584115
+          ]
+        },
+        "three_layer": {
+          "reference_minus_contender": 0.0024788467440011175,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.00039478921640096815,
+            0.004079205996131359
+          ]
+        }
+      },
+      "rows": {
+        "test": 264,
+        "train": 939,
+        "validation": 207
+      },
+      "scores": {
+        "logistic": {
+          "best_epoch": 296,
+          "brier": 0.2094481381975492,
+          "log_loss": 0.6069054453531337,
+          "observed_rate": 0.49217171717171715,
+          "state_loss_and_trials": {
+            "state-0": [
+              996.3413235383342,
+              1620
+            ],
+            "state-23": [
+              1360.64913335569,
+              2160
+            ],
+            "state-25": [
+              1313.6202627505222,
+              2160
+            ],
+            "state-3": [
+              1201.2574467862862,
+              1980
+            ],
+            "state-32": [
+              1138.7583530722127,
+              1980
+            ],
+            "state-43": [
+              681.0329999969774,
+              1080
+            ],
+            "state-45": [
+              572.1036944500885,
+              1080
+            ],
+            "state-50": [
+              1025.5044309974692,
+              1620
+            ],
+            "state-8": [
+              1324.1146094460591,
+              2160
+            ]
+          },
+          "validation_log_loss": 0.6187166460823522
+        },
+        "one_layer": {
+          "best_epoch": 144,
+          "brier": 0.207796180455536,
+          "log_loss": 0.6030700904451981,
+          "observed_rate": 0.49217171717171715,
+          "state_loss_and_trials": {
+            "state-0": [
+              989.8040317854684,
+              1620
+            ],
+            "state-23": [
+              1349.4946191403972,
+              2160
+            ],
+            "state-25": [
+              1306.9587427764973,
+              2160
+            ],
+            "state-3": [
+              1186.8214042210789,
+              1980
+            ],
+            "state-32": [
+              1127.497266991726,
+              1980
+            ],
+            "state-43": [
+              687.9645719140447,
+              1080
+            ],
+            "state-45": [
+              568.501251122153,
+              1080
+            ],
+            "state-50": [
+              1017.1225612593114,
+              1620
+            ],
+            "state-8": [
+              1318.4657834412606,
+              2160
+            ]
+          },
+          "validation_log_loss": 0.6107897779087922
+        },
+        "quadratic_logistic": {
+          "best_epoch": 594,
+          "brier": 0.20739994927551297,
+          "log_loss": 0.6021024117668892,
+          "observed_rate": 0.49217171717171715,
+          "state_loss_and_trials": {
+            "state-0": [
+              987.2236534163347,
+              1620
+            ],
+            "state-23": [
+              1351.2486777254887,
+              2160
+            ],
+            "state-25": [
+              1304.3837079791167,
+              2160
+            ],
+            "state-3": [
+              1186.4530930434762,
+              1980
+            ],
+            "state-32": [
+              1127.622288049524,
+              1980
+            ],
+            "state-43": [
+              683.7325266055016,
+              1080
+            ],
+            "state-45": [
+              568.8449812630553,
+              1080
+            ],
+            "state-50": [
+              1014.168925985149,
+              1620
+            ],
+            "state-8": [
+              1313.6243483198755,
+              2160
+            ]
+          },
+          "validation_log_loss": 0.6107396196019111
+        },
+        "three_layer": {
+          "best_epoch": 44,
+          "brier": 0.20835495581860963,
+          "log_loss": 0.6044265986091326,
+          "observed_rate": 0.49217171717171715,
+          "state_loss_and_trials": {
+            "state-0": [
+              986.2318521301629,
+              1620
+            ],
+            "state-23": [
+              1355.2080325832267,
+              2160
+            ],
+            "state-25": [
+              1313.1478386243814,
+              2160
+            ],
+            "state-3": [
+              1194.1479417992252,
+              1980
+            ],
+            "state-32": [
+              1129.5989692175763,
+              1980
+            ],
+            "state-43": [
+              689.0545632695516,
+              1080
+            ],
+            "state-45": [
+              569.6786358244906,
+              1080
+            ],
+            "state-50": [
+              1018.2204274758391,
+              1620
+            ],
+            "state-8": [
+              1318.8290610442084,
+              2160
+            ]
+          },
+          "validation_log_loss": 0.6110483868567118
+        }
+      },
+      "split_seed": 20260904,
+      "states": {
+        "test": [
+          "state-0",
+          "state-23",
+          "state-25",
+          "state-3",
+          "state-32",
+          "state-43",
+          "state-45",
+          "state-50",
+          "state-8"
+        ],
+        "train": [
+          "state-1",
+          "state-11",
+          "state-12",
+          "state-13",
+          "state-14",
+          "state-16",
+          "state-17",
+          "state-18",
+          "state-2",
+          "state-20",
+          "state-21",
+          "state-24",
+          "state-26",
+          "state-27",
+          "state-28",
+          "state-29",
+          "state-30",
+          "state-31",
+          "state-33",
+          "state-36",
+          "state-37",
+          "state-38",
+          "state-39",
+          "state-4",
+          "state-48",
+          "state-5",
+          "state-6",
+          "state-9"
+        ],
+        "validation": [
+          "state-10",
+          "state-19",
+          "state-22",
+          "state-40",
+          "state-41",
+          "state-42",
+          "state-7"
+        ]
+      },
+      "test_sha256": "5ebc388ccc563868214f71ec6723f401eeb7e7d4c0ce6715cd7ff157e3c4ca44"
+    },
+    {
+      "paired_comparisons": {
+        "one_layer": {
+          "reference_minus_contender": 0.006232473305782027,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.0045447214008192596,
+            0.00761669732960895
+          ]
+        },
+        "quadratic_logistic": {
+          "reference_minus_contender": 0.006694276953752576,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.005224345138272808,
+            0.008043812510930101
+          ]
+        },
+        "quadratic_vs_three_layer": {
+          "reference_minus_contender": -0.0012483705609643847,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            -0.001874152443060541,
+            -0.0007024443922766982
+          ]
+        },
+        "three_layer": {
+          "reference_minus_contender": 0.005445906392788191,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.0037919057336640843,
+            0.00699261431497337
+          ]
+        }
+      },
+      "rows": {
+        "test": 312,
+        "train": 861,
+        "validation": 237
+      },
+      "scores": {
+        "logistic": {
+          "best_epoch": 108,
+          "brier": 0.21581634986780412,
+          "log_loss": 0.6208378989599866,
+          "observed_rate": 0.47430555555555554,
+          "state_loss_and_trials": {
+            "state-11": [
+              1346.199285359722,
+              2160
+            ],
+            "state-14": [
+              1336.3131015666822,
+              2160
+            ],
+            "state-21": [
+              1374.7258989347513,
+              2160
+            ],
+            "state-24": [
+              1231.4707715468412,
+              1980
+            ],
+            "state-25": [
+              1313.432673058125,
+              2160
+            ],
+            "state-40": [
+              1343.5865650490439,
+              2160
+            ],
+            "state-42": [
+              1352.0430813784913,
+              2160
+            ],
+            "state-5": [
+              1299.0756296422783,
+              2160
+            ],
+            "state-50": [
+              1025.2384619950126,
+              1620
+            ]
+          },
+          "validation_log_loss": 0.6211017754263553
+        },
+        "one_layer": {
+          "best_epoch": 116,
+          "brier": 0.21298011301709996,
+          "log_loss": 0.6146054256542046,
+          "observed_rate": 0.47430555555555554,
+          "state_loss_and_trials": {
+            "state-11": [
+              1332.5186277410508,
+              2160
+            ],
+            "state-14": [
+              1335.1730842345432,
+              2160
+            ],
+            "state-21": [
+              1355.6192790660366,
+              2160
+            ],
+            "state-24": [
+              1217.3509917040415,
+              1980
+            ],
+            "state-25": [
+              1302.6591426011396,
+              2160
+            ],
+            "state-40": [
+              1325.1251345731866,
+              2160
+            ],
+            "state-42": [
+              1335.6234842195413,
+              2160
+            ],
+            "state-5": [
+              1285.8213308156112,
+              2160
+            ],
+            "state-50": [
+              1015.5224932915611,
+              1620
+            ]
+          },
+          "validation_log_loss": 0.6162919565883563
+        },
+        "quadratic_logistic": {
+          "best_epoch": 383,
+          "brier": 0.2127477380179146,
+          "log_loss": 0.6141436220062341,
+          "observed_rate": 0.47430555555555554,
+          "state_loss_and_trials": {
+            "state-11": [
+              1332.4126611686875,
+              2160
+            ],
+            "state-14": [
+              1331.6231480601632,
+              2160
+            ],
+            "state-21": [
+              1354.756982941253,
+              2160
+            ],
+            "state-24": [
+              1215.69309778704,
+              1980
+            ],
+            "state-25": [
+              1301.6521969472876,
+              2160
+            ],
+            "state-40": [
+              1322.7244356975712,
+              2160
+            ],
+            "state-42": [
+              1338.0482659159632,
+              2160
+            ],
+            "state-5": [
+              1284.52598124858,
+              2160
+            ],
+            "state-50": [
+              1015.3318341901551,
+              1620
+            ]
+          },
+          "validation_log_loss": 0.6157057806349109
+        },
+        "three_layer": {
+          "best_epoch": 16,
+          "brier": 0.21325195066402539,
+          "log_loss": 0.6153919925671985,
+          "observed_rate": 0.47430555555555554,
+          "state_loss_and_trials": {
+            "state-11": [
+              1335.7798186904242,
+              2160
+            ],
+            "state-14": [
+              1333.8020728080608,
+              2160
+            ],
+            "state-21": [
+              1356.3486432036216,
+              2160
+            ],
+            "state-24": [
+              1216.1984702068214,
+              1980
+            ],
+            "state-25": [
+              1308.4157527003179,
+              2160
+            ],
+            "state-40": [
+              1326.1056062920068,
+              2160
+            ],
+            "state-42": [
+              1338.149705846103,
+              2160
+            ],
+            "state-5": [
+              1286.9398292955889,
+              2160
+            ],
+            "state-50": [
+              1018.3982018150102,
+              1620
+            ]
+          },
+          "validation_log_loss": 0.615841612795411
+        }
+      },
+      "split_seed": 20260905,
+      "states": {
+        "test": [
+          "state-11",
+          "state-14",
+          "state-21",
+          "state-24",
+          "state-25",
+          "state-40",
+          "state-42",
+          "state-5",
+          "state-50"
+        ],
+        "train": [
+          "state-1",
+          "state-10",
+          "state-12",
+          "state-16",
+          "state-17",
+          "state-18",
+          "state-2",
+          "state-20",
+          "state-22",
+          "state-26",
+          "state-28",
+          "state-29",
+          "state-3",
+          "state-30",
+          "state-31",
+          "state-32",
+          "state-33",
+          "state-37",
+          "state-38",
+          "state-39",
+          "state-4",
+          "state-41",
+          "state-43",
+          "state-45",
+          "state-48",
+          "state-7",
+          "state-8",
+          "state-9"
+        ],
+        "validation": [
+          "state-0",
+          "state-13",
+          "state-19",
+          "state-23",
+          "state-27",
+          "state-36",
+          "state-6"
+        ]
+      },
+      "test_sha256": "50ffcec1678a3cb2bc951cb8a330cf126eafd0f2906eb123309e87eeb1eef793"
+    },
+    {
+      "paired_comparisons": {
+        "one_layer": {
+          "reference_minus_contender": 0.005527679651906259,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.004144854376332788,
+            0.006852720755986744
+          ]
+        },
+        "quadratic_logistic": {
+          "reference_minus_contender": 0.0059875262268201945,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.004409317307006774,
+            0.007640161182796738
+          ]
+        },
+        "quadratic_vs_three_layer": {
+          "reference_minus_contender": -0.0012377888629773182,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            -0.002503350713742756,
+            5.3396817641732954e-05
+          ]
+        },
+        "three_layer": {
+          "reference_minus_contender": 0.004749737363842876,
+          "resampled_states": 9,
+          "state_bootstrap_95_interval": [
+            0.002844840902073154,
+            0.006725011215966854
+          ]
+        }
+      },
+      "rows": {
+        "test": 282,
+        "train": 882,
+        "validation": 246
+      },
+      "scores": {
+        "logistic": {
+          "best_epoch": 50,
+          "brier": 0.21121310187108416,
+          "log_loss": 0.6104979756818997,
+          "observed_rate": 0.4770094562647754,
+          "state_loss_and_trials": {
+            "state-1": [
+              1346.563466427125,
+              2160
+            ],
+            "state-12": [
+              1314.2559618032494,
+              2160
+            ],
+            "state-17": [
+              1329.7487289136616,
+              2160
+            ],
+            "state-19": [
+              1333.3584505041188,
+              2160
+            ],
+            "state-25": [
+              1313.835759464641,
+              2160
+            ],
+            "state-3": [
+              1201.5521929108481,
+              1980
+            ],
+            "state-41": [
+              699.3560325424805,
+              1080
+            ],
+            "state-45": [
+              572.1520993041959,
+              1080
+            ],
+            "state-6": [
+              1218.8030566674247,
+              1980
+            ]
+          },
+          "validation_log_loss": 0.6202258653487513
+        },
+        "one_layer": {
+          "best_epoch": 150,
+          "brier": 0.20872732471765082,
+          "log_loss": 0.6049702960299934,
+          "observed_rate": 0.4770094562647754,
+          "state_loss_and_trials": {
+            "state-1": [
+              1340.0725239659707,
+              2160
+            ],
+            "state-12": [
+              1299.430514429705,
+              2160
+            ],
+            "state-17": [
+              1318.74149189098,
+              2160
+            ],
+            "state-19": [
+              1313.4057242909187,
+              2160
+            ],
+            "state-25": [
+              1302.5593236700454,
+              2160
+            ],
+            "state-3": [
+              1187.453493334043,
+              1980
+            ],
+            "state-41": [
+              694.3168071834071,
+              1080
+            ],
+            "state-45": [
+              570.0460946572877,
+              1080
+            ],
+            "state-6": [
+              1210.0714354051302,
+              1980
+            ]
+          },
+          "validation_log_loss": 0.614413025389235
+        },
+        "quadratic_logistic": {
+          "best_epoch": 350,
+          "brier": 0.2085212300753213,
+          "log_loss": 0.6045104494550795,
+          "observed_rate": 0.4770094562647754,
+          "state_loss_and_trials": {
+            "state-1": [
+              1339.264913515593,
+              2160
+            ],
+            "state-12": [
+              1299.7134449604966,
+              2160
+            ],
+            "state-17": [
+              1316.9218941567,
+              2160
+            ],
+            "state-19": [
+              1310.1295973409258,
+              2160
+            ],
+            "state-25": [
+              1302.4453752763523,
+              2160
+            ],
+            "state-3": [
+              1186.609775788024,
+              1980
+            ],
+            "state-41": [
+              691.6044619892858,
+              1080
+            ],
+            "state-45": [
+              568.5966649289524,
+              1080
+            ],
+            "state-6": [
+              1213.0306768236148,
+              1980
+            ]
+          },
+          "validation_log_loss": 0.6140562954656923
+        },
+        "three_layer": {
+          "best_epoch": 32,
+          "brier": 0.20911037055140913,
+          "log_loss": 0.6057482383180568,
+          "observed_rate": 0.4770094562647754,
+          "state_loss_and_trials": {
+            "state-1": [
+              1338.8903582150126,
+              2160
+            ],
+            "state-12": [
+              1302.2779569801964,
+              2160
+            ],
+            "state-17": [
+              1319.6389231361482,
+              2160
+            ],
+            "state-19": [
+              1315.2692200926456,
+              2160
+            ],
+            "state-25": [
+              1309.2669676259866,
+              2160
+            ],
+            "state-3": [
+              1181.2996173009137,
+              1980
+            ],
+            "state-41": [
+              697.9464423505034,
+              1080
+            ],
+            "state-45": [
+              569.0390816944337,
+              1080
+            ],
+            "state-6": [
+              1215.6316249456806,
+              1980
+            ]
+          },
+          "validation_log_loss": 0.6150475134693456
+        }
+      },
+      "split_seed": 20260906,
+      "states": {
+        "test": [
+          "state-1",
+          "state-12",
+          "state-17",
+          "state-19",
+          "state-25",
+          "state-3",
+          "state-41",
+          "state-45",
+          "state-6"
+        ],
+        "train": [
+          "state-0",
+          "state-10",
+          "state-13",
+          "state-16",
+          "state-18",
+          "state-2",
+          "state-20",
+          "state-21",
+          "state-22",
+          "state-26",
+          "state-27",
+          "state-28",
+          "state-29",
+          "state-30",
+          "state-31",
+          "state-32",
+          "state-33",
+          "state-36",
+          "state-38",
+          "state-39",
+          "state-4",
+          "state-42",
+          "state-43",
+          "state-48",
+          "state-5",
+          "state-50",
+          "state-7",
+          "state-8"
+        ],
+        "validation": [
+          "state-11",
+          "state-14",
+          "state-23",
+          "state-24",
+          "state-37",
+          "state-40",
+          "state-9"
+        ]
+      },
+      "test_sha256": "1289265c5554853ed09d59a62fa0dda2abeddd51115f6d2181b32af7587e761a"
+    }
+  ],
+  "scenario_plans": [
+    [
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      1,
+      5
+    ],
+    [
+      1,
+      4,
+      1
+    ],
+    [
+      1,
+      4,
+      5
+    ],
+    [
+      10,
+      1,
+      1
+    ],
+    [
+      10,
+      1,
+      5
+    ],
+    [
+      10,
+      4,
+      1
+    ],
+    [
+      10,
+      4,
+      5
+    ],
+    [
+      100,
+      1,
+      1
+    ],
+    [
+      100,
+      1,
+      5
+    ],
+    [
+      100,
+      4,
+      1
+    ],
+    [
+      100,
+      4,
+      5
+    ]
+  ],
+  "source_seed": 20260904,
+  "split_seeds": [
+    20260904,
+    20260905,
+    20260906
+  ],
+  "status": "public Census state-held-out comparison, not a certificate",
+  "total_rows": 1410
+}

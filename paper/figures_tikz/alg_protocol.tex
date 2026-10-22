@@ -1,0 +1,19 @@
+\begin{algorithm}[t]
+\caption{Assessing a release programme}\label{alg:protocol}
+\begin{algorithmic}[1]
+\Require a release programme and the institution's governance record $G$
+\State list the releases, horizon, access route, legal basis, protected parties \Comment{Step 1}
+\State declare every scenario, pooled ones included, before any audit \Comment{Step 2}
+\State set $\tau$ with its owner, harm class, $\alpha$ and expiry \Comment{Step 3}
+\State fix the order of settings, the sample sizes and the error shares \Comment{Step 4}
+\State measure per release and pooled on fresh targets; choose the setting by
+  Algorithm~\ref{alg:selection} or Algorithm~\ref{alg:chain} \Comment{Step 5}
+\State run the falsification tests; if one fails, stop: the figure is invalid \Comment{Step 6}
+\If{every declared bound meets its tolerance}
+  \State release, and file the decision record \Comment{Step 7}
+\Else
+  \State do not release; change the product and return to Step 1
+\EndIf
+\State at each new vintage or at expiry, re-assess from Step 4 on the remaining budget
+\end{algorithmic}
+\end{algorithm}
