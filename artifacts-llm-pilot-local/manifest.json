@@ -1,0 +1,34 @@
+{
+  "0": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "d8a92f35338960bd933004012ca13fe0574c43b04a3a84c79bdcb3ba865aa2d9",
+    "response_file": "responses/state-0.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261023,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2217,
+      "output_tokens": 1760,
+      "total_seconds": 25.0188979
+    },
+    "done_reason": "stop"
+  },
+  "1": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "c3aada037ba8f6cb7d16e3ee1927957f43f5ead83127e3bf96299dc862a360cf",
+    "response_file": "responses/state-1.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261123,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2637,
+      "output_tokens": 2336,
+      "total_seconds": 34.4009456
+    },
+    "done_reason": "stop"
+  }
+}
