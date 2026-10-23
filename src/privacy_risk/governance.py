@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
-from datetime import UTC, date, datetime
+from datetime import date, datetime, timezone
 
 import numpy as np
 
@@ -22,7 +22,7 @@ def decide(upper_risk: float, threshold: GovernanceThreshold,
     assessed = (
         date.fromisoformat(assessment_date)
         if assessment_date
-        else datetime.now(tz=UTC).date()
+        else datetime.now(tz=timezone.utc).date()
     )
     expiry = date.fromisoformat(threshold.expiry_date)
     if not validation_passed:
