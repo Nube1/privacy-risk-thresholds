@@ -5,6 +5,14 @@ model. The shortlist freeze fixes alpha, planned audit trials, the tolerance
 owner, an expiry date and the development evidence IDs. The final audit reads
 those values from the freeze and refuses counts that depart from them. An
 optional append-only ledger refuses a second audit of the same freeze.
+
+The network is closed. Its only input is a feature vector that passed the
+schema, a named review and a measured attack; an LLM injects scenarios into
+that closed system and nothing else. With a :class:`ProvenanceLedger`, every
+stage is written to one keyed, hash-chained file, so the order proposal, review,
+measurement, training, freeze, audit can be shown afterwards, each audit spends
+a programme error budget, and a model may not mix an audited freeze's evidence
+with evidence measured after that audit.
 """
 from __future__ import annotations
 
@@ -20,6 +28,7 @@ from typing import Any
 import numpy as np
 
 from .neural_trust import ReleaseEvidence, certify
+from .provenance import ProvenanceLedger, load_key
 
 SCHEMA_VERSION = "sentry-r-1"
 
@@ -33,9 +42,17 @@ def digest(value: Any) -> str:
     return hashlib.sha256(canonical(value)).hexdigest()
 
 
-def read_jsonl(path: Path) -> list[dict]:
+def read_jsonl(path: Path, *, max_bytes: int | None = None) -> list[dict]:
+    if max_bytes is not None:
+        with path.open('rb') as handle:
+            data = handle.read(max_bytes + 1)
+        if len(data) > max_bytes:
+            raise ValueError(f"intake exceeds {max_bytes} bytes; refused unparsed")
+        text = data.decode('utf-8')
+    else:
+        text = path.read_text(encoding="utf-8")
     rows = []
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    for number, line in enumerate(text.splitlines(), 1):
         if line.strip():
             value = json.loads(line)
             if not isinstance(value, dict):
@@ -98,8 +115,19 @@ class ScenarioSchema:
         return vector
 
 
-def stage_llm(rows: list[dict], schema: ScenarioSchema) -> list[dict]:
+MAX_PROPOSALS = 32
+MAX_RESPONSE_BYTES = 256_000
+
+
+def stage_llm(rows: list[dict], schema: ScenarioSchema, *,
+              provenance: ProvenanceLedger | None = None) -> list[dict]:
     """Validate LLM proposals; preserve text as data, never as an instruction."""
+    if not rows:
+        raise ValueError("no proposals to stage")
+    if len(rows) > MAX_PROPOSALS:
+        raise ValueError(f"at most {MAX_PROPOSALS} proposals per intake; split the batch")
+    if len(canonical(rows)) > MAX_RESPONSE_BYTES:
+        raise ValueError(f"intake exceeds {MAX_RESPONSE_BYTES} bytes")
     output, seen = [], set()
     for row in rows:
         if set(row) != {"proposal_id", "scenario", "features", "llm_model", "prompt_hash"}:
@@ -116,6 +144,8 @@ def stage_llm(rows: list[dict], schema: ScenarioSchema) -> list[dict]:
         schema.vector(row["features"])
         output.append({**row, "proposal_digest": digest(row),
                        "status": "unverified_llm_proposal"})
+    if provenance is not None:
+        provenance.record_proposals(output)
     return output
 
 
@@ -123,7 +153,9 @@ LLM_RESPONSE_FIELDS = frozenset({"proposal_id", "scenario", "features"})
 
 
 def propose_from_llm(call: Callable[[str], str], schema: ScenarioSchema,
-                     question: str, *, model_name: str) -> list[dict]:
+                     question: str, *, model_name: str,
+                     max_bytes: int = MAX_RESPONSE_BYTES,
+                     provenance: ProvenanceLedger | None = None) -> list[dict]:
     """Provider-neutral adapter: inject a callable, parse JSON, then stage.
 
     The caller decides whether any information is allowed to leave its system.
@@ -131,7 +163,10 @@ def propose_from_llm(call: Callable[[str], str], schema: ScenarioSchema,
     ``scenario`` and ``features``. Provenance is set here, not by the model:
     ``llm_model`` is the caller's ``model_name`` and ``prompt_hash`` is the
     SHA-256 of the exact prompt sent. No response text is executed and no
-    success labels are accepted.
+    success labels are accepted. A response longer than ``max_bytes`` or
+    holding more than ``MAX_PROPOSALS`` objects is refused. The byte limit is
+    checked before parsing; the proposal count is checked after parsing.
+    Provider-side token and timeout limits must also bound response generation.
     """
     if not isinstance(model_name, str) or not model_name:
         raise ValueError("model_name must be a nonempty string set by the caller")
@@ -140,19 +175,27 @@ def propose_from_llm(call: Callable[[str], str], schema: ScenarioSchema,
               "Numeric feature bounds and risk coordinates are: "
               + canonical(schema.as_dict()).decode("utf-8") + "\nQuestion: " + question)
     prompt_hash = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
-    result = json.loads(call(prompt))
+    text = call(prompt)
+    if not isinstance(text, str):
+        raise ValueError("LLM adapter must return the response text")
+    if len(text.encode("utf-8")) > max_bytes:
+        raise ValueError(f"LLM response exceeds {max_bytes} bytes; refused unparsed")
+    result = json.loads(text)
     if not isinstance(result, list):
         raise ValueError("LLM response must be a JSON array")
+    if len(result) > MAX_PROPOSALS:
+        raise ValueError(f"LLM returned more than {MAX_PROPOSALS} proposals; refused")
     rows = []
     for item in result:
         if not isinstance(item, dict) or set(item) != LLM_RESPONSE_FIELDS:
             raise ValueError("LLM response objects must hold exactly proposal_id, "
                              "scenario and features")
         rows.append({**item, "llm_model": model_name, "prompt_hash": prompt_hash})
-    return stage_llm(rows, schema)
+    return stage_llm(rows, schema, provenance=provenance)
 
 
-def review_proposals(staged: list[dict], decisions: list[dict]) -> list[dict]:
+def review_proposals(staged: list[dict], decisions: list[dict], *,
+                     provenance: ProvenanceLedger | None = None) -> list[dict]:
     """Record explicit human scenario review before measuring attacks."""
     proposals = {row["proposal_id"]: row for row in staged}
     if len(proposals) != len(staged):
@@ -176,11 +219,14 @@ def review_proposals(staged: list[dict], decisions: list[dict]) -> list[dict]:
                              "review": {"reviewer": decision["reviewer"],
                                         "reason": decision["reason"],
                                         "decision_digest": digest(decision)}})
+    if provenance is not None and approved:
+        provenance.record_review(approved)
     return approved
 
 
 def join_evidence(staged: list[dict], outcomes: list[dict],
-                  schema: ScenarioSchema) -> list[dict]:
+                  schema: ScenarioSchema, *,
+                  provenance: ProvenanceLedger | None = None) -> list[dict]:
     """Measured trials turn a proposed scenario into *development* data only."""
     proposals = {row["proposal_id"]: row for row in staged}
     if len(proposals) != len(staged):
@@ -219,6 +265,8 @@ def join_evidence(staged: list[dict], outcomes: list[dict],
                        "evidence_kind": row["evidence_kind"],
                        "successes": successes, "trials": trials,
                        "proposal_digest": row["proposal_digest"]})
+    if provenance is not None:
+        provenance.record_measurements(output)
     return output
 
 
@@ -383,7 +431,8 @@ class DeepRiskNet:
 
 def train_model(train_rows: list[dict], valid_rows: list[dict], schema: ScenarioSchema,
                 *, width: int = 32, depth: int = 3, epochs: int = 250,
-                patience: int = 25, seed: int = 19) -> dict:
+                patience: int = 25, seed: int = 19,
+                provenance: ProvenanceLedger | None = None) -> dict:
     train_groups = {row["group"] for row in train_rows}
     valid_groups = {row["group"] for row in valid_rows}
     train_ids = {row["record_id"] for row in train_rows}
@@ -394,6 +443,12 @@ def train_model(train_rows: list[dict], valid_rows: list[dict], schema: Scenario
         raise ValueError("train and validation groups/records/evidence must be disjoint")
     x, k, b = matrix(train_rows, schema)
     xv, kv, bv = matrix(valid_rows, schema)
+    # IDs can be changed on a copied row. Conservatively reject injected feature
+    # vectors identical to a validation vector; this cannot detect semantic copies.
+    valid_vectors = {tuple(v) for v in xv}
+    if any(row.get('proposal_digest') is not None and tuple(vector) in valid_vectors
+           for row, vector in zip(train_rows, x)):
+        raise ValueError("injected proposal has validation feature overlap")
     mean = x.mean(axis=0)
     scale = np.where(x.std(axis=0) < 1e-6, 1., x.std(axis=0))
     net = DeepRiskNet(x.shape[1], k.shape[1], width, depth, seed)
@@ -402,7 +457,7 @@ def train_model(train_rows: list[dict], valid_rows: list[dict], schema: Scenario
     evidence_ids = [row["evidence_id"] for row in [*train_rows, *valid_rows]]
     if any(not isinstance(v, str) or not v for v in evidence_ids):
         raise ValueError("every development row needs a nonempty evidence_id")
-    return {"method": "SENTRY-R", "schema_version": SCHEMA_VERSION,
+    bundle = {"method": "SENTRY-R", "schema_version": SCHEMA_VERSION,
             "schema": schema.as_dict(), "schema_sha256": digest(schema.as_dict()),
             "mean": mean.tolist(), "scale": scale.tolist(), "network": net.to_dict(),
             "metrics": metrics, "training_sha256": digest(train_rows),
@@ -413,6 +468,9 @@ def train_model(train_rows: list[dict], valid_rows: list[dict], schema: Scenario
                                   "patience": patience, "seed": seed},
             "development_only": True,
             "warning": "Predictions rank proposals; independent attack audits certify releases."}
+    if provenance is not None:
+        provenance.record_training(bundle, train_rows, valid_rows)
+    return bundle
 
 
 def planned_trials_by_candidate(trials: int | list[int] | dict, names: list[str],
@@ -437,7 +495,8 @@ def planned_trials_by_candidate(trials: int | list[int] | dict, names: list[str]
 
 def shortlist(bundle: dict, candidates: list[dict], size: int, *,
               alpha: float, trials: int | list[int] | dict, owner: str,
-              expiry: str) -> dict:
+              expiry: str, programme: str | None = None,
+              provenance: ProvenanceLedger | None = None) -> dict:
     """Rank candidates and freeze everything the final audit may not change.
 
     The freeze records the family-wise ``alpha``, the planned final-audit
@@ -483,6 +542,10 @@ def shortlist(bundle: dict, candidates: list[dict], size: int, *,
               "ranking_rule": "ascending largest predicted risk-to-tolerance ratio",
               "status": "fixed_shortlist_before_audit"}
     freeze["freeze_sha256"] = digest(freeze)
+    if provenance is not None:
+        if not isinstance(programme, str) or not programme:
+            raise ValueError("a programme name is required to record a freeze on the ledger")
+        provenance.record_freeze(freeze, programme)
     return freeze
 
 
@@ -511,14 +574,17 @@ def read_ledger(path: Path) -> list[dict]:
 
 
 def final_audit(freeze: dict, outcomes: list[dict], *, ledger: Path | None = None,
-                as_of: date | None = None) -> dict:
+                as_of: date | None = None,
+                provenance: ProvenanceLedger | None = None) -> dict:
     """Certify a frozen shortlist from fresh audit counts.
 
     Alpha, planned trials, owner and expiry come from the freeze. The audit is
     refused if the freeze changed, if the date is past expiry, if any count
     departs from the planned trials, if an evidence ID was used in development,
     or if ``ledger`` already records an audit of this freeze. With ``ledger``
-    set, the decision is appended to that JSON-lines file.
+    set, the decision is appended to that JSON-lines file. With ``provenance``
+    set, the audit is also refused unless its freeze is on the chain, unaudited,
+    and within the programme's error budget; the decision is then chained.
     """
     expected = freeze.copy()
     actual_hash = expected.pop("freeze_sha256")
@@ -569,6 +635,8 @@ def final_audit(freeze: dict, outcomes: list[dict], *, ledger: Path | None = Non
                 "selected": max(eligible, key=lambda row: row["utility"])["name"]
                 if eligible else None, "reports": reports,
                 "scope": "conditional on declared scenarios and independent final attack draws"}
+    if provenance is not None:
+        provenance.record_audit(decision)
     if ledger is not None:
         entry = {"freeze_sha256": actual_hash, "schema_sha256": freeze["schema_sha256"],
                  "decision_sha256": digest(decision), "selected": decision["selected"],
@@ -581,7 +649,17 @@ def final_audit(freeze: dict, outcomes: list[dict], *, ledger: Path | None = Non
 
 def cli() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--provenance", type=Path,
+                        help="keyed, hash-chained ledger across every stage (JSON lines)")
+    parser.add_argument("--key-file", type=Path,
+                        help="file holding the ledger key; else the SENTRY_R_LEDGER_KEY variable")
+    parser.add_argument("--unkeyed", action="store_true",
+                        help="use the provenance ledger without signatures (chain only)")
     subs = parser.add_subparsers(dest="command", required=True)
+    s = subs.add_parser("budget", help="Declare a programme's error budget on the ledger")
+    s.add_argument("--programme", required=True)
+    s.add_argument("--alpha-budget", type=float, required=True)
+    s = subs.add_parser("verify-ledger", help="Check the chain and signatures, print a summary")
     s = subs.add_parser("stage-llm", help="Validate untrusted LLM scenario proposals")
     s.add_argument("--schema", type=Path, required=True)
     s.add_argument("--input", type=Path, required=True)
@@ -621,6 +699,8 @@ def cli() -> None:
                    help="planned final-audit trials per candidate and coordinate")
     s.add_argument("--owner", required=True, help="named owner of the tolerances")
     s.add_argument("--expiry", required=True, help="ISO date after which the freeze lapses")
+    s.add_argument("--programme", help="programme whose error budget this freeze draws on "
+                                       "(required with --provenance)")
     s.add_argument("--output", type=Path, required=True)
     s = subs.add_parser("audit", help="Certify frozen candidates with fresh attacks")
     s.add_argument("--shortlist", type=Path, required=True)
@@ -632,15 +712,32 @@ def cli() -> None:
     s.add_argument("--no-ledger", action="store_true",
                    help="do not read or write a ledger")
     args = parser.parse_args()
+    provenance = None
+    if args.command in ("budget", "verify-ledger") and args.provenance is None:
+        parser.error(f"{args.command} needs --provenance")
+    if args.provenance is not None:
+        key = None if args.unkeyed else load_key(args.key_file)
+        provenance = ProvenanceLedger(args.provenance, key)
+    if args.command == "budget":
+        provenance.set_budget(args.programme, args.alpha_budget)
+        print(f"SENTRY-R budget: {args.programme} alpha budget {args.alpha_budget} recorded")
+        return
+    if args.command == "verify-ledger":
+        provenance.verify()
+        print(json.dumps(provenance.summary(), indent=2))
+        return
     if args.command == "stage-llm":
-        result = stage_llm(read_jsonl(args.input), ScenarioSchema.load(args.schema))
+        result = stage_llm(read_jsonl(args.input, max_bytes=MAX_RESPONSE_BYTES),
+                           ScenarioSchema.load(args.schema),
+                           provenance=provenance)
         write_jsonl(args.output, result)
     elif args.command == "join-evidence":
         result = join_evidence(read_jsonl(args.staged), read_jsonl(args.outcomes),
-                               ScenarioSchema.load(args.schema))
+                               ScenarioSchema.load(args.schema), provenance=provenance)
         write_jsonl(args.output, result)
     elif args.command == "review":
-        result = review_proposals(read_jsonl(args.staged), read_jsonl(args.decisions))
+        result = review_proposals(read_jsonl(args.staged), read_jsonl(args.decisions),
+                                  provenance=provenance)
         if not result:
             raise ValueError("no proposals approved for development")
         write_jsonl(args.output, result)
@@ -652,20 +749,21 @@ def cli() -> None:
         result = train_model(read_jsonl(args.train), read_jsonl(args.validation),
                              ScenarioSchema.load(args.schema), width=args.width,
                              depth=args.depth, epochs=args.epochs,
-                             patience=args.patience, seed=args.seed)
+                             patience=args.patience, seed=args.seed, provenance=provenance)
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n",
                                encoding="utf-8")
     elif args.command == "shortlist":
         result = shortlist(json.loads(args.model.read_text()), read_jsonl(args.candidates),
                            args.size, alpha=args.alpha, trials=args.trials,
-                           owner=args.owner, expiry=args.expiry)
+                           owner=args.owner, expiry=args.expiry, programme=args.programme,
+                           provenance=provenance)
         args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     else:
         ledger = None if args.no_ledger else (
             args.ledger or args.output.parent / "audit_ledger.jsonl")
         result = final_audit(json.loads(args.shortlist.read_text()),
-                             read_jsonl(args.outcomes), ledger=ledger)
+                             read_jsonl(args.outcomes), ledger=ledger, provenance=provenance)
         args.output.write_text(json.dumps(result, indent=2, allow_nan=False) + "\n")
     print(f"SENTRY-R {args.command}: wrote {args.output}")
 

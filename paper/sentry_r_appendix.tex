@@ -35,8 +35,13 @@ for scenarios omitted from the declared family or for a final audit that has
 influenced development. In particular, feeding a final audit result back to
 an LLM and then trying another candidate with the same nominal $\alpha$
 is an unaccounted additional selection step. The code refuses a second audit
-of one freeze when a ledger is kept, but it does not stop a new freeze after
-an audit has been seen.
+of one freeze when a ledger is kept. With the provenance ledger of
+Section \ref{sec:sentry} it also charges every audit to a programme error
+budget declared once on the chain, so a new freeze after a failed audit costs
+budget rather than restarting at the nominal $\alpha$, and it refuses a
+training run that mixes an audited freeze's development evidence with evidence
+measured after that audit. What remains unprotected is the operator who holds
+the key and can rewrite the whole file.
 
 \paragraph{Why measured trials cannot be replaced by language-model labels.}
 The proper-scoring identity in \eqref{eq:sentry-proper} assumes

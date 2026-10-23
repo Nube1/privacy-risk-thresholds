@@ -288,6 +288,14 @@ BIS or IFC publication. On the synthetic benchmark, trained to convergence
 over ten seeds, the logistic and deep models reach indistinguishable held-out
 loss: the benchmark shows that the pipeline runs, not that depth helps.
 
+The LLM is an injector into a closed network: only schema-checked, reviewed and
+measured scenarios reach the model. `privacy_risk.provenance.ProvenanceLedger`
+(`sentry-r --provenance chain.jsonl ...`) records every stage on one keyed,
+hash-chained ledger, refuses a stage whose prerequisites are not on the chain,
+debits each audit against a programme error budget, and stops a model from
+mixing an audited freeze's evidence with evidence measured after that audit.
+`docs/SENTRY_R.md` has the rules and the commands.
+
 `privacy_risk.neural_trust` provides an optional nonlinear proposal model. It
 accepts attack-level development labels, ranks a fixed shortlist, and certifies
 each candidate against every declared risk coordinate using fresh binomial

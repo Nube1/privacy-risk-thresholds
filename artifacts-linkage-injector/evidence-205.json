@@ -1,0 +1,8108 @@
+{
+  "base": [
+    {
+      "record_id": "base-0",
+      "group": "base",
+      "evidence_id": "base-0",
+      "features": {
+        "sparsity": 0.6357299305678745,
+        "auxiliary": 0.15964220584632577,
+        "overlap": 0.5761594133898151,
+        "noise": 0.13327348900839076
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-1",
+      "group": "base",
+      "evidence_id": "base-1",
+      "features": {
+        "sparsity": 0.29316434402647445,
+        "auxiliary": 0.09465264620095028,
+        "overlap": 0.3238130997178027,
+        "noise": 0.0659173365012866
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-2",
+      "group": "base",
+      "evidence_id": "base-2",
+      "features": {
+        "sparsity": 0.26949562007700184,
+        "auxiliary": 0.6772553925374439,
+        "overlap": 0.6285870319448631,
+        "noise": 0.42538732233539417
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        13
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-3",
+      "group": "base",
+      "evidence_id": "base-3",
+      "features": {
+        "sparsity": 0.3152543496561414,
+        "auxiliary": 0.5995163740605085,
+        "overlap": 0.6298610683381948,
+        "noise": 0.6581943625238669
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-4",
+      "group": "base",
+      "evidence_id": "base-4",
+      "features": {
+        "sparsity": 0.3078049388484115,
+        "auxiliary": 0.17395999267498619,
+        "overlap": 0.45058725685482676,
+        "noise": 0.5999016056684453
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-5",
+      "group": "base",
+      "evidence_id": "base-5",
+      "features": {
+        "sparsity": 0.12551399015023812,
+        "auxiliary": 0.2668840570178252,
+        "overlap": 0.33551317594174085,
+        "noise": 0.21025100102592878
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-6",
+      "group": "base",
+      "evidence_id": "base-6",
+      "features": {
+        "sparsity": 0.5261298887700888,
+        "auxiliary": 0.6974458771561238,
+        "overlap": 0.32643009528756967,
+        "noise": 0.6617479343939315
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-7",
+      "group": "base",
+      "evidence_id": "base-7",
+      "features": {
+        "sparsity": 0.264734170324145,
+        "auxiliary": 0.01288784577551889,
+        "overlap": 0.22951625898431202,
+        "noise": 0.02532192294041684
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-8",
+      "group": "base",
+      "evidence_id": "base-8",
+      "features": {
+        "sparsity": 0.5206345539461414,
+        "auxiliary": 0.6458657071018955,
+        "overlap": 0.49631057441020293,
+        "noise": 0.4817000497221498
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-9",
+      "group": "base",
+      "evidence_id": "base-9",
+      "features": {
+        "sparsity": 0.31057556439292827,
+        "auxiliary": 0.4515222982923489,
+        "overlap": 0.06258700293718257,
+        "noise": 0.3339979347487543
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-10",
+      "group": "base",
+      "evidence_id": "base-10",
+      "features": {
+        "sparsity": 0.6848329099108244,
+        "auxiliary": 0.04624902473465372,
+        "overlap": 0.044701899108896,
+        "noise": 0.6286121386011738
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-11",
+      "group": "base",
+      "evidence_id": "base-11",
+      "features": {
+        "sparsity": 0.23662537071930148,
+        "auxiliary": 0.01074950526591607,
+        "overlap": 0.43530793865501066,
+        "noise": 0.6829151229312729
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-12",
+      "group": "base",
+      "evidence_id": "base-12",
+      "features": {
+        "sparsity": 0.21425378206290915,
+        "auxiliary": 0.3577302112838001,
+        "overlap": 0.6803953935242438,
+        "noise": 0.36347500858628584
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        12
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-13",
+      "group": "base",
+      "evidence_id": "base-13",
+      "features": {
+        "sparsity": 0.10241439972862516,
+        "auxiliary": 0.2496659496596789,
+        "overlap": 0.23962744813853826,
+        "noise": 0.42263532941729776
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-14",
+      "group": "base",
+      "evidence_id": "base-14",
+      "features": {
+        "sparsity": 0.5477292119812858,
+        "auxiliary": 0.17439608945470786,
+        "overlap": 0.6838082662839817,
+        "noise": 0.577299514633539
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-15",
+      "group": "base",
+      "evidence_id": "base-15",
+      "features": {
+        "sparsity": 0.2274896590299529,
+        "auxiliary": 0.010281770785763677,
+        "overlap": 0.5771420715794678,
+        "noise": 0.14140563689165353
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-16",
+      "group": "base",
+      "evidence_id": "base-16",
+      "features": {
+        "sparsity": 0.6227236287470852,
+        "auxiliary": 0.3772110783786274,
+        "overlap": 0.18115608056424065,
+        "noise": 0.6384096968562244
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-17",
+      "group": "base",
+      "evidence_id": "base-17",
+      "features": {
+        "sparsity": 0.15083495254347018,
+        "auxiliary": 0.6746120354418914,
+        "overlap": 0.23245022870033713,
+        "noise": 0.38764144501970504
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-18",
+      "group": "base",
+      "evidence_id": "base-18",
+      "features": {
+        "sparsity": 0.015398018705645288,
+        "auxiliary": 0.2663768532223596,
+        "overlap": 0.3587903662490447,
+        "noise": 0.4422601456841633
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-19",
+      "group": "base",
+      "evidence_id": "base-19",
+      "features": {
+        "sparsity": 0.5879166475792204,
+        "auxiliary": 0.32407827590476673,
+        "overlap": 0.32112777731496633,
+        "noise": 0.6680316372499407
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-20",
+      "group": "base",
+      "evidence_id": "base-20",
+      "features": {
+        "sparsity": 0.4873640032330862,
+        "auxiliary": 0.46665486055565203,
+        "overlap": 0.2003096668909967,
+        "noise": 0.44263839706094577
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-21",
+      "group": "base",
+      "evidence_id": "base-21",
+      "features": {
+        "sparsity": 0.5853650108131873,
+        "auxiliary": 0.36721484703252577,
+        "overlap": 0.15618645441669946,
+        "noise": 0.0603379177262475
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-22",
+      "group": "base",
+      "evidence_id": "base-22",
+      "features": {
+        "sparsity": 0.035098202035741974,
+        "auxiliary": 0.5585906926828423,
+        "overlap": 0.1076547065933047,
+        "noise": 0.4749071424395151
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-23",
+      "group": "base",
+      "evidence_id": "base-23",
+      "features": {
+        "sparsity": 0.1640106769283997,
+        "auxiliary": 0.4562074715897043,
+        "overlap": 0.1855914097908442,
+        "noise": 0.011973927844903842
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-24",
+      "group": "base",
+      "evidence_id": "base-24",
+      "features": {
+        "sparsity": 0.015106902827845213,
+        "auxiliary": 0.07262516319328777,
+        "overlap": 0.018260573305977978,
+        "noise": 0.5093911497393288
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-25",
+      "group": "base",
+      "evidence_id": "base-25",
+      "features": {
+        "sparsity": 0.13600746466714433,
+        "auxiliary": 0.4552574921940013,
+        "overlap": 0.5393339826184986,
+        "noise": 0.10041776892944194
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        14
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-26",
+      "group": "base",
+      "evidence_id": "base-26",
+      "features": {
+        "sparsity": 0.0798356016623614,
+        "auxiliary": 0.5289738885473523,
+        "overlap": 0.3500927690894638,
+        "noise": 0.058453189955225665
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        17
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-27",
+      "group": "base",
+      "evidence_id": "base-27",
+      "features": {
+        "sparsity": 0.19319882595170323,
+        "auxiliary": 0.20053755069192633,
+        "overlap": 0.40505092526987163,
+        "noise": 0.5964331913627093
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-28",
+      "group": "base",
+      "evidence_id": "base-28",
+      "features": {
+        "sparsity": 0.2700781669284379,
+        "auxiliary": 0.21034720159849354,
+        "overlap": 0.06973301539534588,
+        "noise": 0.060188257327327174
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-29",
+      "group": "base",
+      "evidence_id": "base-29",
+      "features": {
+        "sparsity": 0.4818672537490027,
+        "auxiliary": 0.10889758159032933,
+        "overlap": 0.11959868368480735,
+        "noise": 0.23476559388896318
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-30",
+      "group": "base",
+      "evidence_id": "base-30",
+      "features": {
+        "sparsity": 0.4650834751131218,
+        "auxiliary": 0.03531744545051195,
+        "overlap": 0.06527634519448043,
+        "noise": 0.38009807150206526
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-31",
+      "group": "base",
+      "evidence_id": "base-31",
+      "features": {
+        "sparsity": 0.5519015234660973,
+        "auxiliary": 0.3915205315441624,
+        "overlap": 0.655024791652338,
+        "noise": 0.5956804482597878
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-32",
+      "group": "base",
+      "evidence_id": "base-32",
+      "features": {
+        "sparsity": 0.16276639548704783,
+        "auxiliary": 0.08309778151441191,
+        "overlap": 0.3748924069547775,
+        "noise": 0.35834959345997314
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-33",
+      "group": "base",
+      "evidence_id": "base-33",
+      "features": {
+        "sparsity": 0.22922245372820602,
+        "auxiliary": 0.04905399086628045,
+        "overlap": 0.08549505341127775,
+        "noise": 0.48459696819262804
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-34",
+      "group": "base",
+      "evidence_id": "base-34",
+      "features": {
+        "sparsity": 0.5713219152861646,
+        "auxiliary": 0.6277567529912055,
+        "overlap": 0.0705538116182121,
+        "noise": 0.5275522811801119
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-35",
+      "group": "base",
+      "evidence_id": "base-35",
+      "features": {
+        "sparsity": 0.2446062719763207,
+        "auxiliary": 0.24245388814955088,
+        "overlap": 0.5575706467572636,
+        "noise": 0.6689348220743762
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-36",
+      "group": "base",
+      "evidence_id": "base-36",
+      "features": {
+        "sparsity": 0.550922596590283,
+        "auxiliary": 0.41440352118083734,
+        "overlap": 0.2558904490559213,
+        "noise": 0.061390441603785526
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-37",
+      "group": "base",
+      "evidence_id": "base-37",
+      "features": {
+        "sparsity": 0.18379757569578087,
+        "auxiliary": 0.660048651099324,
+        "overlap": 0.08787873706669354,
+        "noise": 0.17370398562370035
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        17
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-38",
+      "group": "base",
+      "evidence_id": "base-38",
+      "features": {
+        "sparsity": 0.21228198137170012,
+        "auxiliary": 0.25562192926630695,
+        "overlap": 0.05308365320155669,
+        "noise": 0.027461857199822966
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-39",
+      "group": "base",
+      "evidence_id": "base-39",
+      "features": {
+        "sparsity": 0.12685797352034922,
+        "auxiliary": 0.046917310948826736,
+        "overlap": 0.2012464426510249,
+        "noise": 0.5442437370370079
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-40",
+      "group": "base",
+      "evidence_id": "base-40",
+      "features": {
+        "sparsity": 0.27941815506893103,
+        "auxiliary": 0.10925827354165232,
+        "overlap": 0.20722985254532703,
+        "noise": 0.6668516197769216
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-41",
+      "group": "base",
+      "evidence_id": "base-41",
+      "features": {
+        "sparsity": 0.34658899271894306,
+        "auxiliary": 0.20477776515704857,
+        "overlap": 0.05243536324386707,
+        "noise": 0.2705228256029339
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-42",
+      "group": "base",
+      "evidence_id": "base-42",
+      "features": {
+        "sparsity": 0.3343262716622688,
+        "auxiliary": 0.19744308400793276,
+        "overlap": 0.4204077923469499,
+        "noise": 0.5131646570848502
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-43",
+      "group": "base",
+      "evidence_id": "base-43",
+      "features": {
+        "sparsity": 0.13703552410291167,
+        "auxiliary": 0.3850449629825904,
+        "overlap": 0.08097151138538666,
+        "noise": 0.3682679010651136
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-44",
+      "group": "base",
+      "evidence_id": "base-44",
+      "features": {
+        "sparsity": 0.344033571848763,
+        "auxiliary": 0.11723210744867052,
+        "overlap": 0.036540117985135054,
+        "noise": 0.3355838142214631
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-45",
+      "group": "base",
+      "evidence_id": "base-45",
+      "features": {
+        "sparsity": 0.6778695208528802,
+        "auxiliary": 0.033591344799366846,
+        "overlap": 0.50304393201554,
+        "noise": 0.15485524249214275
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-46",
+      "group": "base",
+      "evidence_id": "base-46",
+      "features": {
+        "sparsity": 0.1442209042146286,
+        "auxiliary": 0.0545843614278117,
+        "overlap": 0.24818810726811485,
+        "noise": 0.22205592424564857
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-47",
+      "group": "base",
+      "evidence_id": "base-47",
+      "features": {
+        "sparsity": 0.41618681048941064,
+        "auxiliary": 0.6031137006996885,
+        "overlap": 0.38885751728144835,
+        "noise": 0.6406539282926044
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-48",
+      "group": "base",
+      "evidence_id": "base-48",
+      "features": {
+        "sparsity": 0.18422382986045419,
+        "auxiliary": 0.5834585120613907,
+        "overlap": 0.38378577176179823,
+        "noise": 0.6243527310780329
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-49",
+      "group": "base",
+      "evidence_id": "base-49",
+      "features": {
+        "sparsity": 0.06750467245382741,
+        "auxiliary": 0.23459268869193525,
+        "overlap": 0.22281801716593147,
+        "noise": 0.2775319758038819
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-50",
+      "group": "base",
+      "evidence_id": "base-50",
+      "features": {
+        "sparsity": 0.6990385061428008,
+        "auxiliary": 0.0920352114932223,
+        "overlap": 0.45190497105121213,
+        "noise": 0.10953641236817613
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-51",
+      "group": "base",
+      "evidence_id": "base-51",
+      "features": {
+        "sparsity": 0.13049787819682448,
+        "auxiliary": 0.19152213089382614,
+        "overlap": 0.38035161908063,
+        "noise": 0.16674060865410428
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-52",
+      "group": "base",
+      "evidence_id": "base-52",
+      "features": {
+        "sparsity": 0.22501071786663712,
+        "auxiliary": 0.17798058515245646,
+        "overlap": 0.030292135540375107,
+        "noise": 0.6425216687114864
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-53",
+      "group": "base",
+      "evidence_id": "base-53",
+      "features": {
+        "sparsity": 0.318311912941922,
+        "auxiliary": 0.6099747677867033,
+        "overlap": 0.26422952028887686,
+        "noise": 0.5011044112790363
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        1
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-54",
+      "group": "base",
+      "evidence_id": "base-54",
+      "features": {
+        "sparsity": 0.6327995631678164,
+        "auxiliary": 0.5947062213855236,
+        "overlap": 0.06123029678202404,
+        "noise": 0.25676967203558604
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-55",
+      "group": "base",
+      "evidence_id": "base-55",
+      "features": {
+        "sparsity": 0.05796668505152607,
+        "auxiliary": 0.12828113416484427,
+        "overlap": 0.5193137944009103,
+        "noise": 0.5997796212135159
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-56",
+      "group": "base",
+      "evidence_id": "base-56",
+      "features": {
+        "sparsity": 0.30009118504200644,
+        "auxiliary": 0.4457313287180737,
+        "overlap": 0.4893409005398354,
+        "noise": 0.6913293291027299
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-57",
+      "group": "base",
+      "evidence_id": "base-57",
+      "features": {
+        "sparsity": 0.10240504381309966,
+        "auxiliary": 0.6826602729968683,
+        "overlap": 0.5009929788749128,
+        "noise": 0.08484797374746061
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        35
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-58",
+      "group": "base",
+      "evidence_id": "base-58",
+      "features": {
+        "sparsity": 0.13804699658988145,
+        "auxiliary": 0.3690538127104671,
+        "overlap": 0.5757831837124583,
+        "noise": 0.1782667438652136
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        14
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-59",
+      "group": "base",
+      "evidence_id": "base-59",
+      "features": {
+        "sparsity": 0.23568186787473533,
+        "auxiliary": 0.2220692973224459,
+        "overlap": 0.5091606449297853,
+        "noise": 0.26078689166812746
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-60",
+      "group": "base",
+      "evidence_id": "base-60",
+      "features": {
+        "sparsity": 0.20095878798146732,
+        "auxiliary": 0.5232793030356724,
+        "overlap": 0.01077754516963607,
+        "noise": 0.27803308145578176
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-61",
+      "group": "base",
+      "evidence_id": "base-61",
+      "features": {
+        "sparsity": 0.6950194268395795,
+        "auxiliary": 0.5577230495032809,
+        "overlap": 0.32373768698557615,
+        "noise": 0.47905445169305766
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-62",
+      "group": "base",
+      "evidence_id": "base-62",
+      "features": {
+        "sparsity": 0.3171177454807936,
+        "auxiliary": 0.2355072749602228,
+        "overlap": 0.44037797899159925,
+        "noise": 0.19516720187181621
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-63",
+      "group": "base",
+      "evidence_id": "base-63",
+      "features": {
+        "sparsity": 0.19744527213579494,
+        "auxiliary": 0.1512166866502688,
+        "overlap": 0.5319141783060134,
+        "noise": 0.38399400417368323
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-64",
+      "group": "base",
+      "evidence_id": "base-64",
+      "features": {
+        "sparsity": 0.4174483734519485,
+        "auxiliary": 0.2941389327127841,
+        "overlap": 0.14647195778422673,
+        "noise": 0.23003347142725325
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-65",
+      "group": "base",
+      "evidence_id": "base-65",
+      "features": {
+        "sparsity": 0.5274689610327479,
+        "auxiliary": 0.3922248072925111,
+        "overlap": 0.08053724743417366,
+        "noise": 0.23462940772453042
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-66",
+      "group": "base",
+      "evidence_id": "base-66",
+      "features": {
+        "sparsity": 0.02331777244967289,
+        "auxiliary": 0.3743392638506451,
+        "overlap": 0.14832526502715648,
+        "noise": 0.5409288086206501
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-67",
+      "group": "base",
+      "evidence_id": "base-67",
+      "features": {
+        "sparsity": 0.44363997025729257,
+        "auxiliary": 0.27275131559996346,
+        "overlap": 0.30133416636936194,
+        "noise": 0.18402450896296904
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-68",
+      "group": "base",
+      "evidence_id": "base-68",
+      "features": {
+        "sparsity": 0.5603987502329043,
+        "auxiliary": 0.6835406960528726,
+        "overlap": 0.13492760738494086,
+        "noise": 0.47169142837310957
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-69",
+      "group": "base",
+      "evidence_id": "base-69",
+      "features": {
+        "sparsity": 0.22778816023184345,
+        "auxiliary": 0.24564989478017854,
+        "overlap": 0.45018740268025886,
+        "noise": 0.09423755967636775
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-70",
+      "group": "base",
+      "evidence_id": "base-70",
+      "features": {
+        "sparsity": 0.5549859786614817,
+        "auxiliary": 0.12723563763846732,
+        "overlap": 0.20040231295416025,
+        "noise": 0.244357556621792
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-71",
+      "group": "base",
+      "evidence_id": "base-71",
+      "features": {
+        "sparsity": 0.1294318371419385,
+        "auxiliary": 0.4662761134447206,
+        "overlap": 0.18623965610417384,
+        "noise": 0.6077012821822346
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-72",
+      "group": "base",
+      "evidence_id": "base-72",
+      "features": {
+        "sparsity": 0.1709094930643446,
+        "auxiliary": 0.13126413643612433,
+        "overlap": 0.5801342731255031,
+        "noise": 0.3711018997980802
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-73",
+      "group": "base",
+      "evidence_id": "base-73",
+      "features": {
+        "sparsity": 0.5212577505323686,
+        "auxiliary": 0.3900868245952857,
+        "overlap": 0.12987843348990694,
+        "noise": 0.06359300414961984
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-74",
+      "group": "base",
+      "evidence_id": "base-74",
+      "features": {
+        "sparsity": 0.2528610493906109,
+        "auxiliary": 0.300080270185808,
+        "overlap": 0.22481572322080778,
+        "noise": 0.5937686973143615
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-75",
+      "group": "base",
+      "evidence_id": "base-75",
+      "features": {
+        "sparsity": 0.14891378204890315,
+        "auxiliary": 0.4417247074316552,
+        "overlap": 0.6762308119878722,
+        "noise": 0.5219436109443599
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-76",
+      "group": "base",
+      "evidence_id": "base-76",
+      "features": {
+        "sparsity": 0.4376929477043419,
+        "auxiliary": 0.5668487478489714,
+        "overlap": 0.48082766030840235,
+        "noise": 0.06656607662028538
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        19
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-77",
+      "group": "base",
+      "evidence_id": "base-77",
+      "features": {
+        "sparsity": 0.6005060833846235,
+        "auxiliary": 0.696112328913366,
+        "overlap": 0.36046158486787816,
+        "noise": 0.16047983851760717
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        25
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-78",
+      "group": "base",
+      "evidence_id": "base-78",
+      "features": {
+        "sparsity": 0.6433856271607461,
+        "auxiliary": 0.026247083498950316,
+        "overlap": 0.27918003529191265,
+        "noise": 0.49558651910331236
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        1
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-79",
+      "group": "base",
+      "evidence_id": "base-79",
+      "features": {
+        "sparsity": 0.2529956137795713,
+        "auxiliary": 0.07279951291062849,
+        "overlap": 0.1268515481021093,
+        "noise": 0.4527085736708195
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-80",
+      "group": "base",
+      "evidence_id": "base-80",
+      "features": {
+        "sparsity": 0.3443093882422269,
+        "auxiliary": 0.32068068732143706,
+        "overlap": 0.6429175104990594,
+        "noise": 0.5863403620289677
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-81",
+      "group": "base",
+      "evidence_id": "base-81",
+      "features": {
+        "sparsity": 0.3812139953220288,
+        "auxiliary": 0.22628771485333607,
+        "overlap": 0.6187392070598065,
+        "noise": 0.5276088709097764
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-82",
+      "group": "base",
+      "evidence_id": "base-82",
+      "features": {
+        "sparsity": 0.38547708492462857,
+        "auxiliary": 0.6735727821143191,
+        "overlap": 0.4630788067971407,
+        "noise": 0.1551708622147223
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        20
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-83",
+      "group": "base",
+      "evidence_id": "base-83",
+      "features": {
+        "sparsity": 0.6608700354821317,
+        "auxiliary": 0.5856144842148444,
+        "overlap": 0.6474422752722603,
+        "noise": 0.19187987132854312
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        13
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-84",
+      "group": "base",
+      "evidence_id": "base-84",
+      "features": {
+        "sparsity": 0.06887076446254901,
+        "auxiliary": 0.4706599886223837,
+        "overlap": 0.5448543198312334,
+        "noise": 0.28634225127705476
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-85",
+      "group": "base",
+      "evidence_id": "base-85",
+      "features": {
+        "sparsity": 0.5625656164424497,
+        "auxiliary": 0.0636836888197795,
+        "overlap": 0.6662323991988223,
+        "noise": 0.1612457378638101
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-86",
+      "group": "base",
+      "evidence_id": "base-86",
+      "features": {
+        "sparsity": 0.17665683085879957,
+        "auxiliary": 0.5450866637879084,
+        "overlap": 0.6796699103380605,
+        "noise": 0.4740981332109303
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        14
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-87",
+      "group": "base",
+      "evidence_id": "base-87",
+      "features": {
+        "sparsity": 0.16969125317563874,
+        "auxiliary": 0.540214743802669,
+        "overlap": 0.6736049555602085,
+        "noise": 0.37994913309374906
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-88",
+      "group": "base",
+      "evidence_id": "base-88",
+      "features": {
+        "sparsity": 0.06692204102940758,
+        "auxiliary": 0.2644232868459496,
+        "overlap": 0.12716921716695007,
+        "noise": 0.5417463170326317
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-89",
+      "group": "base",
+      "evidence_id": "base-89",
+      "features": {
+        "sparsity": 0.4818542552214593,
+        "auxiliary": 0.3137298451231195,
+        "overlap": 0.3830129750227544,
+        "noise": 0.4828432665278969
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-90",
+      "group": "base",
+      "evidence_id": "base-90",
+      "features": {
+        "sparsity": 0.11469665262598706,
+        "auxiliary": 0.07265425968474684,
+        "overlap": 0.16084852282273715,
+        "noise": 0.3097865175623896
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-91",
+      "group": "base",
+      "evidence_id": "base-91",
+      "features": {
+        "sparsity": 0.5825608526734504,
+        "auxiliary": 0.023325701719668333,
+        "overlap": 0.6887143246415351,
+        "noise": 0.0009052483623121942
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-92",
+      "group": "base",
+      "evidence_id": "base-92",
+      "features": {
+        "sparsity": 0.5184629769872154,
+        "auxiliary": 0.13730659635481035,
+        "overlap": 0.363093222002869,
+        "noise": 0.6411489810823019
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        1
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-93",
+      "group": "base",
+      "evidence_id": "base-93",
+      "features": {
+        "sparsity": 0.16500026483161165,
+        "auxiliary": 0.06907291470248228,
+        "overlap": 0.27544434871926565,
+        "noise": 0.626847982296036
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-94",
+      "group": "base",
+      "evidence_id": "base-94",
+      "features": {
+        "sparsity": 0.12608938015283824,
+        "auxiliary": 0.29590049651317885,
+        "overlap": 0.28546346856591037,
+        "noise": 0.09880835899500193
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-95",
+      "group": "base",
+      "evidence_id": "base-95",
+      "features": {
+        "sparsity": 0.21470000887301077,
+        "auxiliary": 0.1431388407593937,
+        "overlap": 0.23110101133909985,
+        "noise": 0.07499238663358593
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-96",
+      "group": "base",
+      "evidence_id": "base-96",
+      "features": {
+        "sparsity": 0.14136308236826867,
+        "auxiliary": 0.21782337313008693,
+        "overlap": 0.16772479445928268,
+        "noise": 0.03977305948305465
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-97",
+      "group": "base",
+      "evidence_id": "base-97",
+      "features": {
+        "sparsity": 0.4958494501751179,
+        "auxiliary": 0.6346531237708652,
+        "overlap": 0.5759536323150214,
+        "noise": 0.5363917068855518
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-98",
+      "group": "base",
+      "evidence_id": "base-98",
+      "features": {
+        "sparsity": 0.602099787611243,
+        "auxiliary": 0.12437919040850791,
+        "overlap": 0.35889893277600754,
+        "noise": 0.33976877459862964
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-99",
+      "group": "base",
+      "evidence_id": "base-99",
+      "features": {
+        "sparsity": 0.6331380112749783,
+        "auxiliary": 0.07662695486917555,
+        "overlap": 0.43704800920571824,
+        "noise": 0.5965695734506197
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-100",
+      "group": "base",
+      "evidence_id": "base-100",
+      "features": {
+        "sparsity": 0.6500413435512118,
+        "auxiliary": 0.3712594376803473,
+        "overlap": 0.6596786367999988,
+        "noise": 0.2958105551281429
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-101",
+      "group": "base",
+      "evidence_id": "base-101",
+      "features": {
+        "sparsity": 0.09015673769806026,
+        "auxiliary": 0.43183024579691015,
+        "overlap": 0.5660766802527677,
+        "noise": 0.5610053291958578
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-102",
+      "group": "base",
+      "evidence_id": "base-102",
+      "features": {
+        "sparsity": 0.5115332132439914,
+        "auxiliary": 0.17490373956745486,
+        "overlap": 0.3664797980206049,
+        "noise": 0.19156557195502605
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-103",
+      "group": "base",
+      "evidence_id": "base-103",
+      "features": {
+        "sparsity": 0.29522717694583356,
+        "auxiliary": 0.20539357692659482,
+        "overlap": 0.017095272585712595,
+        "noise": 0.5448463548272302
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-104",
+      "group": "base",
+      "evidence_id": "base-104",
+      "features": {
+        "sparsity": 0.28415423326727407,
+        "auxiliary": 0.394003436092809,
+        "overlap": 0.604484476652148,
+        "noise": 0.12087478520927851
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        18
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-105",
+      "group": "base",
+      "evidence_id": "base-105",
+      "features": {
+        "sparsity": 0.2049218245234479,
+        "auxiliary": 0.40426942611095895,
+        "overlap": 0.5608444650168866,
+        "noise": 0.3640646330909985
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-106",
+      "group": "base",
+      "evidence_id": "base-106",
+      "features": {
+        "sparsity": 0.10501447489234884,
+        "auxiliary": 0.10216359855391738,
+        "overlap": 0.1463820638811669,
+        "noise": 0.26474167627156364
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-107",
+      "group": "base",
+      "evidence_id": "base-107",
+      "features": {
+        "sparsity": 0.40820368928388073,
+        "auxiliary": 0.6344405066251304,
+        "overlap": 0.25339314144953956,
+        "noise": 0.5710681533704903
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-108",
+      "group": "base",
+      "evidence_id": "base-108",
+      "features": {
+        "sparsity": 0.1873502507600751,
+        "auxiliary": 0.4963537042616857,
+        "overlap": 0.6066610591509947,
+        "noise": 0.008950164072177512
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        13
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-109",
+      "group": "base",
+      "evidence_id": "base-109",
+      "features": {
+        "sparsity": 0.08242247259791696,
+        "auxiliary": 0.15017797678286718,
+        "overlap": 0.3667187788754128,
+        "noise": 0.33864712835301314
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-110",
+      "group": "base",
+      "evidence_id": "base-110",
+      "features": {
+        "sparsity": 0.16645773218449408,
+        "auxiliary": 0.5976720828809198,
+        "overlap": 0.34773108055204816,
+        "noise": 0.494567045996286
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-111",
+      "group": "base",
+      "evidence_id": "base-111",
+      "features": {
+        "sparsity": 0.676026547655922,
+        "auxiliary": 0.38765953113530294,
+        "overlap": 0.453689048646718,
+        "noise": 0.4999255373865543
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-112",
+      "group": "base",
+      "evidence_id": "base-112",
+      "features": {
+        "sparsity": 0.5956286951927818,
+        "auxiliary": 0.1443972249343336,
+        "overlap": 0.48840733759169686,
+        "noise": 0.563505373888373
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-113",
+      "group": "base",
+      "evidence_id": "base-113",
+      "features": {
+        "sparsity": 0.0558858131761619,
+        "auxiliary": 0.4381956833336292,
+        "overlap": 0.0006004942585467798,
+        "noise": 0.3787982665527833
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-114",
+      "group": "base",
+      "evidence_id": "base-114",
+      "features": {
+        "sparsity": 0.10661996781114969,
+        "auxiliary": 0.6040384929301931,
+        "overlap": 0.5229614067596267,
+        "noise": 0.31506202257787513
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        20
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-115",
+      "group": "base",
+      "evidence_id": "base-115",
+      "features": {
+        "sparsity": 0.20967675927592655,
+        "auxiliary": 0.1206150073110455,
+        "overlap": 0.09426298008350754,
+        "noise": 0.6944105869595707
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-116",
+      "group": "base",
+      "evidence_id": "base-116",
+      "features": {
+        "sparsity": 0.09338750460068143,
+        "auxiliary": 0.10827333722296406,
+        "overlap": 0.41179311417091025,
+        "noise": 0.6440399101118929
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-117",
+      "group": "base",
+      "evidence_id": "base-117",
+      "features": {
+        "sparsity": 0.07455659803230869,
+        "auxiliary": 0.11580202404687305,
+        "overlap": 0.07354068130574205,
+        "noise": 0.20648698480450878
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-118",
+      "group": "base",
+      "evidence_id": "base-118",
+      "features": {
+        "sparsity": 0.3382071688466887,
+        "auxiliary": 0.35331696942815854,
+        "overlap": 0.28112521558129083,
+        "noise": 0.6752764090077847
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "base-119",
+      "group": "base",
+      "evidence_id": "base-119",
+      "features": {
+        "sparsity": 0.024119643722356653,
+        "auxiliary": 0.16143425696031577,
+        "overlap": 0.6763518939772412,
+        "noise": 0.1624338254809406
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    }
+  ],
+  "stopping": [
+    {
+      "record_id": "valid-0",
+      "group": "valid",
+      "evidence_id": "valid-0",
+      "features": {
+        "sparsity": 0.22419457325445635,
+        "auxiliary": 0.5382133387698906,
+        "overlap": 0.701862449946929,
+        "noise": 0.9872534843170304
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-1",
+      "group": "valid",
+      "evidence_id": "valid-1",
+      "features": {
+        "sparsity": 0.6109376098872702,
+        "auxiliary": 0.24575739972324984,
+        "overlap": 0.48620425967250025,
+        "noise": 0.02310137907179477
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-2",
+      "group": "valid",
+      "evidence_id": "valid-2",
+      "features": {
+        "sparsity": 0.959058358895028,
+        "auxiliary": 0.17881702217445694,
+        "overlap": 0.9933251984478009,
+        "noise": 0.9715416104050215
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-3",
+      "group": "valid",
+      "evidence_id": "valid-3",
+      "features": {
+        "sparsity": 0.18941829510057706,
+        "auxiliary": 0.1020816577006457,
+        "overlap": 0.24049270214030005,
+        "noise": 0.48615003445843996
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-4",
+      "group": "valid",
+      "evidence_id": "valid-4",
+      "features": {
+        "sparsity": 0.4828126628289854,
+        "auxiliary": 0.20747345626996316,
+        "overlap": 0.6097542241045495,
+        "noise": 0.46530655087480843
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-5",
+      "group": "valid",
+      "evidence_id": "valid-5",
+      "features": {
+        "sparsity": 0.20854673803531387,
+        "auxiliary": 0.6331936662140525,
+        "overlap": 0.30215969654484964,
+        "noise": 0.6376444600572726
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-6",
+      "group": "valid",
+      "evidence_id": "valid-6",
+      "features": {
+        "sparsity": 0.6434313226598097,
+        "auxiliary": 0.02440959788608188,
+        "overlap": 0.3387844839061763,
+        "noise": 0.660423024831916
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-7",
+      "group": "valid",
+      "evidence_id": "valid-7",
+      "features": {
+        "sparsity": 0.023483586257386224,
+        "auxiliary": 0.2920978588404364,
+        "overlap": 0.15258013905820955,
+        "noise": 0.8590903506652071
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-8",
+      "group": "valid",
+      "evidence_id": "valid-8",
+      "features": {
+        "sparsity": 0.43013586745120447,
+        "auxiliary": 0.9590363170307726,
+        "overlap": 0.19199666765119427,
+        "noise": 0.7764841291374909
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-9",
+      "group": "valid",
+      "evidence_id": "valid-9",
+      "features": {
+        "sparsity": 0.6217682631657924,
+        "auxiliary": 0.08336077180295454,
+        "overlap": 0.13116792614901307,
+        "noise": 0.6909061741691688
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-10",
+      "group": "valid",
+      "evidence_id": "valid-10",
+      "features": {
+        "sparsity": 0.07260570712158665,
+        "auxiliary": 0.05057962899692081,
+        "overlap": 0.41808977704245465,
+        "noise": 0.702667972366635
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-11",
+      "group": "valid",
+      "evidence_id": "valid-11",
+      "features": {
+        "sparsity": 0.02352415049455525,
+        "auxiliary": 0.11000404312686551,
+        "overlap": 0.3525973682933635,
+        "noise": 0.0563235882169959
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-12",
+      "group": "valid",
+      "evidence_id": "valid-12",
+      "features": {
+        "sparsity": 0.645776462104269,
+        "auxiliary": 0.6026599032880587,
+        "overlap": 0.8457771579849698,
+        "noise": 0.16480957410267916
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        18
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-13",
+      "group": "valid",
+      "evidence_id": "valid-13",
+      "features": {
+        "sparsity": 0.8611373972804603,
+        "auxiliary": 0.31247676829557147,
+        "overlap": 0.3022582288720328,
+        "noise": 0.8929419305236678
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-14",
+      "group": "valid",
+      "evidence_id": "valid-14",
+      "features": {
+        "sparsity": 0.09079364471289941,
+        "auxiliary": 0.17468064958566276,
+        "overlap": 0.6805284081415244,
+        "noise": 0.4659336362632299
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-15",
+      "group": "valid",
+      "evidence_id": "valid-15",
+      "features": {
+        "sparsity": 0.3559283776708102,
+        "auxiliary": 0.32574947939980115,
+        "overlap": 0.547417819876037,
+        "noise": 0.6453917361201176
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-16",
+      "group": "valid",
+      "evidence_id": "valid-16",
+      "features": {
+        "sparsity": 0.05868941575646347,
+        "auxiliary": 0.7191139633452589,
+        "overlap": 0.6787294456814954,
+        "noise": 0.014300291874697835
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        29
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-17",
+      "group": "valid",
+      "evidence_id": "valid-17",
+      "features": {
+        "sparsity": 0.3332557598102134,
+        "auxiliary": 0.7581891188680854,
+        "overlap": 0.6813202929911715,
+        "noise": 0.5286793881720082
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        17
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-18",
+      "group": "valid",
+      "evidence_id": "valid-18",
+      "features": {
+        "sparsity": 0.6196042304086427,
+        "auxiliary": 0.7014918079187267,
+        "overlap": 0.5322887474837342,
+        "noise": 0.28921685502738226
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-19",
+      "group": "valid",
+      "evidence_id": "valid-19",
+      "features": {
+        "sparsity": 0.5967658929742187,
+        "auxiliary": 0.3597588570426137,
+        "overlap": 0.14892651978940097,
+        "noise": 0.7137809034933901
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-20",
+      "group": "valid",
+      "evidence_id": "valid-20",
+      "features": {
+        "sparsity": 0.6804194867772536,
+        "auxiliary": 0.6900818469229929,
+        "overlap": 0.355507263044641,
+        "noise": 0.19289976930864616
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        20
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-21",
+      "group": "valid",
+      "evidence_id": "valid-21",
+      "features": {
+        "sparsity": 0.5108599702709072,
+        "auxiliary": 0.21083266765772068,
+        "overlap": 0.464268113219795,
+        "noise": 0.6230961988700242
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-22",
+      "group": "valid",
+      "evidence_id": "valid-22",
+      "features": {
+        "sparsity": 0.9474951266197543,
+        "auxiliary": 0.7927086440526672,
+        "overlap": 0.519535295750902,
+        "noise": 0.6100318610181111
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-23",
+      "group": "valid",
+      "evidence_id": "valid-23",
+      "features": {
+        "sparsity": 0.1960489697839789,
+        "auxiliary": 0.63610142565623,
+        "overlap": 0.7263079144180267,
+        "noise": 0.5094050100823768
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        13
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-24",
+      "group": "valid",
+      "evidence_id": "valid-24",
+      "features": {
+        "sparsity": 0.7003585929586462,
+        "auxiliary": 0.21643432234596238,
+        "overlap": 0.5948366942564094,
+        "noise": 0.9258468411112762
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        0
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-25",
+      "group": "valid",
+      "evidence_id": "valid-25",
+      "features": {
+        "sparsity": 0.8567098460134331,
+        "auxiliary": 0.9621371211405464,
+        "overlap": 0.37534314452816353,
+        "noise": 0.874731493012323
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-26",
+      "group": "valid",
+      "evidence_id": "valid-26",
+      "features": {
+        "sparsity": 0.35378929159401806,
+        "auxiliary": 0.24429403817403073,
+        "overlap": 0.42851631546312563,
+        "noise": 0.13434793601796757
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-27",
+      "group": "valid",
+      "evidence_id": "valid-27",
+      "features": {
+        "sparsity": 0.37084713187497154,
+        "auxiliary": 0.7569832083099249,
+        "overlap": 0.8077774029406579,
+        "noise": 0.44927763759596073
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        18
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-28",
+      "group": "valid",
+      "evidence_id": "valid-28",
+      "features": {
+        "sparsity": 0.11778210165522318,
+        "auxiliary": 0.9811123794150094,
+        "overlap": 0.6334068693433451,
+        "noise": 0.048514138720084254
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        73
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-29",
+      "group": "valid",
+      "evidence_id": "valid-29",
+      "features": {
+        "sparsity": 0.4376102436546395,
+        "auxiliary": 0.9326959905571728,
+        "overlap": 0.8383425453595067,
+        "noise": 0.47071916691237714
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        21
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-30",
+      "group": "valid",
+      "evidence_id": "valid-30",
+      "features": {
+        "sparsity": 0.37649586109480293,
+        "auxiliary": 0.6458335808648223,
+        "overlap": 0.4162156155669109,
+        "noise": 0.5417286138415907
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-31",
+      "group": "valid",
+      "evidence_id": "valid-31",
+      "features": {
+        "sparsity": 0.7866129106658715,
+        "auxiliary": 0.4134881688127455,
+        "overlap": 0.9479635916027244,
+        "noise": 0.9574140378167497
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-32",
+      "group": "valid",
+      "evidence_id": "valid-32",
+      "features": {
+        "sparsity": 0.6061881948880732,
+        "auxiliary": 0.6066363113978168,
+        "overlap": 0.1672264685417486,
+        "noise": 0.016494357411251825
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        15
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-33",
+      "group": "valid",
+      "evidence_id": "valid-33",
+      "features": {
+        "sparsity": 0.09708985759940036,
+        "auxiliary": 0.2048841537611823,
+        "overlap": 0.8210002365367177,
+        "noise": 0.9367284518134427
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-34",
+      "group": "valid",
+      "evidence_id": "valid-34",
+      "features": {
+        "sparsity": 0.37934988792296065,
+        "auxiliary": 0.8173857325125449,
+        "overlap": 0.9031801419265193,
+        "noise": 0.6941563372788506
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-35",
+      "group": "valid",
+      "evidence_id": "valid-35",
+      "features": {
+        "sparsity": 0.052617345143869954,
+        "auxiliary": 0.8479716660303821,
+        "overlap": 0.7102947837182856,
+        "noise": 0.16348420017783183
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        37
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-36",
+      "group": "valid",
+      "evidence_id": "valid-36",
+      "features": {
+        "sparsity": 0.33594484241313505,
+        "auxiliary": 0.9776299404465105,
+        "overlap": 0.35905918893134803,
+        "noise": 0.9061118190205576
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-37",
+      "group": "valid",
+      "evidence_id": "valid-37",
+      "features": {
+        "sparsity": 0.8852825111992763,
+        "auxiliary": 0.2920133958482233,
+        "overlap": 0.39976878092180135,
+        "noise": 0.6806984788243382
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        1
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-38",
+      "group": "valid",
+      "evidence_id": "valid-38",
+      "features": {
+        "sparsity": 0.9620987971645176,
+        "auxiliary": 0.527432817158045,
+        "overlap": 0.24662862033698407,
+        "noise": 0.3696846136778583
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-39",
+      "group": "valid",
+      "evidence_id": "valid-39",
+      "features": {
+        "sparsity": 0.12378921677115928,
+        "auxiliary": 0.09654518048027638,
+        "overlap": 0.5817681723497299,
+        "noise": 0.21242948435300302
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-40",
+      "group": "valid",
+      "evidence_id": "valid-40",
+      "features": {
+        "sparsity": 0.26966696700172765,
+        "auxiliary": 0.05823275259532934,
+        "overlap": 0.07860268143751425,
+        "noise": 0.5103621149067649
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-41",
+      "group": "valid",
+      "evidence_id": "valid-41",
+      "features": {
+        "sparsity": 0.27099008792636115,
+        "auxiliary": 0.8372879063658032,
+        "overlap": 0.3202707080960786,
+        "noise": 0.46513907529208665
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-42",
+      "group": "valid",
+      "evidence_id": "valid-42",
+      "features": {
+        "sparsity": 0.2699427263866828,
+        "auxiliary": 0.9311382545631153,
+        "overlap": 0.11020933220811602,
+        "noise": 0.43677346217397706
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        11
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-43",
+      "group": "valid",
+      "evidence_id": "valid-43",
+      "features": {
+        "sparsity": 0.7715048858027941,
+        "auxiliary": 0.17345823768714197,
+        "overlap": 0.72927510471721,
+        "noise": 0.20242113645887894
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-44",
+      "group": "valid",
+      "evidence_id": "valid-44",
+      "features": {
+        "sparsity": 0.036677226579375666,
+        "auxiliary": 0.4996991826554499,
+        "overlap": 0.31990620474593057,
+        "noise": 0.25886354105637754
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        13
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-45",
+      "group": "valid",
+      "evidence_id": "valid-45",
+      "features": {
+        "sparsity": 0.15475821655214583,
+        "auxiliary": 0.9167053525445764,
+        "overlap": 0.5946169626545861,
+        "noise": 0.1239334117223655
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        73
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-46",
+      "group": "valid",
+      "evidence_id": "valid-46",
+      "features": {
+        "sparsity": 0.4011418022969302,
+        "auxiliary": 0.47765060721151376,
+        "overlap": 0.18428538161228836,
+        "noise": 0.5155372742333904
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-47",
+      "group": "valid",
+      "evidence_id": "valid-47",
+      "features": {
+        "sparsity": 0.7861134367469376,
+        "auxiliary": 0.9095784487647343,
+        "overlap": 0.8547876280909161,
+        "noise": 0.39623565782233905
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        24
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-48",
+      "group": "valid",
+      "evidence_id": "valid-48",
+      "features": {
+        "sparsity": 0.9628378134860625,
+        "auxiliary": 0.7241463819839494,
+        "overlap": 0.9399869547610086,
+        "noise": 0.7625836363425732
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        12
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-49",
+      "group": "valid",
+      "evidence_id": "valid-49",
+      "features": {
+        "sparsity": 0.8036143442632061,
+        "auxiliary": 0.13957926768100037,
+        "overlap": 0.7548841705796885,
+        "noise": 0.28977340448581534
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-50",
+      "group": "valid",
+      "evidence_id": "valid-50",
+      "features": {
+        "sparsity": 0.3348235217077902,
+        "auxiliary": 0.24685629504974294,
+        "overlap": 0.36999671952377644,
+        "noise": 0.4805899831078301
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-51",
+      "group": "valid",
+      "evidence_id": "valid-51",
+      "features": {
+        "sparsity": 0.26435190884527027,
+        "auxiliary": 0.5313215608245045,
+        "overlap": 0.043493418485170965,
+        "noise": 0.681699169947013
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-52",
+      "group": "valid",
+      "evidence_id": "valid-52",
+      "features": {
+        "sparsity": 0.6425600120263618,
+        "auxiliary": 0.19601133490211897,
+        "overlap": 0.6080707283838542,
+        "noise": 0.938590403761791
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-53",
+      "group": "valid",
+      "evidence_id": "valid-53",
+      "features": {
+        "sparsity": 0.52544528993924,
+        "auxiliary": 0.03724655745388605,
+        "overlap": 0.59461301533958,
+        "noise": 0.2670974950583419
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-54",
+      "group": "valid",
+      "evidence_id": "valid-54",
+      "features": {
+        "sparsity": 0.45855634865357675,
+        "auxiliary": 0.8813763119077362,
+        "overlap": 0.057991285184359365,
+        "noise": 0.4396254981374814
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        12
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-55",
+      "group": "valid",
+      "evidence_id": "valid-55",
+      "features": {
+        "sparsity": 0.7843084674815124,
+        "auxiliary": 0.7992303072608565,
+        "overlap": 0.7525094130865886,
+        "noise": 0.6829120202836434
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        16
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-56",
+      "group": "valid",
+      "evidence_id": "valid-56",
+      "features": {
+        "sparsity": 0.9957500450324613,
+        "auxiliary": 0.6658572889389315,
+        "overlap": 0.06817854029546255,
+        "noise": 0.966718607293499
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-57",
+      "group": "valid",
+      "evidence_id": "valid-57",
+      "features": {
+        "sparsity": 0.24843111232813597,
+        "auxiliary": 0.4844283284167913,
+        "overlap": 0.832904612354588,
+        "noise": 0.23509471241166435
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        12
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-58",
+      "group": "valid",
+      "evidence_id": "valid-58",
+      "features": {
+        "sparsity": 0.2383873507010814,
+        "auxiliary": 0.6018353673272221,
+        "overlap": 0.08450294310943629,
+        "noise": 0.4538245310879646
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-59",
+      "group": "valid",
+      "evidence_id": "valid-59",
+      "features": {
+        "sparsity": 0.738472254515588,
+        "auxiliary": 0.8313030811503592,
+        "overlap": 0.3523706057777688,
+        "noise": 0.09863514687642516
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        30
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-60",
+      "group": "valid",
+      "evidence_id": "valid-60",
+      "features": {
+        "sparsity": 0.08406653084902371,
+        "auxiliary": 0.3954636824179525,
+        "overlap": 0.21226049180518758,
+        "noise": 0.39219963225069954
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        10
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-61",
+      "group": "valid",
+      "evidence_id": "valid-61",
+      "features": {
+        "sparsity": 0.6448919157049657,
+        "auxiliary": 0.004174005034007444,
+        "overlap": 0.35635507327232185,
+        "noise": 0.8298114124460483
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-62",
+      "group": "valid",
+      "evidence_id": "valid-62",
+      "features": {
+        "sparsity": 0.991655227608457,
+        "auxiliary": 0.3091314909373001,
+        "overlap": 0.634593325531828,
+        "noise": 0.15808883222536563
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        9
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-63",
+      "group": "valid",
+      "evidence_id": "valid-63",
+      "features": {
+        "sparsity": 0.040468420267823046,
+        "auxiliary": 0.08726005962959726,
+        "overlap": 0.761823976689668,
+        "noise": 0.588551129108457
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        6
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-64",
+      "group": "valid",
+      "evidence_id": "valid-64",
+      "features": {
+        "sparsity": 0.5277133274836576,
+        "auxiliary": 0.019862827546328288,
+        "overlap": 0.9165390920970462,
+        "noise": 0.42260947887146993
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-65",
+      "group": "valid",
+      "evidence_id": "valid-65",
+      "features": {
+        "sparsity": 0.28902213205932215,
+        "auxiliary": 0.4402177143721048,
+        "overlap": 0.17287888002195007,
+        "noise": 0.7049929104244463
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-66",
+      "group": "valid",
+      "evidence_id": "valid-66",
+      "features": {
+        "sparsity": 0.36457206628835015,
+        "auxiliary": 0.16124993241819563,
+        "overlap": 0.894297939860689,
+        "noise": 0.7491934934508607
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-67",
+      "group": "valid",
+      "evidence_id": "valid-67",
+      "features": {
+        "sparsity": 0.6976513594707919,
+        "auxiliary": 0.3131489307430778,
+        "overlap": 0.362978739975909,
+        "noise": 0.6798735911065985
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-68",
+      "group": "valid",
+      "evidence_id": "valid-68",
+      "features": {
+        "sparsity": 0.6171640601803783,
+        "auxiliary": 0.18366853281397122,
+        "overlap": 0.044262596809605204,
+        "noise": 0.5849224347872422
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        4
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-69",
+      "group": "valid",
+      "evidence_id": "valid-69",
+      "features": {
+        "sparsity": 0.23578252677691558,
+        "auxiliary": 0.29644255660918084,
+        "overlap": 0.4998208703388879,
+        "noise": 0.9468992037180375
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        2
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-70",
+      "group": "valid",
+      "evidence_id": "valid-70",
+      "features": {
+        "sparsity": 0.9545537476475867,
+        "auxiliary": 0.7199111561767277,
+        "overlap": 0.6912130369151581,
+        "noise": 0.4604870760744064
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        16
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-71",
+      "group": "valid",
+      "evidence_id": "valid-71",
+      "features": {
+        "sparsity": 0.6731822754254227,
+        "auxiliary": 0.5131082350070884,
+        "overlap": 0.6384964539183025,
+        "noise": 0.5445033514435552
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        8
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-72",
+      "group": "valid",
+      "evidence_id": "valid-72",
+      "features": {
+        "sparsity": 0.8757589112764022,
+        "auxiliary": 0.2574586341877767,
+        "overlap": 0.07750244619407365,
+        "noise": 0.9035882093306229
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-73",
+      "group": "valid",
+      "evidence_id": "valid-73",
+      "features": {
+        "sparsity": 0.7759695352032314,
+        "auxiliary": 0.09447684155736102,
+        "overlap": 0.8148779657001162,
+        "noise": 0.007269801717625035
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-74",
+      "group": "valid",
+      "evidence_id": "valid-74",
+      "features": {
+        "sparsity": 0.796656152797586,
+        "auxiliary": 0.5746789743464934,
+        "overlap": 0.175112828231212,
+        "noise": 0.8300443910029075
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-75",
+      "group": "valid",
+      "evidence_id": "valid-75",
+      "features": {
+        "sparsity": 0.8614167974958126,
+        "auxiliary": 0.028041808939069934,
+        "overlap": 0.40428890004915674,
+        "noise": 0.24149464220978367
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-76",
+      "group": "valid",
+      "evidence_id": "valid-76",
+      "features": {
+        "sparsity": 0.5434896302468567,
+        "auxiliary": 0.3592230078127472,
+        "overlap": 0.031208900344016688,
+        "noise": 0.5893593543797977
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        5
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-77",
+      "group": "valid",
+      "evidence_id": "valid-77",
+      "features": {
+        "sparsity": 0.39583867718888965,
+        "auxiliary": 0.0756046026921996,
+        "overlap": 0.11122669438102029,
+        "noise": 0.8380991297559758
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        3
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-78",
+      "group": "valid",
+      "evidence_id": "valid-78",
+      "features": {
+        "sparsity": 0.052775515116321725,
+        "auxiliary": 0.8957744059935672,
+        "overlap": 0.9635723092810482,
+        "noise": 0.5315726545819074
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        25
+      ],
+      "trials": [
+        100
+      ]
+    },
+    {
+      "record_id": "valid-79",
+      "group": "valid",
+      "evidence_id": "valid-79",
+      "features": {
+        "sparsity": 0.27136666466034987,
+        "auxiliary": 0.12968442688097848,
+        "overlap": 0.8452000747018201,
+        "noise": 0.570280212315261
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        7
+      ],
+      "trials": [
+        100
+      ]
+    }
+  ],
+  "test": [
+    {
+      "record_id": "test-0",
+      "group": "test",
+      "evidence_id": "test-0",
+      "features": {
+        "sparsity": 0.9576602434840112,
+        "auxiliary": 0.876231988414032,
+        "overlap": 0.7194862914867839,
+        "noise": 0.9697763222924854
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        69
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-1",
+      "group": "test",
+      "evidence_id": "test-1",
+      "features": {
+        "sparsity": 0.9733538082629354,
+        "auxiliary": 0.8192667084062604,
+        "overlap": 0.8004752396614061,
+        "noise": 0.628649173770742
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        116
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-2",
+      "group": "test",
+      "evidence_id": "test-2",
+      "features": {
+        "sparsity": 0.502670363428106,
+        "auxiliary": 0.8099233937452391,
+        "overlap": 0.6415251908184294,
+        "noise": 0.9010477010328238
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        44
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-3",
+      "group": "test",
+      "evidence_id": "test-3",
+      "features": {
+        "sparsity": 0.5606919658652325,
+        "auxiliary": 0.6223977331481023,
+        "overlap": 0.5896265983668336,
+        "noise": 0.897120638777857
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        46
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-4",
+      "group": "test",
+      "evidence_id": "test-4",
+      "features": {
+        "sparsity": 0.9395068997460181,
+        "auxiliary": 0.6177205901616394,
+        "overlap": 0.7639942916544324,
+        "noise": 0.974153716399548
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        57
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-5",
+      "group": "test",
+      "evidence_id": "test-5",
+      "features": {
+        "sparsity": 0.6328855565895488,
+        "auxiliary": 0.5138848595249925,
+        "overlap": 0.9586710506366182,
+        "noise": 0.6240704548321947
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        82
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-6",
+      "group": "test",
+      "evidence_id": "test-6",
+      "features": {
+        "sparsity": 0.8522071902006291,
+        "auxiliary": 0.8396811238052033,
+        "overlap": 0.9146253423519404,
+        "noise": 0.8400777726339842
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-7",
+      "group": "test",
+      "evidence_id": "test-7",
+      "features": {
+        "sparsity": 0.6198373797832646,
+        "auxiliary": 0.5588024136544025,
+        "overlap": 0.7496245869751611,
+        "noise": 0.6188646363842676
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        81
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-8",
+      "group": "test",
+      "evidence_id": "test-8",
+      "features": {
+        "sparsity": 0.7431208513942936,
+        "auxiliary": 0.8817553994645884,
+        "overlap": 0.543045521068533,
+        "noise": 0.5488250243234023
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        113
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-9",
+      "group": "test",
+      "evidence_id": "test-9",
+      "features": {
+        "sparsity": 0.8279460872400217,
+        "auxiliary": 0.8590924153473335,
+        "overlap": 0.7021626690161298,
+        "noise": 0.5649367086897432
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        172
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-10",
+      "group": "test",
+      "evidence_id": "test-10",
+      "features": {
+        "sparsity": 0.8038845663013408,
+        "auxiliary": 0.5475623844913622,
+        "overlap": 0.7263178963959946,
+        "noise": 0.6037202889678517
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        86
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-11",
+      "group": "test",
+      "evidence_id": "test-11",
+      "features": {
+        "sparsity": 0.6510387161490214,
+        "auxiliary": 0.5475354332406576,
+        "overlap": 0.9486178520581221,
+        "noise": 0.6367407544189254
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        63
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-12",
+      "group": "test",
+      "evidence_id": "test-12",
+      "features": {
+        "sparsity": 0.914431612809872,
+        "auxiliary": 0.8189080490962891,
+        "overlap": 0.7084969823081464,
+        "noise": 0.7199655323950442
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        95
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-13",
+      "group": "test",
+      "evidence_id": "test-13",
+      "features": {
+        "sparsity": 0.9921675668332122,
+        "auxiliary": 0.6574155710680003,
+        "overlap": 0.726228982386371,
+        "noise": 0.5677512033451906
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        110
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-14",
+      "group": "test",
+      "evidence_id": "test-14",
+      "features": {
+        "sparsity": 0.6238002734597414,
+        "auxiliary": 0.703069213872207,
+        "overlap": 0.7690242114721677,
+        "noise": 0.6872629960278258
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        101
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-15",
+      "group": "test",
+      "evidence_id": "test-15",
+      "features": {
+        "sparsity": 0.5596576644183285,
+        "auxiliary": 0.6402082860986109,
+        "overlap": 0.8093467912319755,
+        "noise": 0.9463009453756005
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        52
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-16",
+      "group": "test",
+      "evidence_id": "test-16",
+      "features": {
+        "sparsity": 0.9217262813664476,
+        "auxiliary": 0.5090416728946966,
+        "overlap": 0.8009622262347235,
+        "noise": 0.7072658100851006
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        71
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-17",
+      "group": "test",
+      "evidence_id": "test-17",
+      "features": {
+        "sparsity": 0.8987776776275727,
+        "auxiliary": 0.9125072902136806,
+        "overlap": 0.5231055021895116,
+        "noise": 0.598508070723599
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        98
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-18",
+      "group": "test",
+      "evidence_id": "test-18",
+      "features": {
+        "sparsity": 0.9051850974287781,
+        "auxiliary": 0.5670148521267941,
+        "overlap": 0.5926369264615698,
+        "noise": 0.8647962445826709
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        45
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-19",
+      "group": "test",
+      "evidence_id": "test-19",
+      "features": {
+        "sparsity": 0.79153683486151,
+        "auxiliary": 0.9517737548486078,
+        "overlap": 0.9237471150159484,
+        "noise": 0.708274937075132
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        131
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-20",
+      "group": "test",
+      "evidence_id": "test-20",
+      "features": {
+        "sparsity": 0.5571101230434428,
+        "auxiliary": 0.7159022237470006,
+        "overlap": 0.584181790656226,
+        "noise": 0.6670188374371033
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        68
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-21",
+      "group": "test",
+      "evidence_id": "test-21",
+      "features": {
+        "sparsity": 0.706136365902449,
+        "auxiliary": 0.9098167969461907,
+        "overlap": 0.5143028744694107,
+        "noise": 0.758113053866583
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        80
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-22",
+      "group": "test",
+      "evidence_id": "test-22",
+      "features": {
+        "sparsity": 0.5949725336524068,
+        "auxiliary": 0.7397078823762915,
+        "overlap": 0.6404242607345787,
+        "noise": 0.6410641932105992
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        81
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-23",
+      "group": "test",
+      "evidence_id": "test-23",
+      "features": {
+        "sparsity": 0.5065355566801928,
+        "auxiliary": 0.7223919269326923,
+        "overlap": 0.6892459135998171,
+        "noise": 0.8398258809721356
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        68
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-24",
+      "group": "test",
+      "evidence_id": "test-24",
+      "features": {
+        "sparsity": 0.7501962339121477,
+        "auxiliary": 0.6726944689071357,
+        "overlap": 0.8066289621470912,
+        "noise": 0.798417649046268
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        71
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-25",
+      "group": "test",
+      "evidence_id": "test-25",
+      "features": {
+        "sparsity": 0.765265985065792,
+        "auxiliary": 0.7691212389137718,
+        "overlap": 0.6638321164566265,
+        "noise": 0.6413270157832237
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        67
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-26",
+      "group": "test",
+      "evidence_id": "test-26",
+      "features": {
+        "sparsity": 0.7783243040195116,
+        "auxiliary": 0.826483997707748,
+        "overlap": 0.7080405472802265,
+        "noise": 0.7211704708659586
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        100
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-27",
+      "group": "test",
+      "evidence_id": "test-27",
+      "features": {
+        "sparsity": 0.6885159661824798,
+        "auxiliary": 0.7501536628830948,
+        "overlap": 0.5637189348182292,
+        "noise": 0.9201339435745188
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        37
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-28",
+      "group": "test",
+      "evidence_id": "test-28",
+      "features": {
+        "sparsity": 0.7854519829123447,
+        "auxiliary": 0.757368232038951,
+        "overlap": 0.5186364042231799,
+        "noise": 0.7656557097799717
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        64
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-29",
+      "group": "test",
+      "evidence_id": "test-29",
+      "features": {
+        "sparsity": 0.5782985452325637,
+        "auxiliary": 0.7543835205578692,
+        "overlap": 0.9265268742989042,
+        "noise": 0.6818706863351288
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        86
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-30",
+      "group": "test",
+      "evidence_id": "test-30",
+      "features": {
+        "sparsity": 0.9341951512246556,
+        "auxiliary": 0.7163770139661396,
+        "overlap": 0.606121215178536,
+        "noise": 0.8383897839594248
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        53
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-31",
+      "group": "test",
+      "evidence_id": "test-31",
+      "features": {
+        "sparsity": 0.8002535442627795,
+        "auxiliary": 0.7034108319665497,
+        "overlap": 0.687300122087557,
+        "noise": 0.7462406983628109
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        78
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-32",
+      "group": "test",
+      "evidence_id": "test-32",
+      "features": {
+        "sparsity": 0.7436504992351795,
+        "auxiliary": 0.5839600084080665,
+        "overlap": 0.9757238063875264,
+        "noise": 0.5127537991070978
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        96
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-33",
+      "group": "test",
+      "evidence_id": "test-33",
+      "features": {
+        "sparsity": 0.8268263146269013,
+        "auxiliary": 0.689712354110686,
+        "overlap": 0.9776949983572577,
+        "noise": 0.5578146429090753
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        127
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-34",
+      "group": "test",
+      "evidence_id": "test-34",
+      "features": {
+        "sparsity": 0.5982817141124956,
+        "auxiliary": 0.5471982978989898,
+        "overlap": 0.8825537567991107,
+        "noise": 0.8648940820385891
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        59
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-35",
+      "group": "test",
+      "evidence_id": "test-35",
+      "features": {
+        "sparsity": 0.9308844999887518,
+        "auxiliary": 0.995409304260866,
+        "overlap": 0.6456124065582667,
+        "noise": 0.7059828890282407
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        77
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-36",
+      "group": "test",
+      "evidence_id": "test-36",
+      "features": {
+        "sparsity": 0.785331169001656,
+        "auxiliary": 0.5957763260339571,
+        "overlap": 0.5750387392486405,
+        "noise": 0.7107487546378691
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        76
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-37",
+      "group": "test",
+      "evidence_id": "test-37",
+      "features": {
+        "sparsity": 0.9802002552444709,
+        "auxiliary": 0.663654545794979,
+        "overlap": 0.6338389579486168,
+        "noise": 0.5707903175024605
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        83
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-38",
+      "group": "test",
+      "evidence_id": "test-38",
+      "features": {
+        "sparsity": 0.5727852490731471,
+        "auxiliary": 0.8197902385122191,
+        "overlap": 0.862345827470617,
+        "noise": 0.8248808004260012
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        87
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-39",
+      "group": "test",
+      "evidence_id": "test-39",
+      "features": {
+        "sparsity": 0.7678827648590628,
+        "auxiliary": 0.5230903474344271,
+        "overlap": 0.9862563496473766,
+        "noise": 0.9141962039724154
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        61
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-40",
+      "group": "test",
+      "evidence_id": "test-40",
+      "features": {
+        "sparsity": 0.6763200434383406,
+        "auxiliary": 0.9417727208848501,
+        "overlap": 0.797534711708839,
+        "noise": 0.6235702947736672
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        145
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-41",
+      "group": "test",
+      "evidence_id": "test-41",
+      "features": {
+        "sparsity": 0.7788638365555214,
+        "auxiliary": 0.6644927484455398,
+        "overlap": 0.7962039040334892,
+        "noise": 0.8845467002124816
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        74
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-42",
+      "group": "test",
+      "evidence_id": "test-42",
+      "features": {
+        "sparsity": 0.5890623475495054,
+        "auxiliary": 0.8188796621839087,
+        "overlap": 0.9665255019930366,
+        "noise": 0.6849900120787829
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        108
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-43",
+      "group": "test",
+      "evidence_id": "test-43",
+      "features": {
+        "sparsity": 0.822969024988647,
+        "auxiliary": 0.9669543031754526,
+        "overlap": 0.9093350286893715,
+        "noise": 0.6035322496044633
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        155
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-44",
+      "group": "test",
+      "evidence_id": "test-44",
+      "features": {
+        "sparsity": 0.9145975199961921,
+        "auxiliary": 0.5254075589424484,
+        "overlap": 0.6726101238060442,
+        "noise": 0.5090865685252158
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        90
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-45",
+      "group": "test",
+      "evidence_id": "test-45",
+      "features": {
+        "sparsity": 0.6728021630425655,
+        "auxiliary": 0.9468358144372089,
+        "overlap": 0.6857875140000748,
+        "noise": 0.9304672136229962
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        83
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-46",
+      "group": "test",
+      "evidence_id": "test-46",
+      "features": {
+        "sparsity": 0.6204408879531531,
+        "auxiliary": 0.5418773419699625,
+        "overlap": 0.8811501416782047,
+        "noise": 0.6199692033539399
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        81
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-47",
+      "group": "test",
+      "evidence_id": "test-47",
+      "features": {
+        "sparsity": 0.9466219523139652,
+        "auxiliary": 0.8559751571750642,
+        "overlap": 0.7525736849355873,
+        "noise": 0.9584885086232351
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        47
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-48",
+      "group": "test",
+      "evidence_id": "test-48",
+      "features": {
+        "sparsity": 0.5886551578082986,
+        "auxiliary": 0.6685860497638718,
+        "overlap": 0.8421075952110082,
+        "noise": 0.8960734924192115
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        70
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-49",
+      "group": "test",
+      "evidence_id": "test-49",
+      "features": {
+        "sparsity": 0.8548102001184075,
+        "auxiliary": 0.885442812711148,
+        "overlap": 0.8764062697983388,
+        "noise": 0.5355252298276996
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        174
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-50",
+      "group": "test",
+      "evidence_id": "test-50",
+      "features": {
+        "sparsity": 0.9977073016181415,
+        "auxiliary": 0.938134279393938,
+        "overlap": 0.566081520655613,
+        "noise": 0.5835181703853348
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        113
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-51",
+      "group": "test",
+      "evidence_id": "test-51",
+      "features": {
+        "sparsity": 0.5387080558287205,
+        "auxiliary": 0.7603642207997148,
+        "overlap": 0.5987523021962902,
+        "noise": 0.5346500307940101
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        110
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-52",
+      "group": "test",
+      "evidence_id": "test-52",
+      "features": {
+        "sparsity": 0.5239041804022826,
+        "auxiliary": 0.5281636702816254,
+        "overlap": 0.9829778635235474,
+        "noise": 0.5274891311136072
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        77
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-53",
+      "group": "test",
+      "evidence_id": "test-53",
+      "features": {
+        "sparsity": 0.5885608711022474,
+        "auxiliary": 0.9314403273555393,
+        "overlap": 0.7882679644981596,
+        "noise": 0.5354983950188211
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        203
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-54",
+      "group": "test",
+      "evidence_id": "test-54",
+      "features": {
+        "sparsity": 0.8716151593410378,
+        "auxiliary": 0.7753045056528749,
+        "overlap": 0.7960891295785592,
+        "noise": 0.9785784419773298
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        61
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-55",
+      "group": "test",
+      "evidence_id": "test-55",
+      "features": {
+        "sparsity": 0.514621325307534,
+        "auxiliary": 0.6250840446366877,
+        "overlap": 0.8666232034320511,
+        "noise": 0.8700347227620612
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        64
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-56",
+      "group": "test",
+      "evidence_id": "test-56",
+      "features": {
+        "sparsity": 0.9585637497307196,
+        "auxiliary": 0.5201900491451534,
+        "overlap": 0.8637015710870137,
+        "noise": 0.8883680124894395
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        53
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-57",
+      "group": "test",
+      "evidence_id": "test-57",
+      "features": {
+        "sparsity": 0.5834063567464953,
+        "auxiliary": 0.7343154422697631,
+        "overlap": 0.7111039615570439,
+        "noise": 0.7389445148508398
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        96
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-58",
+      "group": "test",
+      "evidence_id": "test-58",
+      "features": {
+        "sparsity": 0.7095827194360664,
+        "auxiliary": 0.6168077106136716,
+        "overlap": 0.9353121815725229,
+        "noise": 0.7160245257530052
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        74
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-59",
+      "group": "test",
+      "evidence_id": "test-59",
+      "features": {
+        "sparsity": 0.9407570840730108,
+        "auxiliary": 0.9238993227131447,
+        "overlap": 0.719220198452261,
+        "noise": 0.7924859016426271
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        91
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-60",
+      "group": "test",
+      "evidence_id": "test-60",
+      "features": {
+        "sparsity": 0.6515627547118455,
+        "auxiliary": 0.7448968810308693,
+        "overlap": 0.5133118770478056,
+        "noise": 0.8390321134734663
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        48
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-61",
+      "group": "test",
+      "evidence_id": "test-61",
+      "features": {
+        "sparsity": 0.5723177234731718,
+        "auxiliary": 0.8794198996254876,
+        "overlap": 0.8412590633862524,
+        "noise": 0.7140752578887847
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        129
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-62",
+      "group": "test",
+      "evidence_id": "test-62",
+      "features": {
+        "sparsity": 0.5514505862685737,
+        "auxiliary": 0.8945479944893382,
+        "overlap": 0.6732896624915855,
+        "noise": 0.9139994858643495
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        84
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-63",
+      "group": "test",
+      "evidence_id": "test-63",
+      "features": {
+        "sparsity": 0.9792909271781598,
+        "auxiliary": 0.5488354935060293,
+        "overlap": 0.9284529253042353,
+        "noise": 0.7954677032297196
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        74
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-64",
+      "group": "test",
+      "evidence_id": "test-64",
+      "features": {
+        "sparsity": 0.5981568583854247,
+        "auxiliary": 0.912636169225711,
+        "overlap": 0.6047362170377975,
+        "noise": 0.8350689250330009
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        59
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-65",
+      "group": "test",
+      "evidence_id": "test-65",
+      "features": {
+        "sparsity": 0.8849511102889305,
+        "auxiliary": 0.7071888127736541,
+        "overlap": 0.7782997614922054,
+        "noise": 0.963965052936046
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        55
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-66",
+      "group": "test",
+      "evidence_id": "test-66",
+      "features": {
+        "sparsity": 0.7331989470333999,
+        "auxiliary": 0.6096704544438691,
+        "overlap": 0.8225361829714706,
+        "noise": 0.6756743420691156
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        88
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-67",
+      "group": "test",
+      "evidence_id": "test-67",
+      "features": {
+        "sparsity": 0.9217404647850487,
+        "auxiliary": 0.7380706084298863,
+        "overlap": 0.9713789271517086,
+        "noise": 0.7963170175488485
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        81
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-68",
+      "group": "test",
+      "evidence_id": "test-68",
+      "features": {
+        "sparsity": 0.9308876880894263,
+        "auxiliary": 0.6223508987043378,
+        "overlap": 0.6506442814768849,
+        "noise": 0.8867653835965761
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        46
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-69",
+      "group": "test",
+      "evidence_id": "test-69",
+      "features": {
+        "sparsity": 0.7487611556000452,
+        "auxiliary": 0.718119550729617,
+        "overlap": 0.8809922835817321,
+        "noise": 0.9217562985935988
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        57
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-70",
+      "group": "test",
+      "evidence_id": "test-70",
+      "features": {
+        "sparsity": 0.566010043575466,
+        "auxiliary": 0.9296248780236945,
+        "overlap": 0.8434327243185961,
+        "noise": 0.9680681296715129
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        62
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-71",
+      "group": "test",
+      "evidence_id": "test-71",
+      "features": {
+        "sparsity": 0.6349602892166215,
+        "auxiliary": 0.9094111087108752,
+        "overlap": 0.587384387706158,
+        "noise": 0.7220033590237589
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        69
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-72",
+      "group": "test",
+      "evidence_id": "test-72",
+      "features": {
+        "sparsity": 0.9088916781459879,
+        "auxiliary": 0.5293597484801996,
+        "overlap": 0.5574222976915238,
+        "noise": 0.6632622740781153
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        54
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-73",
+      "group": "test",
+      "evidence_id": "test-73",
+      "features": {
+        "sparsity": 0.70248237912202,
+        "auxiliary": 0.9715912070820257,
+        "overlap": 0.7975024089280913,
+        "noise": 0.5231811294008889
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        192
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-74",
+      "group": "test",
+      "evidence_id": "test-74",
+      "features": {
+        "sparsity": 0.9400735012674057,
+        "auxiliary": 0.6739622466077311,
+        "overlap": 0.612544434925026,
+        "noise": 0.5350407762910233
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        79
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-75",
+      "group": "test",
+      "evidence_id": "test-75",
+      "features": {
+        "sparsity": 0.8048548993716097,
+        "auxiliary": 0.5211695276160055,
+        "overlap": 0.9382787059172262,
+        "noise": 0.9958406645765604
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        53
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-76",
+      "group": "test",
+      "evidence_id": "test-76",
+      "features": {
+        "sparsity": 0.942377018088087,
+        "auxiliary": 0.6831100045085531,
+        "overlap": 0.9477677395146916,
+        "noise": 0.6622587550102388
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        98
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-77",
+      "group": "test",
+      "evidence_id": "test-77",
+      "features": {
+        "sparsity": 0.7462780198121926,
+        "auxiliary": 0.6622276744815458,
+        "overlap": 0.6758784278371968,
+        "noise": 0.5407950181348586
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        114
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-78",
+      "group": "test",
+      "evidence_id": "test-78",
+      "features": {
+        "sparsity": 0.6949464614039111,
+        "auxiliary": 0.9533924986585325,
+        "overlap": 0.6126505023749645,
+        "noise": 0.9110822302638544
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        47
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-79",
+      "group": "test",
+      "evidence_id": "test-79",
+      "features": {
+        "sparsity": 0.7144460879783181,
+        "auxiliary": 0.8536350043901332,
+        "overlap": 0.6753374266549969,
+        "noise": 0.8020521748306804
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        79
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-80",
+      "group": "test",
+      "evidence_id": "test-80",
+      "features": {
+        "sparsity": 0.9044138327623367,
+        "auxiliary": 0.6293670313598692,
+        "overlap": 0.9518872707628674,
+        "noise": 0.5195762746000148
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        111
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-81",
+      "group": "test",
+      "evidence_id": "test-81",
+      "features": {
+        "sparsity": 0.5441997470118963,
+        "auxiliary": 0.9701230878850851,
+        "overlap": 0.6073527329631192,
+        "noise": 0.6116904814533556
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        106
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-82",
+      "group": "test",
+      "evidence_id": "test-82",
+      "features": {
+        "sparsity": 0.7355081552645948,
+        "auxiliary": 0.704975559014698,
+        "overlap": 0.8322241154011569,
+        "noise": 0.9834172120683498
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        68
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-83",
+      "group": "test",
+      "evidence_id": "test-83",
+      "features": {
+        "sparsity": 0.6129952194597545,
+        "auxiliary": 0.7207405456876578,
+        "overlap": 0.6388312007443027,
+        "noise": 0.8990036200712517
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        60
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-84",
+      "group": "test",
+      "evidence_id": "test-84",
+      "features": {
+        "sparsity": 0.6737538955728637,
+        "auxiliary": 0.7159959092013768,
+        "overlap": 0.7886360771983083,
+        "noise": 0.8406080463101133
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        54
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-85",
+      "group": "test",
+      "evidence_id": "test-85",
+      "features": {
+        "sparsity": 0.670494643484307,
+        "auxiliary": 0.6849072058380457,
+        "overlap": 0.6646002801342152,
+        "noise": 0.9299293018831867
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        51
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-86",
+      "group": "test",
+      "evidence_id": "test-86",
+      "features": {
+        "sparsity": 0.8267806777343452,
+        "auxiliary": 0.516494863196391,
+        "overlap": 0.7758695388431127,
+        "noise": 0.5780258187535254
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        84
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-87",
+      "group": "test",
+      "evidence_id": "test-87",
+      "features": {
+        "sparsity": 0.9498187090908543,
+        "auxiliary": 0.6682397014224248,
+        "overlap": 0.6173910906078068,
+        "noise": 0.5339316929124681
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        89
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-88",
+      "group": "test",
+      "evidence_id": "test-88",
+      "features": {
+        "sparsity": 0.9995574817424933,
+        "auxiliary": 0.7288007284442743,
+        "overlap": 0.5014108339649064,
+        "noise": 0.8571556776538496
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        51
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-89",
+      "group": "test",
+      "evidence_id": "test-89",
+      "features": {
+        "sparsity": 0.5089137633771086,
+        "auxiliary": 0.5095939772844784,
+        "overlap": 0.9939309542578966,
+        "noise": 0.8861862524731982
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        69
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-90",
+      "group": "test",
+      "evidence_id": "test-90",
+      "features": {
+        "sparsity": 0.6023961067888426,
+        "auxiliary": 0.892978230264786,
+        "overlap": 0.8643352828528726,
+        "noise": 0.7644723432167435
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        89
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-91",
+      "group": "test",
+      "evidence_id": "test-91",
+      "features": {
+        "sparsity": 0.6699959653171812,
+        "auxiliary": 0.9010971457685704,
+        "overlap": 0.7715028690546157,
+        "noise": 0.9552504456277475
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        69
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-92",
+      "group": "test",
+      "evidence_id": "test-92",
+      "features": {
+        "sparsity": 0.9198525474402286,
+        "auxiliary": 0.6897701327091486,
+        "overlap": 0.5318977556156832,
+        "noise": 0.5876402822980198
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        90
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-93",
+      "group": "test",
+      "evidence_id": "test-93",
+      "features": {
+        "sparsity": 0.7971889679681906,
+        "auxiliary": 0.7931273139978066,
+        "overlap": 0.9903022610597488,
+        "noise": 0.6353483875884058
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        108
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-94",
+      "group": "test",
+      "evidence_id": "test-94",
+      "features": {
+        "sparsity": 0.8538153688715375,
+        "auxiliary": 0.6740247341172956,
+        "overlap": 0.5603791110382792,
+        "noise": 0.965487098057514
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        58
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-95",
+      "group": "test",
+      "evidence_id": "test-95",
+      "features": {
+        "sparsity": 0.678464630044725,
+        "auxiliary": 0.9068630891613614,
+        "overlap": 0.5682703712505905,
+        "noise": 0.7133868397269034
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        66
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-96",
+      "group": "test",
+      "evidence_id": "test-96",
+      "features": {
+        "sparsity": 0.5955541456040858,
+        "auxiliary": 0.9320432089564934,
+        "overlap": 0.5354276501397655,
+        "noise": 0.9163954479040513
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        48
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-97",
+      "group": "test",
+      "evidence_id": "test-97",
+      "features": {
+        "sparsity": 0.6644707965650363,
+        "auxiliary": 0.6475378705227973,
+        "overlap": 0.9221042952945275,
+        "noise": 0.9882686229520277
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        47
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-98",
+      "group": "test",
+      "evidence_id": "test-98",
+      "features": {
+        "sparsity": 0.770806346765352,
+        "auxiliary": 0.972374215634161,
+        "overlap": 0.6194824332049389,
+        "noise": 0.6813359258162379
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        100
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-99",
+      "group": "test",
+      "evidence_id": "test-99",
+      "features": {
+        "sparsity": 0.6631975379676889,
+        "auxiliary": 0.7776799315261658,
+        "overlap": 0.6600282504837587,
+        "noise": 0.6068354016934666
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        99
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-100",
+      "group": "test",
+      "evidence_id": "test-100",
+      "features": {
+        "sparsity": 0.6576044469421465,
+        "auxiliary": 0.7004844644125632,
+        "overlap": 0.9594652947514866,
+        "noise": 0.7339812787030846
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        86
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-101",
+      "group": "test",
+      "evidence_id": "test-101",
+      "features": {
+        "sparsity": 0.5409531266922147,
+        "auxiliary": 0.7156376192540832,
+        "overlap": 0.7336365975836576,
+        "noise": 0.6778772939999411
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        92
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-102",
+      "group": "test",
+      "evidence_id": "test-102",
+      "features": {
+        "sparsity": 0.6355054963056543,
+        "auxiliary": 0.892219426797757,
+        "overlap": 0.8977781570078465,
+        "noise": 0.7835176255203768
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        98
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-103",
+      "group": "test",
+      "evidence_id": "test-103",
+      "features": {
+        "sparsity": 0.7238009351768881,
+        "auxiliary": 0.8514440977747629,
+        "overlap": 0.5267288569914439,
+        "noise": 0.5147715089618704
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        113
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-104",
+      "group": "test",
+      "evidence_id": "test-104",
+      "features": {
+        "sparsity": 0.7013990171315894,
+        "auxiliary": 0.793426208125183,
+        "overlap": 0.9282449586173589,
+        "noise": 0.6874367162493211
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        94
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-105",
+      "group": "test",
+      "evidence_id": "test-105",
+      "features": {
+        "sparsity": 0.7934967151030579,
+        "auxiliary": 0.7635559018077402,
+        "overlap": 0.7723042710824765,
+        "noise": 0.7576649794589988
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        89
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-106",
+      "group": "test",
+      "evidence_id": "test-106",
+      "features": {
+        "sparsity": 0.9119534028854515,
+        "auxiliary": 0.7729422989321719,
+        "overlap": 0.5821911986127376,
+        "noise": 0.5027374132958538
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        110
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-107",
+      "group": "test",
+      "evidence_id": "test-107",
+      "features": {
+        "sparsity": 0.6109502190806466,
+        "auxiliary": 0.8003470235088622,
+        "overlap": 0.9565965325446031,
+        "noise": 0.6769850549159572
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        115
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-108",
+      "group": "test",
+      "evidence_id": "test-108",
+      "features": {
+        "sparsity": 0.766079224272892,
+        "auxiliary": 0.9459366747190917,
+        "overlap": 0.9709754703049343,
+        "noise": 0.550677412412051
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        183
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-109",
+      "group": "test",
+      "evidence_id": "test-109",
+      "features": {
+        "sparsity": 0.9716513555423565,
+        "auxiliary": 0.9261070432793701,
+        "overlap": 0.7878232435980475,
+        "noise": 0.9653715399590225
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        68
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-110",
+      "group": "test",
+      "evidence_id": "test-110",
+      "features": {
+        "sparsity": 0.7330475662616092,
+        "auxiliary": 0.6788569594579952,
+        "overlap": 0.8329608858432167,
+        "noise": 0.5002087084036222
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        131
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-111",
+      "group": "test",
+      "evidence_id": "test-111",
+      "features": {
+        "sparsity": 0.7750153560935906,
+        "auxiliary": 0.8824987056200894,
+        "overlap": 0.5730529434960883,
+        "noise": 0.5486172138822542
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        93
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-112",
+      "group": "test",
+      "evidence_id": "test-112",
+      "features": {
+        "sparsity": 0.7510048398720239,
+        "auxiliary": 0.9808791588131525,
+        "overlap": 0.9347556777049875,
+        "noise": 0.9621107010518433
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        71
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-113",
+      "group": "test",
+      "evidence_id": "test-113",
+      "features": {
+        "sparsity": 0.8137537209046727,
+        "auxiliary": 0.6339305392902439,
+        "overlap": 0.6429461139213096,
+        "noise": 0.886020487319298
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        63
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-114",
+      "group": "test",
+      "evidence_id": "test-114",
+      "features": {
+        "sparsity": 0.5353965224581847,
+        "auxiliary": 0.8741552069841048,
+        "overlap": 0.8990285898017433,
+        "noise": 0.9835366066921873
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        63
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-115",
+      "group": "test",
+      "evidence_id": "test-115",
+      "features": {
+        "sparsity": 0.6283690383292928,
+        "auxiliary": 0.8777884262373619,
+        "overlap": 0.6369016168369812,
+        "noise": 0.5227227679538622
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        123
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-116",
+      "group": "test",
+      "evidence_id": "test-116",
+      "features": {
+        "sparsity": 0.5398585450759262,
+        "auxiliary": 0.9618119722395033,
+        "overlap": 0.7618836217612055,
+        "noise": 0.9657701551164457
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        62
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-117",
+      "group": "test",
+      "evidence_id": "test-117",
+      "features": {
+        "sparsity": 0.7994066678151377,
+        "auxiliary": 0.7370836661101174,
+        "overlap": 0.6819534037322404,
+        "noise": 0.7518860812447373
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        88
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-118",
+      "group": "test",
+      "evidence_id": "test-118",
+      "features": {
+        "sparsity": 0.8738615191441979,
+        "auxiliary": 0.7278561219808857,
+        "overlap": 0.5841963665368302,
+        "noise": 0.6232423562615336
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        71
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-119",
+      "group": "test",
+      "evidence_id": "test-119",
+      "features": {
+        "sparsity": 0.8360234821770145,
+        "auxiliary": 0.7971112816523847,
+        "overlap": 0.5384787900812867,
+        "noise": 0.9611356777629401
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        46
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-120",
+      "group": "test",
+      "evidence_id": "test-120",
+      "features": {
+        "sparsity": 0.7982504236175326,
+        "auxiliary": 0.8325007058688849,
+        "overlap": 0.5361889702504367,
+        "noise": 0.6420392119239748
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        85
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-121",
+      "group": "test",
+      "evidence_id": "test-121",
+      "features": {
+        "sparsity": 0.7670175023364334,
+        "auxiliary": 0.8959194957765362,
+        "overlap": 0.8355924747942614,
+        "noise": 0.8151741486915813
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        84
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-122",
+      "group": "test",
+      "evidence_id": "test-122",
+      "features": {
+        "sparsity": 0.507361040644675,
+        "auxiliary": 0.778361143070543,
+        "overlap": 0.9330524618688949,
+        "noise": 0.7011099276128512
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        102
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-123",
+      "group": "test",
+      "evidence_id": "test-123",
+      "features": {
+        "sparsity": 0.5183479249091976,
+        "auxiliary": 0.5432117251259457,
+        "overlap": 0.8998740478190599,
+        "noise": 0.6483482650573351
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        98
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-124",
+      "group": "test",
+      "evidence_id": "test-124",
+      "features": {
+        "sparsity": 0.8270843671792889,
+        "auxiliary": 0.671433312521373,
+        "overlap": 0.8805281865634174,
+        "noise": 0.6980206851851916
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        87
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-125",
+      "group": "test",
+      "evidence_id": "test-125",
+      "features": {
+        "sparsity": 0.9326432917541926,
+        "auxiliary": 0.9115353208110866,
+        "overlap": 0.7649812497919307,
+        "noise": 0.9048032866561934
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        76
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-126",
+      "group": "test",
+      "evidence_id": "test-126",
+      "features": {
+        "sparsity": 0.6517242972190715,
+        "auxiliary": 0.7110535943791321,
+        "overlap": 0.8523801843315668,
+        "noise": 0.975764016889333
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-127",
+      "group": "test",
+      "evidence_id": "test-127",
+      "features": {
+        "sparsity": 0.733086756933862,
+        "auxiliary": 0.9325009341609234,
+        "overlap": 0.5260792243755399,
+        "noise": 0.5629256947452128
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        106
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-128",
+      "group": "test",
+      "evidence_id": "test-128",
+      "features": {
+        "sparsity": 0.9150550239790507,
+        "auxiliary": 0.7485944146336001,
+        "overlap": 0.9247729400015651,
+        "noise": 0.6864899556545134
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        92
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-129",
+      "group": "test",
+      "evidence_id": "test-129",
+      "features": {
+        "sparsity": 0.7750049627315334,
+        "auxiliary": 0.8011233658277384,
+        "overlap": 0.7110691306656287,
+        "noise": 0.5859792016764914
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        140
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-130",
+      "group": "test",
+      "evidence_id": "test-130",
+      "features": {
+        "sparsity": 0.8435157239056221,
+        "auxiliary": 0.7883266588652297,
+        "overlap": 0.6612365189331271,
+        "noise": 0.9466532219137097
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        41
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-131",
+      "group": "test",
+      "evidence_id": "test-131",
+      "features": {
+        "sparsity": 0.599424439612954,
+        "auxiliary": 0.7148909549708693,
+        "overlap": 0.9088408050103574,
+        "noise": 0.6277435437272643
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        107
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-132",
+      "group": "test",
+      "evidence_id": "test-132",
+      "features": {
+        "sparsity": 0.6059241909779456,
+        "auxiliary": 0.559224376322877,
+        "overlap": 0.7235534741483507,
+        "noise": 0.6671314413731738
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        78
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-133",
+      "group": "test",
+      "evidence_id": "test-133",
+      "features": {
+        "sparsity": 0.70914998292681,
+        "auxiliary": 0.6126138385388289,
+        "overlap": 0.9551172872730274,
+        "noise": 0.8179747413920074
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        72
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-134",
+      "group": "test",
+      "evidence_id": "test-134",
+      "features": {
+        "sparsity": 0.6386423372106393,
+        "auxiliary": 0.7749876275897278,
+        "overlap": 0.7184397427092399,
+        "noise": 0.7350871215702426
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        100
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-135",
+      "group": "test",
+      "evidence_id": "test-135",
+      "features": {
+        "sparsity": 0.7792974593128592,
+        "auxiliary": 0.800403596954641,
+        "overlap": 0.9262874432626568,
+        "noise": 0.7979013249322116
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        95
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-136",
+      "group": "test",
+      "evidence_id": "test-136",
+      "features": {
+        "sparsity": 0.7554980092927068,
+        "auxiliary": 0.9109563490300505,
+        "overlap": 0.5914552776383194,
+        "noise": 0.7407776136834433
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        89
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-137",
+      "group": "test",
+      "evidence_id": "test-137",
+      "features": {
+        "sparsity": 0.6965622684248254,
+        "auxiliary": 0.9243951981096024,
+        "overlap": 0.7921054780556316,
+        "noise": 0.6169136108655262
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        131
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-138",
+      "group": "test",
+      "evidence_id": "test-138",
+      "features": {
+        "sparsity": 0.5700160876253181,
+        "auxiliary": 0.6693464313058718,
+        "overlap": 0.8959279575340743,
+        "noise": 0.6973868041904836
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        88
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-139",
+      "group": "test",
+      "evidence_id": "test-139",
+      "features": {
+        "sparsity": 0.9584628257792448,
+        "auxiliary": 0.5475593117617683,
+        "overlap": 0.9847791583723695,
+        "noise": 0.508049948698379
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        79
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-140",
+      "group": "test",
+      "evidence_id": "test-140",
+      "features": {
+        "sparsity": 0.7230088686325542,
+        "auxiliary": 0.815113935590067,
+        "overlap": 0.6193918281265156,
+        "noise": 0.8900216711799067
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        37
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-141",
+      "group": "test",
+      "evidence_id": "test-141",
+      "features": {
+        "sparsity": 0.836551990990605,
+        "auxiliary": 0.5567968265589613,
+        "overlap": 0.9392225457676217,
+        "noise": 0.5249099997120401
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        92
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-142",
+      "group": "test",
+      "evidence_id": "test-142",
+      "features": {
+        "sparsity": 0.6713099460988111,
+        "auxiliary": 0.6435877558825578,
+        "overlap": 0.554387938955636,
+        "noise": 0.7157384069436912
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        59
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-143",
+      "group": "test",
+      "evidence_id": "test-143",
+      "features": {
+        "sparsity": 0.8668655139791873,
+        "auxiliary": 0.7817606923994094,
+        "overlap": 0.5646974638022224,
+        "noise": 0.8699818832291591
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        64
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-144",
+      "group": "test",
+      "evidence_id": "test-144",
+      "features": {
+        "sparsity": 0.6864435474300621,
+        "auxiliary": 0.7127701198788823,
+        "overlap": 0.8112043674964204,
+        "noise": 0.9403498176893448
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        57
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-145",
+      "group": "test",
+      "evidence_id": "test-145",
+      "features": {
+        "sparsity": 0.7806511344158038,
+        "auxiliary": 0.6816025216289001,
+        "overlap": 0.8652596495800993,
+        "noise": 0.5393606243390918
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        135
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-146",
+      "group": "test",
+      "evidence_id": "test-146",
+      "features": {
+        "sparsity": 0.8039202576868327,
+        "auxiliary": 0.8815848863506415,
+        "overlap": 0.8013624682697651,
+        "noise": 0.8816588853735492
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-147",
+      "group": "test",
+      "evidence_id": "test-147",
+      "features": {
+        "sparsity": 0.7168582934403603,
+        "auxiliary": 0.6121076318487108,
+        "overlap": 0.5369446734403348,
+        "noise": 0.8585213243583426
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        52
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-148",
+      "group": "test",
+      "evidence_id": "test-148",
+      "features": {
+        "sparsity": 0.6204383657286807,
+        "auxiliary": 0.6656505833577435,
+        "overlap": 0.9613239860278161,
+        "noise": 0.9436448488715949
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        62
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-149",
+      "group": "test",
+      "evidence_id": "test-149",
+      "features": {
+        "sparsity": 0.536350972903779,
+        "auxiliary": 0.7308738079148138,
+        "overlap": 0.7461441598165521,
+        "noise": 0.785786784833814
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        86
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-150",
+      "group": "test",
+      "evidence_id": "test-150",
+      "features": {
+        "sparsity": 0.652235073242569,
+        "auxiliary": 0.9768223351056446,
+        "overlap": 0.7849660991126834,
+        "noise": 0.837465682637525
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-151",
+      "group": "test",
+      "evidence_id": "test-151",
+      "features": {
+        "sparsity": 0.71895316184453,
+        "auxiliary": 0.7278867532517785,
+        "overlap": 0.8426519066667681,
+        "noise": 0.5928926353998131
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        109
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-152",
+      "group": "test",
+      "evidence_id": "test-152",
+      "features": {
+        "sparsity": 0.6634723555166637,
+        "auxiliary": 0.7798101995356284,
+        "overlap": 0.6462167556935242,
+        "noise": 0.6339353280783016
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        90
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-153",
+      "group": "test",
+      "evidence_id": "test-153",
+      "features": {
+        "sparsity": 0.7684670186428338,
+        "auxiliary": 0.6500033477905198,
+        "overlap": 0.622613921429491,
+        "noise": 0.8890348809000168
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        46
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-154",
+      "group": "test",
+      "evidence_id": "test-154",
+      "features": {
+        "sparsity": 0.8111798636012632,
+        "auxiliary": 0.9480944317679232,
+        "overlap": 0.7464314049873884,
+        "noise": 0.9216086639345304
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        70
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-155",
+      "group": "test",
+      "evidence_id": "test-155",
+      "features": {
+        "sparsity": 0.5486809817862185,
+        "auxiliary": 0.6038504325174121,
+        "overlap": 0.5751547549924424,
+        "noise": 0.8314731401338452
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        50
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-156",
+      "group": "test",
+      "evidence_id": "test-156",
+      "features": {
+        "sparsity": 0.5200098977142118,
+        "auxiliary": 0.7682873413922243,
+        "overlap": 0.6575020606851504,
+        "noise": 0.6839000311081284
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        72
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-157",
+      "group": "test",
+      "evidence_id": "test-157",
+      "features": {
+        "sparsity": 0.8180556490651824,
+        "auxiliary": 0.8595945224025461,
+        "overlap": 0.6244261494732033,
+        "noise": 0.9163405965689535
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        49
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-158",
+      "group": "test",
+      "evidence_id": "test-158",
+      "features": {
+        "sparsity": 0.5573362580570896,
+        "auxiliary": 0.7202704829193766,
+        "overlap": 0.5471688623499393,
+        "noise": 0.9702531095052165
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        41
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-159",
+      "group": "test",
+      "evidence_id": "test-159",
+      "features": {
+        "sparsity": 0.8161380729684657,
+        "auxiliary": 0.674352488740915,
+        "overlap": 0.9751153641627978,
+        "noise": 0.7488745114598023
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        93
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-160",
+      "group": "test",
+      "evidence_id": "test-160",
+      "features": {
+        "sparsity": 0.7526443206281215,
+        "auxiliary": 0.5169891769923524,
+        "overlap": 0.8772647988519059,
+        "noise": 0.6105504748979949
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        77
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-161",
+      "group": "test",
+      "evidence_id": "test-161",
+      "features": {
+        "sparsity": 0.7472745289923023,
+        "auxiliary": 0.7073148136854346,
+        "overlap": 0.5965988563212086,
+        "noise": 0.9014784353600396
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        42
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-162",
+      "group": "test",
+      "evidence_id": "test-162",
+      "features": {
+        "sparsity": 0.8498080503979015,
+        "auxiliary": 0.5288340081192018,
+        "overlap": 0.9995083614280325,
+        "noise": 0.5604927359430367
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        73
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-163",
+      "group": "test",
+      "evidence_id": "test-163",
+      "features": {
+        "sparsity": 0.9979323764169419,
+        "auxiliary": 0.6967879207551767,
+        "overlap": 0.5457103414597392,
+        "noise": 0.6934034578408866
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        68
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-164",
+      "group": "test",
+      "evidence_id": "test-164",
+      "features": {
+        "sparsity": 0.9918669558500621,
+        "auxiliary": 0.8676678747846571,
+        "overlap": 0.556419676273463,
+        "noise": 0.5416019952339808
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        103
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-165",
+      "group": "test",
+      "evidence_id": "test-165",
+      "features": {
+        "sparsity": 0.6505519746806284,
+        "auxiliary": 0.7495566413968474,
+        "overlap": 0.6131235807488048,
+        "noise": 0.6729539831987814
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        87
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-166",
+      "group": "test",
+      "evidence_id": "test-166",
+      "features": {
+        "sparsity": 0.7715386823717623,
+        "auxiliary": 0.754696752730704,
+        "overlap": 0.7715262636264473,
+        "noise": 0.752974921180273
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        82
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-167",
+      "group": "test",
+      "evidence_id": "test-167",
+      "features": {
+        "sparsity": 0.9893657651419714,
+        "auxiliary": 0.9492689161984509,
+        "overlap": 0.773748038313929,
+        "noise": 0.6698713934816103
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        110
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-168",
+      "group": "test",
+      "evidence_id": "test-168",
+      "features": {
+        "sparsity": 0.5752510917271401,
+        "auxiliary": 0.8509172807851326,
+        "overlap": 0.8864400073120116,
+        "noise": 0.7016660346451471
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        117
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-169",
+      "group": "test",
+      "evidence_id": "test-169",
+      "features": {
+        "sparsity": 0.642383745862721,
+        "auxiliary": 0.6753780810108085,
+        "overlap": 0.7509866513422981,
+        "noise": 0.8088508756290038
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        74
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-170",
+      "group": "test",
+      "evidence_id": "test-170",
+      "features": {
+        "sparsity": 0.9157189573887881,
+        "auxiliary": 0.7012497116745516,
+        "overlap": 0.745992425960228,
+        "noise": 0.6315374611301824
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        94
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-171",
+      "group": "test",
+      "evidence_id": "test-171",
+      "features": {
+        "sparsity": 0.7139695214834568,
+        "auxiliary": 0.7003347221073053,
+        "overlap": 0.604314843819488,
+        "noise": 0.5607708335214132
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        105
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-172",
+      "group": "test",
+      "evidence_id": "test-172",
+      "features": {
+        "sparsity": 0.6892925747813181,
+        "auxiliary": 0.6053875271628788,
+        "overlap": 0.6120820633560289,
+        "noise": 0.7444245657181223
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        61
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-173",
+      "group": "test",
+      "evidence_id": "test-173",
+      "features": {
+        "sparsity": 0.6695040156134984,
+        "auxiliary": 0.7440944396923337,
+        "overlap": 0.5172903891953875,
+        "noise": 0.5662781851405558
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        104
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-174",
+      "group": "test",
+      "evidence_id": "test-174",
+      "features": {
+        "sparsity": 0.8673427832175507,
+        "auxiliary": 0.8179993426871276,
+        "overlap": 0.8826335322936736,
+        "noise": 0.6938977389069703
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        111
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-175",
+      "group": "test",
+      "evidence_id": "test-175",
+      "features": {
+        "sparsity": 0.5975320079691413,
+        "auxiliary": 0.7240926829790508,
+        "overlap": 0.7164742864611893,
+        "noise": 0.5395251950059077
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        129
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-176",
+      "group": "test",
+      "evidence_id": "test-176",
+      "features": {
+        "sparsity": 0.6954529931984483,
+        "auxiliary": 0.7671534414481366,
+        "overlap": 0.7765938035305615,
+        "noise": 0.8056556112668241
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        77
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-177",
+      "group": "test",
+      "evidence_id": "test-177",
+      "features": {
+        "sparsity": 0.5978171100596849,
+        "auxiliary": 0.5512437636529678,
+        "overlap": 0.7929850991287928,
+        "noise": 0.6872498485197597
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        77
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-178",
+      "group": "test",
+      "evidence_id": "test-178",
+      "features": {
+        "sparsity": 0.9357296659309267,
+        "auxiliary": 0.9864845815286613,
+        "overlap": 0.7142842910987739,
+        "noise": 0.7899453102957346
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        97
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-179",
+      "group": "test",
+      "evidence_id": "test-179",
+      "features": {
+        "sparsity": 0.8673421590893386,
+        "auxiliary": 0.7137966255106667,
+        "overlap": 0.5866941321886865,
+        "noise": 0.6416596239663444
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        76
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-180",
+      "group": "test",
+      "evidence_id": "test-180",
+      "features": {
+        "sparsity": 0.6356908426172521,
+        "auxiliary": 0.754352582401195,
+        "overlap": 0.7867922484817917,
+        "noise": 0.7141245913076715
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        82
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-181",
+      "group": "test",
+      "evidence_id": "test-181",
+      "features": {
+        "sparsity": 0.8334242415258977,
+        "auxiliary": 0.6386844762712833,
+        "overlap": 0.9168683885733959,
+        "noise": 0.8245828386593773
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-182",
+      "group": "test",
+      "evidence_id": "test-182",
+      "features": {
+        "sparsity": 0.8654045320229511,
+        "auxiliary": 0.8540623453629089,
+        "overlap": 0.5556029411669146,
+        "noise": 0.7133480542152697
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        73
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-183",
+      "group": "test",
+      "evidence_id": "test-183",
+      "features": {
+        "sparsity": 0.5382792219410975,
+        "auxiliary": 0.504530719839253,
+        "overlap": 0.8671187927952142,
+        "noise": 0.9434826851793281
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        46
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-184",
+      "group": "test",
+      "evidence_id": "test-184",
+      "features": {
+        "sparsity": 0.8231098035926696,
+        "auxiliary": 0.5785558573000866,
+        "overlap": 0.5996886271675345,
+        "noise": 0.6864933893102048
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        80
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-185",
+      "group": "test",
+      "evidence_id": "test-185",
+      "features": {
+        "sparsity": 0.7175571210553796,
+        "auxiliary": 0.8334818918879068,
+        "overlap": 0.5271785568484333,
+        "noise": 0.8111831039400368
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        71
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-186",
+      "group": "test",
+      "evidence_id": "test-186",
+      "features": {
+        "sparsity": 0.9652771512232692,
+        "auxiliary": 0.6348592824970385,
+        "overlap": 0.7140354368487898,
+        "noise": 0.6330882694851995
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        85
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-187",
+      "group": "test",
+      "evidence_id": "test-187",
+      "features": {
+        "sparsity": 0.7990955232574846,
+        "auxiliary": 0.8615034726898263,
+        "overlap": 0.6972703692076838,
+        "noise": 0.6008520292987772
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        149
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-188",
+      "group": "test",
+      "evidence_id": "test-188",
+      "features": {
+        "sparsity": 0.6703417493891033,
+        "auxiliary": 0.6570188832000984,
+        "overlap": 0.9709391596271346,
+        "noise": 0.9514488046413858
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        66
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-189",
+      "group": "test",
+      "evidence_id": "test-189",
+      "features": {
+        "sparsity": 0.968547875893186,
+        "auxiliary": 0.6267659803896362,
+        "overlap": 0.5351619546192252,
+        "noise": 0.762007044626999
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        53
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-190",
+      "group": "test",
+      "evidence_id": "test-190",
+      "features": {
+        "sparsity": 0.7702678081325353,
+        "auxiliary": 0.551279687369759,
+        "overlap": 0.7128869598260209,
+        "noise": 0.7029310538362024
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        70
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-191",
+      "group": "test",
+      "evidence_id": "test-191",
+      "features": {
+        "sparsity": 0.7244128324442405,
+        "auxiliary": 0.8073252239952194,
+        "overlap": 0.7618190739690858,
+        "noise": 0.5515046939788476
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        132
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-192",
+      "group": "test",
+      "evidence_id": "test-192",
+      "features": {
+        "sparsity": 0.5208396264499267,
+        "auxiliary": 0.8373376105720838,
+        "overlap": 0.9548072682182347,
+        "noise": 0.6008121491334371
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        141
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-193",
+      "group": "test",
+      "evidence_id": "test-193",
+      "features": {
+        "sparsity": 0.8793027837193634,
+        "auxiliary": 0.6663722611940737,
+        "overlap": 0.7137235280886943,
+        "noise": 0.7199670234035491
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-194",
+      "group": "test",
+      "evidence_id": "test-194",
+      "features": {
+        "sparsity": 0.7433125290350793,
+        "auxiliary": 0.9007767910731628,
+        "overlap": 0.8768462867547414,
+        "noise": 0.8110713433408083
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        91
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-195",
+      "group": "test",
+      "evidence_id": "test-195",
+      "features": {
+        "sparsity": 0.5817366046095764,
+        "auxiliary": 0.8952208428125161,
+        "overlap": 0.8780962976719897,
+        "noise": 0.7894008556589445
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        80
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-196",
+      "group": "test",
+      "evidence_id": "test-196",
+      "features": {
+        "sparsity": 0.749134437491344,
+        "auxiliary": 0.8338251140581925,
+        "overlap": 0.7286174579306374,
+        "noise": 0.6371832458679574
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        141
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-197",
+      "group": "test",
+      "evidence_id": "test-197",
+      "features": {
+        "sparsity": 0.8423962959214235,
+        "auxiliary": 0.7016987298386594,
+        "overlap": 0.6071984342459552,
+        "noise": 0.6543787945511306
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        66
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-198",
+      "group": "test",
+      "evidence_id": "test-198",
+      "features": {
+        "sparsity": 0.7319507024827845,
+        "auxiliary": 0.656666842365895,
+        "overlap": 0.674270802034609,
+        "noise": 0.8663652603103023
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        66
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-199",
+      "group": "test",
+      "evidence_id": "test-199",
+      "features": {
+        "sparsity": 0.6918724180898174,
+        "auxiliary": 0.7461550951617273,
+        "overlap": 0.5305373419741568,
+        "noise": 0.9878311384444887
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        43
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-200",
+      "group": "test",
+      "evidence_id": "test-200",
+      "features": {
+        "sparsity": 0.507043986279297,
+        "auxiliary": 0.8386599825008421,
+        "overlap": 0.8814057298507365,
+        "noise": 0.8925755278652641
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        86
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-201",
+      "group": "test",
+      "evidence_id": "test-201",
+      "features": {
+        "sparsity": 0.9370405708736085,
+        "auxiliary": 0.7457175552226389,
+        "overlap": 0.6034843618908806,
+        "noise": 0.7678484525732974
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        55
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-202",
+      "group": "test",
+      "evidence_id": "test-202",
+      "features": {
+        "sparsity": 0.546873379365434,
+        "auxiliary": 0.8863830791928903,
+        "overlap": 0.6487685660181182,
+        "noise": 0.5067435795760034
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        130
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-203",
+      "group": "test",
+      "evidence_id": "test-203",
+      "features": {
+        "sparsity": 0.5775041932042602,
+        "auxiliary": 0.836924570784509,
+        "overlap": 0.9463758736640866,
+        "noise": 0.8580128330309015
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        97
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-204",
+      "group": "test",
+      "evidence_id": "test-204",
+      "features": {
+        "sparsity": 0.8298476109113788,
+        "auxiliary": 0.7275285342541573,
+        "overlap": 0.9342215354099859,
+        "noise": 0.5838155373129111
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        119
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-205",
+      "group": "test",
+      "evidence_id": "test-205",
+      "features": {
+        "sparsity": 0.6691344790522292,
+        "auxiliary": 0.6348915422844823,
+        "overlap": 0.8127151661220224,
+        "noise": 0.9558747640096827
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        55
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-206",
+      "group": "test",
+      "evidence_id": "test-206",
+      "features": {
+        "sparsity": 0.8334553271084426,
+        "auxiliary": 0.9852817056347953,
+        "overlap": 0.8854386966468132,
+        "noise": 0.6729616773368212
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        125
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-207",
+      "group": "test",
+      "evidence_id": "test-207",
+      "features": {
+        "sparsity": 0.9511296261041646,
+        "auxiliary": 0.58889076239214,
+        "overlap": 0.6829182231747354,
+        "noise": 0.9048016709946205
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        57
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-208",
+      "group": "test",
+      "evidence_id": "test-208",
+      "features": {
+        "sparsity": 0.6424667060244026,
+        "auxiliary": 0.8468065261205573,
+        "overlap": 0.838046933622346,
+        "noise": 0.8316542235465865
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        89
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-209",
+      "group": "test",
+      "evidence_id": "test-209",
+      "features": {
+        "sparsity": 0.6648871845420299,
+        "auxiliary": 0.576898296902557,
+        "overlap": 0.8715461994336471,
+        "noise": 0.6580883036342784
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        89
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-210",
+      "group": "test",
+      "evidence_id": "test-210",
+      "features": {
+        "sparsity": 0.6987588634511193,
+        "auxiliary": 0.9305729580851192,
+        "overlap": 0.925702671396753,
+        "noise": 0.6873134317034411
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        131
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-211",
+      "group": "test",
+      "evidence_id": "test-211",
+      "features": {
+        "sparsity": 0.8285821593118549,
+        "auxiliary": 0.7236491153398765,
+        "overlap": 0.8114719050980651,
+        "noise": 0.7831987088564718
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-212",
+      "group": "test",
+      "evidence_id": "test-212",
+      "features": {
+        "sparsity": 0.53053379277029,
+        "auxiliary": 0.9784343930015375,
+        "overlap": 0.9917922227409309,
+        "noise": 0.9798212393579327
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        59
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-213",
+      "group": "test",
+      "evidence_id": "test-213",
+      "features": {
+        "sparsity": 0.7946197955306891,
+        "auxiliary": 0.5856765919647025,
+        "overlap": 0.7976999392026969,
+        "noise": 0.603868411217269
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        93
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-214",
+      "group": "test",
+      "evidence_id": "test-214",
+      "features": {
+        "sparsity": 0.5335782029229306,
+        "auxiliary": 0.9590866685442818,
+        "overlap": 0.5757597930781598,
+        "noise": 0.7374983105170984
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-215",
+      "group": "test",
+      "evidence_id": "test-215",
+      "features": {
+        "sparsity": 0.9513757714039481,
+        "auxiliary": 0.8550404707497723,
+        "overlap": 0.7604197087776041,
+        "noise": 0.515759914253878
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        183
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-216",
+      "group": "test",
+      "evidence_id": "test-216",
+      "features": {
+        "sparsity": 0.9684879663812502,
+        "auxiliary": 0.9765001822376533,
+        "overlap": 0.6180815417656338,
+        "noise": 0.8013543948493498
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        62
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-217",
+      "group": "test",
+      "evidence_id": "test-217",
+      "features": {
+        "sparsity": 0.8865849317238916,
+        "auxiliary": 0.8470191416037485,
+        "overlap": 0.7798875353970911,
+        "noise": 0.7655326104306328
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        106
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-218",
+      "group": "test",
+      "evidence_id": "test-218",
+      "features": {
+        "sparsity": 0.9892814069748257,
+        "auxiliary": 0.6380752889338978,
+        "overlap": 0.8311735993538831,
+        "noise": 0.9881917003558429
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        53
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-219",
+      "group": "test",
+      "evidence_id": "test-219",
+      "features": {
+        "sparsity": 0.9837034713312389,
+        "auxiliary": 0.7739541084885042,
+        "overlap": 0.8775989910910784,
+        "noise": 0.5596579838678715
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        111
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-220",
+      "group": "test",
+      "evidence_id": "test-220",
+      "features": {
+        "sparsity": 0.8578471047089065,
+        "auxiliary": 0.7623970828627269,
+        "overlap": 0.6459889456577583,
+        "noise": 0.7457514549293612
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        51
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-221",
+      "group": "test",
+      "evidence_id": "test-221",
+      "features": {
+        "sparsity": 0.8498208530198104,
+        "auxiliary": 0.8823990837400002,
+        "overlap": 0.92491570544633,
+        "noise": 0.8849706258566092
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        80
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-222",
+      "group": "test",
+      "evidence_id": "test-222",
+      "features": {
+        "sparsity": 0.5804133380487134,
+        "auxiliary": 0.8110526034163843,
+        "overlap": 0.8986839862527154,
+        "noise": 0.9060823964881535
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        78
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-223",
+      "group": "test",
+      "evidence_id": "test-223",
+      "features": {
+        "sparsity": 0.8940900548371642,
+        "auxiliary": 0.5839583991581865,
+        "overlap": 0.6297144222232701,
+        "noise": 0.6460071942765564
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        75
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-224",
+      "group": "test",
+      "evidence_id": "test-224",
+      "features": {
+        "sparsity": 0.5726037554224614,
+        "auxiliary": 0.8597274169063611,
+        "overlap": 0.5171825134751196,
+        "noise": 0.5813636409737271
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        92
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-225",
+      "group": "test",
+      "evidence_id": "test-225",
+      "features": {
+        "sparsity": 0.7200636846209568,
+        "auxiliary": 0.9877231140768905,
+        "overlap": 0.887114523107965,
+        "noise": 0.8183616447786046
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        102
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-226",
+      "group": "test",
+      "evidence_id": "test-226",
+      "features": {
+        "sparsity": 0.5105714218081613,
+        "auxiliary": 0.9541428553744215,
+        "overlap": 0.7040615796215046,
+        "noise": 0.9119516894830049
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        90
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-227",
+      "group": "test",
+      "evidence_id": "test-227",
+      "features": {
+        "sparsity": 0.5051002674890557,
+        "auxiliary": 0.9063275236610501,
+        "overlap": 0.7588509385363229,
+        "noise": 0.6526170176453987
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        131
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-228",
+      "group": "test",
+      "evidence_id": "test-228",
+      "features": {
+        "sparsity": 0.6064329748552252,
+        "auxiliary": 0.5589733562410628,
+        "overlap": 0.8694023583995787,
+        "noise": 0.5530228108209503
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        78
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-229",
+      "group": "test",
+      "evidence_id": "test-229",
+      "features": {
+        "sparsity": 0.9364412111251263,
+        "auxiliary": 0.7578972450561996,
+        "overlap": 0.9492282238636963,
+        "noise": 0.7967255817390501
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        76
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-230",
+      "group": "test",
+      "evidence_id": "test-230",
+      "features": {
+        "sparsity": 0.5626105344985366,
+        "auxiliary": 0.8422677211371661,
+        "overlap": 0.622374915213688,
+        "noise": 0.863860491041953
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        44
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-231",
+      "group": "test",
+      "evidence_id": "test-231",
+      "features": {
+        "sparsity": 0.5339837761664603,
+        "auxiliary": 0.9039780923795917,
+        "overlap": 0.6350159152234136,
+        "noise": 0.7019393732450047
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        59
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-232",
+      "group": "test",
+      "evidence_id": "test-232",
+      "features": {
+        "sparsity": 0.8877132856008133,
+        "auxiliary": 0.6867985280364864,
+        "overlap": 0.5335571883821927,
+        "noise": 0.7847182592661899
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        59
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-233",
+      "group": "test",
+      "evidence_id": "test-233",
+      "features": {
+        "sparsity": 0.9718025015136568,
+        "auxiliary": 0.9194388555328544,
+        "overlap": 0.9483057161438966,
+        "noise": 0.8189174103109413
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        99
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-234",
+      "group": "test",
+      "evidence_id": "test-234",
+      "features": {
+        "sparsity": 0.7578232967602379,
+        "auxiliary": 0.5687435688817772,
+        "overlap": 0.9290988686264554,
+        "noise": 0.8947696564607535
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        53
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-235",
+      "group": "test",
+      "evidence_id": "test-235",
+      "features": {
+        "sparsity": 0.6009326649143985,
+        "auxiliary": 0.9366722093392985,
+        "overlap": 0.7164315620481746,
+        "noise": 0.8433417620921175
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        78
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-236",
+      "group": "test",
+      "evidence_id": "test-236",
+      "features": {
+        "sparsity": 0.7090556828738983,
+        "auxiliary": 0.5627923133642652,
+        "overlap": 0.8029133586922044,
+        "noise": 0.777962121995921
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        62
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-237",
+      "group": "test",
+      "evidence_id": "test-237",
+      "features": {
+        "sparsity": 0.9991820382435843,
+        "auxiliary": 0.7923069769370592,
+        "overlap": 0.5493367662998078,
+        "noise": 0.9013911148020979
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        49
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-238",
+      "group": "test",
+      "evidence_id": "test-238",
+      "features": {
+        "sparsity": 0.8924392333608968,
+        "auxiliary": 0.5386010334582048,
+        "overlap": 0.9066268841147522,
+        "noise": 0.5764254470962443
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        77
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-239",
+      "group": "test",
+      "evidence_id": "test-239",
+      "features": {
+        "sparsity": 0.6706131695114366,
+        "auxiliary": 0.9912851875995596,
+        "overlap": 0.5854435134795646,
+        "noise": 0.8246699208883547
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        59
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-240",
+      "group": "test",
+      "evidence_id": "test-240",
+      "features": {
+        "sparsity": 0.5301336732545837,
+        "auxiliary": 0.8464889736908923,
+        "overlap": 0.6512019939267211,
+        "noise": 0.69323452886334
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        80
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-241",
+      "group": "test",
+      "evidence_id": "test-241",
+      "features": {
+        "sparsity": 0.5340301066026039,
+        "auxiliary": 0.6708917247082831,
+        "overlap": 0.9508470095340191,
+        "noise": 0.7562286711648903
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        71
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-242",
+      "group": "test",
+      "evidence_id": "test-242",
+      "features": {
+        "sparsity": 0.7451664416770303,
+        "auxiliary": 0.7136958313858845,
+        "overlap": 0.7392793039364338,
+        "noise": 0.5676186189240783
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        107
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-243",
+      "group": "test",
+      "evidence_id": "test-243",
+      "features": {
+        "sparsity": 0.5917022556966571,
+        "auxiliary": 0.5453052532035046,
+        "overlap": 0.7640262161610594,
+        "noise": 0.9909691094640573
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        51
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-244",
+      "group": "test",
+      "evidence_id": "test-244",
+      "features": {
+        "sparsity": 0.5933479113676923,
+        "auxiliary": 0.8101001958251915,
+        "overlap": 0.56819076333154,
+        "noise": 0.5068251048993382
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        127
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-245",
+      "group": "test",
+      "evidence_id": "test-245",
+      "features": {
+        "sparsity": 0.5629863555928605,
+        "auxiliary": 0.6296075598747936,
+        "overlap": 0.7066915293220013,
+        "noise": 0.6590864500186381
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        84
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-246",
+      "group": "test",
+      "evidence_id": "test-246",
+      "features": {
+        "sparsity": 0.8308939119772576,
+        "auxiliary": 0.6035655507117972,
+        "overlap": 0.9811423048132721,
+        "noise": 0.737645606337396
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        81
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-247",
+      "group": "test",
+      "evidence_id": "test-247",
+      "features": {
+        "sparsity": 0.8748077902951896,
+        "auxiliary": 0.5963497944647413,
+        "overlap": 0.643773005986704,
+        "noise": 0.7711644027877924
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        56
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-248",
+      "group": "test",
+      "evidence_id": "test-248",
+      "features": {
+        "sparsity": 0.7225294318585864,
+        "auxiliary": 0.5622129866112759,
+        "overlap": 0.733865218726794,
+        "noise": 0.5237223150843335
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        91
+      ],
+      "trials": [
+        1000
+      ]
+    },
+    {
+      "record_id": "test-249",
+      "group": "test",
+      "evidence_id": "test-249",
+      "features": {
+        "sparsity": 0.5241277343893753,
+        "auxiliary": 0.7706064593594313,
+        "overlap": 0.7058541885845036,
+        "noise": 0.6422393355807509
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        120
+      ],
+      "trials": [
+        1000
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+........................................................................ [ 40%]
+........................................................................ [ 80%]
+..................................                                       [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.14-final-0 _______________
+
+Name                                  Stmts   Miss  Cover   Missing
+-------------------------------------------------------------------
+src\privacy_risk\__init__.py              1      0   100%
+src\privacy_risk\adaptive_audit.py      311     34    89%   69, 85, 108, 154, 164, 168, 172, 179, 209, 211, 222, 226, 234, 236, 264, 279, 286, 291, 299, 309, 312, 320, 323, 329, 355, 372, 381, 393, 406, 411, 482, 514, 518, 520
+src\privacy_risk\composition.py          75      3    96%   14, 26, 93
+src\privacy_risk\credit.py              271      3    99%   58, 156, 245
+src\privacy_risk\dp.py                   25      2    92%   44, 46
+src\privacy_risk\evaluation.py          390     52    87%   191, 210, 260, 279, 292, 473, 669-705, 711-716, 729-735
+src\privacy_risk\experiments.py         344     10    97%   191, 248, 294, 470, 487, 505, 523, 601, 698-699
+src\privacy_risk\frontier.py             35      1    97%   11
+src\privacy_risk\governance.py           48      3    94%   48, 62, 64
+src\privacy_risk\keys.py                  9      0   100%
+src\privacy_risk\linkage.py             116      3    97%   17, 112, 149
+src\privacy_risk\multiscale.py           92      6    93%   17, 36, 144, 147, 152, 156
+src\privacy_risk\neural_pipeline.py     176    104    41%   67, 76-83, 104, 139-268, 305-323, 331
+src\privacy_risk\neural_trust.py        129     12    91%   38, 57, 64, 69, 98, 140, 142, 170, 208-210, 214
+src\privacy_risk\pipeline.py             76     12    84%   96-97, 133-141, 145
+src\privacy_risk\provenance.py          152      6    96%   115, 144, 146, 155, 228, 246
+src\privacy_risk\realdata.py            207      2    99%   217, 236
+src\privacy_risk\reporting.py           367      3    99%   892, 894, 933
+src\privacy_risk\risk.py                 57      3    95%   40, 69, 98
+src\privacy_risk\sentry_r.py            503     44    91%   50, 59, 62, 96, 107, 110, 114, 128, 134, 137, 143, 185, 202, 207, 211, 216, 233, 239, 254, 279, 287, 305, 307, 317, 340, 348, 369, 373, 427, 459, 491, 514, 518, 520, 523, 527, 562, 596, 609, 612, 617, 619, 742, 772
+src\privacy_risk\sequential.py          125      7    94%   35, 75, 78, 111, 161, 203, 206
+src\privacy_risk\synthetic.py           107      0   100%
+src\privacy_risk\uncertainty.py          51      3    94%   13, 22, 52
+src\privacy_risk\validation.py           57      1    98%   67
+-------------------------------------------------------------------
+TOTAL                                  3724    314    92%
+Required test coverage of 85% reached. Total coverage: 91.57%
+178 passed in 122.40s (0:02:02)

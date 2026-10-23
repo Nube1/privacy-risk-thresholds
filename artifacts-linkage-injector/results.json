@@ -1,0 +1,526 @@
+{
+  "status": "Executed synthetic linkage attacks; no genuine LLM arm or real data",
+  "config": {
+    "seeds": [
+      201,
+      202,
+      203,
+      204,
+      205
+    ],
+    "base_rows": 120,
+    "stopping_rows": 80,
+    "test_rows": 250,
+    "proposals": 32,
+    "development_trials": 100,
+    "test_trials": 1000,
+    "population_size": 64,
+    "quasi_identifiers": 3,
+    "epochs": 1200,
+    "patience": 70,
+    "schema": {
+      "features": [
+        {
+          "name": "sparsity",
+          "min": 0.0,
+          "max": 1.0
+        },
+        {
+          "name": "auxiliary",
+          "min": 0.0,
+          "max": 1.0
+        },
+        {
+          "name": "overlap",
+          "min": 0.0,
+          "max": 1.0
+        },
+        {
+          "name": "noise",
+          "min": 0.0,
+          "max": 1.0
+        }
+      ],
+      "coordinates": [
+        "attack_success"
+      ],
+      "tolerances": [
+        0.2
+      ]
+    },
+    "evaluator": "synthetic-nearest-record-linkage-v1"
+  },
+  "config_sha256": "854f244418c74f2bfd3e5d12a71331fb57d48419473e3ad8b8d750e347244558",
+  "summary": [
+    {
+      "depth": 0,
+      "arm": "base",
+      "log_loss": {
+        "mean": 0.2848842321393378,
+        "ci95": [
+          0.2798018074104923,
+          0.28996665686818324
+        ]
+      },
+      "paired_minus_base": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "depth": 0,
+      "arm": "random",
+      "log_loss": {
+        "mean": 0.2908365119001605,
+        "ci95": [
+          0.28553127952348306,
+          0.296141744276838
+        ]
+      },
+      "paired_minus_base": {
+        "mean": 0.005952279760822776,
+        "ci95": [
+          -0.003721153386087918,
+          0.01562571290773347
+        ]
+      }
+    },
+    {
+      "depth": 0,
+      "arm": "heuristic",
+      "log_loss": {
+        "mean": 0.2994012029856539,
+        "ci95": [
+          0.29696836310051083,
+          0.301834042870797
+        ]
+      },
+      "paired_minus_base": {
+        "mean": 0.014516970846316191,
+        "ci95": [
+          0.008128072515643433,
+          0.020905869176988952
+        ]
+      }
+    },
+    {
+      "depth": 2,
+      "arm": "base",
+      "log_loss": {
+        "mean": 0.3038399163400599,
+        "ci95": [
+          0.2816188577703659,
+          0.32606097490975394
+        ]
+      },
+      "paired_minus_base": {
+        "mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    {
+      "depth": 2,
+      "arm": "random",
+      "log_loss": {
+        "mean": 0.2905216315169216,
+        "ci95": [
+          0.28580584101290923,
+          0.295237422020934
+        ]
+      },
+      "paired_minus_base": {
+        "mean": -0.013318284823138283,
+        "ci95": [
+          -0.03418365635174016,
+          0.007547086705463588
+        ]
+      }
+    },
+    {
+      "depth": 2,
+      "arm": "heuristic",
+      "log_loss": {
+        "mean": 0.2911344325159918,
+        "ci95": [
+          0.2861343518466423,
+          0.2961345131853413
+        ]
+      },
+      "paired_minus_base": {
+        "mean": -0.012705483824068164,
+        "ci95": [
+          -0.033100780211125606,
+          0.0076898125629892775
+        ]
+      }
+    }
+  ],
+  "raw": [
+    {
+      "seed": 201,
+      "arm": "base",
+      "depth": 0,
+      "test_log_loss": 0.28576559204996,
+      "model_sha256": "0d2ba60dd015d6d8054e27c1c0f8dcb589e3cda4b129e4747dfdae9a5ac3c033",
+      "test_sha256": "efe2026ed466abafedca86958339064499da34d160a9256e07f8a9f25ad7c952",
+      "training_sha256": "af61c079ba15055b492fcbb293772107b1aef8c8221af38d077096ed45eebb23",
+      "mean_observed_test_attack_success": 0.08492400000000001,
+      "best_epoch": 1137,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 201,
+      "arm": "base",
+      "depth": 2,
+      "test_log_loss": 0.3273909189536173,
+      "model_sha256": "f53ce12b18b16928b9c74ff174f6d9a46dfd73c4a31dbf0e42973124c7e3985d",
+      "test_sha256": "efe2026ed466abafedca86958339064499da34d160a9256e07f8a9f25ad7c952",
+      "training_sha256": "af61c079ba15055b492fcbb293772107b1aef8c8221af38d077096ed45eebb23",
+      "mean_observed_test_attack_success": 0.08492400000000001,
+      "best_epoch": 905,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 201,
+      "arm": "random",
+      "depth": 0,
+      "test_log_loss": 0.2900919150037215,
+      "model_sha256": "abaf36e93fa72fa38fae5a4eb6515773fa21ef199756f7ec5388070fbf3fa9ba",
+      "test_sha256": "efe2026ed466abafedca86958339064499da34d160a9256e07f8a9f25ad7c952",
+      "training_sha256": "12256c793fd50e1d591a38ec88ff8ebb41c145e7b373ef7408f9cb84925cb938",
+      "mean_observed_test_attack_success": 0.08492400000000001,
+      "best_epoch": 988,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 201,
+      "arm": "random",
+      "depth": 2,
+      "test_log_loss": 0.28914490117752806,
+      "model_sha256": "fbc1391c9d4703857383a1005942fc978a28c39297b768d3d715a8728e5f4636",
+      "test_sha256": "efe2026ed466abafedca86958339064499da34d160a9256e07f8a9f25ad7c952",
+      "training_sha256": "12256c793fd50e1d591a38ec88ff8ebb41c145e7b373ef7408f9cb84925cb938",
+      "mean_observed_test_attack_success": 0.08492400000000001,
+      "best_epoch": 208,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 201,
+      "arm": "heuristic",
+      "depth": 0,
+      "test_log_loss": 0.2969523355636461,
+      "model_sha256": "83a286930b7ab593e6b5197e21b00c5ef800f893f2da7eed4740b6197d6baf1e",
+      "test_sha256": "efe2026ed466abafedca86958339064499da34d160a9256e07f8a9f25ad7c952",
+      "training_sha256": "f3fe408a01a40441d66cb937a9a35c4842563ee95ac7b8e4e4df9eea7e72f9f7",
+      "mean_observed_test_attack_success": 0.08492400000000001,
+      "best_epoch": 805,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 201,
+      "arm": "heuristic",
+      "depth": 2,
+      "test_log_loss": 0.29765025774613546,
+      "model_sha256": "a5d53774d60e77b0e1cee4126c095ceb5d2d63baf48ee06f3fe710c8d639a19f",
+      "test_sha256": "efe2026ed466abafedca86958339064499da34d160a9256e07f8a9f25ad7c952",
+      "training_sha256": "f3fe408a01a40441d66cb937a9a35c4842563ee95ac7b8e4e4df9eea7e72f9f7",
+      "mean_observed_test_attack_success": 0.08492400000000001,
+      "best_epoch": 702,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 202,
+      "arm": "base",
+      "depth": 0,
+      "test_log_loss": 0.28916242305819834,
+      "model_sha256": "f0557f79f660574f3ef9d4d2be5e38c2e5e0257773380263a6bfc1370c102243",
+      "test_sha256": "3aba672e9c9f331d152867555fad9f51daa9f5e0695485481dd4d4423de4babf",
+      "training_sha256": "ea49bd996fd596ec1f9675459e14a3da300a93d68f69794a4016bdffa64e9c38",
+      "mean_observed_test_attack_success": 0.08622800000000001,
+      "best_epoch": 1189,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 202,
+      "arm": "base",
+      "depth": 2,
+      "test_log_loss": 0.30529304804024465,
+      "model_sha256": "b822957ffc20dc58bb732b4951affb85c6bf09fa9cbaa916e3415047b5ec1536",
+      "test_sha256": "3aba672e9c9f331d152867555fad9f51daa9f5e0695485481dd4d4423de4babf",
+      "training_sha256": "ea49bd996fd596ec1f9675459e14a3da300a93d68f69794a4016bdffa64e9c38",
+      "mean_observed_test_attack_success": 0.08622800000000001,
+      "best_epoch": 517,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 202,
+      "arm": "random",
+      "depth": 0,
+      "test_log_loss": 0.2910953337463394,
+      "model_sha256": "545a17c8fb53e8d3b879bef6e3498f1f8e850baa7fbca4bbc6bef2b6e35c8bcd",
+      "test_sha256": "3aba672e9c9f331d152867555fad9f51daa9f5e0695485481dd4d4423de4babf",
+      "training_sha256": "649ed022a7ec1c098b99eca1ac47fc7c8be749bb6b3fa8ba585bd6f060d0eccb",
+      "mean_observed_test_attack_success": 0.08622800000000001,
+      "best_epoch": 978,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 202,
+      "arm": "random",
+      "depth": 2,
+      "test_log_loss": 0.2962459145718673,
+      "model_sha256": "e7ba224ad2031139b680213399a0f8cd73768cad1de4e05d01b6073928b6f116",
+      "test_sha256": "3aba672e9c9f331d152867555fad9f51daa9f5e0695485481dd4d4423de4babf",
+      "training_sha256": "649ed022a7ec1c098b99eca1ac47fc7c8be749bb6b3fa8ba585bd6f060d0eccb",
+      "mean_observed_test_attack_success": 0.08622800000000001,
+      "best_epoch": 195,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 202,
+      "arm": "heuristic",
+      "depth": 0,
+      "test_log_loss": 0.3008979290063774,
+      "model_sha256": "3f0424af97961648ce496dacece23538a16979947bd240f26e503ef450d1f8ff",
+      "test_sha256": "3aba672e9c9f331d152867555fad9f51daa9f5e0695485481dd4d4423de4babf",
+      "training_sha256": "82b9ea2f3b673549f7f7f82476cdb568088675d2cb1fdde683143bdbfc3b960a",
+      "mean_observed_test_attack_success": 0.08622800000000001,
+      "best_epoch": 760,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 202,
+      "arm": "heuristic",
+      "depth": 2,
+      "test_log_loss": 0.2907046413434814,
+      "model_sha256": "ab54e4fcc05f2731b46f36d8140243df64970299e362b543608da9a00120f8f7",
+      "test_sha256": "3aba672e9c9f331d152867555fad9f51daa9f5e0695485481dd4d4423de4babf",
+      "training_sha256": "82b9ea2f3b673549f7f7f82476cdb568088675d2cb1fdde683143bdbfc3b960a",
+      "mean_observed_test_attack_success": 0.08622800000000001,
+      "best_epoch": 202,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 203,
+      "arm": "base",
+      "depth": 0,
+      "test_log_loss": 0.2859637079544125,
+      "model_sha256": "6bdd9f25f8cc08c3e2835fb2ede879fc3bc8b416f72c25ed128716eea6a3395c",
+      "test_sha256": "5116c1588d2f2269eb4a650ce58b66c7c8a99897b5478785bd320669f3676f55",
+      "training_sha256": "7858d391d19bfe05f25cd3acb1a97f86f3d795f76bebbb036f1c08de98b94452",
+      "mean_observed_test_attack_success": 0.08466,
+      "best_epoch": 729,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 203,
+      "arm": "base",
+      "depth": 2,
+      "test_log_loss": 0.2928660641234104,
+      "model_sha256": "d6b8fb3feae21722053fb2337ee8b320142e79a40f4cbef26962f9b956470238",
+      "test_sha256": "5116c1588d2f2269eb4a650ce58b66c7c8a99897b5478785bd320669f3676f55",
+      "training_sha256": "7858d391d19bfe05f25cd3acb1a97f86f3d795f76bebbb036f1c08de98b94452",
+      "mean_observed_test_attack_success": 0.08466,
+      "best_epoch": 1059,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 203,
+      "arm": "random",
+      "depth": 0,
+      "test_log_loss": 0.2857034692294218,
+      "model_sha256": "43a5b1ee34c14e2010fab523ddf54219ff28d2efd9348e0f338c13fa2b06eef8",
+      "test_sha256": "5116c1588d2f2269eb4a650ce58b66c7c8a99897b5478785bd320669f3676f55",
+      "training_sha256": "d9bbfb33ccc46d30aa144cdaa6617a04448743c4c91465b874a08bd8584af61a",
+      "mean_observed_test_attack_success": 0.08466,
+      "best_epoch": 643,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 203,
+      "arm": "random",
+      "depth": 2,
+      "test_log_loss": 0.2882829346482698,
+      "model_sha256": "93322097c7bf698abbced14fecc82417c32a115a584a0f21a72627d63752c8d1",
+      "test_sha256": "5116c1588d2f2269eb4a650ce58b66c7c8a99897b5478785bd320669f3676f55",
+      "training_sha256": "d9bbfb33ccc46d30aa144cdaa6617a04448743c4c91465b874a08bd8584af61a",
+      "mean_observed_test_attack_success": 0.08466,
+      "best_epoch": 499,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 203,
+      "arm": "heuristic",
+      "depth": 0,
+      "test_log_loss": 0.2995331767235667,
+      "model_sha256": "2499cac240d1596bba3136a6275d35f8468aad9147d41df4c2c1dd087fd40e8a",
+      "test_sha256": "5116c1588d2f2269eb4a650ce58b66c7c8a99897b5478785bd320669f3676f55",
+      "training_sha256": "a1368a3d9dabef6e739a12cffd7bc33ff11d34f3d2a7e685fe425e48599437be",
+      "mean_observed_test_attack_success": 0.08466,
+      "best_epoch": 785,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 203,
+      "arm": "heuristic",
+      "depth": 2,
+      "test_log_loss": 0.28992807866523207,
+      "model_sha256": "20edf92d5b0b06185aa89d81d3d589bc5a014a0d8da6a7b8101432cdd550ec89",
+      "test_sha256": "5116c1588d2f2269eb4a650ce58b66c7c8a99897b5478785bd320669f3676f55",
+      "training_sha256": "a1368a3d9dabef6e739a12cffd7bc33ff11d34f3d2a7e685fe425e48599437be",
+      "mean_observed_test_attack_success": 0.08466,
+      "best_epoch": 577,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 204,
+      "arm": "base",
+      "depth": 0,
+      "test_log_loss": 0.2780694081874377,
+      "model_sha256": "e006db4c926c88a9e0ab9cbc716ba365ed8c6f2f2d318ae288f2a91ae85dd4e0",
+      "test_sha256": "1e405112a192999a35d1b6c183d1f5cbb5d4888d57bf64f3907000f61eb5758e",
+      "training_sha256": "763809ca12d6f41f9227e3fe3f9ba1cc85f66e059d07347f13dc949d34e9831c",
+      "mean_observed_test_attack_success": 0.08103999999999999,
+      "best_epoch": 657,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 204,
+      "arm": "base",
+      "depth": 2,
+      "test_log_loss": 0.2809269178679416,
+      "model_sha256": "6903d50b9fea5af9f873e7c5b718445e22e09bafa4d3940336f08c65104b3c10",
+      "test_sha256": "1e405112a192999a35d1b6c183d1f5cbb5d4888d57bf64f3907000f61eb5758e",
+      "training_sha256": "763809ca12d6f41f9227e3fe3f9ba1cc85f66e059d07347f13dc949d34e9831c",
+      "mean_observed_test_attack_success": 0.08103999999999999,
+      "best_epoch": 542,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 204,
+      "arm": "random",
+      "depth": 0,
+      "test_log_loss": 0.2975361691852312,
+      "model_sha256": "38d7d3fefa9fd21ed89c585f28d1e07c7cd6b0d59422939ff5a70111c2541995",
+      "test_sha256": "1e405112a192999a35d1b6c183d1f5cbb5d4888d57bf64f3907000f61eb5758e",
+      "training_sha256": "aa30e6c60b62cecf9d4bb98defdd346627b72481218c83c8386fbef36f120a9d",
+      "mean_observed_test_attack_success": 0.08103999999999999,
+      "best_epoch": 793,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 204,
+      "arm": "random",
+      "depth": 2,
+      "test_log_loss": 0.28665652707013384,
+      "model_sha256": "06c578aa6d2319d704da5964eac12251e410de30e558bdf614ff68251c10d07f",
+      "test_sha256": "1e405112a192999a35d1b6c183d1f5cbb5d4888d57bf64f3907000f61eb5758e",
+      "training_sha256": "aa30e6c60b62cecf9d4bb98defdd346627b72481218c83c8386fbef36f120a9d",
+      "mean_observed_test_attack_success": 0.08103999999999999,
+      "best_epoch": 466,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 204,
+      "arm": "heuristic",
+      "depth": 0,
+      "test_log_loss": 0.3016504621796943,
+      "model_sha256": "3fc9c4ef62f94df48e2ffbf942397dd6e74a0311fa6d54bb529a8b55d5d2e808",
+      "test_sha256": "1e405112a192999a35d1b6c183d1f5cbb5d4888d57bf64f3907000f61eb5758e",
+      "training_sha256": "93416ebde0b24ba074751d1a7e7d477612a5e651f44c18e17f45382cea2f745b",
+      "mean_observed_test_attack_success": 0.08103999999999999,
+      "best_epoch": 739,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 204,
+      "arm": "heuristic",
+      "depth": 2,
+      "test_log_loss": 0.29079966806017776,
+      "model_sha256": "b6cc53f7b2cd1a582435a901bb9872152aae4728d1b45920acf1a616e9a0a7dc",
+      "test_sha256": "1e405112a192999a35d1b6c183d1f5cbb5d4888d57bf64f3907000f61eb5758e",
+      "training_sha256": "93416ebde0b24ba074751d1a7e7d477612a5e651f44c18e17f45382cea2f745b",
+      "mean_observed_test_attack_success": 0.08103999999999999,
+      "best_epoch": 994,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 205,
+      "arm": "base",
+      "depth": 0,
+      "test_log_loss": 0.2854600294466802,
+      "model_sha256": "15aa2b1c51e5d2008c01cf414a3c7e04f3e5b54e23ec30a0cf2afc723f334cfb",
+      "test_sha256": "1572a088a28a27f020142fe937a6679abf301e2fd0c0ac6aaa873d3a9ee42d93",
+      "training_sha256": "db08a8352d7cebb42d1d05c923e5d4f6ff0d01e8cd88f3d4975db7f28706130f",
+      "mean_observed_test_attack_success": 0.084148,
+      "best_epoch": 1199,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 205,
+      "arm": "base",
+      "depth": 2,
+      "test_log_loss": 0.31272263271508566,
+      "model_sha256": "da4c30d9bd3251c5d6381d623b1d16295a35b6b8b02a2ce8e60842f920219c52",
+      "test_sha256": "1572a088a28a27f020142fe937a6679abf301e2fd0c0ac6aaa873d3a9ee42d93",
+      "training_sha256": "db08a8352d7cebb42d1d05c923e5d4f6ff0d01e8cd88f3d4975db7f28706130f",
+      "mean_observed_test_attack_success": 0.084148,
+      "best_epoch": 590,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 205,
+      "arm": "random",
+      "depth": 0,
+      "test_log_loss": 0.28975567233608873,
+      "model_sha256": "62f3f23bbbfa2f06bac34e637f42979d2f9bc8da0c6eb8ab1313025621d481ba",
+      "test_sha256": "1572a088a28a27f020142fe937a6679abf301e2fd0c0ac6aaa873d3a9ee42d93",
+      "training_sha256": "cc36d6c803310bcd0a0faae0fecd954ccd5a3f24852d28939b9c30b6142f6e98",
+      "mean_observed_test_attack_success": 0.084148,
+      "best_epoch": 551,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 205,
+      "arm": "random",
+      "depth": 2,
+      "test_log_loss": 0.2922778801168092,
+      "model_sha256": "0fc8abb6186dc8bdc3ed7c67ee73696b834ea9fca0c68f71bd4aed3f3f741a20",
+      "test_sha256": "1572a088a28a27f020142fe937a6679abf301e2fd0c0ac6aaa873d3a9ee42d93",
+      "training_sha256": "cc36d6c803310bcd0a0faae0fecd954ccd5a3f24852d28939b9c30b6142f6e98",
+      "mean_observed_test_attack_success": 0.084148,
+      "best_epoch": 208,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 205,
+      "arm": "heuristic",
+      "depth": 0,
+      "test_log_loss": 0.29797211145498514,
+      "model_sha256": "7e0b37089cbde41e288331015596d459abff0201199f8673ac3baec0d4fc8d4d",
+      "test_sha256": "1572a088a28a27f020142fe937a6679abf301e2fd0c0ac6aaa873d3a9ee42d93",
+      "training_sha256": "cde9d0761bd80346fca2e50d77ca2711132e628a6d26fe7ff6fb083da969d210",
+      "mean_observed_test_attack_success": 0.084148,
+      "best_epoch": 875,
+      "epoch_cap_reached": false
+    },
+    {
+      "seed": 205,
+      "arm": "heuristic",
+      "depth": 2,
+      "test_log_loss": 0.2865895167649321,
+      "model_sha256": "1bbdcfef4cc61df402922f690d1efb14ff05abfd172226be5b7ce15f372107b5",
+      "test_sha256": "1572a088a28a27f020142fe937a6679abf301e2fd0c0ac6aaa873d3a9ee42d93",
+      "training_sha256": "cde9d0761bd80346fca2e50d77ca2711132e628a6d26fe7ff6fb083da969d210",
+      "mean_observed_test_attack_success": 0.084148,
+      "best_epoch": 862,
+      "epoch_cap_reached": false
+    }
+  ]
+}

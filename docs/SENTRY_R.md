@@ -63,7 +63,31 @@ The audit JSONL contains one row per shortlisted candidate: `candidate_id`, `evi
 
 By default `audit` keeps an append-only JSON-lines ledger, `audit_ledger.jsonl`, in the directory of `--output`; `--ledger PATH` chooses another file and `--no-ledger` turns it off. Each line records the freeze digest, schema digest, decision digest, selected candidate and UTC time. A second audit of a freeze already in the ledger is refused. In Python, `final_audit(..., ledger=None)` is the default, so a caller who wants the check must pass a path.
 
-These checks bind the audit to its freeze. They do not prove the order of events: the digest has no key or trusted timestamp, anyone can write a new freeze, and a ledger file can be deleted or a new one started. The code does not stop a new shortlist or new LLM proposals after an audit has been seen. `evidence_kind` is a string the caller sets. The user remains responsible for authentic provenance, for keeping the ledger, and for the statistical independence of externally supplied counts.
+These checks bind the audit to its freeze. On their own they do not prove the order of events: the digest has no key or trusted timestamp, anyone can write a new freeze, and a ledger file can be deleted or a new one started. The provenance ledger below closes most of that. `evidence_kind` is a string the caller sets. The user remains responsible for authentic provenance, for keeping the ledger and its key, and for the statistical independence of externally supplied counts.
+
+## The provenance ledger: a closed network with an LLM injector
+
+The network is closed. Its only input is a feature vector that passed the schema, a named human review and a measured attack. The LLM injects scenarios into that closed system and nothing else. `privacy_risk.provenance.ProvenanceLedger` makes the closure checkable. Pass `--provenance chain.jsonl` to any `sentry-r` command and every stage is appended to one hash-chained JSON-lines file:
+
+```
+budget -> proposal -> review -> measurement -> training -> freeze -> audit
+```
+
+Each line carries the hash of the line before it and, with a key, an HMAC-SHA256 signature of its own hash. The key comes from `--key-file PATH` or the `SENTRY_R_LEDGER_KEY` variable and must be at least 16 bytes; `--unkeyed` keeps the chain without signatures. Payloads hold digests and identifiers only, never a proposal's text and never a count.
+
+The ledger enforces three rules:
+
+1. **Order.** A review is refused unless its proposal is on the chain, a measurement unless an approving review is, a training run unless every measured proposal it uses is, a freeze unless its model is, and an audit unless its freeze is.
+2. **Budget.** `sentry-r --provenance chain.jsonl budget --programme credit --alpha-budget 0.10` declares a programme's family-wise error budget once. `shortlist --programme credit` records the freeze against it, and `audit` debits the freeze's `alpha_family`. An audit that would overspend is refused, so a new shortlist after a failed audit costs budget rather than restarting at the nominal alpha.
+3. **Closure.** Once a freeze has been audited, a training run may not mix that freeze's development evidence with evidence measured after the audit. Otherwise the audit outcome could steer the model that is audited next. Start a fresh development set instead.
+
+`sentry-r --provenance chain.jsonl --key-file key verify-ledger` checks the chain and every signature and prints the budgets spent. The injector checks a 256,000-byte response cap before JSON parsing and a 32-proposal cap after parsing. File intake also reads at most the byte cap plus one byte before refusing an oversized file. `stage_llm` caps serialized batch size and refuses a proposal digest already on the chain. Provider-side token, streaming and timeout limits are still required to bound response generation.
+
+Measurement entries now commit the full measured row's digest, including features and counts. Training with provenance refuses a proposal row whose contents differ from that commitment. Legacy measurement entries without a content digest need a new measurement under the updated format. Injected training feature vectors identical to a validation feature vector are conservatively refused, even with different IDs. This can reject legitimate collisions and does not detect semantic or near-copy contamination. Base evidence, reviewer identity and evaluator authenticity still require external controls.
+
+The current budget debit occurs after outcomes are supplied to `final_audit`. It does not prevent a caller from obtaining or discarding outcomes outside the ledger. A separately controlled service must reserve budget before drawing counts and record every attempt, including aborts. See `RESEARCH_BRIEF.md` for the reviewed gaps and `EXPERIMENT_PROTOCOL.md` for the proposed service boundary and confirmatory experiment.
+
+What the ledger cannot do: an operator who holds the key and can rewrite the file can rewrite the chain. Publish or time-stamp the chain head outside the operator's control. A registry service with its own storage, keys and time source remains the stronger design.
 
 ## LLM-assisted scenario injection
 

@@ -48,9 +48,18 @@ into one hashed freeze record. The final audit reads $\alpha$ from that
 record and refuses to run if the record has changed, if the expiry date has
 passed, if any trial count differs from the plan, or if an audit evidence
 identifier was used in development. An optional append-only ledger refuses a
-second audit of the same freeze. These checks bind an audit to its freeze;
-they do not prove the order of events, since the hash has no key or trusted
-time stamp and a new freeze or a new ledger can always be written. The
+second audit of the same freeze. These checks bind an audit to its freeze.
+On their own they do not prove the order of events, since the freeze hash has
+no key or trusted time stamp. A second, keyed ledger closes that gap in the
+implementation: every stage, from the language model's proposal through
+review, measurement, training and freeze to the audit, is appended to one
+hash-chained file, each entry signed with HMAC-SHA256 under a key the operator
+holds, and an entry is refused unless the entries it depends on are already on
+the chain. The same ledger holds each programme's error budget and debits
+every audit's $\alpha$ against it. The network is thus closed in a checkable
+sense: nothing reaches it that is not on the chain as a reviewed and measured
+scenario. The chain head still needs a time stamp or publication outside the
+operator's control, because an operator with the key can rewrite the file. The
 Proposition
 \ref{prop:neural-gate} guarantee then applies even if the \emph{development}
 sequence used an LLM adaptively, provided the conditional binomial model for
