@@ -1,36 +1,31 @@
-\documentclass[11pt,letterpaper]{article}
-\usepackage[top=1.3in,left=1.25in,right=1.25in,bottom=1in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern,amsmath,amssymb,amsthm,mathtools,booktabs,graphicx,microtype}
+\documentclass{jpc}
+% Journal of Privacy and Confidentiality class (jpc.cls, github.com/journalprivacyconfidentiality/jpc-style).
+% The layout macros \doisuffix and \jpcheading are added by the editorial team.
+\usepackage{mathtools,booktabs,graphicx}
 \usepackage{tikz}
 \graphicspath{{./}{../}}
 \usetikzlibrary{arrows.meta,positioning,fit,patterns,calc,shapes.geometric}
 \usepackage{xr-hyper}
-\usepackage[hidelinks]{hyperref}
 \externaldocument[S-]{jpc_supplement}
 \makeatletter\g@addto@macro\UrlBreaks{\do\_\do\-}\makeatother
-\newtheorem{theorem}{Theorem}
-\newtheorem{proposition}{Proposition}
-\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{assumption}[thm]{Assumption}
 \theoremstyle{remark}
-\newtheorem{remark}{Remark}
+\newtheorem{remark}[thm]{Remark}
 \newcommand{\Prob}{\mathbb P}
 \newcommand{\E}{\mathbb E}
 \newcommand{\F}{\mathcal F}
+\keywords{disclosure risk, sequential testing, test supermartingale, online multiple testing, composition attack, official statistics}
 \begin{document}
-\begin{center}
-{\Large\bfseries Adaptive certification of attack-conditional disclosure risk across release programmes\par}
-\vspace{4mm}
-Ronald Rethabile Malamule Mahomane\\[2pt]
-{\small Department of Computing, Mathematical and Statistical Sciences, University of Namibia, Windhoek\\
-School of Pathology, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg\\
-Basis Energy, Victoria, Australia\\
-Corresponding author: \href{mailto:ron@basisenergygroup.com}{ron@basisenergygroup.com}}
-\end{center}
+\title[Adaptive certification of disclosure risk]{Adaptive certification of attack-conditional disclosure risk across release programmes}
+\author{Ronald Rethabile Malamule Mahomane}
+\address{Department of Computing, Mathematical and Statistical Sciences, University of Namibia, Windhoek; School of Pathology, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg; Basis Energy, Victoria, Australia}
+\email{ron@basisenergygroup.com}
 \begin{abstract}
 An agency that publishes a series of releases from one register must decide which releases are safe against a list of attacks that grows as audits are read, and it must be able to show that the audit itself was not gamed. We treat each pair of a candidate release and a declared attack as a risk coordinate, certified when a betting test supermartingale for the hypothesis that its success probability is at least its tolerance crosses a threshold fixed at registration. Under a stated condition on how attack targets are sampled, the chance of ever certifying a coordinate at or above its tolerance is at most the error budget, even when coordinates are added after outcomes are seen and audits stop at will. The error control is online alpha-spending; what we add is specific to disclosure audits: a bound on expected audit length set by the gap between risk and tolerance, release chains that choose a setting from an ordered grid and test every declared attack at the full level, and a threat model for the audit process with measured attacks on it. On a synthetic credit register with six monthly vintages in which loans enter and leave, per-release review passes the file with no suppression. An adversary who pools the vintages and knows when the target's loan was live needs a cell-count floor of 75, and one who also holds an exposure reading per vintage needs 150, which keeps a fifth of the loans and under four per cent of the exposure; an insider who knows exposure to within one per cent defeats every floor tested. A release chain over the three declared attacks chose 150 in 19 of 20 attack streams and never chose an unsafe floor. An operator who can choose among a hundred seeds certifies an attack at the tolerance in 98 per cent of runs, and one who bets after seeing outcomes certifies an unsafe attack in every run; committed randomness and committed bets close both routes if the registry itself is trusted.
 \end{abstract}
-\noindent\textbf{Keywords:} disclosure risk; sequential testing; test supermartingale; online multiple testing; composition attack; official statistics.
+\maketitle
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 \footnotetext[1]{Overlap with earlier work. Table~\ref{tab:carried} and the four-release and public-file figures in Section~\ref{sec:carried} reproduce results first reported in \cite{mahomane2026}, an author manuscript whose earlier version was presented at the Banco de Portugal and IFC Workshop on Data Security and Privacy, Lisbon, September 2026; Figure~\ref{fig:pool} is adapted from it. Theorem~\ref{thm:gate}, Propositions~\ref{prop:cost} to~\ref{prop:release}, the toy audit (Table~\ref{tab:new-audit}), the credit-register audit (Table~\ref{tab:chain-audit}), the factor-by-factor floors and the audit-process measurements (Table~\ref{tab:audit-process}) are new. The credit register itself has been revised since \cite{mahomane2026}: loans now leave for good and new loans enter each month, and the pooled attack uses absence as well as presence in the target's history.}

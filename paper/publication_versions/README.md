@@ -2,8 +2,6 @@
 
 These are editable author manuscripts, not publisher-issued documents.
 
-The 23 October 2026 revision adds a separate public-file search experiment to the journal supplement and long-form online appendix. Its focused author manuscript is `../injector_study/main.tex`; `../../docs/PAPER_RESULTS_2026_10_23.md` records the new results and limits. Existing committed PDFs predate this source revision; use the current source and compiled editor preview rather than treating those PDFs as updated exports. No live LLM advantage is claimed.
-
 | File | Intended route | Scope |
 | --- | --- | --- |
 | `../bis_ifc_full.tex` and `bis_ifc.pdf` | Long-form IFC Working Paper consideration | *Governing privacy risk across repeated statistical releases*: full study, credit register evaluation, decision record, security of the audit process, derivations |
@@ -25,9 +23,10 @@ cp bis_ifc_full.pdf publication_versions/bis_ifc.pdf
 The old `bis_ifc.tex` short author note is in `archive/` for provenance only.
 It is not the full BIS/IFC manuscript, its PDF is superseded by `bis_ifc.pdf`, and
 its SENTRY-R benchmark figures come from an undertrained baseline that the current
-benchmark replaces. Do not submit it or quote from it. The journal drafts use readable temporary author formatting. Before submission
-apply the JPC `jpc.cls` stylesheet, reconfirm bibliographic records and
-recheck its current submission instructions. A separate supplement is part of
+benchmark replaces. Do not submit it or quote from it. The journal drafts now use the JPC class `jpc.cls` (from
+github.com/journalprivacyconfidentiality/jpc-style, copied here); the editorial
+team adds the `\jpcheading` and `\doisuffix` layout macros. Before submission
+reconfirm bibliographic records and recheck the current submission instructions. A separate supplement is part of
 the journal's stated format. The BIS/IFC paper must use the chosen event's
 template and word limit; the 2026 Basel conference's 5,000-word rule is not a
 universal IFC rule. The 66-page source is retained as a complete working
