@@ -1,28 +1,26 @@
-\documentclass[11pt,letterpaper]{article}
-\usepackage[top=1.3in,left=1.25in,right=1.25in,bottom=1in]{geometry}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern,microtype,amsmath,amssymb,booktabs,graphicx}
+\documentclass{jpc}
+\usepackage{booktabs,graphicx}
 \usepackage{xr-hyper}
-\usepackage[hidelinks]{hyperref}
 \makeatletter\g@addto@macro\UrlBreaks{\do\_\do\-}\makeatother
 \externaldocument[M-]{jpc_main}
 \renewcommand{\thesection}{S\arabic{section}}
 \renewcommand{\theequation}{S\arabic{equation}}
 \renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
 \newcommand{\F}{\mathcal F}
 \newcommand{\E}{\mathbb E}
 \newcommand{\Prob}{\mathbb P}
 \setlength{\emergencystretch}{3em}
+\keywords{disclosure risk, sequential testing, supplementary material}
 \begin{document}
-\begin{center}
-{\Large\bfseries Supplementary material: Adaptive certification of attack-conditional disclosure risk across release programmes\par}
-\vspace{4mm}
-Ronald Rethabile Malamule Mahomane\\[2pt]
-{\small Department of Computing, Mathematical and Statistical Sciences, University of Namibia, Windhoek\\
-School of Pathology, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg\\
-Basis Energy, Victoria, Australia\\
-Corresponding author: \href{mailto:ron@basisenergygroup.com}{ron@basisenergygroup.com}}
-\end{center}
+\title[Supplement: adaptive certification of disclosure risk]{Supplementary material: Adaptive certification of attack-conditional disclosure risk across release programmes}
+\author{Ronald Rethabile Malamule Mahomane}
+\address{Department of Computing, Mathematical and Statistical Sciences, University of Namibia, Windhoek; School of Pathology, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg; Basis Energy, Victoria, Australia}
+\email{ron@basisenergygroup.com}
+\begin{abstract}
+This supplement gives the filtration and conditional validity argument, the allocation of the error budget, methods, reproduction instructions and the overlap disclosure for the main paper, together with the separate public-file search experiment.
+\end{abstract}
+\maketitle
 
 \noindent References to theorems, propositions, assumptions, sections and tables without the prefix S are to the main paper.
 

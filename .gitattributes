@@ -1,3 +1,7 @@
-artifacts-public-search*/** linguist-generated=true
-paper/injector_study/generated/** linguist-generated=true
-paper/generated/table_public_search.tex linguist-generated=true
+# Shipped evidence is hashed in its manifests; never convert its line endings.
+*.json text eol=lf
+*.jsonl text eol=lf
+*.tex text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.pdf binary
