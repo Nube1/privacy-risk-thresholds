@@ -25,7 +25,12 @@ def main():
     parser.add_argument('--epochs', type=int, default=600)
     parser.add_argument('--llm-replays', type=Path,
                         help='state-keyed manifest of genuine responses and exact prompt hashes')
+    parser.add_argument('--states-from-manifest', action='store_true',
+                        help='run every arm on exactly the states the manifest holds, so a '
+                             'model that failed some states is compared on a paired subset')
     args = parser.parse_args()
+    if args.states_from_manifest and args.llm_replays is None:
+        parser.error('--states-from-manifest needs --llm-replays')
     if args.states < 2 or args.epochs < 1:
         parser.error('at least two states and positive epochs required')
     root = args.output
@@ -36,8 +41,15 @@ def main():
     groups = [(int(state), frame.reset_index(drop=True)) for state, frame in
               data.frame.groupby('state_code', sort=True) if len(frame) >= 100]
     selected_groups = groups[:args.states]
+    if args.states_from_manifest:
+        wanted = {int(k) for k in manifest}
+        selected_groups = [(s, f) for s, f in groups[:args.states] if s in wanted]
+        if len(selected_groups) < 2:
+            parser.error('the manifest covers fewer than two selected states')
     config = dict(status='exploratory public empirical-file search; not population risk',
-                  selected_states=[s for s, _ in selected_groups], selection='first state codes with >=100 rows',
+                  selected_states=[s for s, _ in selected_groups],
+                  selection='first state codes with >=100 rows'
+                  + ('; restricted to states with a valid model response' if args.states_from_manifest else ''),
                   seed=20261023, arms=list(arms), levels=LEVELS,
                   warmstart=16, stopping=8, search_queries=32, search_trials=64,
                   confirmation_trials=300, tolerance=.2, family_alpha=.05,
@@ -51,7 +63,10 @@ def main():
     (root/'design.json').write_text(json.dumps(config, indent=2)+'\n', encoding='utf-8')
     raw, actual_trials = [], 0
     for block_index, (state, frame) in enumerate(selected_groups):
-        partner_state, partner_frame = groups[(block_index+1) % len(groups)]
+        # The partner is the next state code in the full list, as in the full run,
+        # so a restricted subset keeps the same stopping programme per state.
+        position = [s for s, _ in groups].index(state)
+        partner_state, partner_frame = groups[(position+1) % len(groups)]
         file = RealFile(f'state-{state}', frame, data.block, data.key_columns, data.covariate)
         partner = RealFile(f'state-{partner_state}', partner_frame, data.block,
                            data.key_columns, data.covariate)

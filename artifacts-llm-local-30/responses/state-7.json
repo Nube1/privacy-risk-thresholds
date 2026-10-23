@@ -1,0 +1,322 @@
+[
+  {
+    "proposal_id": "{1,1,1,0.1}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{1,1,1,0.25}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{1,1,1,0.5}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{1,1,1,1.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{1,1,1,2.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{1,1,3,0.1}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{1,1,3,0.25}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{1,1,3,0.5}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{1,1,3,1.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{1,1,3,2.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{1,2,1,0.1}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{1,2,1,0.25}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{1,2,1,0.5}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{1,2,1,2.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{1,2,3,0.1}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{1,2,3,0.25}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{1,2,3,0.5}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{1,2,3,1.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{1,2,3,2.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{1,2,5,0.1}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{1,2,5,0.25}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{1,2,5,0.5}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{1,2,5,1.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{1,2,5,2.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{1,4,1,0.1}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{1,4,1,0.25}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{1,4,1,1.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{1,4,1,2.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{1,4,3,0.1}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{1,4,3,0.25}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{1,4,3,0.5}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{1,4,3,1.0}",
+    "scenario": "Public Census empirical state code 7",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  }
+]

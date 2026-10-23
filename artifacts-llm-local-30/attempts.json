@@ -1,0 +1,612 @@
+[
+  {
+    "state": 0,
+    "attempt": 0,
+    "seed": 20261023,
+    "started_utc": "2026-10-23T13:10:19+00:00",
+    "status": "valid",
+    "response_sha256": "d3617af1e22680d98d92e2ca24c899b8e741695965103b86318e2930f5e01d6f"
+  },
+  {
+    "state": 1,
+    "attempt": 0,
+    "seed": 20261123,
+    "started_utc": "2026-10-23T13:10:45+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 1,
+    "attempt": 1,
+    "seed": 20261124,
+    "started_utc": "2026-10-23T13:11:19+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "duplicate or invalid proposal_id"
+  },
+  {
+    "state": 1,
+    "attempt": 2,
+    "seed": 20261125,
+    "started_utc": "2026-10-23T13:11:56+00:00",
+    "status": "valid",
+    "response_sha256": "5e82c79c447a579aae9b3033d941189cfb78473d893707d8dbef6660258f5282"
+  },
+  {
+    "state": 2,
+    "attempt": 0,
+    "seed": 20261223,
+    "started_utc": "2026-10-23T13:12:30+00:00",
+    "status": "valid",
+    "response_sha256": "0530b8780770933dde50e0eb29d19174c5facaa48ca3e03e4c87c31e2a0f705d"
+  },
+  {
+    "state": 3,
+    "attempt": 0,
+    "seed": 20261323,
+    "started_utc": "2026-10-23T13:13:05+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 3,
+    "attempt": 1,
+    "seed": 20261324,
+    "started_utc": "2026-10-23T13:13:42+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "duplicate or invalid proposal_id"
+  },
+  {
+    "state": 3,
+    "attempt": 2,
+    "seed": 20261325,
+    "started_utc": "2026-10-23T13:14:16+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 4,
+    "attempt": 0,
+    "seed": 20261423,
+    "started_utc": "2026-10-23T13:14:52+00:00",
+    "status": "valid",
+    "response_sha256": "428f03d7fe11e22a4a99bdd5248ddb7eca577277abb5c47929b6aa7f3ebbf71d"
+  },
+  {
+    "state": 5,
+    "attempt": 0,
+    "seed": 20261523,
+    "started_utc": "2026-10-23T13:15:31+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 5,
+    "attempt": 1,
+    "seed": 20261524,
+    "started_utc": "2026-10-23T13:16:06+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 5,
+    "attempt": 2,
+    "seed": 20261525,
+    "started_utc": "2026-10-23T13:16:39+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 6,
+    "attempt": 0,
+    "seed": 20261623,
+    "started_utc": "2026-10-23T13:17:13+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 6,
+    "attempt": 1,
+    "seed": 20261624,
+    "started_utc": "2026-10-23T13:17:48+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "duplicate or invalid proposal_id"
+  },
+  {
+    "state": 6,
+    "attempt": 2,
+    "seed": 20261625,
+    "started_utc": "2026-10-23T13:18:22+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 7,
+    "attempt": 0,
+    "seed": 20261723,
+    "started_utc": "2026-10-23T13:18:55+00:00",
+    "status": "valid",
+    "response_sha256": "5b57efee04167ad8c01b6878d6478651fa1811dda3c8304d6703ac1f17b92d3b"
+  },
+  {
+    "state": 8,
+    "attempt": 0,
+    "seed": 20261823,
+    "started_utc": "2026-10-23T13:19:30+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 8,
+    "attempt": 1,
+    "seed": 20261824,
+    "started_utc": "2026-10-23T13:20:05+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 8,
+    "attempt": 2,
+    "seed": 20261825,
+    "started_utc": "2026-10-23T13:20:41+00:00",
+    "status": "valid",
+    "response_sha256": "df2e9c4bf7ed0efece5de5396f73e72358a50fafabdb56eb191fcf84fadeb81e"
+  },
+  {
+    "state": 9,
+    "attempt": 0,
+    "seed": 20261923,
+    "started_utc": "2026-10-23T13:21:19+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 9,
+    "attempt": 1,
+    "seed": 20261924,
+    "started_utc": "2026-10-23T13:22:07+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 9,
+    "attempt": 2,
+    "seed": 20261925,
+    "started_utc": "2026-10-23T13:22:40+00:00",
+    "status": "valid",
+    "response_sha256": "0ec7ab606627675e2bdf7f7e44070c13b11d4b82a124bfe85cf6a91429e8af0f"
+  },
+  {
+    "state": 10,
+    "attempt": 0,
+    "seed": 20262023,
+    "started_utc": "2026-10-23T13:23:25+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 10,
+    "attempt": 1,
+    "seed": 20262024,
+    "started_utc": "2026-10-23T13:23:59+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 10,
+    "attempt": 2,
+    "seed": 20262025,
+    "started_utc": "2026-10-23T13:24:30+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 11,
+    "attempt": 0,
+    "seed": 20262123,
+    "started_utc": "2026-10-23T13:25:04+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 11,
+    "attempt": 1,
+    "seed": 20262124,
+    "started_utc": "2026-10-23T13:25:40+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 11,
+    "attempt": 2,
+    "seed": 20262125,
+    "started_utc": "2026-10-23T13:26:14+00:00",
+    "status": "valid",
+    "response_sha256": "f986ed29e67366727c842aeb538cef7a1751b4b68dd1200624a0a89ddbffb95c"
+  },
+  {
+    "state": 12,
+    "attempt": 0,
+    "seed": 20262223,
+    "started_utc": "2026-10-23T13:26:59+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 12,
+    "attempt": 1,
+    "seed": 20262224,
+    "started_utc": "2026-10-23T13:27:33+00:00",
+    "status": "valid",
+    "response_sha256": "8fa0e280e3706712e44ffe21ca6410a1ebe5a2f660851a4ac4e003b4f0bb4288"
+  },
+  {
+    "state": 13,
+    "attempt": 0,
+    "seed": 20262323,
+    "started_utc": "2026-10-23T13:28:08+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "duplicate or invalid proposal_id"
+  },
+  {
+    "state": 13,
+    "attempt": 1,
+    "seed": 20262324,
+    "started_utc": "2026-10-23T13:28:46+00:00",
+    "status": "valid",
+    "response_sha256": "12daea159dd696fb137b629809ef2080d4f14058e435f8c30e91535acccb3baf"
+  },
+  {
+    "state": 14,
+    "attempt": 0,
+    "seed": 20262423,
+    "started_utc": "2026-10-23T13:29:21+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 14,
+    "attempt": 1,
+    "seed": 20262424,
+    "started_utc": "2026-10-23T13:29:57+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 14,
+    "attempt": 2,
+    "seed": 20262425,
+    "started_utc": "2026-10-23T13:30:30+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "duplicate or invalid proposal_id"
+  },
+  {
+    "state": 16,
+    "attempt": 0,
+    "seed": 20262623,
+    "started_utc": "2026-10-23T13:30:56+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 16,
+    "attempt": 1,
+    "seed": 20262624,
+    "started_utc": "2026-10-23T13:31:31+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "duplicate or invalid proposal_id"
+  },
+  {
+    "state": 16,
+    "attempt": 2,
+    "seed": 20262625,
+    "started_utc": "2026-10-23T13:32:08+00:00",
+    "status": "valid",
+    "response_sha256": "552e0cac6b007ca46a5490e41e4dd206ab2f8a3544beb50dbb45c451f9fd5f36"
+  },
+  {
+    "state": 17,
+    "attempt": 0,
+    "seed": 20262723,
+    "started_utc": "2026-10-23T13:32:44+00:00",
+    "status": "valid",
+    "response_sha256": "f6b307d65cba4dc8fa9d38830ac5d666668c27c42ffce1dc42e8de0595438e8d"
+  },
+  {
+    "state": 18,
+    "attempt": 0,
+    "seed": 20262823,
+    "started_utc": "2026-10-23T13:33:16+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 18,
+    "attempt": 1,
+    "seed": 20262824,
+    "started_utc": "2026-10-23T13:33:51+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 18,
+    "attempt": 2,
+    "seed": 20262825,
+    "started_utc": "2026-10-23T13:34:26+00:00",
+    "status": "valid",
+    "response_sha256": "2f4b73b9590c8f36353b9a7366cb0aecf7a1591f51ab0bdf7509d4df018f5e94"
+  },
+  {
+    "state": 19,
+    "attempt": 0,
+    "seed": 20262923,
+    "started_utc": "2026-10-23T13:34:59+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 19,
+    "attempt": 1,
+    "seed": 20262924,
+    "started_utc": "2026-10-23T13:35:34+00:00",
+    "status": "valid",
+    "response_sha256": "1fe588bce608c54619025289bd29206937fad9214fc1363bac098d612fc23e09"
+  },
+  {
+    "state": 20,
+    "attempt": 0,
+    "seed": 20263023,
+    "started_utc": "2026-10-23T13:36:12+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 20,
+    "attempt": 1,
+    "seed": 20263024,
+    "started_utc": "2026-10-23T13:36:47+00:00",
+    "status": "valid",
+    "response_sha256": "b68b48325cab07f479fac16c7f0345d61b38265a7499464d574fa8c55b78beb4"
+  },
+  {
+    "state": 21,
+    "attempt": 0,
+    "seed": 20263123,
+    "started_utc": "2026-10-23T13:37:27+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "duplicate or invalid proposal_id"
+  },
+  {
+    "state": 21,
+    "attempt": 1,
+    "seed": 20263124,
+    "started_utc": "2026-10-23T13:37:49+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 21,
+    "attempt": 2,
+    "seed": 20263125,
+    "started_utc": "2026-10-23T13:38:36+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 22,
+    "attempt": 0,
+    "seed": 20263223,
+    "started_utc": "2026-10-23T13:39:10+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 22,
+    "attempt": 1,
+    "seed": 20263224,
+    "started_utc": "2026-10-23T13:39:46+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 22,
+    "attempt": 2,
+    "seed": 20263225,
+    "started_utc": "2026-10-23T13:40:20+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 23,
+    "attempt": 0,
+    "seed": 20263323,
+    "started_utc": "2026-10-23T13:40:54+00:00",
+    "status": "valid",
+    "response_sha256": "b722dd54d40366c5a6f85f3672ee2cf8799f361084dd9a454fbaed28509830cb"
+  },
+  {
+    "state": 24,
+    "attempt": 0,
+    "seed": 20263423,
+    "started_utc": "2026-10-23T13:41:27+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 24,
+    "attempt": 1,
+    "seed": 20263424,
+    "started_utc": "2026-10-23T13:42:02+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 24,
+    "attempt": 2,
+    "seed": 20263425,
+    "started_utc": "2026-10-23T13:42:35+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 25,
+    "attempt": 0,
+    "seed": 20263523,
+    "started_utc": "2026-10-23T13:43:08+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 25,
+    "attempt": 1,
+    "seed": 20263524,
+    "started_utc": "2026-10-23T13:43:44+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 25,
+    "attempt": 2,
+    "seed": 20263525,
+    "started_utc": "2026-10-23T13:44:18+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 26,
+    "attempt": 0,
+    "seed": 20263623,
+    "started_utc": "2026-10-23T13:44:46+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 26,
+    "attempt": 1,
+    "seed": 20263624,
+    "started_utc": "2026-10-23T13:45:20+00:00",
+    "status": "valid",
+    "response_sha256": "a1bd51ee55829b60e42d5fbdbfc58528e73065317e3cad99e065a520ea714620"
+  },
+  {
+    "state": 27,
+    "attempt": 0,
+    "seed": 20263723,
+    "started_utc": "2026-10-23T13:45:54+00:00",
+    "status": "valid",
+    "response_sha256": "5ff441267c1f1e33febe0bb4504a30f79be3049819a2d63c23e4770002cc96e9"
+  },
+  {
+    "state": 28,
+    "attempt": 0,
+    "seed": 20263823,
+    "started_utc": "2026-10-23T13:46:30+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 28,
+    "attempt": 1,
+    "seed": 20263824,
+    "started_utc": "2026-10-23T13:47:05+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 28,
+    "attempt": 2,
+    "seed": 20263825,
+    "started_utc": "2026-10-23T13:47:38+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 29,
+    "attempt": 0,
+    "seed": 20263923,
+    "started_utc": "2026-10-23T13:48:12+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 29,
+    "attempt": 1,
+    "seed": 20263924,
+    "started_utc": "2026-10-23T13:49:00+00:00",
+    "status": "valid",
+    "response_sha256": "95eb47d9e31d2e96fb8ae10839619b03e12282482babcd688fd34882818d7337"
+  },
+  {
+    "state": 30,
+    "attempt": 0,
+    "seed": 20264023,
+    "started_utc": "2026-10-23T13:49:34+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 30,
+    "attempt": 1,
+    "seed": 20264024,
+    "started_utc": "2026-10-23T13:50:09+00:00",
+    "status": "rejected",
+    "error_type": "ValueError",
+    "error": "replay must contain 32 distinct executable catalogue actions"
+  },
+  {
+    "state": 30,
+    "attempt": 2,
+    "seed": 20264025,
+    "started_utc": "2026-10-23T13:50:42+00:00",
+    "status": "valid",
+    "response_sha256": "a2ed5669568adbfad4ad0f2260c8ef087f774b817f69ac014ecb1a10fb52d7ad"
+  }
+]

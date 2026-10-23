@@ -1,0 +1,322 @@
+[
+  {
+    "proposal_id": "1",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "2",
+    "scenario": "Moderate linkage with increased cell size and moderate variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "3",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "4",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "5",
+    "scenario": "Moderate linkage with increased cell size and moderate variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "6",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "7",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "8",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "9",
+    "scenario": "Moderate linkage with increased cell size and moderate variability",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "10",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "11",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "12",
+    "scenario": "Moderate linkage with increased cell size and moderate variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "13",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "14",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "15",
+    "scenario": "Moderate linkage with increased cell size and moderate variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "16",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "17",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "18",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "19",
+    "scenario": "Moderate linkage with increased cell size and moderate variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "20",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 1,
+      "minimum_cell": 10,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "21",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 1,
+      "minimum_cell": 10,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "22",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 10,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "23",
+    "scenario": "High-risk linkage with large cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 10,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "24",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 10,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "25",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "26",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "27",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "28",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "29",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "30",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "31",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "32",
+    "scenario": "High-risk linkage with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  }
+]

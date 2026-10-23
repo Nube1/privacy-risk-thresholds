@@ -1,0 +1,322 @@
+[
+  {
+    "proposal_id": "A",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and minimal cell size (1) and high covariate standard deviation (0.25)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "B",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and minimal cell size (1) and moderate covariate standard deviation (0.5)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "C",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and minimal cell size (1) and high covariate standard deviation (1.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "D",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and minimal cell size (1) and very high covariate standard deviation (2.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "E",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and medium cell size (3) and low covariate standard deviation (0.1)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "F",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and medium cell size (3) and moderate covariate standard deviation (0.25)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "G",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and medium cell size (3) and moderate covariate standard deviation (0.5)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "H",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and medium cell size (3) and high covariate standard deviation (1.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "I",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and medium cell size (3) and very high covariate standard deviation (2.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "J",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and large cell size (5) and low covariate standard deviation (0.1)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "K",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and large cell size (5) and moderate covariate standard deviation (0.25)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "L",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and large cell size (5) and moderate covariate standard deviation (0.5)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "M",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and large cell size (5) and high covariate standard deviation (1.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "N",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and low education width (1) and large cell size (5) and very high covariate standard deviation (2.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "O",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and minimal cell size (1) and low covariate standard deviation (0.1)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "P",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and minimal cell size (1) and moderate covariate standard deviation (0.25)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "Q",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and minimal cell size (1) and moderate covariate standard deviation (0.5)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "R",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and minimal cell size (1) and high covariate standard deviation (1.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "S",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and minimal cell size (1) and very high covariate standard deviation (2.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "T",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and medium cell size (3) and low covariate standard deviation (0.1)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "U",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and medium cell size (3) and moderate covariate standard deviation (0.25)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "V",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and medium cell size (3) and moderate covariate standard deviation (0.5)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "W",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and medium cell size (3) and high covariate standard deviation (1.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "X",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and medium cell size (3) and very high covariate standard deviation (2.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "Y",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and large cell size (5) and low covariate standard deviation (0.1)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "Z",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and large cell size (5) and moderate covariate standard deviation (0.25)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "AA",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and large cell size (5) and moderate covariate standard deviation (0.5)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AB",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and large cell size (5) and high covariate standard deviation (1.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "AC",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and large cell size (5) and very high covariate standard deviation (2.0)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "AD",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and very large cell size (10) and low covariate standard deviation (0.1)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 10,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "AE",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and very large cell size (10) and moderate covariate standard deviation (0.25)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 10,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "AF",
+    "scenario": "High-risk linkage with narrow PUMA width (1) and medium education width (2) and very large cell size (10) and moderate covariate standard deviation (0.5)",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 10,
+      "covariate_sd": 0.5
+    }
+  }
+]

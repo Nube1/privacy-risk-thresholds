@@ -1,0 +1,322 @@
+[
+  {
+    "proposal_id": "The first scenario",
+    "scenario": "High-risk linkage with minimal cell count and narrow Puma width",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "The second scenario",
+    "scenario": "Moderate linkage risk with increased education width and narrow Puma width",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "The third scenario",
+    "scenario": "High-risk linkage with minimal cell count and moderate Puma width",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "The fourth scenario",
+    "scenario": "High-risk linkage with minimal cell count and wide Puma width",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "The fifth scenario",
+    "scenario": "High-risk linkage with minimal cell count and increased education width",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "The sixth scenario",
+    "scenario": "Moderate linkage risk with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "The seventh scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "The eighth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "The ninth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "The tenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "The eleventh scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "The twelfth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "The thirteenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "The fourteenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "The fifteenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "The sixteenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "The seventeenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "The eighteenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "The nineteenth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "The twentieth scenario",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "The twenty-first scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "The twenty-second scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "The twenty-third scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "The twenty-fourth scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "The twenty-fifth scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "The twenty-sixth scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "The twenty-seventh scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "The twenty-eighth scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "The twenty-ninth scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "The thirtieth scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "The thirty-first scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "The thirty-second scene",
+    "scenario": "High-risk linkage with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  }
+]
