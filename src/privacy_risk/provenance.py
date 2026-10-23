@@ -178,16 +178,23 @@ class ProvenanceLedger:
                 raise LedgerError("measurement of a proposal without an approving review")
         return self._append("measurement", {
             "evidence": sorted((row["proposal_digest"], row["evidence_id"])
-                               for row in measured)})
+                               for row in measured),
+            "content_sha256": sorted((row["proposal_digest"], row["evidence_id"],
+                                      _sha256(row)) for row in measured)})
 
     def record_training(self, bundle: dict, train_rows: list[dict],
                         valid_rows: list[dict]) -> dict:
         measured = self._measured()
+        content = {tuple(item) for e in self._of("measurement")
+                   for item in e["payload"].get("content_sha256", [])}
         development = [*train_rows, *valid_rows]
         for row in development:
             d = row.get("proposal_digest")
             if d is not None and (d, row["evidence_id"]) not in measured:
                 raise LedgerError("training uses a measured proposal that is not on the chain")
+            if d is not None and (d, row["evidence_id"], _sha256(row)) not in content:
+                raise LedgerError("measured proposal content differs from the ledger commitment; "
+                                  "legacy measurements need a new content-bound measurement")
         evidence_ids = sorted(bundle["development_evidence_ids"])
         self._check_closure(set(evidence_ids))
         return self._append("training", {"model_sha256": _sha256(bundle),

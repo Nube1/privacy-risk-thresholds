@@ -1,0 +1,56 @@
+FFFF                                                                     [100%]
+================================== FAILURES ===================================
+__ InjectorIntegrityTests.test_file_intake_metadata_cannot_bypass_size_limit __
+
+self = <test_injector_integrity.InjectorIntegrityTests testMethod=test_file_intake_metadata_cannot_bypass_size_limit>
+
+    def test_file_intake_metadata_cannot_bypass_size_limit(self):
+        row = dict(proposal_id='p', scenario='test', features={'a': .3},
+                   llm_model='x'*(MAX_RESPONSE_BYTES+1), prompt_hash='fixture')
+>       with self.assertRaisesRegex(ValueError, 'bytes'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: ValueError not raised
+
+tests\test_injector_integrity.py:64: AssertionError
+__ InjectorIntegrityTests.test_measured_counts_cannot_change_before_training __
+
+self = <test_injector_integrity.InjectorIntegrityTests testMethod=test_measured_counts_cannot_change_before_training>
+
+    def test_measured_counts_cannot_change_before_training(self):
+        row = self.measured()
+        row['successes'] = [0]
+>       with self.assertRaisesRegex(LedgerError, 'content'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: LedgerError not raised
+
+tests\test_injector_integrity.py:42: AssertionError
+_ InjectorIntegrityTests.test_measured_features_cannot_change_before_training _
+
+self = <test_injector_integrity.InjectorIntegrityTests testMethod=test_measured_features_cannot_change_before_training>
+
+    def test_measured_features_cannot_change_before_training(self):
+        row = self.measured()
+        row['features']['a'] = .6
+>       with self.assertRaisesRegex(LedgerError, 'content'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: LedgerError not raised
+
+tests\test_injector_integrity.py:49: AssertionError
+____ InjectorIntegrityTests.test_renaming_validation_copy_does_not_hide_it ____
+
+self = <test_injector_integrity.InjectorIntegrityTests testMethod=test_renaming_validation_copy_does_not_hide_it>
+
+    def test_renaming_validation_copy_does_not_hide_it(self):
+        valid = self.row('valid', .8)
+        renamed = copy.deepcopy(valid)
+        renamed.update(record_id='renamed', group='different', evidence_id='renamed')
+>       with self.assertRaisesRegex(ValueError, 'feature overlap'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: ValueError not raised
+
+tests\test_injector_integrity.py:57: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_injector_integrity.py::InjectorIntegrityTests::test_file_intake_metadata_cannot_bypass_size_limit
+FAILED tests/test_injector_integrity.py::InjectorIntegrityTests::test_measured_counts_cannot_change_before_training
+FAILED tests/test_injector_integrity.py::InjectorIntegrityTests::test_measured_features_cannot_change_before_training
+FAILED tests/test_injector_integrity.py::InjectorIntegrityTests::test_renaming_validation_copy_does_not_hide_it

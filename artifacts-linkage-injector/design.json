@@ -1,0 +1,50 @@
+{
+  "seeds": [
+    201,
+    202,
+    203,
+    204,
+    205
+  ],
+  "base_rows": 120,
+  "stopping_rows": 80,
+  "test_rows": 250,
+  "proposals": 32,
+  "development_trials": 100,
+  "test_trials": 1000,
+  "population_size": 64,
+  "quasi_identifiers": 3,
+  "epochs": 1200,
+  "patience": 70,
+  "schema": {
+    "features": [
+      {
+        "name": "sparsity",
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "name": "auxiliary",
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "name": "overlap",
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "name": "noise",
+        "min": 0.0,
+        "max": 1.0
+      }
+    ],
+    "coordinates": [
+      "attack_success"
+    ],
+    "tolerances": [
+      0.2
+    ]
+  },
+  "evaluator": "synthetic-nearest-record-linkage-v1"
+}

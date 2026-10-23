@@ -1,0 +1,62 @@
+{
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110
+  ],
+  "base_rows": 120,
+  "validation_rows": 80,
+  "test_rows": 1500,
+  "proposals": 32,
+  "trials_per_row": 100,
+  "epochs": 1200,
+  "patience": 70,
+  "depths": [
+    0,
+    2
+  ],
+  "width": 16,
+  "laws": [
+    "additive",
+    "interaction"
+  ],
+  "schema": {
+    "features": [
+      {
+        "name": "sparsity",
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "name": "auxiliary",
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "name": "overlap",
+        "min": 0.0,
+        "max": 1.0
+      },
+      {
+        "name": "noise",
+        "min": 0.0,
+        "max": 1.0
+      }
+    ],
+    "coordinates": [
+      "attack_success"
+    ],
+    "tolerances": [
+      0.2
+    ]
+  },
+  "question": "Return exactly 32 diverse scenarios. Probe combinations of high sparsity, strong auxiliary data, release overlap and low noise. Do not supply labels.",
+  "llm_manifest_sha256": null
+}

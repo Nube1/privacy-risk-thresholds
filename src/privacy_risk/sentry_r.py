@@ -42,9 +42,17 @@ def digest(value: Any) -> str:
     return hashlib.sha256(canonical(value)).hexdigest()
 
 
-def read_jsonl(path: Path) -> list[dict]:
+def read_jsonl(path: Path, *, max_bytes: int | None = None) -> list[dict]:
+    if max_bytes is not None:
+        with path.open('rb') as handle:
+            data = handle.read(max_bytes + 1)
+        if len(data) > max_bytes:
+            raise ValueError(f"intake exceeds {max_bytes} bytes; refused unparsed")
+        text = data.decode('utf-8')
+    else:
+        text = path.read_text(encoding="utf-8")
     rows = []
-    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+    for number, line in enumerate(text.splitlines(), 1):
         if line.strip():
             value = json.loads(line)
             if not isinstance(value, dict):
@@ -118,6 +126,8 @@ def stage_llm(rows: list[dict], schema: ScenarioSchema, *,
         raise ValueError("no proposals to stage")
     if len(rows) > MAX_PROPOSALS:
         raise ValueError(f"at most {MAX_PROPOSALS} proposals per intake; split the batch")
+    if len(canonical(rows)) > MAX_RESPONSE_BYTES:
+        raise ValueError(f"intake exceeds {MAX_RESPONSE_BYTES} bytes")
     output, seen = [], set()
     for row in rows:
         if set(row) != {"proposal_id", "scenario", "features", "llm_model", "prompt_hash"}:
@@ -154,8 +164,9 @@ def propose_from_llm(call: Callable[[str], str], schema: ScenarioSchema,
     ``llm_model`` is the caller's ``model_name`` and ``prompt_hash`` is the
     SHA-256 of the exact prompt sent. No response text is executed and no
     success labels are accepted. A response longer than ``max_bytes`` or
-    holding more than ``MAX_PROPOSALS`` objects is refused before parsing, so
-    the model cannot flood the intake.
+    holding more than ``MAX_PROPOSALS`` objects is refused. The byte limit is
+    checked before parsing; the proposal count is checked after parsing.
+    Provider-side token and timeout limits must also bound response generation.
     """
     if not isinstance(model_name, str) or not model_name:
         raise ValueError("model_name must be a nonempty string set by the caller")
@@ -432,6 +443,12 @@ def train_model(train_rows: list[dict], valid_rows: list[dict], schema: Scenario
         raise ValueError("train and validation groups/records/evidence must be disjoint")
     x, k, b = matrix(train_rows, schema)
     xv, kv, bv = matrix(valid_rows, schema)
+    # IDs can be changed on a copied row. Conservatively reject injected feature
+    # vectors identical to a validation vector; this cannot detect semantic copies.
+    valid_vectors = {tuple(v) for v in xv}
+    if any(row.get('proposal_digest') is not None and tuple(vector) in valid_vectors
+           for row, vector in zip(train_rows, x)):
+        raise ValueError("injected proposal has validation feature overlap")
     mean = x.mean(axis=0)
     scale = np.where(x.std(axis=0) < 1e-6, 1., x.std(axis=0))
     net = DeepRiskNet(x.shape[1], k.shape[1], width, depth, seed)
@@ -710,7 +727,8 @@ def cli() -> None:
         print(json.dumps(provenance.summary(), indent=2))
         return
     if args.command == "stage-llm":
-        result = stage_llm(read_jsonl(args.input), ScenarioSchema.load(args.schema),
+        result = stage_llm(read_jsonl(args.input, max_bytes=MAX_RESPONSE_BYTES),
+                           ScenarioSchema.load(args.schema),
                            provenance=provenance)
         write_jsonl(args.output, result)
     elif args.command == "join-evidence":
