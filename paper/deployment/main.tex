@@ -1,125 +1,272 @@
-\documentclass[11pt]{article}
-\usepackage[margin=1in]{geometry}
+\documentclass[11pt,a4paper]{article}
+\usepackage[top=1.1in,left=1.15in,right=1.15in,bottom=1in]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage{lmodern,amsmath,amssymb,amsthm,booktabs,graphicx,microtype}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs,graphicx,array}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc,shapes.geometric,decorations.pathreplacing}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage[round]{natbib}
 \usepackage[hidelinks]{hyperref}
+\makeatletter\g@addto@macro\UrlBreaks{\do\_\do\-}\makeatother
+\newtheorem{definition}{Definition}
 \newtheorem{proposition}{Proposition}
 \newcommand{\Prob}{\mathbb P}
-\newcommand{\E}{\mathbb E}
 \setlength{\emergencystretch}{2em}
-\title{Measured Scenario Injection for Privacy Audits:\\Search Coverage, Evidence Integrity, and Independent Confirmation}
-\author{Ronald Rethabile Malamule Mahomane\\\small\texttt{ron@basisenergygroup.com}}
-\date{Working manuscript, 23 October 2026}
+\graphicspath{{./}{../}}
+
 \begin{document}
-\maketitle
+\begin{center}
+{\Large\bfseries Deploying attack-conditional disclosure audits at an international financial institution:\\[2pt] a protocol for release governance and penetration testing\par}
+\vspace{4mm}
+Ronald Rethabile Malamule Mahomane\\[2pt]
+{\small Department of Computing, Mathematical and Statistical Sciences, University of Namibia, Windhoek\\
+School of Pathology, Faculty of Health Sciences, University of the Witwatersrand, Johannesburg\\
+Basis Energy, Victoria, Australia\\
+Corresponding author: \href{mailto:ron@basisenergygroup.com}{ron@basisenergygroup.com}}\\[2pt]
+{\small Author manuscript, October 2026. Not a BIS or IFC publication.}
+\end{center}
+
 \begin{abstract}
-A language model can propose a privacy attack scenario, but its output does not establish either that the attack works or that a release is safe. We study a constrained scenario-injection pipeline in which measured attacks supply development labels and fresh trials confirm selected findings. We compare random, domain-informed, scrambled Sobol and neural-guided search under matched evaluator budgets on 30 public Census state samples. Across 1,443,840 attack trials, Sobol search confirms 13.83 distinct high-risk scenario cells per state, compared with 10.07 for neural-guided search. The paired difference is -3.77 cells, with an exploratory state-bootstrap interval of [-4.43,-3.07]. A synthetic audit-retry experiment shows why efficient discovery and valid certification must be kept separate. We also reproduce and repair four intake or evidence-integrity defects. A fifth arm then replays proposals from a 4.0B-parameter open-weight language model run locally under the same prompt and budget: on the 20 states for which it returned a valid list it confirms 27.60 of 32 settings but covers 6.05 cells against 13.65 for Sobol, because it copies the front of the catalogue rather than searching it. These experiments establish baselines and boundaries for an LLM-assisted system; the public-file measurements do not estimate risk in an undisclosed population.
-Neural search nevertheless confirms 31.57 of 32 selected configurations as high risk, compared with 22.03 for Sobol, exposing a targeting--coverage tradeoff.
+Two companion papers set out a method for governing disclosure risk across repeated statistical releases: risk is the measured success of a declared attack, a release is certified when an exact or anytime-valid upper bound on that success falls below a tolerance set by a named owner, a programme spends one error budget across its releases and audits, and every step is written to a keyed, hash-chained ledger. This paper asks how an institution would deploy it. We take the Bank for International Settlements as the case, because its statistical products are built from confidential national data, released in overlapping vintages through a query portal, and in one case shared at the institution level with supervisors. We map the method's requirements onto those programmes and set out roles, phases and a registry service. We then make one addition to the method. A dissemination portal is software, and a software flaw changes what an adversary can see; so a penetration-test finding is a statement about the adversary's information set and belongs in the audit. We give a closed list of capabilities that findings grant, a monotone composition rule, and a protocol under which each confirmed finding becomes an audited adversary with a share of the programme's error budget. A worked example on a public Census extract, with four PHP advisories from 2026 as the findings, shows a release that passes as published, fails under a suppression bypass, passes under a credential leak alone, and fails when the two are pooled. The finding ranked by measured disclosure risk is not the finding ranked highest by its severity score.
 \end{abstract}
-\noindent\textbf{Keywords:} privacy auditing; scenario search; adaptive evaluation; evidence provenance; record linkage.
 
-\section{Introduction}
-Privacy review is a search problem as well as an inference problem. An analyst can vary release coarsening, minimum cell sizes and the adversary's auxiliary information, then learn from each observed attack. A model may help decide what to try next. A separate question is whether the evidence justifies a claim about the selected scenario or a release decision. The two questions require different evaluation criteria and access to different evidence.
+\section*{Executive summary}
+\paragraph{Situation.} The BIS publishes international banking, debt-securities, derivatives, credit and property-price statistics compiled from data that central banks hold in confidence, and it disseminates them through a data portal that lets a user build tables across reporting countries, counterparties, instruments and quarterly vintages. The International Data Hub goes further: institution-level data on large banks are compiled and shared with designated supervisors \citep{bisstats}. Disclosure review of such products is done one release at a time, by rules such as minimum cell counts.
 
-Our motivating architecture uses an LLM as a constrained injector into a numerical risk model. The generator supplies a scenario description and schema-checked actions. A reviewer and a fixed evaluator determine whether it can become measured development evidence. Model predictions guide search; they are not attack counts, confidence bounds or release authority. Here ``closed'' describes this restricted data path. It does not mean an air-gapped system, fixed model weights, or a proof of privacy.
+\paragraph{Complication.} Three things break per-release review. Vintages overlap, so an adversary who pools them faces a risk that no per-release figure bounds. The list of attacks grows as audits are read, so a procedure that controls error for a fixed list does not cover the list the institution actually tests. And the portal is a software system: a flaw in it can give the adversary cells the mechanism suppressed, or readings the mechanism blurred, and no cell-count rule accounts for that.
 
-We contribute an executable, budget-matched public-file comparison; a conditional confirmation argument for adaptively selected scenarios; and regression evidence for four integrity defects in a prototype. The main empirical finding is negative: neural-guided risk targeting covers fewer confirmed high-risk cells than a space-filling baseline. The data support separating coverage from predicted severity. They do not yet support an LLM superiority claim.
+\paragraph{Question.} How does an institution adopt attack-conditional, budgeted, ledgered disclosure audits for live programmes, and how does it bring its security testing into the same accounting?
 
-\section{Related work and scope}
-FunSearch couples language-model proposals with a systematic evaluator, and AlphaEvolve extends evaluator-guided search to algorithms and computational systems \cite{funsearch,alphaevolve}. This generator--evaluator pattern is therefore prior work, not our novelty claim. Curiosity-driven red teaming explicitly addresses the coverage limits of generators that find only a narrow range of successful cases \cite{curiosity}. Our evaluated target is a declared record-linkage attack on public empirical files, rather than harmful text from an LLM.
+\paragraph{Answer.} Deploy in three phases, each a programme at a time: a shadow run that measures declared attacks on past releases without gating them; a gated run in which a release committee owns the tolerance and a registry service owns the keys, the clock and the budget; then penetration testing in which every confirmed software finding is declared as a capability, composed into an adversary view, measured with the same executable attacker, and certified or refused at a share of the programme's budget. The worked example shows why this matters: a critical-rated flaw that is not exploitable adds nothing, a high-rated access-control flaw turns a passing release into a failing one, and two individually tolerable flaws fail together.
 
-Adaptive data analysis explains why a test set cannot be treated as untouched after repeated feedback \cite{holdout}. Recent adaptive AI auditing uses e-processes to obtain anytime-valid conclusions \cite{zhou}. We use fixed-size fresh confirmation draws in the public-file experiment. Its finite-family conditional union bound is elementary; it is not a new theorem about arbitrary adaptive sampling. Formal differential privacy, unknown attacks and population identification risk are outside the claims made here.
+\section{Introduction}\label{sec:intro}
+The method this paper deploys is developed in two companion manuscripts. The long form \citep{mahomane2026long} sets out the probability model: a release is a mechanism applied to a register, an adversary is a declared information set and a matching rule, and the risk of a release is the success probability of that attack, estimated by simulation with its own certification cost. It shows that marginal risks do not bound a pooled attack across releases, derives the tolerance implied by a stated price of harm, and gives an operational protocol with falsification tests. The journal article \citep{mahomane2026adaptive} adds the adaptive part: each pair of a candidate release and a declared attack is a coordinate certified by a test supermartingale, coordinates can be added after outcomes are seen, the programme spends one error budget, and the audit process itself has a threat model with measured attacks and controls. The code that produced both is public \citep{privacyriskcode}.
 
-\section{Architecture and threat model}
-The intended sequence is proposal, schema validation, documented review, measured development outcomes, model fitting, selection freeze and independent confirmation. The model sees numerical features and observed counts. It does not execute proposal prose. In particular, generating an interesting description does not add an executable attack family: that requires a separately implemented evaluator.
+Neither paper says how an institution would run this. The present paper does, for one institution, and it adds a piece the earlier papers left out. Section \ref{sec:requirements} states what the method needs from an institution. Section \ref{sec:bis} maps those needs onto BIS statistical programmes. Section \ref{sec:software} argues that the software layer of a dissemination system is part of the adversary model and gives the 2026 PHP advisories as a worked list. Section \ref{sec:pentest} sets out the penetration-testing protocol, with Algorithm \ref{alg:pentest} and the worked example in Table \ref{tab:pentest}. Section \ref{sec:deploy} gives the deployment architecture (Figure \ref{fig:architecture}), roles and phases. Section \ref{sec:limits} says what is not claimed.
 
-The evaluated search strategies choose configurations from a fixed catalogue, not new attack algorithms. A proposal varies Public Use Microdata Area (PUMA) coarsening, education coarsening, minimum released cell size and auxiliary-income noise. Features include release retention, reciprocal key frequency, log file size and the declared action settings. No final confirmation outcome enters the search history.
+\section{What the method requires of an institution}\label{sec:requirements}
+Figure \ref{fig:method} summarises the method as the institution sees it. Five things must exist before the first gated release.
 
-We assume a correct evaluator and honest logging for the statistical experiment. The current local implementation does not enforce those assumptions against an operator who controls its key, file system and caller-supplied evidence. Provenance is optional; a service-issued evidence identity, durable budget reservation and external chain anchoring remain deployment requirements.
-
-\section{Methods}
-\subsection{Public empirical files and the declared attack}
-We load the 29,501-row \texttt{census2000} public-use extract distributed with the Python \texttt{wooldridge} package. The source documentation attributes the extract to the US Census Bureau through Alberto Abadie \cite{wooldridge}. The experiment selects the first 30 encoded state groups containing at least 100 rows, before observing attack outcomes. This is a convenience subset of the released extract, not a national probability sample or a sample of confidential registers.
-
-A released key uses state, PUMA, coarsened education and experience in ten-year bands. PUMA widths are $1,10,100$; education widths are $1,2,4,8$; minimum cell counts are $1,3,5,10$; and the standard deviation of the auxiliary log-income reading is $0.1,0.25,0.5,1,2$. Settings releasing fewer than 30 records are excluded. There are at most 240 settings before warm-start exclusion.
-
-For each trial a target is sampled uniformly with replacement from the released file. An auxiliary income reading is the target's public-file log income plus fresh Gaussian noise. The attacker assigns prior weight $0.9$ to matching keys and $0.1/(n-1)$ to other records, multiplies by the Gaussian reading likelihood, and selects the maximum-weight record. We implement the calculation in log space. Success means matching the target's empirical record index. Conditional on a fixed file and scenario, fresh target and noise draws define the Bernoulli trial law. No claim about the hidden population follows from this conditional experiment.
-
-\subsection{Search budget and coverage endpoint}
-Each state block shares 16 warm-start settings measured with 64 trials each. Early stopping uses eight measured settings in the next eligible state, also with 64 trials each. These 24 settings cost 1,536 trials per block and are shared across search strategies. Every strategy then chooses 32 distinct additional settings, measured with 64 trials each, followed by 300 fresh confirmation trials for each selected setting. The overall cost is
-\[
-30\{24(64)+4(32)(64+300)\}=1,443,840
-\]
-attack trials. Model-fitting compute is not equal across strategies: the neural arm fits four models per state, whereas the other arms do not fit a model. Equal evaluator budgets do not imply equal total cost.
-
-Random search samples without replacement. The heuristic ranks reciprocal key frequency plus $0.2/(0.1+\mathrm{sd})$. Sobol search maps a scrambled four-dimensional sequence onto the discrete action catalogue and skips duplicates. Neural search fits a two-hidden-layer ReLU model of width 16 to the counted outcomes, then acquires batches of eight by predicted risk plus 0.15 times distance to the nearest measured feature vector. The distance bonus is a fixed exploration heuristic, not a posterior uncertainty estimate. Training uses Adam and early stopping with patience 60.
-
-The primary endpoint counts distinct scenario cells containing at least one confirmed high-risk selected configuration. A cell is the product of the three PUMA levels, education width above or below two, minimum cell count equal to one or greater, and auxiliary standard deviation above or below 0.5. There are at most 24 cells. This is a deliberately fixed coverage taxonomy; cells are not newly discovered attack families and may be correlated. The primary contrast is neural search minus Sobol search. We report descriptive paired-state bootstrap intervals from 10,000 resamples. The design was recorded before the full run but was not externally preregistered.
-
-\subsection{Fresh confirmation after adaptive search}
-Let $\mathcal D$ contain the complete development history. Conditional on $\mathcal D$, each selected configuration $i$ has a fixed attack law with risk $r_i$ and a fresh count $K_i\sim\operatorname{Binom}(300,r_i)$. We compute the one-sided Clopper--Pearson lower limit $L_i$ at level $\gamma=0.05/128$ and call the configuration high risk only when $L_i>0.2$. The 128 tests comprise 32 configurations from each of four arms within one state.
-
-\begin{proposition}
-Under the stated conditional binomial law, the probability of incorrectly confirming any configuration with $r_i\leq0.2$ is at most 0.05 within a state, even if its selection depends on the complete development history.
-\end{proposition}
-\begin{proof}
-Conditional on $\mathcal D$, exact binomial inversion gives $\Prob(L_i>r_i\mid\mathcal D)\leq\gamma$. If $r_i\leq0.2$, then $\{L_i>0.2\}$ is contained in $\{L_i>r_i\}$. A union bound over at most 128 selected configurations gives $128\gamma=0.05$. Taking expectations over $\mathcal D$ proves the claim. Independence between different configurations is unnecessary for the union bound.
-\end{proof}
-The bound is per state, not simultaneously across all 30 states. This confirms excessive risk for the declared attack; it does not certify a safe release. Safety certification uses an upper bound and a different direction of inference.
-
-\section{Results}
-\subsection{Public-file discovery coverage}
-\input{generated/public_table}
-Table~\ref{tab:public-search} and Figure~\ref{fig:public-search} give the four baseline arms. With the initial 600-epoch cap, Sobol search confirms 13.83 cells per state; random search 13.20; the informed heuristic 11.97; and neural search 10.07. The neural-minus-Sobol difference is -3.77 cells (paired-state interval -4.43 to -3.07). These bootstrap intervals describe variation among the selected public-file states and are not a design-based estimate for all states or institutions. Four of the 120 neural fits reach the best-epoch cap, so a larger-cap sensitivity run is reported separately rather than called convergence.
-
-\input{generated/sensitivity}
-
-\paragraph{The language-model arm.} The saved prompts were sent, byte for byte, to \texttt{qwen3:4b} (Q4\_K\_M) through Ollama 0.40.9 on the author's machine, thinking off, decoding constrained to the requested JSON shape, three attempts per state with distinct seeds. The model returned a valid list of 32 catalogue tuples for 20 of 30 states; 50 of 70 attempts were rejected for repeated or off-catalogue tuples or repeated identifiers. All five arms were rerun on exactly those states (1,195,520 attack trials); Table~\ref{tab:public-search-llm} gives the result. The model confirmed 27.60 of 32 settings per state and covered 6.05 cells; the paired difference from Sobol is -7.60 cells (interval $[-8.30,-6.80]$). In 19 of 20 states every chosen tuple sits at the finest geography and the lists follow catalogue order: the model copied the front of the list. Generation took about 36 seconds per state and cost nothing.
-
-\input{generated/public_table_llm}
-The complementary endpoint shows the targeting--coverage tradeoff: neural search confirms 31.57 of its 32 selected settings as high risk on average, compared with 22.03 for Sobol. The simple informed heuristic confirms all 32 on average. These are descriptive secondary results, and confirmation of many related configurations does not establish discovery of many attack families. The informed heuristic is therefore a necessary control for any future claim that neural targeting adds value.
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=\linewidth]{generated/public_search.png}
-\caption{Matched-budget public-file scenario search, four baseline arms over 30 states. Left: mean confirmed high-risk cells. Right: mean confirmed high-risk selected settings. Table~\ref{tab:public-search} reports differences from Sobol and paired-state intervals. Targeting yield and cell coverage give different rankings. The language-model arm, run later on 20 states, is in Table~\ref{tab:public-search-llm}.}
-\label{fig:public-search}
+\begin{tikzpicture}[font=\small, node distance=7mm and 9mm,
+  box/.style={draw, rounded corners=1pt, minimum height=9mm, text width=27mm, align=center},
+  arr/.style={-{Latex[length=2mm]}, thick}]
+\node[box] (reg) {Register and\\release programme};
+\node[box, right=of reg] (adv) {Declared adversaries\\(information set, rule)};
+\node[box, right=of adv] (att) {Executable attacker\\(fresh targets)};
+\node[box, right=of att] (bound) {Upper bound at\\budget share};
+\node[box, below=of bound] (gate) {Gate: bound\\$\le$ tolerance?};
+\node[box, left=of gate] (owner) {Tolerance owner\\and error budget};
+\node[box, left=of owner, dashed] (ledger) {Keyed, chained\\ledger};
+\draw[arr] (reg) -- (adv); \draw[arr] (adv) -- (att); \draw[arr] (att) -- (bound);
+\draw[arr] (bound) -- (gate); \draw[arr] (owner) -- (gate);
+\draw[arr, dashed] (ledger) -- (owner);
+\draw[arr, dashed] (ledger.north) |- ($(adv.south)+(0,-3mm)$) -| (att.south);
+\end{tikzpicture}
+\caption{The method as an institution runs it. Solid arrows are the audit of one release; the dashed ledger records every declaration, plan and outcome before and after the fact. The figure uses line style, not colour, to separate the audit path from the record.}
+\label{fig:method}
 \end{figure}
 
-\subsection{Predictive pilots and audit retries}
-Two earlier synthetic pilots provide context rather than independent confirmation of the public-file result. A probability-law experiment used ten seeds and 120 model fits; a synthetic nearest-record experiment used five seeds, 1,382,000 executed linkage trials and 30 fits. On the latter, random augmentation changed the deep model's shifted-test log loss by -0.0133 (95\% seed-level interval -0.0342 to 0.0075). Heuristic augmentation changed it by -0.0127 (-0.0331 to 0.0077). Neither establishes an improvement. These exploratory intervals are not multiplicity-adjusted.
+\begin{enumerate}
+\item \emph{Declared adversaries.} Each adversary is an information set and a matching rule, written down before any outcome is read. The long form's credit-register case uses three: an outsider with one release, an outsider who pools vintages and knows when the target was present, and an insider who knows exposure to within a stated error.
+\item \emph{An executable attacker.} Risk is measured, not scored. The attacker draws fresh targets with replacement and reports successes; the institution must be able to run it on the real release in a secure enclave, because the population is not observed and the attack must see what the adversary would see.
+\item \emph{A tolerance with an owner.} The tolerance is a decision, not a statistic; the long form shows how a stated relative weight on harm implies it. A named officer owns it and its expiry.
+\item \emph{One error budget per programme.} Every audit of every release and every adversary in a programme spends from the same budget. A failed audit followed by a new release setting costs budget; it does not restart at the nominal level.
+\item \emph{A ledger with a key and a clock.} Every registration, bet, plan and outcome is appended to a hash-chained ledger signed under a key the operator does not hold alone, with the chain head time-stamped outside the operator's control. The article's audit-process experiments show what happens without this: an operator who can choose among seeds certifies an unsafe attack in most runs.
+\end{enumerate}
 
-A separate synthetic boundary experiment tests repeated safety certification. True risk is 0.201, tolerance 0.2, and each attempt uses 500 independent trials. Among 20,000 simulated programmes with 20 attempts each, resetting the nominal level to 0.05 gives 50.975\% false certification; preallocating a total 0.05 budget across attempts gives 3.875\%. Exact binomial intervals are [50.280\%,51.670\%] and [3.612\%,4.152\%]. The result illustrates repeated-selection error under the simulated law. It does not demonstrate that the local ledger can stop an operator from obtaining and discarding unrecorded outcomes.
+\section{The BIS programmes as release programmes}\label{sec:bis}
+Table \ref{tab:programmes} maps the main BIS statistical products onto the method's objects. The mapping rests on the public description of the products \citep{bisstats}; the internal mechanisms are not public and the table does not claim to describe them.
 
-\subsection{Evidence-integrity regression experiment}
-Four regression probes fail against the supplied prototype: altered measured counts are accepted, altered measured features are accepted, an injected copy can match validation features after identifier changes, and file-intake metadata can bypass the response-size limit. Repairs commit the full measured row's digest to the keyed chain, check that commitment at training-artifact acceptance, conservatively reject identical injected validation vectors, and bound file input before JSON parsing. The copy rule can reject legitimate feature collisions and does not detect semantic contamination. The original validation snapshot reports 178 passing tests and 91.57\% source coverage; the new search tests and updated full-suite validation are recorded with this revision.
+\begin{table}[htbp]
+\centering\small
+\caption{BIS statistical products as release programmes. The pooling column names the attack that per-release review does not bound. The last column is the method's object that the product most needs.}
+\label{tab:programmes}
+\begin{tabular}{p{30mm}p{34mm}p{40mm}p{34mm}}
+\toprule
+Product & Units and vintages & Pooling risk & What the method adds \\
+\midrule
+Locational and consolidated banking statistics & Reporting country by counterparty country, sector, currency and instrument; quarterly since 1977 & Differencing a cell across consecutive quarters, and between the locational and consolidated views of one reporting system, isolates a change in one large bank's position & A programme budget over the two views and their vintages; a pooled-attack coordinate per release \\
+International debt securities & Issuer-level records aggregated by residence, nationality, sector, currency and maturity & A sparse issuer sector in a small economy makes the aggregate the issuer & Measured attack with a declared auxiliary file (public issuance data) rather than a cell-count rule \\
+Derivatives and triennial survey & Dealer reports aggregated by instrument, currency and counterparty & Few reporting dealers in a currency segment & Tolerance implied by the price of harm to a dealer; falsification test on the frequency model \\
+Credit, property prices, exchange rates & National aggregates & Low; confidentiality lies with the national compiler & Declared as out of scope with a recorded reason \\
+International Data Hub & Institution-level credit, funding and balance-sheet data for large banks; shared with designated supervisors & The release mechanism is access control, not suppression; an insider adversary & The insider coordinate, the registry's separation of duties, and the penetration-testing protocol of Section \ref{sec:pentest} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-The updated revision passes 183 tests with 90.58\% source coverage; Ruff reports no violations. The full test log accompanies the revision. These software checks do not establish statistical sampling assumptions or authenticate an external evaluator.
+Two features of these programmes make the method more necessary than it is for a census. First, the units are few and large: a counterparty-country cell in the banking statistics may hold three reporting banks, and the harm of identifying one is commercial and immediate rather than statistical. The tolerance that a stated price of harm implies is therefore small, and the long form's certification-cost result says a small tolerance needs many attack trials; the institution should budget for that compute. Second, the same units appear in several products. A bank is in the locational and the consolidated statistics, and may be in the Hub. The programme, for budget purposes, is the set of products in which the unit appears, not the product that a given release belongs to.
 
-\section{Interpretation and limitations}
-The public-file result rejects a convenient assumption: increasing model sophistication does not necessarily improve failure coverage. A predictor can be useful for high-yield targeting while repeatedly choosing related settings. Our coverage score also favors space filling by construction, so a complete assessment must report the number and severity of confirmed candidates alongside cell coverage, and compare with diversity-aware heuristic controls. We do not infer neural inferiority for all objectives from this one endpoint.
+\section{The software layer is part of the adversary model}\label{sec:software}
+The long form's adversary is defined by what it knows. In a dissemination system the adversary's knowledge is bounded not only by what the mechanism publishes but by what the software that serves it lets through. A table-builder portal, a download API and the database behind them are code, and code has flaws that are found and fixed on a public schedule. Figure \ref{fig:layers} places the layers.
 
-The language-model arm is one small open-weight model under one fixed prompt, and it failed to return a valid list for a third of the states. No result here measures newly proposed attack families, differences between model providers, or what a prompt that names the coverage goal would do. The exact prompts, model digest, rejection counts, retry rule and generation times are recorded; a comparison with other models or prompts must be declared before its confirmation outcomes are read.
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small,
+  layer/.style={draw, text width=60mm, minimum height=8mm, align=center},
+  note/.style={font=\footnotesize, text width=58mm, align=left, anchor=west}]
+\node[layer] (net) {Network and access control};
+\node[layer, below=7mm of net] (app) {Application: query builder, authentication, redirects};
+\node[layer, below=7mm of app] (db) {Database: published and unpublished cells};
+\node[layer, below=7mm of db] (mech) {Release mechanism: coarsening, floors, noise};
+\node[layer, below=7mm of mech, densely dashed] (reg) {Register (confidential)};
+\node[note] at ($(net.east)+(5mm,0)$) {Listener ACL bypass reaches the pool that serves unsuppressed tables: \emph{read suppressed cells}};
+\node[note] at ($(app.east)+(5mm,0)$) {Credential leak on redirect yields analyst sessions and query logs: \emph{sharpen the auxiliary reading}};
+\node[note] at ($(db.east)+(5mm,0)$) {Injection flaw reads the backing tables: \emph{read microdata}};
+\node[note] at ($(mech.east)+(5mm,0)$) {The published view: what the review assumed the adversary sees};
+\draw[decorate, decoration={brace, amplitude=4pt}, thick] ($(db.west)+(-4mm,-4mm)$) -- ($(net.west)+(-4mm,4mm)$) node[midway, left=6pt, rotate=90, anchor=south, font=\footnotesize] {software layer};
+\foreach \a/\b in {net/app, app/db, db/mech, mech/reg} {\draw[-{Latex[length=1.6mm]}] (\a) -- (\b);}
+\end{tikzpicture}
+\caption{Where a software finding sits and what it grants. Each layer above the mechanism can return information the mechanism removed. The dashed box is the register itself, which the method assumes is never served.}
+\label{fig:layers}
+\end{figure}
 
-The experiment uses one public extract and one attacker, with declared coarsening choices and simulated auxiliary noise. Log-income readings are modeling assumptions. Synthetic auxiliary observations on real records do not constitute measurements from an operational adversary. Source records and conditional targets are not independent institutional programmes, and the 30-state subset does not identify population confidentiality. The catalogue omits longitudinal pooling, attribute inference and unknown attacks.
+We do not need to know which stack an institution runs to make the point; it is enough that any stack has such a list. Table \ref{tab:php} gives the one we use, drawn from the PHP 8.5 changelog for 2026 \citep{phpchangelog}, because PHP is widely deployed in web portals and its advisories are public and dated. The mapping in the last column is to the capability each flaw would grant on a hypothetical PHP-FPM portal in front of a database that holds the unsuppressed tables. Whether a given flaw is exploitable in a given deployment is a finding of the penetration test, not of this table.
 
-The provenance implementation remains a local prototype. Full-row hashes deter substitution only when lineage and ledger use are retained. A key holder can rewrite a chain; an unauthenticated caller can relabel base evidence; and budget debits after supplied outcomes do not prevent withholding. A deployment needs an independently controlled evaluator, transactional reservations before draws, an append-only registry and external anchoring.
+\begin{table}[htbp]
+\centering\small
+\caption{Four PHP advisories of 2026 and the capability each would grant an adversary on a hypothetical PHP-FPM dissemination portal. Severities are the categories used in our plan, not CVSS scores. Source: PHP 8.5 changelog \citep{phpchangelog}.}
+\label{tab:php}
+\begin{tabular}{llp{52mm}l}
+\toprule
+Advisory & Release & Flaw & Capability granted \\
+\midrule
+CVE-2026-91768 & 8.5.11, 24 Sep 2026 & IPv6 ACL bypass in FastCGI \texttt{listen.allowed\_clients} from partial address comparison & read suppressed cells \\
+CVE-2026-91766 & 8.5.11, 24 Sep 2026 & HTTP stream wrapper leaks credentials across origins on redirect & sharpen the auxiliary reading \\
+CVE-2026-17543 & 8.5.9, 30 Jul 2026 & SQL injection in PGSQL through an \texttt{E'...'} string with a backslash breakout & read microdata \\
+CVE-2026-6735 & 8.5.6, 7 May 2026 & Cross-site scripting in the FPM status endpoint & none relevant to disclosure \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-The coverage taxonomy measures diversity of declared configurations, not semantic diversity of attacks. Different coarsening choices can induce identical partitions in a particular empirical file, and some cells are infeasible after suppression. All methods use the same available catalogue within a state, but the score should not be interpreted as a universal measure of security coverage. The next comparison should include partition-equivalence checks and diversity-aware controls.
+The principle is this. A severity score such as CVSS ranks a flaw by its consequences for the system. A disclosure audit ranks it by its consequences for the people in the register. These are different orderings, and only the second is the statistical office's business. The way to get the second is to treat the flaw as a change in the adversary's information set and measure the declared attack under it.
 
-\section{Next experiment and conclusion}
-The first LLM-versus-Sobol comparison is now run and negative for a small local model. The next gates are a larger model under the same fixed prompt, a declared prompt that names the coverage goal, and a diversity-aware heuristic control. The next external-validity gate is a second public dataset with an independently specified attacker. These should be locked before confirmation outcomes are inspected. We have no basis to claim either LLM superiority or deployment readiness.
+\section{Penetration testing with the audit}\label{sec:pentest}
 
-The current result is narrower but useful: measured scenario injection can be tested reproducibly, simple search is competitive on a real public-file substrate, and evidence integrity and statistical confirmation impose constraints that prediction quality alone cannot satisfy.
+\subsection{Capabilities and the adversary view}
+\begin{definition}[Capability]
+A capability is a named relaxation of the release mechanism as the adversary sees it. The list is closed and declared in code. For the Census release used in the example the list is: read suppressed cells (the floor becomes one); read fine geography (the coarsest geographic width becomes the finest); read fine education (likewise for the education code); sharpen the auxiliary reading (the reading's standard deviation halves, never below the finest declared level); read microdata (all of the above at once).
+\end{definition}
 
-\section*{Reproducibility and overlap}
-Code and aggregate scenario measurements are in \url{https://github.com/Nube1/privacy-risk-thresholds}, branch \texttt{codex/llm-injector-evaluation}. The repository is currently private; public reproducibility requires making an appropriately reviewed release accessible. The source-data snapshot hash, design, state-level counts and results are recorded with the experiments. This draft extends an existing working manuscript on programme-level privacy risk and a separate journal draft on adaptive certification. Their carried-over theory and synthetic findings are not presented here as new independent results. This is an author manuscript, not a publisher-issued article.
+\begin{definition}[Finding]
+A finding is an identifier, a component, a severity, a status in $\{$confirmed, theoretical, fixed$\}$, a reference, and the set of capabilities it grants.
+\end{definition}
 
-\begin{thebibliography}{9}
-\bibitem{funsearch} Romera-Paredes, B. et al. (2024). Mathematical discoveries from program search with large language models. \emph{Nature} 625, 468--475. \url{https://doi.org/10.1038/s41586-023-06924-6}.
-\bibitem{alphaevolve} Novikov, A. et al. (2025). AlphaEvolve: A coding agent for scientific and algorithmic discovery. \url{https://arxiv.org/abs/2506.13131}.
-\bibitem{curiosity} Hong, Z.-W. et al. (2024). Curiosity-driven Red-teaming for Large Language Models. \emph{ICLR}. \url{https://arxiv.org/abs/2402.19464}.
-\bibitem{holdout} Dwork, C. et al. (2015). Generalization in Adaptive Data Analysis and Holdout Reuse. \url{https://arxiv.org/abs/1506.02629}.
-\bibitem{zhou} Zhou, S., Vossler, P., Sivaraman, V., Mai, Y. and Feng, J. (2026). Adaptive auditing of AI systems with anytime-valid guarantees. Preprint. \url{https://arxiv.org/abs/2605.07002}.
-\bibitem{wooldridge} Wooldridge data package. \texttt{census2000} documentation and source attribution. \url{https://cran.r-project.org/web/packages/wooldridge/wooldridge.pdf}. Python package version used: 0.5.0; source snapshot hash supplied with the experiment.
+\begin{definition}[Adversary view]
+For a release $r$ and a set of findings $F$, the adversary view $v(r,F)$ is $r$ with every capability granted by a member of $F$ applied. Capabilities only relax: each component of the view is the minimum of its published value and the value the capability sets.
+\end{definition}
+
+\begin{proposition}[Monotone composition]
+$v(r,F)$ does not depend on the order of $F$; $v(r,F\cup\{f\})$ is at least as relaxed as $v(r,F)$ in every component; and $v(r,F\cup\{f\})=v(r,F)$ whenever $f$ grants no capability or only capabilities already applied.
+\end{proposition}
+\begin{proof}
+Each component is a minimum over the published value and the values set by the granted capabilities; minimum is commutative, idempotent and non-increasing in the set over which it is taken.
+\end{proof}
+
+The proposition is what makes the pooled adversary well defined and what stops a tester from weakening the adversary by listing findings in a convenient order.
+
+\subsection{The protocol}
+Algorithm \ref{alg:pentest} gives the protocol. It sits inside the usual testing cycle of planning, discovery, attack and reporting \citep{nist800115}; what it changes is the reporting step, which now produces an audited bound rather than a severity. Its structure is the article's: plan, freeze, measure, certify, with the plan on the ledger before any outcome exists.
+
+\begin{algorithm}[htbp]
+\caption{Penetration-test findings as audited adversaries}
+\label{alg:pentest}
+\KwIn{release $r$ as approved; findings $F$ with statuses; tolerance $\tau$; budget share $\alpha$ for this test cycle; trials $B$; seed; executable attacker $A$; ledger $L$}
+\KwOut{a verdict per confirmed finding and for the pooled adversary; the chained record}
+$C\gets$ confirmed members of $F$ \tcp*{theoretical and fixed findings are recorded, not audited}
+coordinates $\gets[\,(\text{published},\ v(r,\emptyset))\,]$\;
+\ForEach{$f\in C$}{append $(f,\ v(r,\{f\}))$}
+\If{$|C|>1$}{append $(\text{pooled},\ v(r,C))$}
+$\alpha'\gets\alpha/|\text{coordinates}|$\;
+$L\gets L\,\Vert\,\text{plan}(r,F,\tau,\alpha,B,\text{seed},\text{coordinates})$ \tcp*{frozen before any draw}
+\ForEach{coordinate $(n,v)$ with index $k$}{
+  draw $B$ fresh targets from the view $v$ with seed $(\text{seed},k)$\;
+  $s\gets A(v,B)$ successes\;
+  $u\gets$ exact one-sided upper bound for $s/B$ at level $\alpha'$\;
+  $L\gets L\,\Vert\,\text{outcome}(n,s,B,u,\ u\le\tau)$\;
+}
+verdict $\gets$ \{published within $\tau$; findings whose $u>\tau$; pooled within $\tau$\}\;
+$L\gets L\,\Vert\,\text{verdict}$\;
+\Return verdict, $L$
+\end{algorithm}
+
+Four rules govern its use.
+\begin{enumerate}
+\item \emph{Status gates the audit.} A theoretical finding is one the tester reports but has not exploited. It is recorded with its capability so the plan shows what would be audited if it were confirmed, and it spends no budget. A fixed finding is kept for the history.
+\item \emph{The budget is the programme's.} A test cycle is given a share of the programme's error budget by the tolerance owner, and the cycle splits it equally over its coordinates. A second cycle after remediation is a new share; it does not reuse the first.
+\item \emph{The pooled adversary is always audited.} Two findings that each leave the bound below tolerance can fail together; the long form's composition result is the reason, and the worked example shows it.
+\item \emph{Remediation is ordered by the bound, not the score.} The finding to fix first is the one whose coordinate breaches by most, then the one whose removal brings the pooled adversary back within tolerance.
+\end{enumerate}
+
+\subsection{Worked example}
+The example uses the public Census extract that the companion papers use for their public-file experiments \citep{mahomane2026long}: the 29,501-record \texttt{census2000} file, restricted to its first encoded state group (425 records), with the declared linkage attack of the public-file experiment, a matching-key prior and a noisy log-income reading. The release as approved is the coarsest setting in the catalogue: geography width 100, education width 8, minimum cell 10, reading standard deviation 2. The findings are the four advisories of Table \ref{tab:php}, with the two FPM and stream-wrapper flaws marked confirmed, the SQL injection marked theoretical, and the status-page XSS confirmed but granting nothing. Tolerance is 0.2, the cycle's budget share is 0.05, and each coordinate gets 600 fresh trials. Table \ref{tab:pentest} gives the result; the full report and the ledger are in \texttt{artifacts-pentest/} of the code repository \citep{privacyriskcode}, produced by \texttt{scripts/pentest\_demo.py}.
+
+\input{../generated/table_pentest}
+
+Four things are visible in Table \ref{tab:pentest}. The release passes as published: 60 successes in 600, upper bound 0.132. The ACL bypass, which lets the adversary read the cells the floor suppressed, takes the bound to 0.417; this release fails under that finding. The credential leak, which halves the reading noise, takes the bound to 0.182: within tolerance on its own. The two together take it to 0.477, worse than either, so a remediation plan that fixed the ACL bypass and left the leak would still have to re-audit, and one that reasoned from the two marginal rows would have been wrong. The XSS finding leaves the view and the bound where they were, as a finding that grants no capability should, and the row is there so that the record shows it was considered. The SQL injection, rated critical, is absent from the table because it was not confirmed; had it been, its row would be the microdata view, and the bound would be the finest-geography risk the companion papers report, far above any tolerance.
+
+The ordering this produces is not the severity ordering. By severity the SQL injection comes first and the XSS third; by measured disclosure risk the ACL bypass comes first, the leak matters only in combination, and the XSS and the unconfirmed injection do not enter.
+
+\section{Deployment}\label{sec:deploy}
+
+\subsection{Architecture}
+Figure \ref{fig:architecture} gives the parts and who controls each. The separation follows the five trusted parts of the article's audit-process threat model: the registry that holds budgets and keys, the time source, the target draw, the evaluator, and the record.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[font=\small, node distance=7mm and 8mm,
+  part/.style={draw, rounded corners=1pt, minimum height=11mm, text width=32mm, align=center},
+  arr/.style={-{Latex[length=2mm]}, thick}]
+\node[part] (committee) {Release committee\\tolerance, expiry, budget shares\\{\footnotesize\itshape statistics}};
+\node[part, right=of committee] (registry) {Registry service\\keys, clock, budgets, ledger\\{\footnotesize\itshape information security}};
+\node[part, right=of registry] (evaluator) {Evaluator enclave\\executable attacks on real releases\\{\footnotesize\itshape methodology}};
+\node[part, below=of committee] (redteam) {Penetration testers\\findings, statuses, capabilities\\{\footnotesize\itshape external or security}};
+\node[part, below=of registry] (proposer) {Scenario proposers\\analysts; an LLM only as injector\\{\footnotesize\itshape methodology}};
+\node[part, below=of evaluator] (portal) {Dissemination portal\\the system under test\\{\footnotesize\itshape IT operations}};
+\draw[arr] (committee) -- (registry); \draw[arr] (registry) -- (evaluator);
+\draw[arr] (redteam) -- (registry); \draw[arr] (proposer) -- (registry);
+\draw[arr] (evaluator) -- (portal);
+\draw[arr, dashed] (redteam.south) -- ++(0,-5mm) -| (portal.south);
+\end{tikzpicture}
+\caption{Deployment architecture. Every declaration, plan and outcome passes through the registry, which alone holds the signing key, the time source and the programme budgets. Testers probe the portal (dashed) and declare findings to the registry; they never run the evaluator. Proposers, human or machine, only propose: the closed-network rule of the companion papers.}
+\label{fig:architecture}
+\end{figure}
+
+Three design choices follow from the article's measured attacks on the audit process. The registry is a separate service with its own storage and key, because a ledger the operator can rewrite proves nothing. Target seeds are derived from a commitment the operator makes at registration and a public randomness beacon named for a later round, because an operator who can grind seeds certifies an unsafe attack in most runs. And bets, where the anytime-valid procedure is used, are committed before each draw. The companion code implements each of these as a library; the deployment turns them into a service.
+
+\subsection{Roles}
+The tolerance owner is the head of the statistical function, because the tolerance is a judgement about harm to reporting institutions and about the value of the product. The registry is operated by the information-security function, not by statistics, so that the people who want a release to pass do not hold the key that records whether it did. The evaluator is run by methodology inside the enclave that already holds the confidential data. Penetration testers are external or report to security; they declare findings and statuses and never touch the evaluator. Scenario proposers are analysts, and a language model may be among them only under the closed-network rule: it proposes, a named reviewer approves, the evaluator measures, and nothing it writes reaches the record as evidence.
+
+\subsection{Phases}
+\begin{description}
+\item[Shadow run.] One programme, past releases. Declare the adversaries, run the attacker, write the ledger, gate nothing. The output is a calibrated view of what the current rules have been releasing and the compute the tolerance will cost. For the banking statistics this is the quarterly series over several years and the two views.
+\item[Gated run.] The committee sets the tolerance and the budget, the registry goes live, and new releases of that programme pass through the gate. A failed audit is a decision record, not an emergency: the long form's protocol says what the committee does with it.
+\item[Security integration.] The penetration-testing cycle of Section \ref{sec:pentest} joins the gated programme with its own budget share. Findings from routine testing and from advisories such as those in Table \ref{tab:php} are declared as they arrive, and the ordering they produce feeds remediation.
+\item[Extension.] A second programme, then the Hub, where the insider coordinate and the access-control mechanism make the audit different in kind: the view is not a coarsened table but a set of accounts, and the capability list is written for that.
+\end{description}
+
+\section{Limits and what is not claimed}\label{sec:limits}
+The mapping of Table \ref{tab:programmes} rests on public descriptions; the BIS's internal mechanisms, stack and controls are not known to us and nothing here describes them. The PHP advisories are real and the capability mapping is plausible for the stack we describe, but we have not exploited any of them, and the example assumes exploitability; in a deployment that assumption is the tester's finding, recorded with a status. The worked example is one public file, one attack, one state group, and the bounds are conditional on that file and on simulated auxiliary readings; they are not population risk. The capability list is closed by design, which means a finding whose effect is not on the list cannot be audited until the list is extended and the extension is declared; that is a feature, since an undeclared relaxation is exactly what the method refuses to reason about, but it is also work. The registry service is specified, not built; the companion code gives the library. And a measured attack on a relaxed view says what the declared adversary achieves; it does not say that no other adversary achieves more.
+
+\section{Conclusion}
+The method of the companion papers asks an institution to say who the adversary is, to measure what that adversary achieves, to spend one error budget on the answer, and to keep a record it cannot quietly rewrite. This paper shows that the BIS's programmes have the features that make those asks worth meeting, lays out the roles and phases for meeting them, and adds one rule: a software flaw is a change in what the adversary knows, so a penetration test is a source of adversaries, and its findings should be audited with the same attacker, at the same budget, on the same ledger as everything else. Done that way, security testing and disclosure control stop being two reports and become one.
+
+\subsection*{Data and code}
+The worked example runs from \texttt{scripts/pentest\_demo.py} in the companion repository \citep{privacyriskcode}; its report, ledger and table are committed under \texttt{artifacts-pentest/} and \texttt{paper/generated/}. The red-team harness is \texttt{privacy\_risk.redteam}, with tests. No confidential data were used.
+
+\begin{thebibliography}{9}\small
+\bibitem[BIS(2026)]{bisstats}
+Bank for International Settlements (2026): \emph{BIS statistics}, \url{https://www.bis.org/statistics/index.htm}, accessed 23 October 2026.
+\bibitem[Mahomane(2026a)]{mahomane2026long}
+Mahomane, R R M (2026a): ``Governing privacy risk across repeated statistical releases: probability models, programme tolerances and accountable decisions'', author manuscript, long form for the Irving Fisher Committee, with online appendix.
+\bibitem[Mahomane(2026b)]{mahomane2026adaptive}
+Mahomane, R R M (2026b): ``Adaptive certification of attack-conditional disclosure risk across release programmes'', author manuscript.
+\bibitem[Mahomane(2026c)]{privacyriskcode}
+Mahomane, R R M (2026c): \emph{Privacy Risk Thresholds: reproducible research pipeline}, software, \url{https://github.com/Nube1/privacy-risk-thresholds}.
+\bibitem[PHP Group(2026)]{phpchangelog}
+The PHP Group (2026): \emph{PHP 8 ChangeLog}, \url{https://www.php.net/ChangeLog-8.php}, releases 8.5.6 to 8.5.12, accessed 23 October 2026.
+\bibitem[Scarfone et al.(2008)]{nist800115}
+Scarfone, K, M Souppaya, A Cody and A Orebaugh (2008): \emph{Technical guide to information security testing and assessment}, NIST Special Publication 800-115, National Institute of Standards and Technology.
 \end{thebibliography}
 \end{document}
