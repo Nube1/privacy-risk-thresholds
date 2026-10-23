@@ -1,0 +1,22 @@
+{
+  "model": "gpt-5.4-mini-2026-03-17",
+  "states": [
+    0,
+    1
+  ],
+  "requests_per_state": 1,
+  "automatic_retries": 0,
+  "proposals_per_request": 32,
+  "maximum_output_tokens": 8192,
+  "reasoning_effort": "none",
+  "budget_usd": 0.25,
+  "input_usd_per_million": 0.75,
+  "output_usd_per_million": 4.5,
+  "price_source": "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+  "status": "prepared; not an experimental result",
+  "prompt_sha256": {
+    "0": "d8a92f35338960bd933004012ca13fe0574c43b04a3a84c79bdcb3ba865aa2d9",
+    "1": "c3aada037ba8f6cb7d16e3ee1927957f43f5ead83127e3bf96299dc862a360cf"
+  },
+  "maximum_planned_cost_usd": 0.0851745
+}
