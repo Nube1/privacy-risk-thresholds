@@ -1,0 +1,5721 @@
+{
+  "warmstart": [
+    {
+      "record_id": "state-30-warm-114",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-114",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.5344827586206896,
+        "log_records": 5.1647859739235145,
+        "puma_width": 2.0,
+        "education_width": 1.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 2.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        38
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-115",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-115",
+      "features": {
+        "retained": 0.42528735632183906,
+        "reciprocal": 0.28378378378378377,
+        "log_records": 5.1647859739235145,
+        "puma_width": 2.0,
+        "education_width": 1.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        50
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-80",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-80",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.39080459770114945,
+        "log_records": 5.1647859739235145,
+        "puma_width": 1.0,
+        "education_width": 4.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        48
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-130",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-130",
+      "features": {
+        "retained": 0.29310344827586204,
+        "reciprocal": 0.1568627450980392,
+        "log_records": 5.1647859739235145,
+        "puma_width": 2.0,
+        "education_width": 2.0,
+        "minimum_cell": 5.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        48
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-0",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-0",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.5344827586206896,
+        "log_records": 5.1647859739235145,
+        "puma_width": 0.0,
+        "education_width": 1.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        58
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-92",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-92",
+      "features": {
+        "retained": 0.3505747126436782,
+        "reciprocal": 0.14754098360655735,
+        "log_records": 5.1647859739235145,
+        "puma_width": 1.0,
+        "education_width": 4.0,
+        "minimum_cell": 5.0,
+        "covariate_sd": 0.5
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        21
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-128",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-128",
+      "features": {
+        "retained": 0.5689655172413793,
+        "reciprocal": 0.2323232323232323,
+        "log_records": 5.1647859739235145,
+        "puma_width": 2.0,
+        "education_width": 2.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 1.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        20
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-18",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-18",
+      "features": {
+        "retained": 0.5689655172413793,
+        "reciprocal": 0.2323232323232323,
+        "log_records": 5.1647859739235145,
+        "puma_width": 0.0,
+        "education_width": 2.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 1.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        21
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-47",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-47",
+      "features": {
+        "retained": 0.7183908045977011,
+        "reciprocal": 0.21599999999999997,
+        "log_records": 5.1647859739235145,
+        "puma_width": 0.0,
+        "education_width": 8.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 0.5
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        22
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-150",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-150",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.3448275862068966,
+        "log_records": 5.1647859739235145,
+        "puma_width": 2.0,
+        "education_width": 8.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        53
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-146",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-146",
+      "features": {
+        "retained": 0.3505747126436782,
+        "reciprocal": 0.14754098360655735,
+        "log_records": 5.1647859739235145,
+        "puma_width": 2.0,
+        "education_width": 4.0,
+        "minimum_cell": 5.0,
+        "covariate_sd": 0.25
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        34
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-76",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-76",
+      "features": {
+        "retained": 0.29310344827586204,
+        "reciprocal": 0.1568627450980392,
+        "log_records": 5.1647859739235145,
+        "puma_width": 1.0,
+        "education_width": 2.0,
+        "minimum_cell": 5.0,
+        "covariate_sd": 0.25
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        30
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-32",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-32",
+      "features": {
+        "retained": 0.6494252873563219,
+        "reciprocal": 0.22123893805309736,
+        "log_records": 5.1647859739235145,
+        "puma_width": 0.0,
+        "education_width": 4.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 0.5
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        21
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-102",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-102",
+      "features": {
+        "retained": 0.7183908045977011,
+        "reciprocal": 0.21599999999999997,
+        "log_records": 5.1647859739235145,
+        "puma_width": 1.0,
+        "education_width": 8.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 0.5
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        27
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-118",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-118",
+      "features": {
+        "retained": 0.42528735632183906,
+        "reciprocal": 0.28378378378378377,
+        "log_records": 5.1647859739235145,
+        "puma_width": 2.0,
+        "education_width": 1.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 1.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        25
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-30-warm-40",
+      "group": "state-30",
+      "evidence_id": "state-30-warm-40",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.3448275862068966,
+        "log_records": 5.1647859739235145,
+        "puma_width": 0.0,
+        "education_width": 8.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        50
+      ],
+      "trials": [
+        64
+      ]
+    }
+  ],
+  "stopping": [
+    {
+      "record_id": "state-31-stop-113",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-113",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.31274900398406374,
+        "log_records": 6.220590170099739,
+        "puma_width": 1.0,
+        "education_width": 8.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 1.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        29
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-31-stop-99",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-99",
+      "features": {
+        "retained": 0.6553784860557769,
+        "reciprocal": 0.2127659574468085,
+        "log_records": 6.220590170099739,
+        "puma_width": 1.0,
+        "education_width": 4.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 2.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        16
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-31-stop-100",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-100",
+      "features": {
+        "retained": 0.40039840637450197,
+        "reciprocal": 0.15422885572139303,
+        "log_records": 6.220590170099739,
+        "puma_width": 1.0,
+        "education_width": 4.0,
+        "minimum_cell": 5.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        33
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-31-stop-53",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-53",
+      "features": {
+        "retained": 0.7191235059760956,
+        "reciprocal": 0.21329639889196672,
+        "log_records": 6.220590170099739,
+        "puma_width": 0.0,
+        "education_width": 8.0,
+        "minimum_cell": 3.0,
+        "covariate_sd": 1.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        24
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-31-stop-148",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-148",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.44621513944223107,
+        "log_records": 6.220590170099739,
+        "puma_width": 2.0,
+        "education_width": 2.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 1.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        33
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-31-stop-145",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-145",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.44621513944223107,
+        "log_records": 6.220590170099739,
+        "puma_width": 2.0,
+        "education_width": 2.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 0.1
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        52
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-31-stop-34",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-34",
+      "features": {
+        "retained": 1.0,
+        "reciprocal": 0.448207171314741,
+        "log_records": 6.220590170099739,
+        "puma_width": 0.0,
+        "education_width": 4.0,
+        "minimum_cell": 1.0,
+        "covariate_sd": 2.0
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        34
+      ],
+      "trials": [
+        64
+      ]
+    },
+    {
+      "record_id": "state-31-stop-196",
+      "group": "state-31",
+      "evidence_id": "state-31-stop-196",
+      "features": {
+        "retained": 0.08167330677290836,
+        "reciprocal": 0.07317073170731707,
+        "log_records": 6.220590170099739,
+        "puma_width": 2.0,
+        "education_width": 8.0,
+        "minimum_cell": 10.0,
+        "covariate_sd": 0.25
+      },
+      "evidence_kind": "observed_development_attack",
+      "successes": [
+        14
+      ],
+      "trials": [
+        64
+      ]
+    }
+  ],
+  "arms": [
+    {
+      "state": 30,
+      "arm": "random",
+      "source_rows": 174,
+      "pool_size": 149,
+      "confirmed_cells": 14,
+      "confirmed_candidates": 28,
+      "search_successes": 1052,
+      "search_trials": 2048,
+      "confirmation": [
+        {
+          "query": 1,
+          "action": [
+            10,
+            8,
+            3,
+            1.0
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "successes": 89,
+          "trials": 300,
+          "lower_bound": 0.21265683325452867,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 2,
+          "action": [
+            100,
+            4,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "successes": 247,
+          "trials": 300,
+          "lower_bound": 0.7396152138966758,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 3,
+          "action": [
+            100,
+            8,
+            3,
+            2.0
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "successes": 84,
+          "trials": 300,
+          "lower_bound": 0.19791367281572148,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 4,
+          "action": [
+            1,
+            1,
+            1,
+            1.0
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "successes": 188,
+          "trials": 300,
+          "lower_bound": 0.5287940419504874,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 5,
+          "action": [
+            100,
+            2,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "successes": 227,
+          "trials": 300,
+          "lower_bound": 0.6656986044770843,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 6,
+          "action": [
+            10,
+            4,
+            3,
+            1.0
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "successes": 112,
+          "trials": 300,
+          "lower_bound": 0.2821747686406793,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 7,
+          "action": [
+            1,
+            2,
+            5,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "successes": 166,
+          "trials": 300,
+          "lower_bound": 0.45484730420933706,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 8,
+          "action": [
+            10,
+            1,
+            3,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "successes": 239,
+          "trials": 300,
+          "lower_bound": 0.7096723882642707,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 9,
+          "action": [
+            1,
+            2,
+            1,
+            1.0
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "successes": 164,
+          "trials": 300,
+          "lower_bound": 0.44822989506406025,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 10,
+          "action": [
+            10,
+            1,
+            3,
+            0.25
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "successes": 195,
+          "trials": 300,
+          "lower_bound": 0.5527846984733787,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 11,
+          "action": [
+            10,
+            8,
+            5,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 203,
+          "trials": 300,
+          "lower_bound": 0.5804942634342849,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 12,
+          "action": [
+            100,
+            8,
+            3,
+            0.5
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 124,
+          "trials": 300,
+          "lower_bound": 0.3194524212663229,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 13,
+          "action": [
+            10,
+            4,
+            5,
+            1.0
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "successes": 69,
+          "trials": 300,
+          "lower_bound": 0.1545968216932132,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 14,
+          "action": [
+            100,
+            2,
+            1,
+            0.25
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 211,
+          "trials": 300,
+          "lower_bound": 0.6085327012774003,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 15,
+          "action": [
+            1,
+            2,
+            5,
+            0.5
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "successes": 105,
+          "trials": 300,
+          "lower_bound": 0.2607378587868023,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 16,
+          "action": [
+            10,
+            4,
+            1,
+            2.0
+          ],
+          "cell": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "successes": 138,
+          "trials": 300,
+          "lower_bound": 0.36374852993525447,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 17,
+          "action": [
+            100,
+            4,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 18,
+          "action": [
+            10,
+            4,
+            1,
+            0.25
+          ],
+          "cell": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "successes": 186,
+          "trials": 300,
+          "lower_bound": 0.5219818225401053,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 19,
+          "action": [
+            1,
+            2,
+            3,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "successes": 176,
+          "trials": 300,
+          "lower_bound": 0.4881936043585099,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 20,
+          "action": [
+            10,
+            1,
+            1,
+            1.0
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "successes": 199,
+          "trials": 300,
+          "lower_bound": 0.5665996331782792,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 21,
+          "action": [
+            10,
+            4,
+            3,
+            2.0
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "successes": 91,
+          "trials": 300,
+          "lower_bound": 0.2185933132126566,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 22,
+          "action": [
+            100,
+            2,
+            3,
+            0.25
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "successes": 166,
+          "trials": 300,
+          "lower_bound": 0.45484730420933706,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 23,
+          "action": [
+            100,
+            1,
+            1,
+            1.0
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "successes": 200,
+          "trials": 300,
+          "lower_bound": 0.5700657293787068,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 24,
+          "action": [
+            100,
+            8,
+            5,
+            1.0
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "successes": 76,
+          "trials": 300,
+          "lower_bound": 0.17463196406560713,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 25,
+          "action": [
+            1,
+            8,
+            3,
+            0.25
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 176,
+          "trials": 300,
+          "lower_bound": 0.4881936043585099,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 26,
+          "action": [
+            100,
+            2,
+            1,
+            0.5
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 182,
+          "trials": 300,
+          "lower_bound": 0.5084124517375255,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 27,
+          "action": [
+            100,
+            2,
+            5,
+            1.0
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "successes": 82,
+          "trials": 300,
+          "lower_bound": 0.19205685363893524,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 28,
+          "action": [
+            10,
+            8,
+            3,
+            2.0
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "successes": 86,
+          "trials": 300,
+          "lower_bound": 0.20379384717954793,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 29,
+          "action": [
+            10,
+            1,
+            1,
+            2.0
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            1
+          ],
+          "successes": 178,
+          "trials": 300,
+          "lower_bound": 0.4949153905879942,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 30,
+          "action": [
+            1,
+            4,
+            5,
+            0.5
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 97,
+          "trials": 300,
+          "lower_bound": 0.2365318141762948,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 31,
+          "action": [
+            1,
+            4,
+            5,
+            0.25
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 149,
+          "trials": 300,
+          "lower_bound": 0.39914149177176644,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 32,
+          "action": [
+            100,
+            1,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 264,
+          "trials": 300,
+          "lower_bound": 0.8054017515205896,
+          "confirmed_high_risk": true
+        }
+      ],
+      "fits": [],
+      "measured_development": [
+        {
+          "record_id": "state-30-search-random-94",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-94",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            20
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-121",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-121",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            56
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-143",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-143",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            16
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-2",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-2",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            42
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-113",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-113",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-81",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-81",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            14
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-19",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-19",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            31
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-55",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-55",
+          "features": {
+            "retained": 0.42528735632183906,
+            "reciprocal": 0.28378378378378377,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            53
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-12",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-12",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            36
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-56",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-56",
+          "features": {
+            "retained": 0.42528735632183906,
+            "reciprocal": 0.28378378378378377,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            37
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-96",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-96",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-141",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-141",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            24
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-85",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-85",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            14
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-109",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-109",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            42
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-20",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-20",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            24
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-77",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-77",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            31
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-126",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-126",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            51
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-74",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-74",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-15",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-15",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            33
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-53",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-53",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            43
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-82",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-82",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            14
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-114",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-114",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            36
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-104",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-104",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            38
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-147",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-147",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            16
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-42",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-42",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            31
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-110",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-110",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            42
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-119",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-119",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            16
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-95",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-95",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            17
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-54",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-54",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            38
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-34",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-34",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            19
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-33",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-33",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            31
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-random-101",
+          "group": "state-30",
+          "evidence_id": "state-30-search-random-101",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            57
+          ],
+          "trials": [
+            64
+          ]
+        }
+      ],
+      "llm_replay": null,
+      "warmstart_sha256": "81033b18673f9e03e2c50d0e41af1f9d3cc37d89a810f66af3d370b731e52c9b",
+      "stopping_sha256": "6c4ee21c15f3c78c34dbeb2efb9423bfee39b647b5c046ff48705192f24a39b9"
+    },
+    {
+      "state": 30,
+      "arm": "heuristic",
+      "source_rows": 174,
+      "pool_size": 149,
+      "confirmed_cells": 12,
+      "confirmed_candidates": 32,
+      "search_successes": 1573,
+      "search_trials": 2048,
+      "confirmation": [
+        {
+          "query": 1,
+          "action": [
+            10,
+            1,
+            1,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 263,
+          "trials": 300,
+          "lower_bound": 0.8014323456964988,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 2,
+          "action": [
+            100,
+            1,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 264,
+          "trials": 300,
+          "lower_bound": 0.8054017515205896,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 3,
+          "action": [
+            1,
+            2,
+            1,
+            0.1
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 253,
+          "trials": 300,
+          "lower_bound": 0.7624604579292678,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 4,
+          "action": [
+            10,
+            2,
+            1,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 263,
+          "trials": 300,
+          "lower_bound": 0.8014323456964988,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 5,
+          "action": [
+            100,
+            2,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 244,
+          "trials": 300,
+          "lower_bound": 0.7283216733705402,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 6,
+          "action": [
+            1,
+            4,
+            1,
+            0.1
+          ],
+          "cell": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "successes": 245,
+          "trials": 300,
+          "lower_bound": 0.7320771728663413,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 7,
+          "action": [
+            100,
+            4,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "successes": 247,
+          "trials": 300,
+          "lower_bound": 0.7396152138966758,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 8,
+          "action": [
+            10,
+            8,
+            1,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 9,
+          "action": [
+            1,
+            1,
+            3,
+            0.1
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "successes": 229,
+          "trials": 300,
+          "lower_bound": 0.6729567329645743,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 10,
+          "action": [
+            10,
+            1,
+            3,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "successes": 239,
+          "trials": 300,
+          "lower_bound": 0.7096723882642707,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 11,
+          "action": [
+            1,
+            2,
+            3,
+            0.1
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "successes": 242,
+          "trials": 300,
+          "lower_bound": 0.7208368133510399,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 12,
+          "action": [
+            10,
+            2,
+            3,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "successes": 232,
+          "trials": 300,
+          "lower_bound": 0.683895167435789,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 13,
+          "action": [
+            100,
+            2,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "successes": 227,
+          "trials": 300,
+          "lower_bound": 0.6656986044770843,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 14,
+          "action": [
+            1,
+            4,
+            3,
+            0.1
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 224,
+          "trials": 300,
+          "lower_bound": 0.6548607819234229,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 15,
+          "action": [
+            10,
+            4,
+            3,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 226,
+          "trials": 300,
+          "lower_bound": 0.6620795028638744,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 16,
+          "action": [
+            100,
+            4,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 17,
+          "action": [
+            1,
+            8,
+            3,
+            0.1
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 222,
+          "trials": 300,
+          "lower_bound": 0.6476674821473303,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 18,
+          "action": [
+            10,
+            8,
+            3,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 240,
+          "trials": 300,
+          "lower_bound": 0.7133856903737992,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 19,
+          "action": [
+            100,
+            8,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 220,
+          "trials": 300,
+          "lower_bound": 0.6404989765749157,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 20,
+          "action": [
+            1,
+            2,
+            5,
+            0.1
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "successes": 215,
+          "trials": 300,
+          "lower_bound": 0.6226824396438926,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 21,
+          "action": [
+            10,
+            2,
+            5,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "successes": 230,
+          "trials": 300,
+          "lower_bound": 0.6765959468089235,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 22,
+          "action": [
+            1,
+            8,
+            5,
+            0.1
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 190,
+          "trials": 300,
+          "lower_bound": 0.5356248662808488,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 23,
+          "action": [
+            10,
+            8,
+            5,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 203,
+          "trials": 300,
+          "lower_bound": 0.5804942634342849,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 24,
+          "action": [
+            100,
+            8,
+            5,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 203,
+          "trials": 300,
+          "lower_bound": 0.5804942634342849,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 25,
+          "action": [
+            1,
+            4,
+            5,
+            0.1
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 215,
+          "trials": 300,
+          "lower_bound": 0.6226824396438926,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 26,
+          "action": [
+            10,
+            4,
+            5,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 212,
+          "trials": 300,
+          "lower_bound": 0.6120617473373844,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 27,
+          "action": [
+            100,
+            4,
+            5,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 208,
+          "trials": 300,
+          "lower_bound": 0.5979783697187201,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 28,
+          "action": [
+            1,
+            1,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 29,
+          "action": [
+            10,
+            1,
+            1,
+            0.25
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 245,
+          "trials": 300,
+          "lower_bound": 0.7320771728663413,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 30,
+          "action": [
+            100,
+            1,
+            1,
+            0.25
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 217,
+          "trials": 300,
+          "lower_bound": 0.6297914374955381,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 31,
+          "action": [
+            1,
+            2,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 205,
+          "trials": 300,
+          "lower_bound": 0.5874722138734332,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 32,
+          "action": [
+            10,
+            2,
+            1,
+            0.25
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 204,
+          "trials": 300,
+          "lower_bound": 0.5839806521602049,
+          "confirmed_high_risk": true
+        }
+      ],
+      "fits": [],
+      "measured_development": [
+        {
+          "record_id": "state-30-search-heuristic-50",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-50",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            56
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-101",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-101",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            52
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-9",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-9",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            56
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-60",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-60",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            50
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-108",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-108",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-23",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-23",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            54
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-121",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-121",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            58
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-87",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-87",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-4",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-4",
+          "features": {
+            "retained": 0.42528735632183906,
+            "reciprocal": 0.28378378378378377,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            47
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-55",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-55",
+          "features": {
+            "retained": 0.42528735632183906,
+            "reciprocal": 0.28378378378378377,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            53
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-14",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-14",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            56
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-65",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-65",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            46
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-113",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-113",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            49
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-28",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-28",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            51
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-78",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-78",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-126",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-126",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            44
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-41",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-41",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            44
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-92",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-92",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            53
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-139",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-139",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            52
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-18",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-18",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            45
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-70",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-70",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-45",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-45",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            40
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-96",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-96",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-144",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-144",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-32",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-32",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            50
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-83",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-83",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            49
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-131",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-131",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            45
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-0",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-0",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            49
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-51",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-51",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            53
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-102",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-102",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            52
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-10",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-10",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            47
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-heuristic-61",
+          "group": "state-30",
+          "evidence_id": "state-30-search-heuristic-61",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        }
+      ],
+      "llm_replay": null,
+      "warmstart_sha256": "81033b18673f9e03e2c50d0e41af1f9d3cc37d89a810f66af3d370b731e52c9b",
+      "stopping_sha256": "6c4ee21c15f3c78c34dbeb2efb9423bfee39b647b5c046ff48705192f24a39b9"
+    },
+    {
+      "state": 30,
+      "arm": "sobol",
+      "source_rows": 174,
+      "pool_size": 149,
+      "confirmed_cells": 16,
+      "confirmed_candidates": 28,
+      "search_successes": 1078,
+      "search_trials": 2048,
+      "confirmation": [
+        {
+          "query": 1,
+          "action": [
+            100,
+            2,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "successes": 227,
+          "trials": 300,
+          "lower_bound": 0.6656986044770843,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 2,
+          "action": [
+            1,
+            8,
+            5,
+            0.5
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 103,
+          "trials": 300,
+          "lower_bound": 0.25465642552031004,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 3,
+          "action": [
+            10,
+            1,
+            1,
+            0.5
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 213,
+          "trials": 300,
+          "lower_bound": 0.6155963486959015,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 4,
+          "action": [
+            10,
+            4,
+            3,
+            0.25
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 170,
+          "trials": 300,
+          "lower_bound": 0.4681337146686565,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 5,
+          "action": [
+            100,
+            8,
+            1,
+            0.25
+          ],
+          "cell": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "successes": 198,
+          "trials": 300,
+          "lower_bound": 0.5631385164994691,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 6,
+          "action": [
+            1,
+            4,
+            1,
+            2.0
+          ],
+          "cell": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "successes": 132,
+          "trials": 300,
+          "lower_bound": 0.34466055193223094,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 7,
+          "action": [
+            10,
+            2,
+            5,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "successes": 230,
+          "trials": 300,
+          "lower_bound": 0.6765959468089235,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 8,
+          "action": [
+            100,
+            8,
+            3,
+            1.0
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "successes": 92,
+          "trials": 300,
+          "lower_bound": 0.22156974086624948,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 9,
+          "action": [
+            10,
+            2,
+            1,
+            0.5
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 183,
+          "trials": 300,
+          "lower_bound": 0.5117979656404968,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 10,
+          "action": [
+            1,
+            1,
+            3,
+            2.0
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "successes": 98,
+          "trials": 300,
+          "lower_bound": 0.23953989975211756,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 11,
+          "action": [
+            100,
+            4,
+            5,
+            0.5
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 97,
+          "trials": 300,
+          "lower_bound": 0.2365318141762948,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 12,
+          "action": [
+            100,
+            1,
+            1,
+            1.0
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "successes": 200,
+          "trials": 300,
+          "lower_bound": 0.5700657293787068,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 13,
+          "action": [
+            10,
+            8,
+            5,
+            0.25
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 142,
+          "trials": 300,
+          "lower_bound": 0.3765593224686003,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 14,
+          "action": [
+            10,
+            8,
+            1,
+            2.0
+          ],
+          "cell": [
+            1,
+            1,
+            0,
+            1
+          ],
+          "successes": 116,
+          "trials": 300,
+          "lower_bound": 0.29452783136923877,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 15,
+          "action": [
+            100,
+            4,
+            3,
+            0.5
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 126,
+          "trials": 300,
+          "lower_bound": 0.32572818427430983,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 16,
+          "action": [
+            100,
+            2,
+            5,
+            2.0
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            1
+          ],
+          "successes": 68,
+          "trials": 300,
+          "lower_bound": 0.15176218787679946,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 17,
+          "action": [
+            1,
+            8,
+            3,
+            0.25
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 176,
+          "trials": 300,
+          "lower_bound": 0.4881936043585099,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 18,
+          "action": [
+            10,
+            1,
+            3,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "successes": 239,
+          "trials": 300,
+          "lower_bound": 0.7096723882642707,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 19,
+          "action": [
+            1,
+            4,
+            5,
+            1.0
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            1
+          ],
+          "successes": 71,
+          "trials": 300,
+          "lower_bound": 0.1602872354036776,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 20,
+          "action": [
+            1,
+            2,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 205,
+          "trials": 300,
+          "lower_bound": 0.5874722138734332,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 21,
+          "action": [
+            1,
+            4,
+            3,
+            0.1
+          ],
+          "cell": [
+            0,
+            1,
+            1,
+            0
+          ],
+          "successes": 224,
+          "trials": 300,
+          "lower_bound": 0.6548607819234229,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 22,
+          "action": [
+            10,
+            8,
+            1,
+            0.5
+          ],
+          "cell": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "successes": 165,
+          "trials": 300,
+          "lower_bound": 0.45153645752738863,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 23,
+          "action": [
+            100,
+            2,
+            3,
+            0.25
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "successes": 166,
+          "trials": 300,
+          "lower_bound": 0.45484730420933706,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 24,
+          "action": [
+            10,
+            8,
+            5,
+            2.0
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "successes": 66,
+          "trials": 300,
+          "lower_bound": 0.1461146134472879,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 25,
+          "action": [
+            1,
+            1,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 26,
+          "action": [
+            100,
+            2,
+            1,
+            2.0
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "successes": 136,
+          "trials": 300,
+          "lower_bound": 0.3573687147007657,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 27,
+          "action": [
+            10,
+            1,
+            3,
+            1.0
+          ],
+          "cell": [
+            1,
+            0,
+            1,
+            1
+          ],
+          "successes": 131,
+          "trials": 300,
+          "lower_bound": 0.3414942878498618,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 28,
+          "action": [
+            100,
+            4,
+            5,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 208,
+          "trials": 300,
+          "lower_bound": 0.5979783697187201,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 29,
+          "action": [
+            1,
+            4,
+            1,
+            1.0
+          ],
+          "cell": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "successes": 148,
+          "trials": 300,
+          "lower_bound": 0.3959027788956327,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 30,
+          "action": [
+            1,
+            2,
+            5,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            1,
+            0
+          ],
+          "successes": 166,
+          "trials": 300,
+          "lower_bound": 0.45484730420933706,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 31,
+          "action": [
+            100,
+            8,
+            3,
+            2.0
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            1
+          ],
+          "successes": 84,
+          "trials": 300,
+          "lower_bound": 0.19791367281572148,
+          "confirmed_high_risk": false
+        },
+        {
+          "query": 32,
+          "action": [
+            1,
+            8,
+            1,
+            1.0
+          ],
+          "cell": [
+            0,
+            1,
+            0,
+            1
+          ],
+          "successes": 145,
+          "trials": 300,
+          "lower_bound": 0.3862120028100944,
+          "confirmed_high_risk": true
+        }
+      ],
+      "fits": [],
+      "measured_development": [
+        {
+          "record_id": "state-30-search-sobol-113",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-113",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            54
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-47",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-47",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            25
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-52",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-52",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-79",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-79",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            35
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-135",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-135",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            35
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-27",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-27",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            29
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-70",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-70",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            49
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-142",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-142",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            34
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-62",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-62",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            45
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-8",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-8",
+          "features": {
+            "retained": 0.42528735632183906,
+            "reciprocal": 0.28378378378378377,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            26
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-132",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-132",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            21
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-104",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-104",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            38
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-97",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-97",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            28
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-91",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-91",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            27
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-128",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-128",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            24
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-120",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-120",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            4
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-42",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-42",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            33
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-55",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-55",
+          "features": {
+            "retained": 0.42528735632183906,
+            "reciprocal": 0.28378378378378377,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            53
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-35",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-35",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            14
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-10",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-10",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            46
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-28",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-28",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            55
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-89",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-89",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            27
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-114",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-114",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            36
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-100",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-100",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            15
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-0",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-0",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            52
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-112",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-112",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            35
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-58",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-58",
+          "features": {
+            "retained": 0.42528735632183906,
+            "reciprocal": 0.28378378378378377,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            23
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-131",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-131",
+          "features": {
+            "retained": 0.3505747126436782,
+            "reciprocal": 0.14754098360655735,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            43
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-26",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-26",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            36
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-19",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-19",
+          "features": {
+            "retained": 0.29310344827586204,
+            "reciprocal": 0.1568627450980392,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            31
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-143",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-143",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 2.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            26
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-sobol-39",
+          "group": "state-30",
+          "evidence_id": "state-30-search-sobol-39",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            31
+          ],
+          "trials": [
+            64
+          ]
+        }
+      ],
+      "llm_replay": null,
+      "warmstart_sha256": "81033b18673f9e03e2c50d0e41af1f9d3cc37d89a810f66af3d370b731e52c9b",
+      "stopping_sha256": "6c4ee21c15f3c78c34dbeb2efb9423bfee39b647b5c046ff48705192f24a39b9"
+    },
+    {
+      "state": 30,
+      "arm": "neural_search",
+      "source_rows": 174,
+      "pool_size": 149,
+      "confirmed_cells": 11,
+      "confirmed_candidates": 32,
+      "search_successes": 1439,
+      "search_trials": 2048,
+      "confirmation": [
+        {
+          "query": 1,
+          "action": [
+            100,
+            1,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 264,
+          "trials": 300,
+          "lower_bound": 0.8054017515205896,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 2,
+          "action": [
+            100,
+            1,
+            1,
+            0.25
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 217,
+          "trials": 300,
+          "lower_bound": 0.6297914374955381,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 3,
+          "action": [
+            100,
+            1,
+            1,
+            0.5
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 214,
+          "trials": 300,
+          "lower_bound": 0.6191365604795414,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 4,
+          "action": [
+            10,
+            1,
+            1,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 263,
+          "trials": 300,
+          "lower_bound": 0.8014323456964988,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 5,
+          "action": [
+            10,
+            1,
+            1,
+            0.25
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 245,
+          "trials": 300,
+          "lower_bound": 0.7320771728663413,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 6,
+          "action": [
+            1,
+            1,
+            1,
+            1.0
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "successes": 188,
+          "trials": 300,
+          "lower_bound": 0.5287940419504874,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 7,
+          "action": [
+            1,
+            1,
+            1,
+            0.5
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 198,
+          "trials": 300,
+          "lower_bound": 0.5631385164994691,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 8,
+          "action": [
+            10,
+            1,
+            1,
+            0.5
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 213,
+          "trials": 300,
+          "lower_bound": 0.6155963486959015,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 9,
+          "action": [
+            100,
+            4,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "successes": 247,
+          "trials": 300,
+          "lower_bound": 0.7396152138966758,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 10,
+          "action": [
+            100,
+            4,
+            1,
+            0.25
+          ],
+          "cell": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "successes": 200,
+          "trials": 300,
+          "lower_bound": 0.5700657293787068,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 11,
+          "action": [
+            100,
+            4,
+            1,
+            0.5
+          ],
+          "cell": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "successes": 176,
+          "trials": 300,
+          "lower_bound": 0.4881936043585099,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 12,
+          "action": [
+            100,
+            8,
+            1,
+            0.25
+          ],
+          "cell": [
+            2,
+            1,
+            0,
+            0
+          ],
+          "successes": 198,
+          "trials": 300,
+          "lower_bound": 0.5631385164994691,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 13,
+          "action": [
+            1,
+            4,
+            1,
+            0.1
+          ],
+          "cell": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "successes": 245,
+          "trials": 300,
+          "lower_bound": 0.7320771728663413,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 14,
+          "action": [
+            1,
+            4,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "successes": 213,
+          "trials": 300,
+          "lower_bound": 0.6155963486959015,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 15,
+          "action": [
+            10,
+            8,
+            1,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            0,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 16,
+          "action": [
+            100,
+            2,
+            1,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 244,
+          "trials": 300,
+          "lower_bound": 0.7283216733705402,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 17,
+          "action": [
+            100,
+            8,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 220,
+          "trials": 300,
+          "lower_bound": 0.6404989765749157,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 18,
+          "action": [
+            1,
+            1,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 19,
+          "action": [
+            100,
+            2,
+            1,
+            1.0
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "successes": 157,
+          "trials": 300,
+          "lower_bound": 0.42520331594836536,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 20,
+          "action": [
+            1,
+            8,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "successes": 204,
+          "trials": 300,
+          "lower_bound": 0.5839806521602049,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 21,
+          "action": [
+            100,
+            2,
+            1,
+            0.25
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 211,
+          "trials": 300,
+          "lower_bound": 0.6085327012774003,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 22,
+          "action": [
+            100,
+            2,
+            1,
+            0.5
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "successes": 182,
+          "trials": 300,
+          "lower_bound": 0.5084124517375255,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 23,
+          "action": [
+            10,
+            2,
+            1,
+            0.1
+          ],
+          "cell": [
+            1,
+            0,
+            0,
+            0
+          ],
+          "successes": 263,
+          "trials": 300,
+          "lower_bound": 0.8014323456964988,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 24,
+          "action": [
+            100,
+            1,
+            1,
+            1.0
+          ],
+          "cell": [
+            2,
+            0,
+            0,
+            1
+          ],
+          "successes": 200,
+          "trials": 300,
+          "lower_bound": 0.5700657293787068,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 25,
+          "action": [
+            100,
+            8,
+            5,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 203,
+          "trials": 300,
+          "lower_bound": 0.5804942634342849,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 26,
+          "action": [
+            100,
+            2,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "successes": 227,
+          "trials": 300,
+          "lower_bound": 0.6656986044770843,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 27,
+          "action": [
+            1,
+            2,
+            1,
+            0.1
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 253,
+          "trials": 300,
+          "lower_bound": 0.7624604579292678,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 28,
+          "action": [
+            100,
+            2,
+            3,
+            0.25
+          ],
+          "cell": [
+            2,
+            0,
+            1,
+            0
+          ],
+          "successes": 166,
+          "trials": 300,
+          "lower_bound": 0.45484730420933706,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 29,
+          "action": [
+            100,
+            4,
+            3,
+            0.1
+          ],
+          "cell": [
+            2,
+            1,
+            1,
+            0
+          ],
+          "successes": 233,
+          "trials": 300,
+          "lower_bound": 0.6875553829529188,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 30,
+          "action": [
+            10,
+            8,
+            5,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 203,
+          "trials": 300,
+          "lower_bound": 0.5804942634342849,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 31,
+          "action": [
+            1,
+            2,
+            1,
+            0.25
+          ],
+          "cell": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "successes": 205,
+          "trials": 300,
+          "lower_bound": 0.5874722138734332,
+          "confirmed_high_risk": true
+        },
+        {
+          "query": 32,
+          "action": [
+            10,
+            8,
+            3,
+            0.1
+          ],
+          "cell": [
+            1,
+            1,
+            1,
+            0
+          ],
+          "successes": 240,
+          "trials": 300,
+          "lower_bound": 0.7133856903737992,
+          "confirmed_high_risk": true
+        }
+      ],
+      "fits": [
+        {
+          "best_epoch": 58,
+          "epoch_cap": 2000
+        },
+        {
+          "best_epoch": 55,
+          "epoch_cap": 2000
+        },
+        {
+          "best_epoch": 54,
+          "epoch_cap": 2000
+        },
+        {
+          "best_epoch": 595,
+          "epoch_cap": 2000
+        }
+      ],
+      "measured_development": [
+        {
+          "record_id": "state-30-search-neural_search-101",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-101",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            56
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-102",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-102",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            47
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-103",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-103",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-50",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-50",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            53
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-51",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-51",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-2",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-2",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-1",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-1",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            44
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-52",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-52",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            42
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-121",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-121",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            49
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-122",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-122",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            43
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-123",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-123",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            37
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-135",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-135",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            36
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-23",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-23",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            47
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-24",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-24",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.39080459770114945,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 4.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            45
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-87",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-87",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            47
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-108",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-108",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            56
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-139",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-139",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            44
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-0",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-0",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            48
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-111",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-111",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            34
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-37",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-37",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.3448275862068966,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 8.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-109",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-109",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            46
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-110",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-110",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.5
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            34
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-60",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-60",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            52
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-104",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-104",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.5344827586206896,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 1.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 1.0
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-144",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-144",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            47
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-113",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-113",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            54
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-9",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-9",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            54
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-114",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-114",
+          "features": {
+            "retained": 0.5689655172413793,
+            "reciprocal": 0.2323232323232323,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 2.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            37
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-126",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-126",
+          "features": {
+            "retained": 0.6494252873563219,
+            "reciprocal": 0.22123893805309736,
+            "log_records": 5.1647859739235145,
+            "puma_width": 2.0,
+            "education_width": 4.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            44
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-96",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-96",
+          "features": {
+            "retained": 0.41379310344827586,
+            "reciprocal": 0.1527777777777778,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 5.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            41
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-10",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-10",
+          "features": {
+            "retained": 1.0,
+            "reciprocal": 0.4425287356321839,
+            "log_records": 5.1647859739235145,
+            "puma_width": 0.0,
+            "education_width": 2.0,
+            "minimum_cell": 1.0,
+            "covariate_sd": 0.25
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            47
+          ],
+          "trials": [
+            64
+          ]
+        },
+        {
+          "record_id": "state-30-search-neural_search-92",
+          "group": "state-30",
+          "evidence_id": "state-30-search-neural_search-92",
+          "features": {
+            "retained": 0.7183908045977011,
+            "reciprocal": 0.21599999999999997,
+            "log_records": 5.1647859739235145,
+            "puma_width": 1.0,
+            "education_width": 8.0,
+            "minimum_cell": 3.0,
+            "covariate_sd": 0.1
+          },
+          "evidence_kind": "observed_development_attack",
+          "successes": [
+            43
+          ],
+          "trials": [
+            64
+          ]
+        }
+      ],
+      "llm_replay": null,
+      "warmstart_sha256": "81033b18673f9e03e2c50d0e41af1f9d3cc37d89a810f66af3d370b731e52c9b",
+      "stopping_sha256": "6c4ee21c15f3c78c34dbeb2efb9423bfee39b647b5c046ff48705192f24a39b9"
+    }
+  ]
+}

@@ -152,6 +152,14 @@ def stage_llm(rows: list[dict], schema: ScenarioSchema, *,
 LLM_RESPONSE_FIELDS = frozenset({"proposal_id", "scenario", "features"})
 
 
+def llm_prompt(schema: ScenarioSchema, question: str) -> str:
+    """Expose the exact provider-neutral prompt for prospective replay collection."""
+    return ("Propose attack scenarios as a JSON array only. Required fields "
+            "for each object: proposal_id, scenario, features. "
+            "Numeric feature bounds and risk coordinates are: "
+            + canonical(schema.as_dict()).decode("utf-8") + "\nQuestion: " + question)
+
+
 def propose_from_llm(call: Callable[[str], str], schema: ScenarioSchema,
                      question: str, *, model_name: str,
                      max_bytes: int = MAX_RESPONSE_BYTES,
@@ -170,10 +178,7 @@ def propose_from_llm(call: Callable[[str], str], schema: ScenarioSchema,
     """
     if not isinstance(model_name, str) or not model_name:
         raise ValueError("model_name must be a nonempty string set by the caller")
-    prompt = ("Propose attack scenarios as a JSON array only. Required fields "
-              "for each object: proposal_id, scenario, features. "
-              "Numeric feature bounds and risk coordinates are: "
-              + canonical(schema.as_dict()).decode("utf-8") + "\nQuestion: " + question)
+    prompt = llm_prompt(schema, question)
     prompt_hash = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
     text = call(prompt)
     if not isinstance(text, str):

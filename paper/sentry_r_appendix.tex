@@ -40,8 +40,14 @@ Section \ref{sec:sentry} it also charges every audit to a programme error
 budget declared once on the chain, so a new freeze after a failed audit costs
 budget rather than restarting at the nominal $\alpha$, and it refuses a
 training run that mixes an audited freeze's development evidence with evidence
-measured after that audit. What remains unprotected is the operator who holds
-the key and can rewrite the whole file.
+measured after that audit. This is a limited software check, not proof that
+arbitrary audit feedback was excluded. In particular, the debit is recorded
+after outcomes are supplied, and the ledger cannot prevent withholding or
+relabeling outcomes obtained elsewhere. Provenance is optional, base evidence
+is caller-supplied, and an operator who holds the key can rewrite the file.
+An independently controlled service must reserve budget before draws and
+authenticate evidence; the conditional argument does not establish those
+institutional assumptions.
 
 \paragraph{Why measured trials cannot be replaced by language-model labels.}
 The proper-scoring identity in \eqref{eq:sentry-proper} assumes
