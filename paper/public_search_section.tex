@@ -5,8 +5,9 @@ scenarios, not the safety certification of a release. It does not alter the
 synthetic-register floors or the gate results reported in the main text. A
 separate working draft, \emph{Measured Scenario Injection for Privacy Audits:
 Search Coverage, Evidence Integrity, and Independent Confirmation}, develops
-the experiment and its relation to an LLM-assisted proposal pipeline. There
-is no live LLM comparison in these results.
+the experiment and its relation to an LLM-assisted proposal pipeline. A
+fifth arm, added after the four baseline arms were run and reported below,
+replays proposals from a small open-weight language model.
 
 The source is the 29,501-row public \texttt{census2000} extract distributed
 with \texttt{wooldridge} 0.5.0. We select the first 30 encoded state groups
@@ -55,12 +56,46 @@ a 2,000-epoch cap retains the neural mean of 10.07 cells and a difference of
 $-3.77$ (interval $[-4.40,-3.07]$). It reuses the same data and non-neural
 draws; it is not independent replication or a convergence proof.
 
+\paragraph{A language model as the fifth arm.} The saved per-state prompt
+was then sent, byte for byte, to \texttt{qwen3:4b}, a 4.0B-parameter
+open-weight model (Q4\_K\_M quantisation) run locally through Ollama
+0.40.9 on the author's machine, so no account, key or charge was
+involved and nothing left the machine. Thinking was off and decoding was
+constrained to the JSON shape the prompt asks for; the tuples the model chose
+were still checked afterwards for count, distinctness and catalogue membership.
+Each state was allowed three attempts with distinct seeds. The model returned a
+valid list of 32 tuples for 20 of 30 states
+(7 at the first attempt); 50 of
+70 attempts were rejected, 43
+for repeated or off-catalogue tuples and the rest for repeated identifiers. All
+five arms were then rerun on exactly those 20 states
+(1,195,520 attack trials), with the per-test level at $0.05/160$.
+Table \ref{tab:public-search-llm} gives the result. The model confirmed
+27.60 of 32 settings per state, between the two
+yield-maximising arms and the two space-filling arms, but covered only
+6.05 cells against 13.65 for Sobol and
+10.10 for neural search; the paired difference from Sobol is
+-7.60 cells (interval $[-8.30,-6.80]$).
+The reason is visible in the proposals: in 19 of
+20 states every tuple the model chose sits at the finest
+geography, and the lists follow the catalogue's own order. The model copied the
+front of the list; it did not search. This is one small model under one fixed
+prompt. It settles that such a model adds no coverage here; it does not settle
+what a larger model, a prompt that names the coverage goal, or a worked example
+would do, and any such change must be declared before it is run.
+
+\input{\publicsearchllmtable}
+
 These results support distinguishing targeting yield from coverage, not
 the superiority of either neural models or LLMs. The evaluator executes only
 one attack family. Prose proposals cannot create new executable attacks
 without a separately specified evaluator. Reproduction commands are
-\nolinkurl{python scripts/public_injector_search.py --states 30} and
-\nolinkurl{python scripts/public_injector_search.py --states 30 --epochs 2000 --output artifacts-public-search-2000}.
+\texttt{python scripts/public\_injector\_search.py --states 30} and
+\texttt{python scripts/public\_injector\_search.py --states 30 --epochs 2000 --output artifacts-public-search-2000};
+the language-model arm is \texttt{python scripts/collect\_llm\_pilot\_local.py --states <codes>}
+followed by \texttt{python scripts/public\_injector\_search.py --states 30 --states-from-manifest --llm-replays artifacts-llm-local-30/manifest.json --output artifacts-public-search-llm-local-30}.
 The source-data hash, state-level measurements and design are in
-\nolinkurl{artifacts-public-search/} and
-\nolinkurl{artifacts-public-search-2000/}.
+\texttt{artifacts-public-search/} and
+\texttt{artifacts-public-search-2000/}; the model's proposals, every attempt and the
+five-arm rerun are in \texttt{artifacts-llm-local-30/} and
+\texttt{artifacts-public-search-llm-local-30/}.

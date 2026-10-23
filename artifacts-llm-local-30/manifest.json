@@ -1,0 +1,322 @@
+{
+  "0": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "d8a92f35338960bd933004012ca13fe0574c43b04a3a84c79bdcb3ba865aa2d9",
+    "response_file": "responses/state-0.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261023,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2217,
+      "output_tokens": 1760,
+      "total_seconds": 25.0759752
+    },
+    "done_reason": "stop"
+  },
+  "1": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "c3aada037ba8f6cb7d16e3ee1927957f43f5ead83127e3bf96299dc862a360cf",
+    "response_file": "responses/state-1.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261125,
+    "attempt": 2,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2637,
+      "output_tokens": 2341,
+      "total_seconds": 33.7625465
+    },
+    "done_reason": "stop"
+  },
+  "2": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "28747c0ebc4d7179e4209a41d577c34ce930815cb902587a36a44e87e5eaca1e",
+    "response_file": "responses/state-2.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261223,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2746,
+      "output_tokens": 2269,
+      "total_seconds": 35.8625869
+    },
+    "done_reason": "stop"
+  },
+  "4": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "afee89d23512165805d92ce6913e4a699cd3e5f36a88fc707173521d40704022",
+    "response_file": "responses/state-4.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261423,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2466,
+      "output_tokens": 2650,
+      "total_seconds": 39.0721045
+    },
+    "done_reason": "stop"
+  },
+  "7": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "f3c07c2a360c8516654bbff41508b4ceb9c47148de35c0433c148a6a94f05cb8",
+    "response_file": "responses/state-7.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261723,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 1846,
+      "output_tokens": 2450,
+      "total_seconds": 34.9816587
+    },
+    "done_reason": "stop"
+  },
+  "8": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "be38141b462767a00575a89840b162eba29d7140d8aadaf083650fa9834974a6",
+    "response_file": "responses/state-8.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261825,
+    "attempt": 2,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2639,
+      "output_tokens": 2595,
+      "total_seconds": 37.8327117
+    },
+    "done_reason": "stop"
+  },
+  "9": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "12dcaa8a4d86df4506040ac70f71dc4e4f1a01e3179ce55fc84527684047479e",
+    "response_file": "responses/state-9.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20261925,
+    "attempt": 2,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2393,
+      "output_tokens": 3004,
+      "total_seconds": 44.6557594
+    },
+    "done_reason": "stop"
+  },
+  "11": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "d5b9dabeacdf4dcc8c1228e2bf387369e5c8add1e46c6ef41a9800ede576021c",
+    "response_file": "responses/state-11.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20262125,
+    "attempt": 2,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2691,
+      "output_tokens": 3136,
+      "total_seconds": 45.8744674
+    },
+    "done_reason": "stop"
+  },
+  "12": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "2b0b5b392cae6775f505aefd64539ab4263f68a0109fb4796dd7919e2ba9f1a0",
+    "response_file": "responses/state-12.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20262224,
+    "attempt": 1,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2520,
+      "output_tokens": 2431,
+      "total_seconds": 34.7834306
+    },
+    "done_reason": "stop"
+  },
+  "13": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "9bd2cf94bbfb20379c9ac3e6062626e9108cea0334a62955d2ad4811ba1c301d",
+    "response_file": "responses/state-13.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20262324,
+    "attempt": 1,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2505,
+      "output_tokens": 2426,
+      "total_seconds": 34.9616859
+    },
+    "done_reason": "stop"
+  },
+  "16": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "c13ca5a52def818d4dcc47d14596de23c3ba3f085b2172cd8ee819c450703983",
+    "response_file": "responses/state-16.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20262625,
+    "attempt": 2,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2023,
+      "output_tokens": 2525,
+      "total_seconds": 35.6809669
+    },
+    "done_reason": "stop"
+  },
+  "17": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "28b58392bea7574dc4ead02bf0c11dc49dafe8166a81f80dd179ac1d0953ce3f",
+    "response_file": "responses/state-17.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20262723,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2524,
+      "output_tokens": 2217,
+      "total_seconds": 32.6801396
+    },
+    "done_reason": "stop"
+  },
+  "18": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "98f85c08002473d710920b7634cf2581c844d01eb3dd195d204ec6a4b75bd28e",
+    "response_file": "responses/state-18.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20262825,
+    "attempt": 2,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2693,
+      "output_tokens": 2240,
+      "total_seconds": 32.2713269
+    },
+    "done_reason": "stop"
+  },
+  "19": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "626636f4f017a8b90312073b8292427f236eb17b58ac0b900055f369db63c511",
+    "response_file": "responses/state-19.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20262924,
+    "attempt": 1,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2582,
+      "output_tokens": 2613,
+      "total_seconds": 37.6034231
+    },
+    "done_reason": "stop"
+  },
+  "20": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "1843d6784087ce1baff7ef67bd7d846a5050cb3b670fb866ff8033ab7a28987e",
+    "response_file": "responses/state-20.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20263024,
+    "attempt": 1,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2749,
+      "output_tokens": 2781,
+      "total_seconds": 40.4727145
+    },
+    "done_reason": "stop"
+  },
+  "23": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "a13f15a6ab029b364d29ab4303e187981104932e0070ef033de993f4e60160b2",
+    "response_file": "responses/state-23.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20263323,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2269,
+      "output_tokens": 2271,
+      "total_seconds": 33.6961857
+    },
+    "done_reason": "stop"
+  },
+  "26": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "695a108f1f1f85bc92790e5e9527abe70f1db3d9d6fd0c9e835ae4d3eb4073fe",
+    "response_file": "responses/state-26.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20263624,
+    "attempt": 1,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2344,
+      "output_tokens": 2363,
+      "total_seconds": 33.7644559
+    },
+    "done_reason": "stop"
+  },
+  "27": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "7e283345738323a12929e96cca0332784d264ddc4e931c5ccd61fbb4c26cfa1b",
+    "response_file": "responses/state-27.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20263723,
+    "attempt": 0,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2637,
+      "output_tokens": 2413,
+      "total_seconds": 35.9654891
+    },
+    "done_reason": "stop"
+  },
+  "29": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "96658facf34fb44a8e4f60372df75fb01f32850596cd9a869ba1bfe557009175",
+    "response_file": "responses/state-29.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20263924,
+    "attempt": 1,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 2745,
+      "output_tokens": 2336,
+      "total_seconds": 33.832308
+    },
+    "done_reason": "stop"
+  },
+  "30": {
+    "model": "qwen3:4b",
+    "prompt_sha256": "46e2bd841c8080dfab8e4f5a4e54c42016784ca6cee9363441fd8a8cabb8b18c",
+    "response_file": "responses/state-30.json",
+    "returned_model": "qwen3:4b",
+    "seed": 20264025,
+    "attempt": 2,
+    "code_fence_removed": false,
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "usage": {
+      "prompt_tokens": 1851,
+      "output_tokens": 2866,
+      "total_seconds": 40.7107433
+    },
+    "done_reason": "stop"
+  }
+}

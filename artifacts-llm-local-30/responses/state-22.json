@@ -1,0 +1,322 @@
+[
+  {
+    "proposal_id": "A",
+    "scenario": "High-risk linkage with minimal cell count and narrow width",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "B",
+    "scenario": "Moderate linkage risk with increased cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "C",
+    "scenario": "High linkage risk with narrow covariate spread",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "D",
+    "scenario": "Extreme linkage risk with minimal cell count and wide spread",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "E",
+    "scenario": "High-risk linkage with increased education width and moderate cell count",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "F",
+    "scenario": "Critical linkage risk with high cell count and narrow spread",
+    "features": {
+      "puma_width": 1,
+      "education_width": 8,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "G",
+    "scenario": "High-risk linkage with minimal cell count and wide covariate spread",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "H",
+    "scenario": "Moderate linkage risk with increased education width and minimal cell count",
+    "features": {
+      "puma_width": 10,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "I",
+    "scenario": "High-risk linkage with minimal cell count and moderate education width",
+    "features": {
+      "puma_width": 10,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "J",
+    "scenario": "Extreme linkage risk with high cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 10,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "K",
+    "scenario": "High-risk linkage with minimal cell count and wide education width",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "L",
+    "scenario": "Critical linkage risk with increased cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "M",
+    "scenario": "High-risk linkage with minimal cell count and moderate education width",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "N",
+    "scenario": "Extreme linkage risk with high cell count and wide spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 10,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "O",
+    "scenario": "Moderate linkage risk with increased cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "P",
+    "scenario": "High-risk linkage with minimal cell count and wide education width",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "Q",
+    "scenario": "Critical linkage risk with minimal cell count and wide spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "R",
+    "scenario": "High-risk linkage with increased cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "S",
+    "scenario": "Extreme linkage risk with minimal cell count and wide education width",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "T",
+    "scenario": "High-risk linkage with moderate cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "U",
+    "scenario": "Critical linkage risk with high cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 10,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "V",
+    "scenario": "High-risk linkage with minimal cell count and wide spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "W",
+    "scenario": "Extreme linkage risk with increased cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "X",
+    "scenario": "High-risk linkage with minimal cell count and moderate education width",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "Y",
+    "scenario": "Critical linkage risk with minimal cell count and wide spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "Z",
+    "scenario": "High-risk linkage with increased cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "AA",
+    "scenario": "Extreme linkage risk with minimal cell count and wide education width",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AB",
+    "scenario": "High-risk linkage with minimal cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "AC",
+    "scenario": "Critical linkage risk with minimal cell count and wide spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "AD",
+    "scenario": "High-risk linkage with increased cell count and narrow spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "AE",
+    "scenario": "Extreme linkage risk with minimal cell count and wide spread",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "AF",
+    "scenario": "High-risk linkage with minimal cell count and moderate education width",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  }
+]

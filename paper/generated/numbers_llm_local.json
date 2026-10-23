@@ -1,0 +1,30 @@
+{
+  "states_valid": 20,
+  "states_requested": 30,
+  "attempts": 70,
+  "rejected_attempts": 50,
+  "rejection_reasons": {
+    "replay must contain 32 distinct executable catalogue actions": 43,
+    "duplicate or invalid proposal_id": 7
+  },
+  "valid_at_first_attempt": 7,
+  "states_all_finest_geography": 19,
+  "attack_trials": 1195520,
+  "model": "qwen3:4b",
+  "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "quantization": "Q4_K_M",
+  "parameters": "4.0B",
+  "ollama_version": "0.40.9",
+  "llm_cells": 6.05,
+  "llm_confirmed": 27.6,
+  "llm_difference_from_sobol": -7.6,
+  "llm_interval": [
+    -8.3,
+    -6.8
+  ],
+  "sobol_cells": 13.65,
+  "neural_cells": 10.1,
+  "heuristic_confirmed": 32.0,
+  "sobol_confirmed": 22.05,
+  "mean_generation_seconds": 36.17703399
+}

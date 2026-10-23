@@ -1,0 +1,322 @@
+[
+  {
+    "proposal_id": "A",
+    "scenario": "High-risk linkage due to small cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "B",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "C",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "D",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "E",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "F",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "G",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 8,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "H",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 8,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "I",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "J",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "K",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 10,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "L",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 10,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "M",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "N",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "O",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 100,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "P",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "Q",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "R",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "S",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "T",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 8,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "U",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "V",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "W",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "X",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "Y",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "Z",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AA",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AB",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 8,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AC",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AD",
+    "scenario": "Moderate linkage risk with narrow education range and minimal cell size",
+    "features": {
+      "puma_width": 10,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AE",
+    "scenario": "High linkage risk with large education range and minimal cell size",
+    "features": {
+      "puma_width": 100,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "AF",
+    "scenario": "Extreme linkage risk with very small cells and high variability",
+    "features": {
+      "puma_width": 100,
+      "education_width": 8,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  }
+]

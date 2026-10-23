@@ -1,0 +1,24 @@
+{
+  "status": "collected_and_validated",
+  "valid_states": [
+    0,
+    1
+  ],
+  "requested_states": [
+    0,
+    1
+  ],
+  "attempts": 2,
+  "rejected_attempts": 0,
+  "provider": {
+    "model": "qwen3:4b",
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "size_bytes": 2497293931,
+    "modified_at": "2026-10-23T15:00:01.5577729+02:00",
+    "ollama_version": "0.40.9",
+    "family": "qwen3",
+    "parameter_size": "4.0B",
+    "quantization": "Q4_K_M"
+  },
+  "cost_usd": 0.0
+}

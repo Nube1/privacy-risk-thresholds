@@ -1,0 +1,322 @@
+[
+  {
+    "proposal_id": "{\"id\": \"1\"}",
+    "scenario": "High-risk linkage configuration with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"2\"}",
+    "scenario": "Moderate linkage risk with increased cell size and moderate variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"3\"}",
+    "scenario": "High linkage risk with large cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"4\"}",
+    "scenario": "Critical linkage risk with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"5\"}",
+    "scenario": "Extreme linkage risk with minimal cell size and maximum variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 1,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"6\"}",
+    "scenario": "High linkage risk with moderate cell size and moderate variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"7\"}",
+    "scenario": "High linkage risk with large cell size and moderate variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"8\"}",
+    "scenario": "Critical linkage risk with large cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"9\"}",
+    "scenario": "Extreme linkage risk with large cell size and maximum variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"10\"}",
+    "scenario": "High linkage risk with minimal cell size and moderate variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"11\"}",
+    "scenario": "Moderate linkage risk with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"12\"}",
+    "scenario": "Critical linkage risk with minimal cell size and high variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"13\"}",
+    "scenario": "Extreme linkage risk with minimal cell size and maximum variability",
+    "features": {
+      "puma_width": 1,
+      "education_width": 1,
+      "minimum_cell": 5,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"14\"}",
+    "scenario": "High linkage risk with moderate education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"15\"}",
+    "scenario": "Moderate linkage risk with moderate education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"16\"}",
+    "scenario": "Critical linkage risk with moderate education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"17\"}",
+    "scenario": "High linkage risk with moderate education width and moderate cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"18\"}",
+    "scenario": "Moderate linkage risk with moderate education width and moderate cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"19\"}",
+    "scenario": "Critical linkage risk with moderate education width and moderate cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"20\"}",
+    "scenario": "Extreme linkage risk with moderate education width and moderate cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"21\"}",
+    "scenario": "High linkage risk with moderate education width and large cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 3,
+      "covariate_sd": 2.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"22\"}",
+    "scenario": "High linkage risk with moderate education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"23\"}",
+    "scenario": "Moderate linkage risk with moderate education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"24\"}",
+    "scenario": "Critical linkage risk with moderate education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"25\"}",
+    "scenario": "Extreme linkage risk with moderate education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 2,
+      "minimum_cell": 5,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"26\"}",
+    "scenario": "High linkage risk with large education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"27\"}",
+    "scenario": "Moderate linkage risk with large education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"28\"}",
+    "scenario": "Critical linkage risk with large education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 0.5
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"29\"}",
+    "scenario": "Extreme linkage risk with large education width and minimal cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 1,
+      "covariate_sd": 1.0
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"30\"}",
+    "scenario": "High linkage risk with large education width and moderate cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.1
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"31\"}",
+    "scenario": "Moderate linkage risk with large education width and moderate cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.25
+    }
+  },
+  {
+    "proposal_id": "{\"id\": \"32\"}",
+    "scenario": "Critical linkage risk with large education width and moderate cell size",
+    "features": {
+      "puma_width": 1,
+      "education_width": 4,
+      "minimum_cell": 3,
+      "covariate_sd": 0.5
+    }
+  }
+]

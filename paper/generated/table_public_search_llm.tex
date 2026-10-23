@@ -1,0 +1,16 @@
+\begin{table}[htbp]
+\centering\small
+\caption{Public-file search with a local open-weight language model as a fifth arm. The 20 state samples are those for which the model returned a valid list of 32 catalogue tuples within three attempts; every arm is rerun on exactly these states. Intervals are paired-state bootstrap differences from Sobol.}
+\label{tab:public-search-llm}
+\begin{tabular}{lrrr}
+\toprule
+Search & Confirmed cells & Confirmed settings & Difference [95\% interval] \\
+\midrule
+Random & 13.00 & 21.90 & -0.65 [-1.45, +0.15] \\
+Domain heuristic & 12.00 & 32.00 & -1.65 [-2.20, -1.00] \\
+Scrambled Sobol & 13.65 & 22.05 & +0.00 [+0.00, +0.00] \\
+Neural search & 10.10 & 31.55 & -3.55 [-4.35, -2.70] \\
+Qwen3-4B proposals & 6.05 & 27.60 & -7.60 [-8.30, -6.80] \\
+\bottomrule
+\end{tabular}
+\end{table}

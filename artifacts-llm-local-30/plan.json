@@ -1,0 +1,159 @@
+{
+  "provider": {
+    "model": "qwen3:4b",
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "size_bytes": 2497293931,
+    "modified_at": "2026-10-23T15:00:01.5577729+02:00",
+    "ollama_version": "0.40.9",
+    "family": "qwen3",
+    "parameter_size": "4.0B",
+    "quantization": "Q4_K_M"
+  },
+  "host": "http://127.0.0.1:11434",
+  "states": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "attempts_per_state": 3,
+  "proposals_per_request": 32,
+  "maximum_output_tokens": 8192,
+  "context_tokens": 16384,
+  "temperature": 0.3,
+  "thinking": false,
+  "base_seed": 20261023,
+  "cost_usd": 0.0,
+  "decoding": "constrained to response_schema(); prompt unchanged",
+  "response_schema": {
+    "type": "array",
+    "items": {
+      "type": "object",
+      "properties": {
+        "proposal_id": {
+          "type": "string",
+          "maxLength": 24
+        },
+        "scenario": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "features": {
+          "type": "object",
+          "properties": {
+            "puma_width": {
+              "type": "number",
+              "enum": [
+                1,
+                10,
+                100
+              ]
+            },
+            "education_width": {
+              "type": "number",
+              "enum": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            "minimum_cell": {
+              "type": "number",
+              "enum": [
+                1,
+                3,
+                5,
+                10
+              ]
+            },
+            "covariate_sd": {
+              "type": "number",
+              "enum": [
+                0.1,
+                0.25,
+                0.5,
+                1.0,
+                2.0
+              ]
+            }
+          },
+          "required": [
+            "puma_width",
+            "education_width",
+            "minimum_cell",
+            "covariate_sd"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "proposal_id",
+        "scenario",
+        "features"
+      ],
+      "additionalProperties": false
+    },
+    "minItems": 32,
+    "maxItems": 32
+  },
+  "prompt_sha256": {
+    "0": "d8a92f35338960bd933004012ca13fe0574c43b04a3a84c79bdcb3ba865aa2d9",
+    "1": "c3aada037ba8f6cb7d16e3ee1927957f43f5ead83127e3bf96299dc862a360cf",
+    "2": "28747c0ebc4d7179e4209a41d577c34ce930815cb902587a36a44e87e5eaca1e",
+    "3": "333ced0fe052f03df8b29df29ce1accfd0d9a3e34c28dab2ecdeb73c9c1d56e8",
+    "4": "afee89d23512165805d92ce6913e4a699cd3e5f36a88fc707173521d40704022",
+    "5": "defe4d5a52c8d5fefb1b5bc043b6fd97f79d93035200e9109ab361b92e932b3e",
+    "6": "d54e9f5beea8d7d562a674d3739adb59a3c9d6a368d9673f03990ca8f7b918ee",
+    "7": "f3c07c2a360c8516654bbff41508b4ceb9c47148de35c0433c148a6a94f05cb8",
+    "8": "be38141b462767a00575a89840b162eba29d7140d8aadaf083650fa9834974a6",
+    "9": "12dcaa8a4d86df4506040ac70f71dc4e4f1a01e3179ce55fc84527684047479e",
+    "10": "550d1b0cb38185c376feaa944a64b88995132686c0563e88d72581725af086fc",
+    "11": "d5b9dabeacdf4dcc8c1228e2bf387369e5c8add1e46c6ef41a9800ede576021c",
+    "12": "2b0b5b392cae6775f505aefd64539ab4263f68a0109fb4796dd7919e2ba9f1a0",
+    "13": "9bd2cf94bbfb20379c9ac3e6062626e9108cea0334a62955d2ad4811ba1c301d",
+    "14": "bd0dd377cef1ba66d0f6dbf76a47cd17d73cf44037ad4d4ceb9b3ff1092cbee4",
+    "16": "c13ca5a52def818d4dcc47d14596de23c3ba3f085b2172cd8ee819c450703983",
+    "17": "28b58392bea7574dc4ead02bf0c11dc49dafe8166a81f80dd179ac1d0953ce3f",
+    "18": "98f85c08002473d710920b7634cf2581c844d01eb3dd195d204ec6a4b75bd28e",
+    "19": "626636f4f017a8b90312073b8292427f236eb17b58ac0b900055f369db63c511",
+    "20": "1843d6784087ce1baff7ef67bd7d846a5050cb3b670fb866ff8033ab7a28987e",
+    "21": "8efc3a87231abbd019c018bfc74f91839b3bf166f8870da3a845e714e3217cb0",
+    "22": "398e552dfd5a6db5afc3ca3dfcb9f8f8e47e645623c3c58a631ac1e05ab0f03c",
+    "23": "a13f15a6ab029b364d29ab4303e187981104932e0070ef033de993f4e60160b2",
+    "24": "f2bb9dd2ef4b884829c85162869dc20a5fe84de59c972624a608dd5372321d61",
+    "25": "f69a9a123bc054769f26b2e7e2150277ed027231464a4eaacdc4e5a5466e0c8f",
+    "26": "695a108f1f1f85bc92790e5e9527abe70f1db3d9d6fd0c9e835ae4d3eb4073fe",
+    "27": "7e283345738323a12929e96cca0332784d264ddc4e931c5ccd61fbb4c26cfa1b",
+    "28": "cbc005dfb672962b21e304301df86800695b080f3f1756fe312e8b3bc22e181b",
+    "29": "96658facf34fb44a8e4f60372df75fb01f32850596cd9a869ba1bfe557009175",
+    "30": "46e2bd841c8080dfab8e4f5a4e54c42016784ca6cee9363441fd8a8cabb8b18c"
+  },
+  "status": "local open-weight pilot; proposals only, outcomes measured separately"
+}
