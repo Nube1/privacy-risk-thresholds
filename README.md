@@ -1,5 +1,7 @@
 # Privacy Risk Thresholds: neural release pipeline and registered audit
 
+**Paper revision, 23 October 2026:** [focused scenario-injection manuscript](paper/injector_study/main.tex), [new public-file results and reproduction](docs/PAPER_RESULTS_2026_10_23.md). A 30-state Census experiment finds a targeting--coverage tradeoff: neural search confirms 31.57 high-risk settings out of 32, but covers 10.07 scenario cells versus 13.83 for Sobol. A larger training cap retains the coverage gap. These are conditional public-file measurements, and a genuine LLM comparison remains pending.
+
 The main entry point is the **neural release pipeline**. A network, fitted to
 development attacks on a synthetic credit register, proposes the bets and the
 starting floor of a registered audit; the audit then certifies a cell-count floor

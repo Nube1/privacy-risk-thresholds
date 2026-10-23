@@ -1,0 +1,15 @@
+\begin{table}[htbp]
+\centering\small
+\caption{Public-file search at the initial 600-epoch neural cap. Each arm uses 32 development queries and fresh confirmation on each of 30 state samples. Intervals are paired-state bootstrap differences from Sobol.}
+\label{tab:public-search}
+\begin{tabular}{lrrr}
+\toprule
+Search & Confirmed cells & Confirmed settings & Difference [95\% interval] \\
+\midrule
+Random & 13.20 & 22.50 & -0.63 [-1.23, -0.03] \\
+Domain heuristic & 11.97 & 32.00 & -1.87 [-2.37, -1.33] \\
+Scrambled Sobol & 13.83 & 22.03 & +0.00 [+0.00, +0.00] \\
+Neural search & 10.07 & 31.57 & -3.77 [-4.43, -3.07] \\
+\bottomrule
+\end{tabular}
+\end{table}

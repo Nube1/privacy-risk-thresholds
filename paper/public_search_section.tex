@@ -1,0 +1,66 @@
+\section{Separate public-file search experiment}\label{sec:public-search}
+
+This additional exploratory experiment measures the search for high-risk
+scenarios, not the safety certification of a release. It does not alter the
+synthetic-register floors or the gate results reported in the main text. A
+separate working draft, \emph{Measured Scenario Injection for Privacy Audits:
+Search Coverage, Evidence Integrity, and Independent Confirmation}, develops
+the experiment and its relation to an LLM-assisted proposal pipeline. There
+is no live LLM comparison in these results.
+
+The source is the 29,501-row public \texttt{census2000} extract distributed
+with \texttt{wooldridge} 0.5.0. We select the first 30 encoded state groups
+containing at least 100 rows, before observing attack outcomes. An attacker
+uses a matching-key prior and an independently perturbed log-income reading
+to identify a uniformly sampled record within each released empirical file.
+Targets are drawn with replacement, and the auxiliary noise is fresh. The
+declared choices vary PUMA coarsening, education coarsening, minimum released
+cell size and auxiliary-reading precision. Settings retaining fewer than 30
+records are excluded. These measurements are conditional on already public
+records and a simulated auxiliary-reading law; they do not identify risk in
+an undisclosed population.
+
+Each state shares 16 warm-start settings and eight early-stopping settings
+in a separate state, each measured with 64 trials. Each of random, informed
+heuristic, scrambled Sobol and neural-guided search then uses 32 additional
+settings with 64 trials each. Every selected setting receives 300 fresh
+confirmation trials. The total is 1,443,840 attack trials. Neural search
+fits a width-16, two-hidden-layer model four times per state; the other arms
+do not fit a model, so evaluator cost is matched but total compute is not.
+
+A selected setting is confirmed high risk only if a one-sided exact binomial
+lower limit exceeds 0.2. Its per-test level is $0.05/128$, accounting for all
+32 selected settings in each of four arms within one state. Conditional on
+the complete search history, a union bound controls the probability of any
+false high-risk confirmation at 0.05 within that state, under the stated
+fresh-draw law. This is not simultaneous control across all 30 states, and
+lower-bound confirmation of excessive risk is not upper-bound certification
+of safety.
+
+The primary endpoint is the number of distinct confirmed cells in a fixed
+24-cell taxonomy: three PUMA levels, education width above or below two,
+minimum cell count equal to one or larger, and auxiliary standard deviation
+above or below 0.5. The primary contrast is neural search minus Sobol;
+intervals resample paired state blocks 10,000 times. They are descriptive
+intervals for this convenience subset, not national design-based inference.
+
+\input{\publicsearchtable}
+
+At the initial 600-epoch cap, neural search covers 3.77 fewer confirmed cells
+than Sobol per state (paired interval $[-4.43,-3.07]$), but confirms more
+individual high-risk settings: 31.57 versus 22.03 of 32. The heuristic
+confirms all 32 on average while covering fewer cells than Sobol. Four of
+the 120 neural fits have their best epoch at the cap. A sensitivity run with
+a 2,000-epoch cap retains the neural mean of 10.07 cells and a difference of
+$-3.77$ (interval $[-4.40,-3.07]$). It reuses the same data and non-neural
+draws; it is not independent replication or a convergence proof.
+
+These results support distinguishing targeting yield from coverage, not
+the superiority of either neural models or LLMs. The evaluator executes only
+one attack family. Prose proposals cannot create new executable attacks
+without a separately specified evaluator. Reproduction commands are
+\nolinkurl{python scripts/public_injector_search.py --states 30} and
+\nolinkurl{python scripts/public_injector_search.py --states 30 --epochs 2000 --output artifacts-public-search-2000}.
+The source-data hash, state-level measurements and design are in
+\nolinkurl{artifacts-public-search/} and
+\nolinkurl{artifacts-public-search-2000/}.

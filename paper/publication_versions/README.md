@@ -2,6 +2,8 @@
 
 These are editable author manuscripts, not publisher-issued documents.
 
+The 23 October 2026 revision adds a separate public-file search experiment to the journal supplement and long-form online appendix. Its focused author manuscript is `../injector_study/main.tex`; `../../docs/PAPER_RESULTS_2026_10_23.md` records the new results and limits. Existing committed PDFs predate this source revision; use the current source and compiled editor preview rather than treating those PDFs as updated exports. No live LLM advantage is claimed.
+
 | File | Intended route | Scope |
 | --- | --- | --- |
 | `../bis_ifc_full.tex` and `bis_ifc.pdf` | Long-form IFC Working Paper consideration | *Governing privacy risk across repeated statistical releases*: full study, credit register evaluation, decision record, security of the audit process, derivations |

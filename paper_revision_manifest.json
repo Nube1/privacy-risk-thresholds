@@ -1,0 +1,36 @@
+{
+  "status": "paper revision; original study_manifest.json is a historical snapshot",
+  "primary_trial_count": 1443840,
+  "sensitivity_trial_count": 1443840,
+  "sensitivity_reuses_non_neural_draws": true,
+  "validation": {
+    "tests_passed": 183,
+    "source_coverage_percent": 90.58,
+    "ruff": "all checks passed"
+  },
+  "llm_arm": "not run; prospective prompts prepared",
+  "files": {
+    "artifacts-public-search/results.json": "64a742f6c27f7f85c1c8475b02e2e414f8325078fa724324094cda0ae4af9bf3",
+    "artifacts-public-search/design.json": "0c9d1096b7ef29800bcff28634c88d78314e5d756879134a16bcfeffb9475cc1",
+    "artifacts-public-search-2000/results.json": "31f889b1355d87acd83f8e86ac99318fc5965b1f20b5364cfda5bd43ec483f67",
+    "src/privacy_risk/injector_search.py": "45fd7b8c39a46ca735738390cf33ef161e09d479fb85128da5ba3d5c67cbbeca",
+    "src/privacy_risk/sentry_r.py": "e91a3318eef509b766198a18ded838e1da8fc80b801bccd0f72a172b300be800",
+    "scripts/public_injector_search.py": "7764ab8e26622c84bec5f6b1f41936725d3817277b12bb10044b941ad2b410cf",
+    "scripts/report_public_search.py": "e3e9bcc31a16967c84d435dee7155172bf32c0ed8adee47d670498433c808b05",
+    "tests/test_injector_search.py": "630976b655b275c18936995ef4d12130813595f7b332a47391f9544cbdadc009",
+    "paper/injector_study/main.tex": "4cd0a5783fd170359d46fbe8e39bbdeb0f679e8927d69841ab1837b7f5e56799",
+    "paper/injector_study/generated/public_table.tex": "5bbc54d0c2cc5bba88681c7aff94f118d9cf2ce69d76eeca9b39d3ceb426ea26",
+    "paper/injector_study/generated/sensitivity.tex": "9f8edbf29cbd7535e7c8c05fe3573c927f3262ce7af1f869f59cb676b5272dde",
+    "paper/injector_study/generated/public_search.png": "d8eddec7f00628f2be619018d6041ce63834f603a57aebf392d78d8cebf58c4a",
+    "paper/public_search_section.tex": "6a5d667879c3b74fbd029b46d5b7a1708fdc088f68f3e12486c0af32ea695cd5",
+    "paper/generated/table_public_search.tex": "5bbc54d0c2cc5bba88681c7aff94f118d9cf2ce69d76eeca9b39d3ceb426ea26",
+    "paper/bis_ifc_full.tex": "dd6ac652e7c7ef02c689cdcf9f66c650c185e9670e62ee25ac8ed7ea0cae5ca4",
+    "paper/bis_ifc_online_appendix.tex": "16e05fb9b6e90feb4bf2cfaf192dcf99a24285c35a2f0a28034283f192228f55",
+    "paper/sentry_r_section.tex": "8d031a2b842252d51202450a26908501f20d454402d89c809003502e69953a54",
+    "paper/sentry_r_appendix.tex": "fb092d764b5dc7f182edd2c80cd32801f3b0ec1983171fa4e78b0e7262c2d277",
+    "paper/publication_versions/jpc_main.tex": "0f50e5248b160f91b6764af0105715401e061b33f0c480e25750abd7ab4045ff",
+    "paper/publication_versions/jpc_supplement.tex": "59b569159f1b5841bae180a3af30bb6bbad52ca9b9a98eba9b3bbabe975f6907",
+    "docs/PAPER_RESULTS_2026_10_23.md": "0dad6d30fe47660962763e1cd2672b27683197cc5498a9143bdd09dc5fc6c63c",
+    "baseline/paper-full-tests.txt": "c75bb6d20193fad3bf6031f1759190c87e1bb4172bebca37aa261f444bc43662"
+  }
+}

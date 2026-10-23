@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-23",
+  "compiler": "Codex desktop built-in LaTeX compiler",
+  "exported_replacement_pdfs": false,
+  "note": "Success confirms the saved source compiles in the editor. Committed legacy PDFs were not overwritten by this diagnostic tool.",
+  "documents": {
+    "injector_study/main.tex": "success",
+    "publication_versions/jpc_main.tex": "success",
+    "publication_versions/jpc_supplement.tex": "success",
+    "bis_ifc_full.tex": "success",
+    "bis_ifc_online_appendix.tex": "success"
+  }
+}

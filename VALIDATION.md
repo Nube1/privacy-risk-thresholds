@@ -39,3 +39,7 @@ Model fits share measured evidence across depths within each arm. Statistical su
 Genuine LLM comparative performance; real-data attack performance; authenticated reviewer/evaluator services; external audit-budget reservation; concurrency-safe durable writes; rollback resistance; semantic contamination detection; formal differential privacy; independent replication. Content-bound measurements prevent substitution only when lineage is retained and provenance is used. A caller who can omit provenance or relabel data remains outside that guarantee.
 
 See `RESEARCH_BRIEF.md` for findings and the hiring story, and `EXPERIMENT_PROTOCOL.md` for the confirmatory design.
+
+## Paper revision, 23 October 2026
+
+The updated checkout adds a public empirical-file search benchmark and genuine-response replay validation. The final revision suite reports **183 passed, 90.58% source coverage**; Ruff passes. Its full log is `baseline/paper-full-tests.txt`. The new primary run has 30 state blocks and 1,443,840 attack trials, plus a larger-cap sensitivity rerun using the same data and random streams. See `docs/PAPER_RESULTS_2026_10_23.md` and `paper_revision_manifest.json`. Earlier counts and hashes above describe the historical study snapshot.
