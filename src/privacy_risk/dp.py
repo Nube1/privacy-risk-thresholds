@@ -85,3 +85,22 @@ def laplace_epsilon(scale: float, sensitivity: float = 1.0) -> float:
     if scale <= 0 or sensitivity < 0:
         raise ValueError("need scale > 0 and sensitivity >= 0")
     return float(sensitivity / scale)
+
+
+def postprocessing_bound(p_d, p_dprime, h, epsilon: float, delta: float = 0.0) -> tuple[float, float, bool]:
+    """Proposition 21.8 for a finite output set.
+
+    ``p_d`` and ``p_dprime`` are the mechanism's output distributions on neighbouring
+    datasets and ``h`` is the probability of the event B after a data-independent
+    computation. Returns the two sides of (21.7) and whether the inequality holds.
+    """
+    p_d = np.asarray(p_d, float)
+    p_dprime = np.asarray(p_dprime, float)
+    h = np.asarray(h, float)
+    if not (p_d.shape == p_dprime.shape == h.shape):
+        raise ValueError("shapes must match")
+    if np.any(h < 0) or np.any(h > 1):
+        raise ValueError("h must lie in [0, 1]")
+    left = float(p_d @ h)
+    right = float(math.exp(epsilon) * (p_dprime @ h) + delta)
+    return left, right, left <= right + 1e-12
