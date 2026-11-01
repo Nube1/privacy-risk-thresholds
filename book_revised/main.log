@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 00:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 00:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1249,7 +1249,7 @@ LaTeX Font Info:    Font shape `U/msa/m/n' will be
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 132.
  [13] [14] [15] [16] [17]
-<../paper/figures/fig5_journalist.pdf, id=1341, 295.48293pt x 221.79875pt>
+<../paper/figures/fig5_journalist.pdf, id=1386, 295.48293pt x 221.79875pt>
 File: ../paper/figures/fig5_journalist.pdf Graphic file (type pdf)
 <use ../paper/figures/fig5_journalist.pdf>
 Package pdftex.def Info: ../paper/figures/fig5_journalist.pdf  used on input li
@@ -1407,7 +1407,7 @@ Chapter 8.
 [62
 
 ]
-<../paper/figures/fig2_frontier.pdf, id=1953, 347.70865pt x 229.37105pt>
+<../paper/figures/fig2_frontier.pdf, id=1999, 347.70865pt x 229.37105pt>
 File: ../paper/figures/fig2_frontier.pdf Graphic file (type pdf)
 <use ../paper/figures/fig2_frontier.pdf>
 Package pdftex.def Info: ../paper/figures/fig2_frontier.pdf  used on input line
@@ -1449,13 +1449,13 @@ Chapter 9.
 [73
 
 ]
-<../paper/diagrams/pooling.pdf, id=2144, 752.8125pt x 293.59688pt>
+<../paper/diagrams/pooling.pdf, id=2189, 752.8125pt x 293.59688pt>
 File: ../paper/diagrams/pooling.pdf Graphic file (type pdf)
 <use ../paper/diagrams/pooling.pdf>
 Package pdftex.def Info: ../paper/diagrams/pooling.pdf  used on input line 77.
 (pdftex.def)             Requested size: 343.99329pt x 134.1602pt.
  [74 <../paper/diagrams/pooling.pdf>]
-<../paper/figures/fig4_composition.pdf, id=2180, 340.13347pt x 221.6419pt>
+<../paper/figures/fig4_composition.pdf, id=2225, 340.13347pt x 221.6419pt>
 File: ../paper/figures/fig4_composition.pdf Graphic file (type pdf)
 <use ../paper/figures/fig4_composition.pdf>
 Package pdftex.def Info: ../paper/figures/fig4_composition.pdf  used on input l
@@ -1505,7 +1505,7 @@ Package pdftex.def Info: ../paper/figures/fig5_journalist.pdf  used on input li
 ne 177.
 (pdftex.def)             Requested size: 273.42883pt x 205.252pt.
  [94] [95]
-<../paper/figures/fig3_calibration.pdf, id=2537, 302.50133pt x 230.63847pt>
+<../paper/figures/fig3_calibration.pdf, id=2582, 302.50133pt x 230.63847pt>
 File: ../paper/figures/fig3_calibration.pdf Graphic file (type pdf)
 <use ../paper/figures/fig3_calibration.pdf>
 Package pdftex.def Info: ../paper/figures/fig3_calibration.pdf  used on input l
@@ -1532,7 +1532,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package pgfplots info on input line 285: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
  [97]
-<../paper/figures/fig1_risk_distribution.pdf, id=2597, 339.87665pt x 216.12343p
+<../paper/figures/fig1_risk_distribution.pdf, id=2642, 339.87665pt x 216.12343p
 t>
 File: ../paper/figures/fig1_risk_distribution.pdf Graphic file (type pdf)
 <use ../paper/figures/fig1_risk_distribution.pdf>
@@ -1590,7 +1590,7 @@ Chapter 12.
 [103
 
 ] [104]
-<../paper/diagrams/realdata_audit.pdf, id=2736, 767.86874pt x 255.95625pt>
+<../paper/diagrams/realdata_audit.pdf, id=2781, 767.86874pt x 255.95625pt>
 File: ../paper/diagrams/realdata_audit.pdf Graphic file (type pdf)
 <use ../paper/diagrams/realdata_audit.pdf>
 Package pdftex.def Info: ../paper/diagrams/realdata_audit.pdf  used on input li
@@ -1676,14 +1676,14 @@ Chapter 14.
 [127
 
 ] [128] [129]
-<../paper/figures/fig_neural_predictions.pdf, id=3013, 469.755pt x 180.675pt>
+<../paper/figures/fig_neural_predictions.pdf, id=3059, 469.755pt x 180.675pt>
 File: ../paper/figures/fig_neural_predictions.pdf Graphic file (type pdf)
 <use ../paper/figures/fig_neural_predictions.pdf>
 Package pdftex.def Info: ../paper/figures/fig_neural_predictions.pdf  used on i
 nput line 190.
 (pdftex.def)             Requested size: 441.01773pt x 169.62222pt.
  [130 <../paper/figures/fig_neural_predictions.pdf>]
-<../paper/diagrams/sentry_r_loop.pdf, id=3074, 677.53125pt x 271.0125pt>
+<../paper/diagrams/sentry_r_loop.pdf, id=3119, 677.53125pt x 271.0125pt>
 File: ../paper/diagrams/sentry_r_loop.pdf Graphic file (type pdf)
 <use ../paper/diagrams/sentry_r_loop.pdf>
 Package pdftex.def Info: ../paper/diagrams/sentry_r_loop.pdf  used on input lin
@@ -1823,44 +1823,88 @@ LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 4
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 ) [178] [179])
-[180] [181
+(./chapters/ch19-change.tex [180]
+Chapter 19.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [181
+
+]
+[182] [183] [184] [185] [186] [187]
+Package pgfplots info on input line 402: Using 'lua backend=false' for axis: x 
+coord trafo unsupported.
+ [188]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [189]
+Package mdframed Info: mdframed works in twoside mode on input line 465.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 465.
+
+Overfull \hbox (16.03267pt too wide) in paragraph at lines 475--482
+\T1/cmtt/m/n/10 node_risk \T1/ppl/m/n/10 and \T1/cmtt/m/n/10 estimate_generator
+\T1/ppl/m/n/10 . The mem-ber-ship cor-rec-tion is \T1/cmtt/m/n/10 linkage.membe
+rship_success\T1/ppl/m/n/10 ,
+ []
+
+
+Overfull \hbox (58.4434pt too wide) in paragraph at lines 475--482
+\T1/cmtt/m/n/10 tests/test_ext_models.py \T1/ppl/m/n/10 and \T1/cmtt/m/n/10 tes
+ts/test_ext_conditioning.py\T1/ppl/m/n/10 , and \T1/cmtt/m/n/10 scripts/extensi
+on_evidence.py
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 484.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 484.
+[190] [191]
+Overfull \hbox (4.50249pt too wide) detected at line 539
+\U/fplmbb/m/n/10.95 E[][][] \OT1/zplm/m/n/10.95 = [] [][] = [] [] []\OML/zplm/m
+/it/10.95 p[]\OT1/zplm/m/n/10.95 (\OT1/ppl/m/n/10.95 1 \OMS/zplm/m/n/10.95 ^^@ 
+\OML/zplm/m/it/10.95 p\OT1/zplm/m/n/10.95 )[] = []
+ []
+
+) [192] [193
 
 ] (./chapters/ch18-open.tex
-Chapter 19.
-[182
+Chapter 20.
+[194
 
-] [183] [184] [185] [186] [187]
+] [195] [196] [197] [198] [199]
 Package mdframed Info: mdframed works in twoside mode on input line 355.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 355.
-) (./appendix-software.tex [188]
+) (./appendix-software.tex [200]
 Appendix A.
-[189
+[201
 
-] [190] [191] [192] [193] [194]
+] [202] [203] [204] [205] [206]
 Underfull \hbox (badness 3965) in paragraph at lines 450--453
  []\T1/ppl/b/n/10.95 Counts re-built from rates.[] \T1/cmtt/m/n/10.95 uncertain
 ty.selected_maximum_bound \T1/ppl/m/n/10.95 re-builds suc-cess
  []
 
-) [195] [196] (./references.tex [197
+) [207] [208] (./references.tex [209
 
 
-] [198] [199] [200] [201]) [202]
+] [210] [211] [212] [213]) [214]
 (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E4B018660BEA1FD336E3C0D5A5DF18B5;41229.
+(rerunfilecheck)             Checksum: BD690270D97D5A4221DCC0E644634ADC;43366.
  ) 
 Here is how much of TeX's memory you used:
- 41499 strings out of 476106
- 908542 string characters out of 5793932
+ 41642 strings out of 476106
+ 910818 string characters out of 5793932
  2103975 words of memory out of 5000000
- 61888 multiletter control sequences out of 15000+600000
+ 61974 multiletter control sequences out of 15000+600000
  641219 words of font info for 230 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  104i,19n,104p,1001b,2367s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1878,10 +1922,10 @@ mri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (212 pages, 1125234 bytes).
+Output written on main.pdf (224 pages, 1183148 bytes).
 PDF statistics:
- 4301 PDF objects out of 5155 (max. 8388607)
- 3508 compressed objects within 36 object streams
- 885 named destinations out of 1000 (max. 500000)
- 31458 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 4501 PDF objects out of 5155 (max. 8388607)
+ 3694 compressed objects within 37 object streams
+ 939 named destinations out of 1000 (max. 500000)
+ 31530 words of extra memory for PDF output out of 35830 (max. 10000000)
 

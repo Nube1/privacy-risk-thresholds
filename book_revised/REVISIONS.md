@@ -10,4 +10,6 @@ Not applicable to this source (already present or chapters absent): Ch 15 calibr
 
 Chapter 18 (Continuous adversarial learning) is rebuilt as `chapters/ch18-learning.tex` from the text of the 304-page draft, in a new Part VII. The old `ch18-open.tex` is now in Part VIII and still carries its old chapter number until Chapters 19 to 22 are rebuilt.
 
-Still to rebuild: Chapters 19 to 22, the updated Chapter 23, and Appendix A.5 and A.6. The module names in Chapter 18's software note (`gate`, `evidence`, `registry`, `betting`) belong to the extension code bundle and are not in `src/privacy_risk`.
+Chapter 19 (Releases that change over time) is rebuilt as `chapters/ch19-change.tex`. The draft text had a stray fragment in Section 19.2 ("depends on how the figure is computed."); it is repaired in the source. The draft gives 0.380 for the five-year mass in Example 19.6, a matrix exponential gives 0.379, and the source uses 0.379.
+
+Still to rebuild: Chapters 20 to 22, the updated Chapter 23, and Appendix A.5 and A.6. The module names in Chapter 18's software note (`gate`, `evidence`, `registry`, `betting`) belong to the extension code bundle and are not in `src/privacy_risk`.
