@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 01:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 01:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1237,7 +1237,30 @@ Package mdframed Info: mdframed works in twoside mode on input line 261.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 261.
- [12]) (./chapters/ch03-measures.tex [13]
+
+Overfull \hbox (136.49358pt too wide) in paragraph at lines 268--275
+\T1/ppl/m/it/10 In the soft-ware. \T1/ppl/m/n/10 The suc-cess given mem-ber-shi
+p of Propo-si-tion []2.4[] is \T1/cmtt/m/n/10 privacy_risk.linkage.membership_c
+onditional_success\T1/ppl/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 268--275
+\T1/ppl/m/n/10 tested in \T1/cmtt/m/n/10 tests/test_ext_linkage.py \T1/ppl/m/n/
+10 to-gether with Ex-am-ples []2.3[] and []2.5[]. The mea-
+ []
+
+
+Overfull \hbox (35.82016pt too wide) in paragraph at lines 268--275
+\T1/cmtt/m/n/10 marketer_unconditional_risk\T1/ppl/m/n/10 ), and the pos-te-rio
+r link-age of [] and [] is in \T1/cmtt/m/n/10 privacy_risk.linkage
+ []
+
+
+Underfull \vbox (badness 5681) has occurred while \output is active []
+
+ [12])
+(./chapters/ch03-measures.tex [13]
 Chapter 3.
 [14
 
@@ -1252,52 +1275,67 @@ LaTeX Font Info:    Font shape `U/msa/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 132.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
 (Font)              scaled to size 7.91925pt on input line 132.
- [15] [16] [17] [18] [19]
-<../paper/figures/fig5_journalist.pdf, id=1634, 295.48293pt x 221.79875pt>
+ [15] [16] [17] [18] [19] [20]
+<../paper/figures/fig5_journalist.pdf, id=1652, 295.48293pt x 221.79875pt>
 File: ../paper/figures/fig5_journalist.pdf Graphic file (type pdf)
 <use ../paper/figures/fig5_journalist.pdf>
 Package pdftex.def Info: ../paper/figures/fig5_journalist.pdf  used on input li
-ne 403.
+ne 412.
 (pdftex.def)             Requested size: 291.0733pt x 218.49843pt.
- [20] [21 <../paper/figures/fig5_journalist.pdf>]
-Package mdframed Info: mdframed works in twoside mode on input line 471.
+ [21 <../paper/figures/fig5_journalist.pdf>]
+Package mdframed Info: mdframed works in twoside mode on input line 480.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 471.
+(mdframed)              on input line 480.
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--495
-\T1/ppl/m/it/10 In the soft-ware. \T1/ppl/m/n/10 The mea-sures are in \T1/cmtt/
-m/n/10 privacy_risk.risk\T1/ppl/m/n/10 :
+Underfull \hbox (badness 1845) in paragraph at lines 491--504
+\T1/ppl/m/it/10 In the soft-ware. \T1/ppl/m/n/10 The checks of Ex-am-ples []3.3
+[] and []3.5[] and of Al-go-rithms 3.1 and 3.2
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 482--495
+Underfull \hbox (badness 10000) in paragraph at lines 491--504
+\T1/ppl/m/n/10 are in \T1/cmtt/m/n/10 tests/test_ext_measures.py\T1/ppl/m/n/10 
+. The mea-sures are in \T1/cmtt/m/n/10 privacy_risk.risk\T1/ppl/m/n/10 :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 491--504
 \T1/cmtt/m/n/10 prosecutor_risk\T1/ppl/m/n/10 , \T1/cmtt/m/n/10 marketer_sample
 _risk\T1/ppl/m/n/10 , \T1/cmtt/m/n/10 marketer_population_frequency_risk\T1/ppl
 /m/n/10 ,
  []
 
 
-Underfull \hbox (badness 3229) in paragraph at lines 482--495
+Underfull \hbox (badness 3229) in paragraph at lines 491--504
 \T1/cmtt/m/n/10 marketer_unconditional_risk \T1/ppl/m/n/10 and \T1/cmtt/m/n/10 
 journalist_unique_probability \T1/ppl/m/n/10 for a stated prior
  []
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 496.
-
-Underfull \hbox (badness 1331) in paragraph at lines 509--511
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 505.
+[22]
+Package mdframed Info: mdframed works in twoside mode on input line 515.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 515.
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 5
+27.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+) [23]
+Underfull \hbox (badness 1331) in paragraph at lines 559--561
 []\T1/ppl/m/n/10.95 By Propo-si-tion []2.2[], each re-leased record $\OML/zplm/
 m/it/10.95 i$ \T1/ppl/m/n/10.95 has pros-e-cu-tor risk
  []
 
-[22]) [23] [24
+[24]) [25] [26
 
 ] (./chapters/ch04-estimate.tex
 Chapter 4.
-[25
+[27
 
-] [26] [27]
+] [28] [29]
 Package pgfplots info on input line 240: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
 Package pgfplots info on input line 240: Using 'lua backend=false' for axis: ym
@@ -1308,7 +1346,7 @@ Underfull \hbox (badness 1259) in paragraph at lines 265--273
 ys-tem-atic re-view of re-
  []
 
-[28] [29] [30] [31]
+[30] [31] [32] [33]
 Package mdframed Info: mdframed works in twoside mode on input line 470.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1325,14 +1363,14 @@ Underfull \hbox (badness 1762) in paragraph at lines 482--496
 y nor-mal outer es-ti-mates).
  []
 
-[32] [33]) (./chapters/ch05-selection.tex [34]
+[34] [35]) (./chapters/ch05-selection.tex [36]
 Chapter 5.
-[35
+[37
 
-] [36] [37]
+] [38] [39]
 Package pgfplots info on input line 206: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
- [38] [39] [40]
+ [40] [41] [42]
 Package mdframed Info: mdframed works in twoside mode on input line 416.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1355,19 +1393,19 @@ Underfull \hbox (badness 7221) in paragraph at lines 425--434
 for com-par-i-son and runs the con-fir-ma-tion draw;
  []
 
-[41]
+[43]
 Package mdframed Info: Not enough space on this page on input line 446.
- [42]) (./chapters/ch06-monitoring.tex [43]
+ [44]) (./chapters/ch06-monitoring.tex [45]
 Chapter 6.
-[44
+[46
 
 ]
 Package pgfplots info on input line 98: Using 'lua backend=false' for axis: x c
 oord trafo unsupported.
- [45] [46] [47] [48] [49]
+ [47] [48] [49] [50] [51]
 Package pgfplots info on input line 429: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [50] [51] [52]
+ [52] [53] [54]
 Package mdframed Info: mdframed works in twoside mode on input line 569.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1391,39 +1429,39 @@ Underfull \hbox (badness 1558) in paragraph at lines 580--599
 tt/m/n/10 CommittedCoordinate \T1/ppl/m/n/10 and
  []
 
-[53]) [54] [55
+[55]) [56] [57
 
 ] (./chapters/ch07-thresholds.tex
 Chapter 7.
-[56
+[58
 
 ]
 Underfull \vbox (badness 3098) has occurred while \output is active []
 
- [57]
-[58] [59] [60] [61] [62]
+ [59]
+[60] [61] [62] [63] [64]
 Package mdframed Info: mdframed works in twoside mode on input line 397.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 397.
-) (./chapters/ch08-tolerance.tex [63]
+) (./chapters/ch08-tolerance.tex [65]
 Chapter 8.
-[64
+[66
 
 ]
-<../paper/figures/fig2_frontier.pdf, id=2244, 347.70865pt x 229.37105pt>
+<../paper/figures/fig2_frontier.pdf, id=2280, 347.70865pt x 229.37105pt>
 File: ../paper/figures/fig2_frontier.pdf Graphic file (type pdf)
 <use ../paper/figures/fig2_frontier.pdf>
 Package pdftex.def Info: ../paper/figures/fig2_frontier.pdf  used on input line
  92.
 (pdftex.def)             Requested size: 317.5333pt x 209.47696pt.
- [65] [66 <../paper/figures/fig2_frontier.pdf>]
+ [67] [68 <../paper/figures/fig2_frontier.pdf>]
 Package pgfplots info on input line 172: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
- [67] [68] [69]
+ [69] [70] [71]
 Package pgfplots info on input line 390: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [70]
+ [72]
 Package mdframed Info: mdframed works in twoside mode on input line 439.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1446,26 +1484,26 @@ Underfull \hbox (badness 2027) in paragraph at lines 451--463
 ns the set-ting that max-imises util-ity
  []
 
-[71] [72]) [73] [74
+[73] [74]) [75] [76
 
 ] (./chapters/ch09-programmes.tex
 Chapter 9.
-[75
+[77
 
 ]
-<../paper/diagrams/pooling.pdf, id=2434, 752.8125pt x 293.59688pt>
+<../paper/diagrams/pooling.pdf, id=2469, 752.8125pt x 293.59688pt>
 File: ../paper/diagrams/pooling.pdf Graphic file (type pdf)
 <use ../paper/diagrams/pooling.pdf>
 Package pdftex.def Info: ../paper/diagrams/pooling.pdf  used on input line 77.
 (pdftex.def)             Requested size: 343.99329pt x 134.1602pt.
- [76 <../paper/diagrams/pooling.pdf>]
-<../paper/figures/fig4_composition.pdf, id=2470, 340.13347pt x 221.6419pt>
+ [78 <../paper/diagrams/pooling.pdf>]
+<../paper/figures/fig4_composition.pdf, id=2505, 340.13347pt x 221.6419pt>
 File: ../paper/figures/fig4_composition.pdf Graphic file (type pdf)
 <use ../paper/figures/fig4_composition.pdf>
 Package pdftex.def Info: ../paper/figures/fig4_composition.pdf  used on input l
 ine 141.
 (pdftex.def)             Requested size: 352.81552pt x 229.9103pt.
- [77] [78 <../paper/figures/fig4_composition.pdf>] [79]
+ [79] [80 <../paper/figures/fig4_composition.pdf>] [81]
 Package mdframed Info: mdframed works in twoside mode on input line 235.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1483,33 +1521,33 @@ union \T1/ppl/m/n/10 for Propo-si-tion []9.1[], and \T1/cmtt/m/n/10 pooled_atta
 ck \T1/ppl/m/n/10 (or
  []
 
-[80]) (./chapters/ch10-dp.tex [81]
+[82]) (./chapters/ch10-dp.tex [83]
 Chapter 10.
-[82
+[84
 
-] [83] [84] [85] [86] [87] [88] [89]
+] [85] [86] [87] [88] [89] [90] [91]
 Package mdframed Info: mdframed works in twoside mode on input line 557.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 557.
- [90] [91]) [92] [93
+ [92] [93]) [94] [95
 
 ]
 (./chapters/ch11-simulation.tex
 Chapter 11.
-[94
+[96
 
 ]
 Package pgfplots info on input line 120: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
- [95]
+ [97]
 File: ../paper/figures/fig5_journalist.pdf Graphic file (type pdf)
 <use ../paper/figures/fig5_journalist.pdf>
 Package pdftex.def Info: ../paper/figures/fig5_journalist.pdf  used on input li
 ne 177.
 (pdftex.def)             Requested size: 273.42883pt x 205.252pt.
- [96] [97]
-<../paper/figures/fig3_calibration.pdf, id=2826, 302.50133pt x 230.63847pt>
+ [98] [99]
+<../paper/figures/fig3_calibration.pdf, id=2862, 302.50133pt x 230.63847pt>
 File: ../paper/figures/fig3_calibration.pdf Graphic file (type pdf)
 <use ../paper/figures/fig3_calibration.pdf>
 Package pdftex.def Info: ../paper/figures/fig3_calibration.pdf  used on input l
@@ -1532,11 +1570,11 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 256.
 
-[98 <../paper/figures/fig3_calibration.pdf>]
+[100 <../paper/figures/fig3_calibration.pdf>]
 Package pgfplots info on input line 285: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
- [99]
-<../paper/figures/fig1_risk_distribution.pdf, id=2887, 339.87665pt x 216.12343p
+ [101]
+<../paper/figures/fig1_risk_distribution.pdf, id=2922, 339.87665pt x 216.12343p
 t>
 File: ../paper/figures/fig1_risk_distribution.pdf Graphic file (type pdf)
 <use ../paper/figures/fig1_risk_distribution.pdf>
@@ -1545,7 +1583,7 @@ nput line 337.
 (pdftex.def)             Requested size: 291.0733pt x 185.08752pt.
 Package pgfplots info on input line 380: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
- [100 <../paper/figures/fig1_risk_distribution.pdf>] [101]
+ [102 <../paper/figures/fig1_risk_distribution.pdf>] [103]
 Package mdframed Info: mdframed works in twoside mode on input line 489.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1589,19 +1627,19 @@ quence\T1/ppl/m/n/10 , \T1/cmtt/m/n/10 k_anonymity\T1/ppl/m/n/10 , \T1/cmtt/m/n
 /10 programme\T1/ppl/m/n/10 , \T1/cmtt/m/n/10 programme_scaling
  []
 
-[102] [103]) (./chapters/ch12-public.tex [104]
+[104] [105]) (./chapters/ch12-public.tex [106]
 Chapter 12.
-[105
+[107
 
-] [106]
-<../paper/diagrams/realdata_audit.pdf, id=3024, 767.86874pt x 255.95625pt>
+] [108]
+<../paper/diagrams/realdata_audit.pdf, id=3059, 767.86874pt x 255.95625pt>
 File: ../paper/diagrams/realdata_audit.pdf Graphic file (type pdf)
 <use ../paper/diagrams/realdata_audit.pdf>
 Package pdftex.def Info: ../paper/diagrams/realdata_audit.pdf  used on input li
 ne 161.
 (pdftex.def)             Requested size: 414.55774pt x 138.18697pt.
- [107] [108 <../paper/diagrams/realdata_audit.pdf>] [109] [110]
-[111]
+ [109] [110 <../paper/diagrams/realdata_audit.pdf>] [111] [112]
+[113]
 Package mdframed Info: mdframed works in twoside mode on input line 459.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1637,20 +1675,20 @@ Underfull \hbox (badness 1014) in paragraph at lines 469--478
 10 re-runs it with source hashes and the sen-si-tiv-ity
  []
 
-[112]
+[114]
 Package mdframed Info: Not enough space on this page on input line 485.
- [113]) (./chapters/ch13-credit.tex [114]
+ [115]) (./chapters/ch13-credit.tex [116]
 Chapter 13.
 Package mdframed Info: mdframed works in twoside mode on input line 33.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 33.
-[115
+[117
 
-] [116] [117] [118] [119] [120] [121]
+] [118] [119] [120] [121] [122] [123]
 Package pgfplots info on input line 529: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
- [122] [123] [124] [125] [126]
+ [124] [125] [126] [127] [128]
 Package mdframed Info: mdframed works in twoside mode on input line 805.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1675,19 +1713,19 @@ _from_totals\T1/ppl/m/n/10 , \T1/cmtt/m/n/10 differencing_risk\T1/ppl/m/n/10 ).
  The poli-cies
  []
 
-[127]) (./chapters/ch14-proposals.tex [128]
+[129]) (./chapters/ch14-proposals.tex [130]
 Chapter 14.
-[129
+[131
 
-] [130] [131]
-<../paper/figures/fig_neural_predictions.pdf, id=3300, 469.755pt x 180.675pt>
+] [132] [133]
+<../paper/figures/fig_neural_predictions.pdf, id=3336, 469.755pt x 180.675pt>
 File: ../paper/figures/fig_neural_predictions.pdf Graphic file (type pdf)
 <use ../paper/figures/fig_neural_predictions.pdf>
 Package pdftex.def Info: ../paper/figures/fig_neural_predictions.pdf  used on i
 nput line 190.
 (pdftex.def)             Requested size: 441.01773pt x 169.62222pt.
- [132 <../paper/figures/fig_neural_predictions.pdf>]
-<../paper/diagrams/sentry_r_loop.pdf, id=3361, 677.53125pt x 271.0125pt>
+ [134 <../paper/figures/fig_neural_predictions.pdf>]
+<../paper/diagrams/sentry_r_loop.pdf, id=3396, 677.53125pt x 271.0125pt>
 File: ../paper/diagrams/sentry_r_loop.pdf Graphic file (type pdf)
 <use ../paper/diagrams/sentry_r_loop.pdf>
 Package pdftex.def Info: ../paper/diagrams/sentry_r_loop.pdf  used on input lin
@@ -1696,11 +1734,11 @@ e 258.
 
 Underfull \vbox (badness 1400) has occurred while \output is active []
 
- [133 <../paper/diagrams/sentry_r_loop.pdf>] [134] [135] [136] [137]
+ [135 <../paper/diagrams/sentry_r_loop.pdf>] [136] [137] [138] [139]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [138]
-[139] [140]
+ [140]
+[141] [142]
 Package mdframed Info: mdframed works in twoside mode on input line 764.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1745,12 +1783,12 @@ l/m/n/10 , and the penetration-test pro-to-col
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [141])
-[142] [143
+ [143])
+[144] [145
 
 ] (./chapters/ch15-falsification.tex
 Chapter 15.
-[144
+[146
 
 ]
 File: ../paper/figures/fig3_calibration.pdf Graphic file (type pdf)
@@ -1758,11 +1796,11 @@ File: ../paper/figures/fig3_calibration.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../paper/figures/fig3_calibration.pdf  used on input l
 ine 111.
 (pdftex.def)             Requested size: 255.79108pt x 195.02303pt.
- [145] [146] [147] [148]
+ [147] [148] [149] [150]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [149]
-[150]
+ [151]
+[152]
 Package mdframed Info: mdframed works in twoside mode on input line 452.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1781,38 +1819,38 @@ n/10 monotonicity_violations \T1/ppl/m/n/10 and \T1/cmtt/m/n/10 composition_tes
 t\T1/ppl/m/n/10 , com-bined by
  []
 
-[151]) (./chapters/ch16-protocol.tex [152]
+[153]) (./chapters/ch16-protocol.tex [154]
 Chapter 16.
-[153
+[155
 
-] [154] [155] [156] [157] [158] [159] [160]
+] [156] [157] [158] [159] [160] [161] [162]
 Underfull \vbox (badness 2790) has occurred while \output is active []
 
- [161]
+ [163]
 Package mdframed Info: mdframed works in twoside mode on input line 540.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 540.
 
-[162]) (./chapters/ch17-worksheets.tex [163]
+[164]) (./chapters/ch17-worksheets.tex [165]
 Chapter 17.
-[164
+[166
 
-] [165] [166] [167] [168]
+] [167] [168] [169] [170]
 Package mdframed Info: mdframed works in twoside mode on input line 281.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 281.
-) [169] [170
+) [171] [172
 
 ] (./chapters/ch18-learning.tex
 Chapter 18.
-[171
+[173
 
-] [172]
+] [174]
 Package pgfplots info on input line 125: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [173] [174] [175] [176] [177] [178] [179]
+ [175] [176] [177] [178] [179] [180] [181]
 Package mdframed Info: mdframed works in twoside mode on input line 448.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1821,24 +1859,19 @@ Package mdframed Info: mdframed works in twoside mode on input line 465.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 465.
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 4
-83.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [180] [181])
-(./chapters/ch19-change.tex [182]
+ [182] [183])
+(./chapters/ch19-change.tex [184]
 Chapter 19.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [183
+ [185
 
 ]
-[184] [185] [186] [187] [188] [189] [190]
+[186] [187] [188] [189] [190] [191] [192]
 Package pgfplots info on input line 413: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [191]
+ [193]
 Package mdframed Info: mdframed works in twoside mode on input line 476.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1847,50 +1880,50 @@ Package mdframed Info: mdframed works in twoside mode on input line 493.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 493.
- [192]
+ [194]
 Package mdframed Info: Not enough space on this page on input line 526.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [193]
+ [195]
 Overfull \hbox (4.50249pt too wide) detected at line 548
 \U/fplmbb/m/n/10.95 E[][][] \OT1/zplm/m/n/10.95 = [] [][] = [] [] []\OML/zplm/m
 /it/10.95 p[]\OT1/zplm/m/n/10.95 (\OT1/ppl/m/n/10.95 1 \OMS/zplm/m/n/10.95 ^^@ 
 \OML/zplm/m/it/10.95 p\OT1/zplm/m/n/10.95 )[] = []
  []
 
-[194]) (./chapters/ch20-dynamics.tex [195]
+[196]) (./chapters/ch20-dynamics.tex [197]
 Chapter 20.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [196
+ [198
 
 ]
-[197] [198] [199]
+[199] [200] [201]
 Package pgfplots info on input line 238: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
 Package pgfplots info on input line 238: Using 'lua backend=false' for axis: ym
 ode=log unsupported (yet).
- [200] [201] [202] [203] [204] [205]
+ [202] [203] [204] [205] [206] [207]
 Package mdframed Info: mdframed works in twoside mode on input line 520.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 520.
- [206]
+ [208]
 Package mdframed Info: mdframed works in twoside mode on input line 537.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 537.
- [207] [208])
-(./chapters/ch21-chaos.tex [209]
+ [209] [210])
+(./chapters/ch21-chaos.tex [211]
 Chapter 21.
-[210
+[212
 
-] [211] [212] [213] [214] [215] [216] [217]
+] [213] [214] [215] [216] [217] [218] [219]
 Package pgfplots info on input line 465: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [218] [219]
+ [220] [221]
 Package mdframed Info: mdframed works in twoside mode on input line 512.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1913,7 +1946,7 @@ Package mdframed Info: mdframed works in twoside mode on input line 529.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 529.
-[220] [221]
+[222] [223]
 Overfull \hbox (19.0912pt too wide) detected at line 600
 \U/fplmbb/m/n/10.95 P\OMS/zplm/m/n/10.95 f\OML/zplm/m/it/10.95 d\OT1/zplm/m/n/1
 0.95 (\OML/zplm/m/it/10.95 Z\OT1/ppl/m/n/10.95 , \OML/zplm/m/it/10.95 U\OT1/zpl
@@ -1930,14 +1963,14 @@ U\OT1/zplm/m/n/10.95 ) = \OML/zplm/m/it/10.95 j \OMS/zplm/m/n/10.95 j \OML/zplm
 /m/it/10.95 Z\OMS/zplm/m/n/10.95 g[] ^^T []\OT1/ppl/m/n/10.95 ,
  []
 
-) (./chapters/ch22-planner.tex [222]
+) (./chapters/ch22-planner.tex [224]
 Chapter 22.
-[223
+[225
 
-] [224] [225] [226] [227] [228] [229] [230]
+] [226] [227] [228] [229] [230] [231] [232]
 Package pgfplots info on input line 417: Using 'lua backend=false' for axis: x 
 coord trafo unsupported.
- [231] [232] [233]
+ [233] [234] [235]
 Underfull \hbox (badness 1715) in paragraph at lines 577--577
 []|\T1/ppl/m/n/10 The trans-port solver con-serves mass and
  []
@@ -1950,7 +1983,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 579--580
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [234]
+ [236]
 Package mdframed Info: mdframed works in twoside mode on input line 614.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -2012,23 +2045,23 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: Box was splittet wrong
  starting loop to iterate the splitting point
 (mdframed)              on input line 681.
-[235] [236] [237] [238]) [239] [240
+[237] [238] [239] [240]) [241] [242
 
 ] (./chapters/ch18-open.tex
 Chapter 23.
-[241
+[243
 
-] [242] [243] [244] [245] [246] [247]
+] [244] [245] [246] [247] [248] [249]
 Package mdframed Info: mdframed works in twoside mode on input line 442.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 442.
- [248]) (./appendix-software.tex
-[249]
+ [250]) (./appendix-software.tex
+[251]
 Appendix A.
-[250
+[252
 
-] [251] [252] [253] [254]
+] [253] [254] [255] [256]
 Underfull \hbox (badness 1107) in paragraph at lines 432--432
 []|\T1/ppl/m/n/10 Simultaneous bounds at $\OML/zplm/m/it/10 \OT1/zplm/m/n/10 /
 \OML/zplm/m/it/10 M$\T1/ppl/m/n/10 ; Beta
@@ -2139,17 +2172,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 469--469
 []|\T1/cmtt/m/n/10 betting.predictable_bets\T1/ppl/m/n/10 ,
  []
 
-[255] [256]) [257] [258] [259] [260] (./references.tex [261
+[257] [258]) [259] [260] [261] [262] (./references.tex [263
 
 
-] [262] [263]
-[264] [265] [266]
+] [264] [265]
+[266] [267] [268]
 Underfull \hbox (badness 5652) in paragraph at lines 334--335
 []\T1/ppl/m/n/10.95 National In-sti-tute of Stan-dards and Tech-nol-ogy (2024a)
 : \T1/ppl/m/it/10.95 Module-lattice-based key-
  []
 
-[267]
+[269]
 Underfull \hbox (badness 10000) in paragraph at lines 370--371
 []\T1/ppl/m/n/10.95 Duncan, G T and D Lam-bert (1986): ``Disclosure-limited dat
 a dis-sem-i-na-
@@ -2161,7 +2194,7 @@ Underfull \hbox (badness 3724) in paragraph at lines 370--371
 -ti-cal As-so-ci-a-tion\T1/ppl/m/n/10.95 , vol 81, no 393, pp 10--18,
  []
 
-) [268] (./main.aux)
+) [270] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -2170,10 +2203,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 2E508321F67493B888C50553CF2DE38E;51579.
  ) 
 Here is how much of TeX's memory you used:
- 42335 strings out of 476106
- 922001 string characters out of 5793932
+ 42353 strings out of 476106
+ 922180 string characters out of 5793932
  2103975 words of memory out of 5000000
- 62422 multiletter control sequences out of 15000+600000
+ 62426 multiletter control sequences out of 15000+600000
  642668 words of font info for 232 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  104i,19n,104p,1337b,2597s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2191,10 +2224,10 @@ mri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (278 pages, 1413105 bytes).
+Output written on main.pdf (280 pages, 1420736 bytes).
 PDF statistics:
- 5423 PDF objects out of 6186 (max. 8388607)
- 4543 compressed objects within 46 object streams
- 1174 named destinations out of 1200 (max. 500000)
+ 5460 PDF objects out of 6186 (max. 8388607)
+ 4578 compressed objects within 46 object streams
+ 1188 named destinations out of 1200 (max. 500000)
  32330 words of extra memory for PDF output out of 35830 (max. 10000000)
 
