@@ -435,10 +435,14 @@ p_{tj} := \Prob(H_{tj} \mid Z_t, Y_\theta, \mathcal{B}_a)
 If the adversary chooses the maximum-posterior candidate, its conditional
 success probability is
 \begin{equation}
-R_a^{\mathrm{in}}(t, \theta) = \E\Big[ \max_{j \in I} p_{tj} \ \Big| \ S_t = 1,
-\mathcal{B}_a \Big] .
+R_a^{\mathrm{in}}(t, \theta) = \E\Big[ \frac{\max_{j \in I} p_{tj}}{1 - p_{t0}} \ \Big| \ S_t = 1,
+\mathcal{B}_a \Big] ,
 \label{eq:maxpost}
 \end{equation}
+because, given the observations and membership, candidate $j$ has probability
+$p_{tj}/(1 - p_{t0})$. An earlier version omitted the denominator, which matters whenever the
+no-match hypothesis carries weight; the simulated attacks of this paper normalise over the
+released candidates and are unaffected.
 When the only compatible records have equal likelihood and the no-match prior
 is zero, \eqref{eq:post} and \eqref{eq:maxpost} reduce to \eqref{eq:recip}.
 Measurement error therefore cannot be declared to reduce risk. It changes the

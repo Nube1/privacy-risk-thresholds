@@ -234,9 +234,10 @@ def per_target(file: RealFile, release: RealRelease, error: float, covariate_sd:
         positions = rng.choice(positions, size=cap, replace=False)
     if positions.size == 0:
         return {"targets": 0}
-    rates = _per_target_rates(file, release, error, covariate_sd, positions,
-                              replicates, rng)
-    summary = selected_maximum_bound(rates, replicates, alpha)
+    counts = _per_target_counts(file, release, error, covariate_sd, positions,
+                                replicates, rng)
+    summary = selected_maximum_bound(counts / float(replicates), replicates, alpha,
+                                     counts=counts)
     summary["smallest_cell"] = smallest
     return summary
 
@@ -244,12 +245,20 @@ def per_target(file: RealFile, release: RealRelease, error: float, covariate_sd:
 def _per_target_rates(file: RealFile, release: RealRelease, error: float,
                       covariate_sd: float, positions: np.ndarray, replicates: int,
                       rng: np.random.Generator) -> np.ndarray:
-    rates = np.zeros(positions.size)
+    return _per_target_counts(file, release, error, covariate_sd, positions, replicates,
+                              rng) / float(replicates)
+
+
+def _per_target_counts(file: RealFile, release: RealRelease, error: float,
+                       covariate_sd: float, positions: np.ndarray, replicates: int,
+                       rng: np.random.Generator) -> np.ndarray:
+    """Integer successes for each target, each out of `replicates` attacks."""
+    counts = np.zeros(positions.size, dtype=int)
     for i, position in enumerate(positions.tolist()):
         repeated = np.full(replicates, position)
         outcome = attack(file, release, error, covariate_sd, 0, rng, targets=repeated)
-        rates[i] = outcome["rate"]
-    return rates
+        counts[i] = int(outcome["successes"])
+    return counts
 
 
 def attribute_disclosure(file: RealFile, release: RealRelease, column: str) -> dict:

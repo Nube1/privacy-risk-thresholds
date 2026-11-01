@@ -38,7 +38,7 @@ from .sequential import (
 from .frontier import concavity_diagnostic, fit_value_curve, nondominated, value_curve
 from .governance import budget_value, implied_tolerance, risk_budget
 from .keys import key_frequencies
-from .linkage import ErrorModel, attack, minimum_cell_targets, per_target_risk
+from .linkage import ErrorModel, attack, minimum_cell_targets, per_target_counts
 from .risk import (
     fit_frequency_model,
     journalist_from_fit,
@@ -195,9 +195,10 @@ def k_anonymity(register: Register, config: dict) -> list[dict]:
                           np.random.default_rng(seed + 200 + minimum), use_covariate=False)
         targets = minimum_cell_targets(release, int(minimum), cap,
                                        np.random.default_rng(seed + 7))
-        risks = per_target_risk(register, release, model, targets, reps,
-                                np.random.default_rng(seed + 400 + minimum))
-        worst = selected_maximum_bound(risks, reps, alpha)
+        counts = per_target_counts(register, release, model, targets, reps,
+                                   np.random.default_rng(seed + 400 + minimum))
+        risks = counts / float(reps) if counts.size else np.empty(0)
+        worst = selected_maximum_bound(risks, reps, alpha, counts=counts)
         above = float(np.mean(np.asarray(worst["individual_lower_bounds"])
                               > 1 / minimum))
         rows.append({"k": int(minimum), "released": release.size,

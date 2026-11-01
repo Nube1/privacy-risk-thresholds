@@ -26,7 +26,7 @@ def test_selected_maximum_bound_corrects_for_selection():
 
     from privacy_risk.uncertainty import binomial_lower, selected_maximum_bound
     risks = np.array([0.8, 0.5, 0.2])
-    summary = selected_maximum_bound(risks, 250, 0.05)
+    summary = selected_maximum_bound(risks, 250, 0.05, counts=np.array([200, 125, 50]))
     assert summary["maximum"] == 0.8
     assert summary["alpha_per_target"] == pytest.approx(0.05 / 3)
     assert summary["maximum_lower_bound"] < binomial_lower(200, 250, 0.05)

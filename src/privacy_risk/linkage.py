@@ -23,8 +23,94 @@ def posterior_linkage(likelihoods: np.ndarray, priors: np.ndarray,
 
 
 def maximum_posterior_success(posteriors: np.ndarray) -> float:
+    """Largest posterior over the released candidates, as given.
+
+    This is the membership-conditional success of a forced-choice attack only when
+    the posteriors exclude a no-match state, as `posterior_linkage` returns them when
+    no no-match term is supplied. If they were normalised with a no-match term, use
+    `membership_success` instead, which renormalises by the probability of membership.
+    """
     posteriors = np.asarray(posteriors, dtype=float)
     return float(posteriors.max(initial=0.0))
+
+
+def posterior_with_no_match(likelihoods: np.ndarray, priors: np.ndarray,
+                            no_match_likelihood: float, no_match_prior: float) -> np.ndarray:
+    """Posterior over (no match, candidate 1, ..., candidate n), first entry no match.
+
+    The no-match hypothesis is kept explicitly: omitting it is an assumption that the
+    target is known to be in the release, not a numerical convenience.
+    """
+    likelihoods = np.asarray(likelihoods, dtype=float)
+    priors = np.asarray(priors, dtype=float)
+    values = np.r_[no_match_prior * no_match_likelihood, priors * likelihoods]
+    if likelihoods.shape != priors.shape or likelihoods.ndim != 1:
+        raise ValueError("likelihoods and priors must be one-dimensional and same-shaped")
+    if not np.isfinite(values).all() or np.any(values < 0) or no_match_prior < 0:
+        raise ValueError("weights must be finite and nonnegative")
+    total = values.sum()
+    if total <= 0:
+        raise ValueError("posterior denominator must be positive")
+    return values / total
+
+
+def membership_success(posterior: np.ndarray) -> float:
+    """Membership-conditional success of a forced-choice attack (Expansion, eq. 2.6).
+
+    `posterior` holds the no-match probability first and the candidates after it,
+    summing to one. Given the observations and membership, candidate j has probability
+    p_j / (1 - p_0), so the attack that names the most probable candidate succeeds with
+    probability max_j p_j / (1 - p_0). With p_0 = 0 this is the plain maximum.
+    """
+    p = np.asarray(posterior, dtype=float)
+    if p.ndim != 1 or p.size < 2 or not np.isfinite(p).all() or np.any(p < 0):
+        raise ValueError("posterior must be a finite, nonnegative vector with no match first")
+    if not np.isclose(p.sum(), 1.0, atol=1e-9):
+        raise ValueError("posterior must sum to one")
+    member = p[1:].sum()
+    if member <= 0:
+        raise ValueError("membership has zero posterior probability")
+    return float(p[1:].max() / member)
+
+
+def decision_success(posterior: np.ndarray, threshold: float = 0.0,
+                     may_choose_no_match: bool = False) -> dict[str, float]:
+    """Success, naming and abstention probabilities of a decision rule with abstention.
+
+    The rule names the most probable candidate when its membership-conditional
+    probability reaches `threshold`; with `may_choose_no_match` it also declines when
+    the no-match state is more probable than every candidate. Precision is success
+    given that a candidate was named; it differs from forced-choice success.
+    """
+    if not 0 <= threshold <= 1:
+        raise ValueError("threshold must lie in [0, 1]")
+    conditional = membership_success(posterior)
+    p = np.asarray(posterior, dtype=float)
+    names = conditional >= threshold
+    if may_choose_no_match and p[0] >= p[1:].max():
+        names = False
+    return {"names_a_candidate": float(names),
+            "success": conditional if names else 0.0,
+            "precision_if_named": conditional,
+            "abstains": float(not names)}
+
+
+def fixed_target_success(choose, observe, target: int, draws: int,
+                         rng: np.random.Generator) -> dict[str, float | int]:
+    """Frequentist success for one fixed target: the share of draws naming it.
+
+    `observe(target, rng)` draws the adversary's observations for that target under its
+    target-specific observation law; `choose(observation)` returns the named candidate
+    or None for abstention. The posterior maximum averaged under the model prior is a
+    different quantity and is not calibrated per target in general.
+    """
+    if draws < 1:
+        raise ValueError("draws must be positive")
+    hits = 0
+    for _ in range(int(draws)):
+        hits += int(choose(observe(target, rng)) == target)
+    return {"target": int(target), "successes": hits, "trials": int(draws),
+            "rate": hits / draws}
 
 
 def exact_match_probabilities(target_keys: np.ndarray, release_keys: np.ndarray) -> np.ndarray:
@@ -155,16 +241,24 @@ def attack(register: Register, release: Release, model: ErrorModel, replicates: 
                         posterior=posterior, success=success, targets=drawn)
 
 
+def per_target_counts(register: Register, release: Release, model: ErrorModel,
+                      targets: np.ndarray, replicates: int,
+                      rng: np.random.Generator) -> np.ndarray:
+    """Integer successes for each named target, each out of `replicates` attacks."""
+    targets = np.asarray(targets)
+    if targets.size == 0:
+        return np.empty(0, dtype=int)
+    repeated = np.repeat(targets, int(replicates))
+    result = attack(register, release, model, 0, rng, targets=repeated)
+    return result.success.reshape(targets.size, int(replicates)).sum(axis=1).astype(int)
+
+
 def per_target_risk(register: Register, release: Release, model: ErrorModel,
                     targets: np.ndarray, replicates: int,
                     rng: np.random.Generator) -> np.ndarray:
     """Risk of each named target, each estimated from `replicates` replicates."""
-    targets = np.asarray(targets)
-    if targets.size == 0:
-        return np.empty(0)
-    repeated = np.repeat(targets, int(replicates))
-    result = attack(register, release, model, 0, rng, targets=repeated)
-    return result.success.reshape(targets.size, int(replicates)).mean(axis=1)
+    counts = per_target_counts(register, release, model, targets, replicates, rng)
+    return counts / float(replicates) if counts.size else np.empty(0)
 
 
 def minimum_cell_targets(release: Release, minimum: int, cap: int,
