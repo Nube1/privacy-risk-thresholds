@@ -30,6 +30,17 @@ it is working at.
 With more unsafe settings near the line it grows further. Each test was honest; the
 choice among them was not tested at all.
 
+\begin{example}[How the error grows with the menu]\label{c05:ex-menu}
+Take Naledi's menu of thirteen floors and suppose that some of them are unsafe, each with
+a true risk so close to the tolerance that its bound passes with probability 0.05, and
+that each floor is tested on its own draw of targets. With two unsafe floors the scan
+picks an unsafe one with probability $1 - 0.95^2 = 0.098$. With five it is
+$1 - 0.95^5 = 0.226$, and with ten it is $1 - 0.95^{10} = 0.401$. In the last case a
+committee that believes it works at 5 per cent releases an unsafe floor two times in
+five, and since it cannot know in advance how many floors sit near the line, it cannot
+know which of the three figures applies to it.
+\end{example}
+
 The chapter therefore asks one question. How can a committee choose a protection setting
 from a menu, using the same simulated evidence that certifies it, and keep the chance of
 releasing an unsafe setting at its stated level?
@@ -128,7 +139,15 @@ chances of a false claim. \citet{maurer1995} described the remedy for the case i
 the hypotheses can be put in order before the data are seen, as doses can: test them in
 that order, each at the full level, and stop at the first that fails. A disclosure grid
 has the same structure, because its settings can be ordered by how much protection they
-give before any attack is simulated.
+give before any attack is simulated. \citet{westfall2001} studied this fixed-sequence
+procedure beside weighted and gatekeeper procedures, and it is a shortcut of a closed
+testing procedure in the sense of \citet{marcus1976}, which is why each step may use the
+full level.
+
+Naledi took the remedy from that literature. Before the first attack was simulated she
+wrote the thirteen floors into the assessment file in order, from 300 down to 1, and sent
+the list to Grace with a time stamp. Tomás could read the order as well. What neither he
+nor Naledi could do afterwards was change it.
 
 \section{Fixed-sequence testing}
 
@@ -176,6 +195,17 @@ coincide unless some setting after the first failure in the order passes. If uti
 increases strictly along the order and no setting after the first failure passes, the
 fixed-sequence choice solves \eqref{c05:eq-opt} over the grid with the realised bounds.
 \end{proposition}
+
+\begin{example}[A sequence and a scan that disagree]\label{c05:ex-disagree}
+The numbers are illustrative. A menu holds six floors, 40, 30, 20, 10, 5 and 1, in that
+order, and each is attacked with 400 targets at a tolerance of 0.12 and $\alpha = 0.05$.
+At 400 targets a floor passes when 37 or fewer attacks succeed. Suppose the counts are
+30, 36, 44, 35, 52 and 60. The exact bounds are 0.100, 0.117, 0.139, 0.114, 0.161 and
+0.183. The fixed sequence passes 40 and 30, fails at 20 and stops, so it chooses 30. The
+scan looks at every floor, sees that 10 passes, and chooses 10, the least protective
+floor with a bound under the line. The floor of 10 passed after a stricter floor failed,
+and the scan's choice rests on that one result. The fixed sequence never looks at it.
+\end{example}
 
 The comparison makes the cost concrete. Fixed-sequence selection gives up utility only on
 the draws in which the bounds are out of order past the first failure, and on those draws

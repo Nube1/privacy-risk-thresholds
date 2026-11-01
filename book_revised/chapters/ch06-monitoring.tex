@@ -77,6 +77,23 @@ level chosen after the third failure, once the analyst has a feeling about the
 fourth, is a level chosen with the data, and the union bound no longer applies to
 it.
 
+\begin{example}[Twenty honest attempts]\label{c06:ex-twenty}
+Naledi checked the repository's figure by hand before she believed it. Each attempt runs
+500 attacks against a tolerance of 0.2. At the 5 per cent level the one-sided
+Clopper--Pearson bound \citep{clopper1934} stays at or below 0.2 for any count of 84
+successes or fewer: 84 successes give a bound of 0.1979, and 85 give 0.2001. So an
+attempt certifies when it sees at most 84 successes. At a true risk of 0.201 the count is
+binomial with 500 trials, and the chance that it falls at 84 or below is $f = 0.0350$.
+One attempt is therefore a valid test. Twenty attempts, each judged afresh, certify with
+probability $1 - (1 - 0.0350)^{20} = 0.509$. Now divide the 5 per cent among the twenty
+attempts before the first one runs, so that each is judged at 0.25 per cent. The largest
+passing count falls to 75, the chance of 75 or fewer successes at a true risk of 0.201
+is 0.0020, and the union bound caps the whole programme at $20 \times 0.0020 = 0.040$,
+below the 5 per cent the committee was promised. With independent attempts the exact
+chance that one of the twenty certifies is 0.039.
+\end{example}
+
+
 Figure~\ref{c06:fig-retry} shows the two rules side by side at one, five and twenty
 attempts. With one attempt they coincide. With five, resetting the level each time
 already certifies an unsafe release in 16.5 per cent of programmes, against 4.1
@@ -225,6 +242,20 @@ last clause of the rule: a single success ends the audit, and an attack that
 succeeds even rarely will produce one. A bet that leaves room for successes has to
 be placed at $q_b > 0$, and then each failure earns less.
 
+\begin{example}[A bet that survives a success]\label{c06:ex-bet}
+Take the tolerance of 0.12, a level of 5 per cent and a single coordinate, so that the
+audit certifies when the wealth reaches $1/0.05 = 20$. Fix the bet at $q = 0.03$. By
+\eqref{c06:eq-bet} each failed attack multiplies the wealth by $0.97/0.88 = 1.102$ and
+each success multiplies it by $0.03/0.12 = 0.25$. If every attack fails, the wealth after
+30 failures is just below 20 and after 31 it is 20.5, so the audit certifies at attack 31,
+seven attacks later than the zero bet. Suppose instead that attacks 1 to 9 fail and attack
+10 succeeds. The nine failures lift the wealth to 2.40, and the success cuts it to 0.60.
+The audit is not over. It needs a further 37 failures to climb back past 20, and it
+certifies at attack 47 with wealth 22.0. The success cost 16 attacks; under the zero bet
+it would have ended the audit.
+\end{example}
+
+
 \section{Confidence sequences}\label{c06:sec-cs}
 
 A committee often wants a number as well as a verdict: an upper bound on the risk
@@ -297,6 +328,19 @@ $\mathcal{C}_B$ is a bound on the risk. The wealth $E_b$ of \eqref{c06:eq-bet} i
 evidence against one hypothesis at one tolerance; neither it nor its reciprocal is
 an estimate of risk, and reporting it as one is an error. A decision record can
 carry both, in separate fields, each with its level.
+
+\begin{example}[Naledi's restarted run]\label{c06:ex-restart}
+The numbers here are illustrative. Suppose that by the first morning Naledi's restarted
+run at the floor of 150 shows 20 successes in 300 attacks. The fixed-sample 95 per cent
+bound is 0.095, already under the tolerance of 0.12, but it is valid only if 300 was the
+sample size fixed in advance, and it was not. The upper end of the confidence sequence
+with a uniform prior is 0.130, above the tolerance, so the audit goes on. By the next
+morning the run shows 40 successes in 600 attacks. The fixed-sample bound is 0.086 and
+the confidence sequence gives 0.110, now under 0.12, and Naledi may stop and report it
+whatever she saw on the first morning. At these sample sizes the anytime bound is larger
+by a factor of 1.36 and then 1.28, well above the 1.05 of the 4,000-attack study,
+because the price of watching shrinks as the run grows.
+\end{example}
 
 Naledi switched the Thursday audit to the confidence sequence and started it again
 from zero on fresh targets, recording that she had done so and why. She could now

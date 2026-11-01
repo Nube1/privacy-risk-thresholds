@@ -47,3 +47,29 @@ def test_chapter4_examples():
     assert certification_replicates(0.12) == 24
     assert round(1 - 0.05 ** (1 / 24), 3) == 0.117 and round(1 - 0.05 ** (1 / 23), 3) == 0.122
     assert round(binomial_upper(1, 24), 3) == 0.183
+
+
+def test_chapter5_examples():
+    from privacy_risk.uncertainty import binomial_upper as u
+    assert [round(1 - 0.95 ** k, 3) for k in (2, 5, 10)] == [0.098, 0.226, 0.401]
+    assert [round(u(c, 400), 3) for c in (30, 36, 44, 35, 52, 60)] == [0.1, 0.117, 0.139, 0.114, 0.161, 0.183]
+    assert max(x for x in range(80) if u(x, 400) <= 0.12) == 37
+    assert round(u(384, 4000), 3) == 0.104
+
+
+def test_chapter6_examples():
+    import math
+    from scipy.stats import binom
+    from privacy_risk.uncertainty import binomial_upper as u
+    from privacy_risk.sequential import anytime_upper as a
+    assert round(u(84, 500), 4) == 0.1979 and round(u(85, 500), 4) == 0.2001
+    f = binom.cdf(84, 500, 0.201)
+    assert round(f, 4) == 0.0350 and round(1 - (1 - f) ** 20, 3) == 0.509
+    k = max(x for x in range(200) if u(x, 500, 0.0025) <= 0.2)
+    g = binom.cdf(k, 500, 0.201)
+    assert k == 75 and round(g, 4) == 0.0020 and round(1 - (1 - g) ** 20, 3) == 0.039
+    up = 0.97 / 0.88
+    assert math.ceil(math.log(20) / math.log(up)) == 31
+    w = up ** 9 * 0.25
+    assert round(w, 2) == 0.60 and math.ceil(math.log(20 / w) / math.log(up)) == 37
+    assert round(a(20, 300), 3) == 0.130 and round(a(40, 600), 2) == 0.11
