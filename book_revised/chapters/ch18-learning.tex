@@ -244,6 +244,10 @@ register cannot be assessed by reading the old certificate forward. Stage three 
 stage four refitted the planner on the development counts, and on Thursday Naledi froze a
 plan with three candidate floors and the external attack only, as the chair had recorded.
 
+\begin{remark}[Check the retry study yourself]
+The two figures at the head of the chapter come from a short simulation, and the reader can rerun it. A release has true risk $0.201$ and the tolerance is $0.2$, so any certificate is false. Each attempt draws 500 attacks and certifies when the exact one-sided upper bound at level $\alpha$ is at most $0.2$. Twenty attempts at $\alpha=0.05$ certified the release in $0.501$ of 4,000 simulated programmes; the same twenty attempts at $\alpha=0.05/20$ did so in $0.041$ of them. The Bayesian betting audit of Example~\ref{c18:ex-bet} can be replayed in a few lines in the same way: with the stated forecast the wealth after the first four attacks is $1.023$, $1.057$, $1.101$ and $0.705$ and the audit certifies at attack 55, and a clean run reaches $4.0$ at attack 20 and $22.2$ at attack 37. A fixed audit that certifies only on zero successes needs $\lceil\ln 0.05/\ln 0.88\rceil=24$ attacks. These were recomputed from the formulas, not copied from the extension's run, and they agree with it.
+\end{remark}
+
 \section{Leakage across successive cycles}\label{c18:sec-leak}
 
 A cycle that runs once has a clean separation between development and audit. A cycle that

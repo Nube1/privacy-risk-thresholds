@@ -13,3 +13,9 @@ Chapter 18 (Continuous adversarial learning) is rebuilt as `chapters/ch18-learni
 Chapter 19 (Releases that change over time) is rebuilt as `chapters/ch19-change.tex`. The draft text had a stray fragment in Section 19.2 ("depends on how the figure is computed."); it is repaired in the source. The draft gives 0.380 for the five-year mass in Example 19.6, a matrix exponential gives 0.379, and the source uses 0.379.
 
 Still to rebuild: Chapters 20 to 22, the updated Chapter 23, and Appendix A.5 and A.6. The module names in Chapter 18's software note (`gate`, `evidence`, `registry`, `betting`) belong to the extension code bundle and are not in `src/privacy_risk`.
+
+## Numbers recomputed rather than copied (Chapters 18 and 19)
+
+Recomputed with plain Python from the formulas, not taken from the extension's run: the 24 attacks of a zero-success audit; the wealth path of Example 18.4 (1.023, 1.057, 1.101, 0.705; certifies at attack 55; 4.0 at 20 and 22.2 at 37 on a clean run); the retry study (0.501 and 0.041 over 4,000 programmes); Example 19.2 (0.364, 1.44, 0.59); Example 19.4 (1.77 and 2.10 distinct patterns; 0.442 and 0.525 by formula, 0.442 and 0.526 by simulation of 200,000 classes); Example 19.6 (masses and risks by matrix exponential). The one disagreement with the draft was a rounding (0.52 against 0.525 and 0.522 against 0.526), corrected in the source.
+
+Not yet recomputed: the extension's evidence-run counts in Table 19.1 and Figures 18.1 and 19.2, which need the extension's engine and register. The repository's `src/privacy_risk` does not contain that engine.

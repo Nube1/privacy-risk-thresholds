@@ -236,10 +236,21 @@ $0.014$ (absent, absent). On the changing panel a live loan stays live with prob
 and an absent one returns with probability one half, which gives $0.668$, $0.149$, $0.091$ and $0.091$.
 Equation~\eqref{c19:eq-s} sums $1-(1-P(\pi))^4$ over the patterns: the expected number of distinct
 patterns is $1.77$ on the frozen panel and $2.10$ on the changing one, and the history adversary
-succeeds with probability $1.77/4=0.44$ and $2.10/4=0.52$. The key-only adversary, who
-picks among the four at random, succeeds with probability $0.25$. Simulating 20,000 such
-classes with the engine's panel and attack gave $0.443$ and $0.522$. The changing panel spreads
+succeeds with probability $1.77/4=0.442$ and $2.10/4=0.525$. The key-only adversary, who
+picks among the four at random, succeeds with probability $0.25$. The changing-panel pattern probabilities above are rounded, and the unrounded ones are $0.6684$, $0.1491$, $0.0912$ and $0.0912$.
+Simulating 200,000 such classes with the short script below gave $0.442$ and $0.526$. The changing panel spreads
 its loans more evenly over the patterns, and evenness is what the adversary needs.
+\begin{lstlisting}
+import numpy as np
+rng = np.random.default_rng(7)
+def formula(P, n=4):                      # equation (s_v)
+    return sum(1 - (1 - p) ** n for p in P) / n
+def simulate(P, n=4, reps=200_000):       # name one of the n at random
+    pats = rng.choice(len(P), size=(reps, n), p=np.array(P) / sum(P))
+    same = np.sum(pats == pats[:, :1], axis=1)
+    return float(np.mean(1.0 / same))
+\end{lstlisting}
+The first loan of each simulated class is taken as the target, and the adversary succeeds with probability one over the number of loans that share its pattern. The script and the formula agree to the third decimal, which is the check that the closed form counts what the attack does.
 \end{example}
 
 \begin{table}[ht]
