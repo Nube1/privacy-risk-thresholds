@@ -118,3 +118,33 @@ def plugin_ordering(sample_frequency_risk: float, population_frequency_risk: flo
                       if population_frequency_risk else float("inf")),
             "dominance_holds": sample_frequency_risk >= population_frequency_risk,
             "jensen_holds": sample_frequency_risk >= reciprocal_of_mean}
+
+
+def simultaneous_upper_bounds(successes, trials, alpha: float = 0.05) -> list[float]:
+    """Exact upper bounds for M coordinates, each at level alpha / M (union bound)."""
+    successes, trials = list(successes), list(trials)
+    if len(successes) != len(trials) or not successes:
+        raise ValueError("need one trial count per coordinate")
+    m = len(successes)
+    return [binomial_upper(k, n, alpha / m) for k, n in zip(successes, trials)]
+
+
+def beta_posterior_upper(successes: int, trials: int, a: float, b: float, alpha: float = 0.05) -> float:
+    """Upper (1 - alpha) quantile of the Beta(a + K, b + B - K) posterior: a planning figure.
+
+    It is a credible bound, not a confidence bound, and the release gate refuses it.
+    """
+    if trials < 0 or not 0 <= successes <= trials or a <= 0 or b <= 0 or not 0 < alpha < 1:
+        raise ValueError("invalid inputs")
+    return float(beta.ppf(1 - alpha, a + successes, b + trials - successes))
+
+
+def posterior_predictive_counts(successes: int, trials: int, a: float, b: float, future: int):
+    """Beta-binomial law of the number of successes in ``future`` fresh attacks.
+
+    A planning figure; it is wider than the binomial at the posterior mean.
+    """
+    from scipy.stats import betabinom
+    if future < 1:
+        raise ValueError("future must be at least 1")
+    return betabinom.pmf(np.arange(future + 1), future, a + successes, b + trials - successes)

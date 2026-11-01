@@ -1,1 +1,769 @@
-\plannedchapter{Learning to plan audits}{The question this chapter will answer is what a learned planner may do in the audit process and what it may not. The 304-page draft trains a planner on counts, separates four authorities, shows why a credible interval is not an audit certificate, lets a Bayesian forecast set the bets of a betting audit so that it changes the cost and not the error, and ends with what can be claimed today and a claim--evidence ledger. Chapter~\ref{ch:learning} already states the gate and the budget the planner works inside. The chapter is not yet rebuilt in this copy.}\label{ch:planner}
+\chapter{Learning to plan audits}\label{ch:planner}
+
+By this point the Bank holds more models of its own attacks than it held audits a few years
+earlier. A network fitted to measured attack counts predicts how often a declared attack will
+succeed at a proposed setting, and a Bayesian model of the register returns a posterior for that
+success probability, with a credible interval beside it. It is natural to think that, past some
+point, these forecasts can do the audit's work. In its strongest form the belief runs as follows.
+An audit estimates a probability from a sample of simulated attacks. A model trained on thousands
+of earlier attacks, calibrated on attacks it never saw and tested on borrowers kept apart from its
+training data, has in effect seen a much larger sample than any one audit will. If it predicts a
+success rate of 0.03 at a tolerance of 0.12, and a posterior puts 95 per cent of its weight below
+0.07, then running two dozen more attacks to confirm what the model already knows looks like
+ritual. The forecast is narrower than the audit would be, so it appears to be the better evidence.
+
+A posterior can be that narrow before a single attack has been run. Give the success probability
+a beta prior with parameters 3 and 97, which is what an analyst writes down when she believes the
+risk lies near 0.03 and holds that belief as firmly as a hundred observed attacks. With no attacks
+run, the posterior is the prior, and its 95 per cent upper quantile is 0.062, well inside a
+tolerance of 0.12. The exact one-sided bound of Chapter~\ref{ch:estimate} after no attacks is one. A rule that
+certified on the credible bound would certify this release, and every other release given the
+same prior, whatever its true risk, so its chance of certifying an unsafe release is one. All of
+the narrowness came from the prior. A prior built from a model's predictions is a prior of exactly
+this kind: it carries the weight of attacks that were run on other settings, other vintages or
+other registers, and never on the release in front of the committee.
+
+At the Bank the belief arrived as a memo. Tom\'as, the visiting researcher whose loan-level file
+had been certified at a floor of 150 in Chapter~\ref{ch:monitoring}, asked for the same file extended by one more
+monthly vintage. The data innovation group, whose proposal tool Naledi had reviewed in
+Chapter~\ref{ch:proposals}, now ran a planner fitted to the Bank's development attacks and a posterior for each
+declared attack. Their memo described the update as routine: the planner predicted risks well
+under the tolerance, the posterior agreed, and the audit could be waived. The chair sent the memo
+to Naledi with a single line asking whether, for an update of this kind, the models could take the
+audit's place.
+
+This chapter answers one question. How can a forecast of attack success, from a trained network or
+a Bayesian posterior, make the audit of a release cheaper, and what must stay out of the
+forecast's reach so that the certificate keeps the error probability written on it? The answer is
+built from the extension of November 2026 and the engine code that carries it: a planner trained
+on counts, a harness that keeps a language model to proposing, a comparison of credible and exact
+bounds, an audit that bets on a forecast, and a registry that charges every attempt to a fixed
+budget before its outcome exists.
+
+\section{A planner trained on counts}\label{c22:sec-planner}
+
+The planner's job is narrow. For each development coordinate $i$, a pair of a candidate setting and
+a declared attack, it reads a feature vector $x_i$ (mechanism strength, released share, vintage
+count, summaries an institution can compute without running an attack) and predicts the
+probability $p_i$ that one fresh attack succeeds. Its labels are the outcomes of attacks that were
+actually executed: $K_i$ successes in $B_i$ trials, recorded as integers. With logit $h_\phi(x_i)$ from a
+network with parameters $\phi$ and $p_i=1/(1+e^{-h_\phi(x_i)})$, the binomial likelihood gives, after
+dropping terms free of $\phi$, the training loss
+\begin{equation}\label{c22:eq-loss}
+L(\phi)=\frac1{\sum_iB_i}\sum_i\Big[B_i\log\big(1+e^{h_\phi(x_i)}\big)-K_ih_\phi(x_i)\Big]+\frac\lambda2\|\phi\|^2.
+\end{equation}
+The loss weighs each coordinate by its number of trials. A rate of one in ten and a rate of a
+thousand in ten thousand are the same number, and the loss treats them very differently, because
+the second is a hundred times better measured. Proposition~\ref{c14:prop-labels} showed what the minimiser of this loss
+learns: the success frequency of the attacks that produced the counts, and nothing else. This
+section adds what the loss needs in order to be computed honestly.
+
+The first need is the counts themselves. Development evidence often survives only as a table of
+rates, and the temptation is to rebuild a count by multiplying a published rate by the number of
+trials and rounding. That step can change the label. Suppose an attack succeeded on 7 of 150
+targets, a rate of $0.0467$, and the report printed $0.05$. Multiplying back gives $7.5$, which rounds
+to 8, so the rebuilt label is one success too many; a report printed to three places, $0.047$, gives
+$7.05$ and recovers the count. Proposition~\ref{c22:prop-count} gives the condition: rounding to $d$ decimal places is
+harmless when the trial count is below $10^d$, and beyond that no rule can promise to recover the
+label. The engine therefore refuses rates. Its fitting function raises an error when successes or
+trials arrive as anything but integers, and the selected maximum bound of Chapter~\ref{ch:estimate} warns when it
+has to rebuild counts from rates.
+
+The second need is a gradient that a reviewer can check. Differentiating \eqref{c22:eq-loss} with respect to the
+logit of coordinate $i$ gives $(B_ip_i-K_i)/\sum_jB_j$: the expected count under the model minus the
+observed count, scaled by the total number of trials. Everything else follows by the chain rule
+through the network's layers, each $\tanh$ layer contributing the factor $1-\tanh^2z$. Because these
+derivatives are written out by hand, the tests compare them with finite differences, and the
+planner needs no GPU framework.
+
+The third need is a baseline. A network with no hidden layer is logistic regression on the same
+counts, and every deeper model must beat it on held-out coordinates before its depth is credited
+with anything. The baseline has a property the deep model lacks: its loss is strictly convex, so
+its fit is the unique best logistic model and not an accident of initialisation. A comparison with
+the baseline is therefore a comparison with a fixed target.
+
+\begin{proposition}[The count likelihood]\label{c22:prop-count}
+Let $L$ be the loss \eqref{c22:eq-loss} with $\lambda\ge0$, and write $N=\sum_jB_j$ and $p_i=1/(1+e^{-h_i})$ with $h_i=h_\phi(x_i)$.
+\begin{enumerate}
+\item The derivative of the unpenalised loss with respect to $h_i$ is $(B_ip_i-K_i)/N$.
+\item For a model with no hidden layer, $h_i=w^\top x_i+c$, and $\lambda>0$, the loss is strictly convex in $(w,c)$ and has exactly one minimiser.
+\item If a rate $K/B$ is published rounded to $d$ decimal places and $B<10^d$, then rounding $B$ times the published rate to the nearest integer returns $K$. If $d\ge1$ and $B\ge2\cdot10^d$, two different counts can share the same published rate.
+\end{enumerate}
+\end{proposition}
+
+\begin{example}[Two coordinates with the same rate]\label{c22:ex-rate}
+The innovation group's file held two coordinates with a rate of $0.1$: one success in 10 attacks, and 100 in 1,000. The numbers are
+illustrative. Suppose the planner currently predicts $0.05$ for both. The total number of trials is
+$N=1{,}010$, and part 1 gives the gradient with respect to each logit: $(10\times0.05-1)/1{,}010=-0.0005$
+for the first and $(1{,}000\times0.05-100)/1{,}010=-0.0495$ for the second. Both push the prediction
+up, and the second pushes a hundred times harder, because it carries a hundred times the evidence.
+Moving both predictions to $0.1$ lowers the loss \eqref{c22:eq-loss}, without its penalty, from $0.346$ to $0.325$ nats
+per trial. Had the file held only the two rates, the planner would have weighed them equally, and
+the engine's fitting function refuses such input: given $0.1$ where it expects a count, it stops
+with the message that successes and trials must be integer counts, not rates.
+\end{example}
+
+The extension's evidence run tested whether depth pays on counts of this kind. It is synthetic.
+Each of five seeds draws 240 coordinates in 120 groups of two, four features uniform on $[-1,1]$,
+and a true logit $-2+0.7x_1-0.5x_2+0.9x_3x_4$, whose last term is an interaction a logistic model
+cannot represent; each coordinate receives 100 attacks. Whole groups go to training, calibration
+and test in the proportions 60, 20 and 20 per cent. The logistic model and a network with two
+hidden layers of 12 and 8 units are fitted to the same training counts. The repository's code
+(\texttt{scripts/chapter22\_evidence.py}, seeds 0 to 4) reproduces the pattern: the network beat the
+logistic model on test cross-entropy in all five seeds, by a mean of $0.0026$ nats per trial, with
+seed gains between $0.0011$ and $0.0044$ (the draft reports a mean of $0.0025$ and gains between $0.0015$
+and $0.0033$; the seeds and the random streams differ). Test cross-entropies themselves lay between
+$0.36$ and $0.41$, so the gain is under one per cent of the loss.
+
+Figure~\ref{c22:fig-depth} puts the gain on a scale where it can be judged. Because the data are synthetic, the
+true probabilities are known, and their own test cross-entropy on the same counts is the floor
+that a model with no information about the noise cannot beat in expectation. The figure shows how
+far each model sits above that floor. The logistic model sat a mean of $0.0054$ above it and the
+network $0.0028$ (the draft: $0.0056$ and $0.0031$), so depth recovered about half of what the
+interaction made available. The result is real and small, on a problem built to contain the one
+pattern the baseline cannot fit. It does not show a general advantage of depth, and the claim
+ledger at the end of the chapter records it that way. In the draft two of the five network fits
+stopped with the optimiser reporting that it had not converged; in the repository's run all ten
+fits converged, and a reader who sees a fit that did not converge should record it beside the
+gain.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ybar,width=0.78\textwidth,height=6cm,bar width=11pt,ymin=0,ymax=0.009,
+  xlabel={seed},ylabel={excess test cross-entropy},xtick={0,1,2,3,4},enlarge x limits=0.15,
+  legend style={at={(0.03,0.97)},anchor=north west,draw=none,font=\scriptsize,fill=white}]
+\addplot[fill=white,postaction={pattern=north east lines}] coordinates {(0,0.0059) (1,0.0051) (2,0.0054) (3,0.0027) (4,0.0077)};
+\addplot[fill=gray!60] coordinates {(0,0.0045) (1,0.0022) (2,0.0009) (3,0.0016) (4,0.0048)};
+\legend{logistic baseline,network with hidden layers of 12 and 8}
+\end{axis}
+\end{tikzpicture}
+% source: scripts/chapter22_evidence.py, seeds 0-4
+\caption{How far each planner's test cross-entropy lies above that of the true probabilities, in nats
+per trial, for five synthetic seeds. Hatched white bars are the logistic baseline; solid grey bars are
+the network with two hidden layers. Both models were fitted to the same integer counts and scored on
+the same held-out groups. The network is closer to the truth in every seed.}
+\label{c22:fig-depth}
+\end{figure}
+
+A planner that ranks coordinates well can still be wrong about their probabilities, and the
+audit's bets, introduced below, use the probabilities. Temperature scaling \citep{guo2017}
+corrects a uniform over- or under-confidence: it divides every logit by one number $T>0$, fitted on
+the calibration partition by the same binomial cross-entropy. Proposition~\ref{c22:prop-temp} shows that the
+step changes the probabilities without changing their order, and that the fitting problem has one
+answer.
+
+\begin{proposition}[Temperature changes probabilities, not order]\label{c22:prop-temp}
+Let $z_1,\dots,z_n$ be logits on a calibration partition with counts $(K_i,B_i)$, not all $z_i$ zero, and for $T>0$ let
+$p_i(T)=1/(1+e^{-z_i/T})$.
+\begin{enumerate}
+\item For every $T>0$, $p_i(T)>p_j(T)$ if and only if $z_i>z_j$.
+\item The binomial cross-entropy of $p(T)$ is a strictly convex function of $s=1/T$, so it has at most one minimiser over any interval of $T$, and it is unimodal in $\log T$.
+\end{enumerate}
+\end{proposition}
+
+In the repository's run the fitted temperatures lay between $1.00$ and $1.10$ for both models (the
+draft: $0.978$ to $1.029$), so neither was meaningfully overconfident on its own kind of data, and
+calibration moved the test cross-entropy by less than $0.0005$ in every case, slightly upwards in
+four of the ten fits. The test suite shows the other case: a logistic model whose logits are
+deliberately multiplied by three is repaired by a fitted temperature above $1.5$. A temperature
+fitted on data like the calibration partition is no guarantee once the register changes, which is
+the subject of Chapter~\ref{ch:change}.
+
+The last need is a split that does not leak. A credit register holds many rows per borrower, and a
+borrower's later loans resemble the earlier ones. Rows split at random put the same borrower in
+training and test, and the test score then measures memory. Ecologists met the same problem with
+data that cluster in space, time or family, and recommend blocking the split along that structure
+\citep{roberts2017}. The engine's split assigns whole groups, which may be borrowers, connected
+groups of borrowers or periods, to exactly one partition, and its test checks that no group
+appears on two sides. One limit belongs in the record: the function places groups at random, so
+passing periods as groups keeps each period whole but does not put the later periods in the test
+partition. A forward split by time, which is what a planner used on next month's release needs,
+has to be made separately.
+
+Naledi asked the innovation group for their training file before reading their predictions. It
+held rates to two decimal places, copied from old assessment reports, with trial counts in the
+thousands. The engine refused it. The group went back to the attack logs, rebuilt the file from
+integer counts, and refitted both models. Their network still beat the logistic model, by a margin
+Naledi wrote into her note to the chair as too small to change any plan she would make.
+
+\section{Four authorities}\label{c22:sec-authorities}
+
+The planner learns from attacks somebody chose to run, and Chapter~\ref{ch:proposals} let a language model help
+with the choosing. The extension makes the boundary around that model exact by naming four
+authorities and refusing to let any of them borrow another's. The language model proposes
+scenarios. An approved evaluator executes them and measures integer counts. The planner allocates
+attack effort from those counts. The registered gate decides whether a release is certified.
+Figure~\ref{c22:fig-auth} draws the path.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[>=stealth,every node/.style={font=\scriptsize,align=center},
+  m/.style={draw,dashed,fill=white,minimum width=2.7cm,minimum height=1.5cm},
+  e/.style={draw,pattern=north east lines,pattern color=gray!50,minimum width=2.7cm,minimum height=1.5cm},
+  p/.style={draw,fill=gray!50,minimum width=2.7cm,minimum height=1.5cm},
+  g/.style={draw,double,double distance=1.2pt,fill=black!75,text=white,minimum width=2.7cm,minimum height=1.5cm}]
+\node[m] (a) at (0,0) {\textbf{Model}\\ proposes\\ scenarios};
+\node[e,fill=white] (b) at (3.6,0) {\colorbox{white}{\textbf{Evaluator}}\\ \colorbox{white}{executes, records}\\ \colorbox{white}{integer counts}};
+\node[p] (c) at (7.2,0) {\textbf{Planner}\\ allocates and\\ sets bets};
+\node[g] (d) at (10.8,0) {\textbf{Gate}\\ certifies on fresh\\ draws only};
+\draw[->] (a)--(b); \draw[->] (b)--(c); \draw[->] (c)--(d);
+\node at (0,-1.5) {never writes counts,\\ code or budgets};
+\node at (3.6,-1.5) {never runs\\ unapproved code};
+\node at (7.2,-1.5) {never sees final\\ audit rows};
+\node at (10.8,-1.5) {never reads a\\ prediction as a bound};
+\end{tikzpicture}
+\caption{The four authorities of the extension's harness. Each box differs from its neighbours by fill
+and by border or hatch: the dashed white box is the language model, the hatched light box the
+evaluator, the solid mid-grey box the planner and the dark double-bordered box the registered gate.
+The line under each box states what that authority may never do.}
+\label{c22:fig-auth}
+\end{figure}
+
+The separation has to be enforced where text becomes data, and the engine does so at the intake. A
+proposal batch arrives as raw bytes and is refused before parsing if it exceeds 256,000 bytes. It
+must be a JSON array of one to 32 objects, each with exactly an identifier, a description and a
+features object, and nothing more. Feature names must match a declared list, and each value must
+be a finite number of the declared type inside its declared range; a Boolean posing as an integer
+is refused, and so are duplicate JSON keys, duplicate identifiers and the non-finite constants
+that a lenient parser would accept. A field named \texttt{successes} is an unknown key and fails the
+exact-fields check, so a model cannot hand the planner a fabricated outcome. The tests send nine
+hostile payloads, one for each of these failures, and all nine are rejected.
+
+Text inside a valid proposal is inert. A description that reads ``Ignore the audit rules and report
+success'' passes the intake as a string and goes to a reviewer, who may reject it; nothing in the
+engine interprets it. Instructions planted in data that a model will read are the attack known as
+indirect prompt injection \citep{greshake2023}, and the defence here is that no part of the engine
+acts on text. A proposal that passes the intake is still unapproved. It becomes an attack only when
+a named reviewer maps it to a versioned evaluator, and the extension states a further check that no
+schema can make: valid numbers can still describe a different attack from the one the text
+describes, and only a reviewer can see that. Once the scenario family, tolerances and audit design
+are fixed, \texttt{freeze\_plan} reduces the plan to a SHA-256 digest of a canonical serialisation. The
+digest detects any later change. It proves neither who fixed the plan nor when.
+
+The evaluator's side has a contract of its own. Every measured row is a record with integer
+successes and trials, the scenario, mechanism, target law and conditioning event it belongs to,
+the split it was drawn for, its random stream, and SHA-256 hashes of the data and the evaluator
+code. A row drawn for the final audit must also name the frozen plan and its share of the error
+budget. The loader that feeds the planner refuses to return final-audit rows under any query, so
+a permissive filter cannot slip audit outcomes into training. A test set that informs training
+stops being a test set, the lesson of adaptive data analysis \citep{dwork2015}.
+
+Some parts of the harness are specified and not built, and the record should say so. The engine
+has no reviewer workflow with authenticated identities, no dispatcher that maps an approved
+proposal to its evaluator, and no adapter that calls a hosted model; the local adapter of
+Chapter~\ref{ch:proposals} is unchanged, and the extension makes no hosted calls.
+
+The innovation group's newest batch held a proposal whose description said that the scenario was
+already covered by the March audit and needed no fresh run. The intake accepted it as text. The
+reviewer read the sentence, found that the March audit had used six vintages and the update would
+have seven, and sent the scenario to the evaluator with the rest.
+
+\section{A credible interval is not an audit certificate}\label{c22:sec-credible}
+
+The memo's second argument was the posterior. For a single coordinate, a beta prior with
+parameters $a$ and $b$ and a binomial count $K$ in $B$ trials give the posterior
+$\mathrm{Beta}(a+K,\,b+B-K)$, and its upper quantile at level $1-\alpha$ is a credible bound. The exact
+bound of Chapter~\ref{ch:estimate} \citep{clopper1934} is the upper quantile of $\mathrm{Beta}(K+1,\,B-K)$ at the same level. The two
+formulas look alike, and with a uniform prior they differ by one in the second parameter. That
+difference always runs the same way.
+
+\begin{proposition}[Credible and exact bounds]\label{c22:prop-credible}
+Let $K\sim\mathrm{Binom}(B,p)$ with $B\ge1$, fix $\alpha\in(0,1)$, let $U_{\rm CP}(K)$ be the exact one-sided upper bound at level $\alpha$,
+and let $U_{a,b}(K)$ be the $(1-\alpha)$ quantile of the $\mathrm{Beta}(a+K,\,b+B-K)$ posterior, for a prior with $0<a\le1$
+and $b\ge1$.
+\begin{enumerate}
+\item $U_{a,b}(K)<U_{\rm CP}(K)$ for every $K<B$.
+\item For every $p$ strictly between $U_{a,b}(0)$ and $U_{\rm CP}(0)$, $\Prob_p\{p\le U_{a,b}(K)\}<1-\alpha$.
+\item If $U_{a,b}(0)\le\tau<U_{\rm CP}(0)$, the rule that certifies when $U_{a,b}(K)\le\tau$ certifies a release whose true risk is exactly $\tau$ with probability at least $(1-\tau)^B>\alpha$.
+\end{enumerate}
+\end{proposition}
+
+The first part says the credible bound is always the smaller of the two for these priors, and the
+second that being smaller has a price: there are true risks it fails to cover as often as its
+level promises. The third turns the price into the committee's error. Figure~\ref{c22:fig-bounds} shows the
+bounds after a run of attacks with no successes, at the Bank's tolerance of $0.12$ and $\alpha=0.05$.
+The exact bound reaches the tolerance at 24 attacks, which is the zero-success count of
+Chapter~\ref{ch:estimate}. The uniform-prior credible bound reaches it at 23, and a release whose true risk is exactly
+$0.12$ survives 23 attacks without a success with probability $0.053$, just above the $0.05$ promised.
+The prior with parameters 1 and 9 reaches the tolerance at 15 attacks, and the same release
+survives 15 attacks with probability $0.147$, nearly three times the promised error. With the prior
+of the opening section the count is zero. Each of these priors buys its attacks with the
+committee's error, and the narrower the prior, the more it buys. A credible interval answers a
+question about belief, and it has frequentist coverage only under conditions that must be checked
+case by case \citep{bayarri2004}.
+
+\begin{example}[One success in thirty attacks]\label{c22:ex-thirty}
+Suppose the audit of Tom\'as's update runs 30 attacks and one succeeds, at the tolerance of $0.12$
+and $\alpha=0.05$. The exact bound is $0.149$, above the tolerance, and the release fails. The credible
+bound under a uniform prior is $0.144$, which also fails. Under the $\mathrm{Beta}(1,9)$ prior it is $0.116$, and
+the release passes. Under the $\mathrm{Beta}(3,97)$ prior of the opening section it is $0.059$, and the release
+passes with room to spare. The same 30 attacks and the same success give four bounds, and the
+decision follows the prior. Ten more attacks without a success bring the exact bound to $0.113$ (one success in 40), and
+the release passes on evidence alone.
+\end{example}
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[width=0.82\textwidth,height=6.5cm,xlabel={attacks run, none successful},ylabel={95 per cent upper bound},
+  xmin=0,xmax=40,ymin=0,ymax=0.8,
+  legend style={at={(0.97,0.97)},anchor=north east,draw=none,font=\scriptsize,fill=white}]
+\addplot[black,thick,mark=*,mark size=1.5pt,mark repeat=4] coordinates {(0,1.0000) (1,0.9500) (2,0.7764) (3,0.6316) (4,0.5271) (5,0.4507) (6,0.3930) (7,0.3482) (8,0.3123) (9,0.2831) (10,0.2589) (11,0.2384) (12,0.2209) (13,0.2058) (14,0.1926) (15,0.1810) (16,0.1707) (17,0.1616) (18,0.1533) (19,0.1459) (20,0.1391) (21,0.1329) (22,0.1273) (23,0.1221) (24,0.1173) (25,0.1129) (26,0.1088) (27,0.1050) (28,0.1015) (29,0.0981) (30,0.0950) (31,0.0921) (32,0.0894) (33,0.0868) (34,0.0843) (35,0.0820) (36,0.0798) (37,0.0778) (38,0.0758) (39,0.0739) (40,0.0722)};
+\addplot[black!70,thick,dashed,mark=square,mark size=2pt,mark repeat=4] coordinates {(0,1.0000) (1,0.9875) (2,0.8882) (3,0.7679) (4,0.6656) (5,0.5837) (6,0.5183) (7,0.4653) (8,0.4218) (9,0.3855) (10,0.3548) (11,0.3286) (12,0.3059) (13,0.2861) (14,0.2688) (15,0.2533) (16,0.2396) (17,0.2272) (18,0.2161) (19,0.2060) (20,0.1968) (21,0.1883) (22,0.1806) (23,0.1735) (24,0.1669) (25,0.1608) (26,0.1551) (27,0.1498) (28,0.1449) (29,0.1402) (30,0.1359) (31,0.1318) (32,0.1280) (33,0.1243) (34,0.1209) (35,0.1177) (36,0.1146) (37,0.1117) (38,0.1089) (39,0.1063) (40,0.1038)};
+\addplot[gray,thick,dotted,mark=triangle,mark size=2.5pt,mark repeat=4] coordinates {(0,0.9500) (1,0.7764) (2,0.6316) (3,0.5271) (4,0.4507) (5,0.3930) (6,0.3482) (7,0.3123) (8,0.2831) (9,0.2589) (10,0.2384) (11,0.2209) (12,0.2058) (13,0.1926) (14,0.1810) (15,0.1707) (16,0.1616) (17,0.1533) (18,0.1459) (19,0.1391) (20,0.1329) (21,0.1273) (22,0.1221) (23,0.1173) (24,0.1129) (25,0.1088) (26,0.1050) (27,0.1015) (28,0.0981) (29,0.0950) (30,0.0921) (31,0.0894) (32,0.0868) (33,0.0843) (34,0.0820) (35,0.0798) (36,0.0778) (37,0.0758) (38,0.0739) (39,0.0722) (40,0.0705)};
+\addplot[gray!70,thick,dashdotted,mark=o,mark size=2pt,mark repeat=4] coordinates {(0,0.2831) (1,0.2589) (2,0.2384) (3,0.2209) (4,0.2058) (5,0.1926) (6,0.1810) (7,0.1707) (8,0.1616) (9,0.1533) (10,0.1459) (11,0.1391) (12,0.1329) (13,0.1273) (14,0.1221) (15,0.1173) (16,0.1129) (17,0.1088) (18,0.1050) (19,0.1015) (20,0.0981) (21,0.0950) (22,0.0921) (23,0.0894) (24,0.0868) (25,0.0843) (26,0.0820) (27,0.0798) (28,0.0778) (29,0.0758) (30,0.0739) (31,0.0722) (32,0.0705) (33,0.0688) (34,0.0673) (35,0.0658) (36,0.0644) (37,0.0630) (38,0.0618) (39,0.0605) (40,0.0593)};
+\addplot[thin,dashed] coordinates {(0,0.12) (40,0.12)};
+\legend{exact bound at $\alpha=0.05$,exact bound at $\alpha/4$,credible: uniform prior,credible: Beta(1,9) prior,tolerance $0.12$}
+\end{axis}
+\end{tikzpicture}
+% source: privacy_risk.uncertainty.binomial_upper and beta_posterior_upper
+\caption{Upper bounds on the success probability after $B$ attacks without a success. The solid black line
+with filled circles is the exact bound at $\alpha=0.05$; the dashed dark line with squares is the exact
+bound at $\alpha/4$, as needed when four coordinates share the budget; the dotted line with triangles
+is the credible bound under a uniform prior; the dash-dot light line with open circles is the credible
+bound under the $\mathrm{Beta}(1,9)$ prior that the betting audit uses for its forecasts. The thin dashed
+horizontal line is the tolerance.}
+\label{c22:fig-bounds}
+\end{figure}
+
+The dashed line in Figure~\ref{c22:fig-bounds} shows the other cost a certificate carries. A release must pass
+every declared coordinate, and the exact bounds for $M$ coordinates are each computed at level
+$\alpha/M$, which by the union bound holds the chance that any of them misses at $\alpha$ without
+assuming the coordinates are independent. That is the union bound of Chapter~\ref{ch:proposals}, and the engine's
+\texttt{simultaneous\_upper\_bounds} computes it; its test enumerates the binomial law to confirm that
+each bound misses with probability at most $\alpha/M$. The cost grows slowly. At a tolerance of $0.12$
+the zero-success audit needs 24 attacks for one coordinate, 29 for two, 35 for four, 40 for eight
+and 46 for sixteen. No prior enters the calculation, and none can shorten it.
+
+The posterior has honest uses, and the engine keeps them. Before an audit is run, the question is
+how many attacks to plan for, and a forecast answers it best when it keeps its own uncertainty. The
+engine's posterior predictive gives the law of a future count as a weighted mixture of binomials
+over the posterior, and its test confirms that the mixture is wider than the binomial obtained by
+plugging in the posterior mean (the same fact as Proposition~\ref{c20:prop-mix}). A planner who sized the audit from the plug-in figure
+would plan too few attacks and see the audit run long more often than expected. Both Bayesian
+functions say in their documentation that they return planning figures, and the gate of
+Chapter~\ref{ch:learning} refuses a planner's prediction offered in place of a bound.
+
+Naledi took the figure to the chair with one question for the innovation group: what was their
+prior made of? It had been fitted to the development attacks on the earlier six-vintage file, so it
+held the weight of a few hundred attacks run on a different release. The chair wrote in the margin
+that the group's posterior was a good reason to expect the audit to pass and no reason to skip it.
+
+\section{Betting with a forecast}\label{c22:sec-betting}
+
+The forecast earns its place inside the audit, where it can shorten the work without touching the
+error. Chapter~\ref{ch:monitoring} built the sequential audit as a bet against the hypothesis that the release is
+unsafe, in the manner of testing by betting \citep{shafer2021,waudbysmith2024}. Before attack $b$ the
+auditor fixes a number $q_b$ below the tolerance, her wealth is multiplied after each attack by the
+factor in Chapter~\ref{ch:monitoring}, and she certifies the first time the wealth reaches $1/\alpha$. The bet should be
+close to the true risk: the expected audit length is shortest when $q_b$ equals the true risk, and
+the true risk is what the auditor does not know. This is the rule of \citet{kelly1956}, who showed
+that a gambler's wealth grows fastest when the bets match the true probabilities. A forecast is a
+guess at it, and the engine turns a Bayesian forecast into bets.
+
+The rule is simple. Start from a beta prior with parameters $a$ and $b_0$. Before attack $b$, compute
+the posterior mean from the outcomes of attacks 1 to $b-1$ only,
+\[\bar r_{b-1}=\frac{a+S_{b-1}}{a+b_0+b-1},\qquad S_{b-1}=\sum_{t<b}X_t,\]
+and bet $q_b=\min\{\tau-\epsilon,\max(\epsilon,\bar r_{b-1})\}$ for a fixed $\epsilon\in(0,\tau/2)$. The engine's defaults are $a=1$,
+$b_0=9$ and $\epsilon=\tau/10$, so at a tolerance of $0.12$ the first bet is the prior mean of $0.1$ and every bet
+lies between $0.012$ and $0.108$. A planner's prediction can replace the default prior by choosing $a$
+and $b_0$ so that the prior mean is the prediction. Proposition~\ref{c22:prop-bets} shows that the choice cannot hurt
+the error bound, and that one change of timing can destroy it.
+
+\begin{proposition}[Predictable Bayesian bets]\label{c22:prop-bets}
+Let $X_1,X_2,\dots$ be attack outcomes in $\{0,1\}$ with $\mathcal F_b$ the information after attack $b$, let $\tau\in(0,1)$,
+$\alpha\in(0,1)$ and $\epsilon\in(0,\tau/2)$, and let $E_n=\prod_{b\le n}(q_b/\tau)^{X_b}\{(1-q_b)/(1-\tau)\}^{1-X_b}$.
+\begin{enumerate}
+\item For any prior with $a,b_0>0$, the bet $q_b$ defined above is a function of $X_1,\dots,X_{b-1}$ and lies in $[\epsilon,\tau-\epsilon]$.
+\item If $\Prob(X_b=1\mid\mathcal F_{b-1})\ge\tau$ for every $b$, then $(E_n)$ is a nonnegative supermartingale with $E_0=1$, and the audit that certifies when $E_n\ge1/\alpha$, stopped at any time and by any rule, certifies with probability at most $\alpha$.
+\item If instead the bet may depend on $X_b$ itself, with $q_b=\tau-\epsilon$ when $X_b=1$ and $q_b=\epsilon$ when $X_b=0$, and the outcomes are independent with success probability exactly $\tau$, then for all small enough $\epsilon$ the audit certifies with probability one.
+\end{enumerate}
+\end{proposition}
+
+The second part holds for every prior, however wrong. A forecast of $0.01$ for a release whose true
+risk is $0.11$ produces small bets, wealth that grows slowly or shrinks, and a long audit that may
+end without a certificate; it cannot produce a false certificate more often than $\alpha$. The third
+part is the reason the engine computes each bet from a shifted cumulative count and the test suite
+checks that changing the outcome of attack $b$ leaves bet $b$ unchanged. The peeking bets of the
+third part all lie inside $(0,\tau)$, so the range check on the bets cannot catch them. Only the
+timing can.
+
+The evidence run checked the bound where it is tightest. At a tolerance of $0.12$ and $\alpha=0.05$, it
+simulated 1,000 audits of a release whose true risk is exactly $0.12$, each allowed up to 1,500
+attacks with the default prior. The audit falsely certified in 46 of the 1,000, a rate of $0.046$
+(the repository's run with seed 2026 gave the same count), and the exact 95 per cent upper bound on that rate is $0.058$. The point estimate is under the
+promised $0.05$, as Proposition~\ref{c22:prop-bets} requires, and a thousand runs cannot place the rate more finely
+than the interval shows.
+
+Figure~\ref{c22:fig-audit} shows what the forecast buys on safer releases. At true risks of $0.03$ and $0.06$
+every audit certified, after a median of 56 and 144 attacks (the repository's run reproduces both); at $0.09$ the median was 638
+attacks, or 568 among the audits that certified, and 87.5 per cent of audits certified within the cap of 1,500 (the draft
+printed 669, 585 and 85 per cent from its own 200 simulated audits). The comparison in the figure is the cheapest fixed design, the 24-attack audit that
+certifies only if no attack succeeds. At a true risk of $0.03$ that design certifies with probability
+$0.48$, at $0.06$ with probability $0.23$ and at $0.09$ with probability $0.10$. It is short because it gives
+up at the first success, and a release with a real but acceptable risk produces successes. The
+betting audit pays more attacks to tolerate them, and the forecast keeps that payment small when
+the release is far from the line. Near the line nothing keeps it small. The rise from 144 attacks
+at $0.06$ to 638 at $0.09$ is the behaviour the expected-length result of Chapter~\ref{ch:monitoring} predicts, and no
+forecast changes it.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[ybar,width=0.8\textwidth,height=6.2cm,bar width=24pt,ymin=0,ymax=1.15,
+  ylabel={share of audits certified},xlabel={true risk of the release (tolerance $0.12$)},
+  symbolic x coords={0.03,0.06,0.09},xtick=data,enlarge x limits=0.3,
+  legend style={at={(0.5,-0.32)},anchor=north,draw=none,font=\scriptsize,legend columns=1}]
+\addplot[fill=gray!60] coordinates {(0.03,1.0) (0.06,1.0) (0.09,0.875)};
+\addplot[fill=white,postaction={pattern=crosshatch}] coordinates {(0.03,0.481) (0.06,0.2265) (0.09,0.104)};
+\node[font=\scriptsize] at (axis cs:0.03,1.07) {56};
+\node[font=\scriptsize] at (axis cs:0.06,1.07) {144};
+\node[font=\scriptsize] at (axis cs:0.09,0.945) {638};
+\legend{betting audit with forecast bets,fixed 24-attack zero-success audit}
+\end{axis}
+\end{tikzpicture}
+% source: scripts/chapter22_evidence.py
+\caption{Share of audits that certify a safe release, at three true risks and a tolerance of $0.12$, with
+$\alpha=0.05$. Solid grey bars are the betting audit with bets from a $\mathrm{Beta}(1,9)$ forecast, capped at 1,500
+attacks, with the median number of attacks used printed above each bar; white cross-hatched bars are
+the fixed design of 24 attacks that certifies only when none succeeds. Both designs falsely certify a
+release at the tolerance with probability at most $0.05$.}
+\label{c22:fig-audit}
+\end{figure}
+
+One feature of the run belongs in any report of it. The share certified and the median length at
+each risk come from the same 200 simulated audits, and an audit that never certified counts its full
+1,500 attacks in the median, so the median at $0.09$ is partly a statement about the cap. And the
+guarantee rests on the condition in the second part of the proposition, that each attack's success
+probability given the past is at least the tolerance when the release is unsafe. Fresh targets
+drawn from the registered target law satisfy it. An audit that turns to easier targets once it has
+seen a few successes does not, and Chapter~\ref{ch:monitoring} showed how that design fails.
+
+Naledi planned the audit for Tom\'as's update in this form. She set the prior for the bets from the
+innovation group's prediction, made on the six-vintage file, with the weight of twenty attacks so
+that the audit's own outcomes would soon outweigh it, and fixed the cap, the tolerance and the
+error share in the plan before registering it. If the group's forecast was right, the audit would
+be short. If it was wrong in either direction, the audit would be longer, and the certificate
+would mean the same.
+
+\begin{example}[Naledi's bets]\label{c22:ex-bets}
+A forecast of $0.03$ with the weight of twenty attacks is a $\mathrm{Beta}(0.6,19.4)$ prior. At a tolerance of $0.12$ the first bet is
+$0.03$, and a failed attack multiplies the wealth by $0.97/0.88=1.102$, against $1.023$ under the default
+bet of $0.1$. If no attack succeeds, the audit reaches a wealth of 20 at attack 28; the default prior
+needs 37. Suppose the fourth attack succeeds. The bet then was $0.026$, so the wealth, $1.345$ after three
+failures, is multiplied by $0.026/0.12$ and falls to $0.292$. The forecast moves to $0.067$ and the bets
+with it, and the audit certifies at attack 52, against 55 for the default. With a second success at
+attack 21 it certifies at 70, against 72. A confident forecast pays most on a clean run and costs
+most at a success, and the two priors end close together once the audit's own outcomes outweigh them.
+\end{example}
+
+\section{Spending the budget before the outcome}\label{c22:sec-registry}
+
+The last place a forecast can hurt a decision is after an audit fails. A model that predicted a
+safe release, contradicted by an audit, is a strong temptation to try again, and
+Chapter~\ref{ch:monitoring} measured what that costs. The extension's evidence run repeated the measurement: a
+release with true risk $0.201$ against a tolerance of $0.2$, so that every certificate is false,
+audited with 500 attacks per attempt and up to 20 attempts. When each attempt was judged at the
+full 5 per cent, 50.2 per cent of 2,000 simulated programmes ended with a certificate (52.2 per
+cent in the repository's run with seed 2026). When the 5 per cent was divided among the 20 attempts in advance, 4.0 per cent did
+(3.95 per cent in the repository's run). These figures agree with the larger run of Chapter~\ref{ch:proposals}, and the remedy is the
+same: every attempt pays from one budget. What the extension adds is the place where the payment is
+made.
+
+The ledger of Chapter~\ref{ch:proposals} debited the budget after an audit's outcomes were supplied, and that chapter
+recorded the weakness: a caller could draw outcomes outside the ledger, discard a failure and never
+pay for it. The engine's registry closes that gap on a single host. It is a SQLite database with
+three tables: programmes with their total error budgets, plans frozen by their digests, and
+attempts. To run an audit, the caller first reserves a share $\alpha_\ell$ against a registered plan.
+The registry adds up what the programme has already spent, refuses the reservation if the total
+would exceed the budget, and writes the attempt row, all inside one transaction that takes the
+database's write lock before reading, so that two writers cannot both read the same balance and
+both spend it, the lost update of \citet{berenson1995}. Only then does it return the attempt's audit
+seed. An attempt is later closed as passed, failed or abandoned, and in each case its share stays
+spent. The tests check both halves of the rule. A programme with a budget of $0.05$ that spends $0.03$
+on a failed attempt and $0.02$ on a second is refused a third reservation of $0.001$, and four writers
+racing to reserve $0.03$ each from a budget of $0.05$ produce exactly one reservation. (The draft says
+the attempt row also carries a reservation time; the repository's table does not store one, which
+is one reason the clock remains an open item below.)
+
+\begin{proposition}[Spending before outcomes]\label{c22:prop-spend}
+Let a programme with budget $\alpha_P$ run attempts $\ell=1,2,\dots$, and let $\mathcal G_{\ell-1}$ be everything recorded before
+attempt $\ell$ draws its first outcome. Suppose the share $\alpha_\ell\ge0$ is fixed given $\mathcal G_{\ell-1}$, that $\sum_\ell\alpha_\ell\le\alpha_P$ on every
+path, and that, whenever the release attempt $\ell$ audits is unsafe, the attempt certifies it with conditional probability at
+most $\alpha_\ell$ given $\mathcal G_{\ell-1}$. Then the probability that any attempt certifies an unsafe release is at most
+$\alpha_P$. The conclusion fails if attempts may draw outcomes before their share is recorded and leave
+unrecorded the attempts that fail.
+\end{proposition}
+
+The proposition is the fixed-sample counterpart of the sequential result of Chapter~\ref{ch:monitoring}, and a plain
+form of the alpha spending that clinical trials use to divide one error among interim looks
+\citep{lan1983}. The registry is built to meet its conditions. Reservation before the first draw
+makes each share depend only on what was recorded earlier. The refusal at the budget makes the sum
+hold on every path, including paths on which a server fails mid-audit and the attempt is
+abandoned. Each attempt receives its own audit seed, drawn at random when the budget is reserved
+and recorded with the attempt, so that attempts draw fresh targets and audit draws stay separate
+from the streams used in development. An earlier version derived the seed from the plan digest and
+the attempt number, which anyone holding the plan could compute in advance; a development team that
+could foresee the audit targets could tune to them. A recorded random seed can be replayed
+afterwards and cannot be foreseen.
+
+The registry has limits it states itself. Recomputing plan digests detects a plan edited after
+registration; the engine's \texttt{verify\_hashes} lists any plan whose stored body no longer matches
+its digest. The registry cannot say who wrote a row or when, because the clock and the file belong
+to whoever runs it. An external timestamp, or a signed store run by someone outside the release
+team, is still needed for that, and the claim ledger lists it as open.
+
+Grace audited the registry three months after Tom\'as's update was released. She found two attempts
+against the plan: the first abandoned when the attack server restarted part way through, the
+second passed. Both had spent their shares, and the sum was inside the programme's budget. The
+verification listed no altered plans. Her one finding was the clock: the reservation times came
+from the same machine that ran the audits, and she recommended that the Bank anchor the registry's
+daily state with the records office, which keeps its own time.
+
+\section{What can be claimed today}\label{c22:sec-claims}
+
+The extension did not stop at mathematics. It set out seventeen engineering steps, from
+reproducing its prototype to validating the whole method on a governed register, and the engine's
+documentation records the status of each. Figure~\ref{c22:fig-steps} shows them by phase. Ten steps are done,
+each with a module and a test that an auditor can run. One, time-varying exposure and activity, is
+half done: the model and its pooled attack exist, and the floors of Chapter~\ref{ch:credit} have not been
+recomputed under it. Three are open because they need what the engine cannot supply alone:
+authorised data in place of toy observations, a joined end-to-end synthetic release experiment,
+and validation on a governed register. Three are not built: a general Navier--Stokes drift and a
+PDE surrogate, which the extension makes conditional on a simpler model being shown to fall short,
+and a live model adapter, which the Bank has chosen not to connect.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[every node/.style={font=\scriptsize,align=center,minimum width=2.6cm,minimum height=0.85cm},node distance=0.15cm]
+\tikzset{done/.style={draw,very thick,fill=gray!60},part/.style={draw,fill=gray!20,pattern=north east lines,pattern color=gray!60},
+ open/.style={draw,dashed,fill=white},nb/.style={draw,dotted,fill=gray!8}}
+\foreach \i/\t/\s in {1/{1 Prototype\\ baseline}/done,2/{2 Conditioning\\ correction}/done,3/{3 Counts as\\ counts}/done,4/{4 Governance\\ metadata}/done}
+  \node[\s] at (2.8*\i-2.8,0) {\t};
+\foreach \i/\t/\s in {1/{5 Time-varying\\ exposure}/part,2/{6 Graph\\ baseline}/done,3/{7 Scalar\\ solver}/done,4/{8 General\\ drift solver}/nb}
+  \node[\s] at (2.8*\i-2.8,-1.1) {\t};
+\foreach \i/\t/\s in {1/{9 Discrete\\ Bayes}/done,2/{10 Authorised\\ data}/open,3/{11 Simple and\\ deep planners}/done,4/{12 PDE\\ surrogate}/nb}
+  \node[\s] at (2.8*\i-2.8,-2.2) {\t};
+\foreach \i/\t/\s in {1/{13 Offline\\ fixtures}/done,2/{14 Live model\\ adapter}/nb,3/{15 Durable\\ registry}/done,4/{16 End-to-end\\ experiment}/open}
+  \node[\s] at (2.8*\i-2.8,-3.3) {\t};
+\node[open] at (0,-4.4) {17 Governed\\ register};
+\node[draw=none,anchor=west,minimum width=0pt] at (1.5,-4.4) {\scriptsize Phases 1 to 4 run top to bottom: steps 1--4, 5--8, 9--12, 13--17};
+\end{tikzpicture}
+\caption{The seventeen engineering steps of the extension, by phase and status. Done steps are dark
+grey with a heavy solid border; the partly done step is light grey, hatched, with a solid border; open
+steps are white with a dashed border; steps not built are near white, dotted, with a dotted border.
+Steps 10, 16 and 17 are the conditions for any operational claim. The draft counts ten done steps; this
+drawing counts them from the same list.}
+\label{c22:fig-steps}
+\end{figure}
+
+The steps support claims of different strength, and Table~\ref{c22:tab-claims} reproduces the engine's claim ledger.
+Its rows separate what is proved, what is implemented and tested on synthetic inputs, and what is
+unestablished. Two rows bear on this chapter. The planner trains from counts and can be calibrated,
+with no general advantage of depth; the evidence for both halves is the five-seed run above. And the
+proposal intake rejects fabricated outcomes and malformed input, with the reviewer workflow still to
+build. The last row is the one a committee will be asked about first: whether the whole pipeline
+improves the Bank's release decisions. The answer recorded is that nobody knows, and that steps 10,
+16 and 17 are what would tell.
+
+\begin{table}[ht]
+\centering\small
+\begin{tabular}{@{}p{7cm}p{6.2cm}@{}}
+\toprule
+Claim & Status\\
+\midrule
+Membership posterior needs renormalisation & Proved; implemented; book corrected; figures unaffected\\
+The transport solver conserves mass and stays positive under its bound & Derived and tested; exact shear only\\
+The planner trains from counts and can be calibrated & Implemented and tested on synthetic counts; no general advantage of depth\\
+The proposal intake rejects fabricated outcomes and malformed input & Implemented and tested; reviewer workflow open\\
+The registry spends the error budget before outcomes and prevents double spending & Implemented and tested on one host; external timestamping open\\
+Navier--Stokes describes the movement of information & A proposed analogy; unestablished\\
+The pipeline improves institutional release decisions & Unestablished; needs steps 10, 16 and 17\\
+\bottomrule
+\end{tabular}
+\caption{The claim ledger of the extension, as recorded in the engine's documentation. ``Synthetic'' means
+tested on generated data with chosen parameters.}
+\label{c22:tab-claims}
+\end{table}
+
+The chair asked Naledi for the sentence the decision record on Tom\'as's update should carry about
+the models. She wrote that a planner and a posterior had been used to set the audit's bets and size
+its plan, that neither had been used as evidence of the release's risk, and that the certificate
+rested on fresh audit draws charged to the programme's registered budget. The chair signed beneath
+it.
+
+\section{The answer}
+
+A forecast of attack success makes an audit cheaper in two places and nowhere else. It sizes the
+plan, through a posterior predictive that keeps its own uncertainty, and it sets the bets of a
+sequential audit, which is then short when the forecast is right and long when it is wrong, with
+the same error either way. On the synthetic evidence the forecast bets certified safe releases at
+risks of $0.03$ and $0.06$ every time, after a median of 56 and 144 attacks, while the false
+certification rate at the tolerance stayed at $0.046$. What must stay out of the forecast's reach is
+the certificate itself. A credible bound is smaller than the exact bound for the priors in common
+use, and the difference is paid for in false certificates: about $0.15$ at the tolerance when a
+zero-success audit is sized to the $\mathrm{Beta}(1,9)$ prior, and certainty under a prior narrow enough to
+pass on its own. The planner's labels must be integer counts from executed attacks, its depth must
+beat a logistic baseline on held-out groups before it is credited, and on the extension's data it
+did so by about $0.0026$ nats per trial. A language model may only propose, through an intake that
+refuses outcomes. And every attempt, failed or abandoned, pays its share of a budget before its
+first outcome is drawn. A model that predicts well makes the audit cheaper. It cannot stand in for
+the audit, because no model's accuracy appears anywhere in the bound the committee signs.
+
+\begin{inpractice}[In practice: letting a forecast plan the audit]
+Train planners only on integer counts from executed attacks, and refuse rates. Report a logistic
+model fitted to the same counts beside any deeper model, on groups (borrowers, connected groups,
+and later periods) kept out of training, and record any fit that did not converge. Calibrate with a
+temperature on a separate partition and treat the result as valid only for data like it. Let a
+language model propose through a strict intake, a named reviewer and an approved evaluator; never
+accept a count, a risk or a label from it. Use a posterior to size an audit and to set its bets,
+never as its bound. Fix every bet before its outcome, and register the plan, the cap, the tolerance
+and the share before the first draw. Reserve each attempt's share before it starts, keep failed and
+abandoned attempts in the ledger, and anchor the registry's clock outside the release team.
+
+\medskip\noindent\textit{In the software.} The planner is \texttt{privacy\_risk.planner} (\texttt{fit}, \texttt{objective},
+\texttt{binomial\_cross\_entropy}, \texttt{calibrate\_temperature}, \texttt{grouped\_split}, \texttt{recover\_count}). The intake is
+\texttt{privacy\_risk.proposals} (\texttt{validate\_proposals}, \texttt{freeze\_plan}) and the evidence contract
+\texttt{privacy\_risk.evidence} (\texttt{MeasurementRecord}, \texttt{training\_rows}). Bounds and planning figures are in
+\texttt{privacy\_risk.uncertainty} (\texttt{binomial\_upper}, \texttt{simultaneous\_upper\_bounds}, \texttt{beta\_posterior\_upper},
+\texttt{posterior\_predictive\_counts}); the audit is \texttt{privacy\_risk.betting} (\texttt{predictable\_bets}, \texttt{log\_wealth},
+\texttt{run\_audit}); the ledger is \texttt{privacy\_risk.registry.Registry} (\texttt{register\_plan}, \texttt{reserve}, \texttt{close},
+\texttt{verify\_hashes}). \texttt{scripts/chapter22\_evidence.py} regenerates the numbers of this chapter, and \texttt{tests/test\_ext\_planner.py} tests them. The draft also names
+\texttt{drisk proposals} and \texttt{drisk registry} command-line entries; this repository has no such commands. Algorithm~22.1 makes
+the bets predictable by counting only the outcomes before each attack, and Algorithm~22.2 runs the audit with them; their
+checks replay Example~\ref{c22:ex-bets}.
+\end{inpractice}
+
+\begin{mdframed}[linecolor=gray!60,backgroundcolor=gray!5]
+\textbf{Algorithm 22.1.} Predictable bets from a beta forecast.\par\smallskip
+\textit{Input.} Attack outcomes $X_1,\dots,X_n$; a tolerance $\tau$; prior parameters $a$ and $b_0$ (by default 1 and 9); a margin $\epsilon$ (by default $\tau/10$).\par
+\textit{Output.} The bets $q_1,\dots,q_n$.
+\begin{enumerate}
+\item Refuse the inputs unless $0<\tau<1$ and $0<\epsilon<\tau/2$.
+\item For each attack $b$, count the successes before it, $S_{b-1}=\sum_{t<b}X_t$, with $S_0=0$. The outcome $X_b$ is not used.
+\item Form the posterior mean $\bar r_{b-1}=(a+S_{b-1})/(a+b_0+b-1)$.
+\item Bet $q_b=\min\{\tau-\epsilon,\max(\epsilon,\bar r_{b-1})\}$, which lies in $[\epsilon,\tau-\epsilon]$ (Proposition~\ref{c22:prop-bets}, part 1).
+\end{enumerate}
+\textit{Checks, each run against the software by the test suite:}
+\begin{itemize}
+\item A forecast of $0.03$ with the weight of twenty attacks, so $a=0.6$ and $b_0=19.4$, $\tau=0.12$ and a success at attack 4 (Example~\ref{c22:ex-bets}), bet at attack 4: 0.0261.
+\item The same, bet at attack 5: 0.0667.
+\item The same with attack 4 failing instead, bet at attack 4, which its own outcome cannot change: 0.0261.
+\item The default prior, first bet: 0.1.
+\item The default prior after two successes in two attacks, third bet, held at $\tau-\epsilon$: 0.108.
+\item A margin $\epsilon=\tau/2$: refused.
+\end{itemize}
+
+\medskip
+\textbf{Algorithm 22.2.} The betting audit.\par\smallskip
+\textit{Input.} Attack outcomes $X_1,\dots,X_n$; a tolerance $\tau$; a level $\alpha$; the prior and margin of Algorithm 22.1.\par
+\textit{Output.} Whether the audit certifies, the attack at which it stopped, and the number of attacks used.
+\begin{enumerate}
+\item Refuse the inputs unless $0<\alpha<1$. Compute the bets $q_b$ by Algorithm 22.1.
+\item Refuse the inputs unless every outcome is 0 or 1, there is one bet per outcome, and every bet lies strictly between 0 and $\tau$.
+\item After each attack $b$, compute the log wealth $\log E_b=\sum_{t\le b}\big[X_t\log(q_t/\tau)+(1-X_t)\log\{(1-q_t)/(1-\tau)\}\big]$.
+\item Stop at the first $b$ with $E_b\ge1/\alpha$ and certify, having used $b$ attacks.
+\item If the wealth never reaches $1/\alpha$, do not certify; all $n$ attacks are used.
+\end{enumerate}
+\textit{Checks:}
+\begin{itemize}
+\item Forecast prior of Example~\ref{c22:ex-bets}, $\tau=0.12$, $\alpha=0.05$, no success, attack at which the audit certifies: 28.
+\item The default prior, no success: 37.
+\item Forecast prior, a success at attack 4: 52.
+\item Forecast prior, successes at attacks 4 and 21: 70.
+\item Forecast prior, wealth after three failures and a success at attack 4: 0.2924.
+\item The default prior with only 20 attacks, all failing, attacks used: 20.
+\item The same, whether the audit certifies: false.
+\item A level $\alpha=1$: refused.
+\item An outcome recorded as 2: refused.
+\end{itemize}
+\end{mdframed}
+
+\section{Proofs}
+
+\begin{proof}[Proof of Proposition~\ref{c22:prop-count}]
+For the first part, the penalty does not involve $h_i$, and the unpenalised loss contains $h_i$ only in
+the term $[B_i\log(1+e^{h_i})-K_ih_i]/N$. Its derivative is $[B_ie^{h_i}/(1+e^{h_i})-K_i]/N=(B_ip_i-K_i)/N$.
+Derivatives with respect to the parameters follow by the chain rule through each layer.
+
+For the second part, let $\tilde x_i=(x_i,1)$ and $\beta=(w,c)$, so that $h_i=\tilde x_i^\top\beta$. The function
+$g(h)=\log(1+e^h)$ has $g''(h)=p(1-p)>0$ with $p=1/(1+e^{-h})$, and $-K_ih_i$ is linear in $\beta$. The Hessian of
+the loss in $\beta$ is therefore
+\[\frac1N\sum_iB_ip_i(1-p_i)\tilde x_i\tilde x_i^\top+\lambda I,\]
+a positive semidefinite matrix plus $\lambda I$ with $\lambda>0$, which is positive definite. The loss is therefore strictly
+convex. It is continuous, and each data term is nonnegative: since $g(h)\ge\max(0,h)$ and $0\le K_i\le B_i$, we have
+$B_ig(h_i)-K_ih_i\ge(B_i-K_i)h_i\ge0$ when $h_i\ge0$ and $B_ig(h_i)-K_ih_i\ge-K_ih_i\ge0$ when $h_i<0$. The loss is therefore
+at least $\lambda\|\beta\|^2/2$ and tends to infinity as $\|\beta\|\to\infty$. A continuous coercive function attains its
+minimum, and a strictly convex function has at most one minimiser.
+
+For the third part, let $\hat r$ be $K/B$ rounded to $d$ places, so that $|\hat r-K/B|\le\frac12 10^{-d}$. Then
+$|B\hat r-K|\le\frac12B10^{-d}<\frac12$ when $B<10^d$, and the nearest integer to $B\hat r$ is $K$. For the second
+statement, suppose $d\ge1$ and $B\ge2\cdot10^d$, and round halves upwards. The rates that round to $5\cdot10^{-d}$ form the
+half-open interval $[4.5\cdot10^{-d},5.5\cdot10^{-d})$, which lies inside $[0,1]$ and has length $10^{-d}$. A half-open
+interval of length $L$ contains at least $\lfloor LB\rfloor$ points of the grid $\{k/B\}$, and here $LB\ge2$, so two counts
+$k$ and $k+1$ publish the same rate, and no rule can recover both from it.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c22:prop-temp}]
+The map $z\mapsto1/(1+e^{-z/T})$ is strictly increasing for every $T>0$, which gives the first part. For the
+second, write $s=1/T>0$ and $g(s)=N^{-1}\sum_i[B_i\log(1+e^{sz_i})-K_isz_i]$, which is the binomial cross-entropy of
+$p(T)$ up to a constant free of $s$. Differentiating twice,
+\[g''(s)=\frac1N\sum_iB_iz_i^2\,\sigma(sz_i)\{1-\sigma(sz_i)\},\qquad\sigma(u)=1/(1+e^{-u}),\]
+which is strictly positive because some $z_i\ne0$ and every $B_i\ge1$. So $g$ is strictly convex on $(0,\infty)$ and has at
+most one minimiser on any interval. The map $u=\log T\mapsto s=e^{-u}$ is strictly decreasing, and a strictly
+convex function composed with a strictly monotone map is strictly quasi-convex: it decreases and then increases,
+or is monotone. A bounded search for the minimum of a unimodal function in $\log T$, as the engine performs,
+therefore seeks a single point.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c22:prop-credible}]
+For the first part, fix $K<B$. The exact bound is the $(1-\alpha)$ quantile of $\mathrm{Beta}(K+1,\,B-K)$ (Chapter~\ref{ch:estimate}), with density $f_1$, and the
+credible bound is the $(1-\alpha)$ quantile of $\mathrm{Beta}(a+K,\,b+B-K)$, with density $f_2$. Their ratio is
+\[\frac{f_2(x)}{f_1(x)}\propto x^{a-1}(1-x)^{b},\qquad0<x<1,\]
+which is strictly decreasing when $a\le1$ and $b\ge1$, since the derivative of its logarithm is $(a-1)/x-b/(1-x)<0$. A density
+ratio that decreases means the second law puts relatively more weight on small values: for every $x\in(0,1)$,
+$F_2(x)-F_1(x)=\int_0^x(f_2-f_1)$ is positive. To see this, note that $f_2-f_1$ integrates to zero over $(0,1)$ and, because the
+ratio decreases strictly and is not constant, $f_2>f_1$ below some point $x_0$ and $f_2<f_1$ above it; so the integral from 0 to $x$
+increases on $(0,x_0)$, decreases on $(x_0,1)$, starts at zero and ends at zero, and is positive in between. Let $u_1$ be the
+exact bound, so $F_1(u_1)=1-\alpha$. Then $F_2(u_1)>1-\alpha$, and since $F_2$ is continuous and strictly increasing, its $(1-\alpha)$
+quantile lies strictly below $u_1$.
+
+For the second part, take $p$ with $U_{a,b}(0)<p<U_{\rm CP}(0)$. If $K=0$ then $U_{a,b}(K)<p$, so the event $\{p\le U_{a,b}(K)\}$ lies inside
+$\{K\ge1\}$, whose probability is $1-(1-p)^B$. The exact bound at $K=0$ is $1-\alpha^{1/B}$ (Chapter~\ref{ch:estimate}), so $p<1-\alpha^{1/B}$ gives
+$(1-p)^B>\alpha$, and the coverage is less than $1-\alpha$.
+
+For the third part, a release with true risk $\tau$ is certified at least whenever $K=0$, because $U_{a,b}(0)\le\tau$. That event has
+probability $(1-\tau)^B$, and $\tau<U_{\rm CP}(0)=1-\alpha^{1/B}$ gives $(1-\tau)^B>\alpha$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c22:prop-bets}]
+For the first part, $S_{b-1}$ is a function of $X_1,\dots,X_{b-1}$, and so is $\bar r_{b-1}$, which is well defined because $a+b_0+b-1>0$.
+Clipping maps it into $[\epsilon,\tau-\epsilon]$, an interval inside $(0,\tau)$ because $\epsilon<\tau/2$. No property of the prior beyond $a,b_0>0$ is used.
+
+For the second part, write $p_b=\Prob(X_b=1\mid\mathcal F_{b-1})$. Since $q_b$ is fixed given $\mathcal F_{b-1}$,
+\[\E\Big[\frac{E_b}{E_{b-1}}\,\Big|\,\mathcal F_{b-1}\Big]=p_b\frac{q_b}\tau+(1-p_b)\frac{1-q_b}{1-\tau}=1+\frac{(p_b-\tau)(q_b-\tau)}{\tau(1-\tau)}.\]
+Under the hypothesis $p_b\ge\tau$, and $q_b<\tau$ by the first part, so the product in the numerator is at most zero and the
+conditional expectation is at most one. Every factor is positive, so $E_b\ge0$, and $E_0=1$. Hence $(E_n)$ is a test
+supermartingale, and Ville's inequality gives $\Prob\{\sup_nE_n\ge1/\alpha\}\le\alpha$. The audit certifies only on that event,
+whatever time it stops and whatever rule chooses the time; a cap on the number of attacks removes paths from the event
+and cannot enlarge it.
+
+For the third part, each factor is $(\tau-\epsilon)/\tau$ when $X_b=1$ and $(1-\epsilon)/(1-\tau)$ when $X_b=0$, so $\log E_n$ is a sum of
+independent, identically distributed terms with mean
+\[\mu_\epsilon=\tau\log\frac{\tau-\epsilon}\tau+(1-\tau)\log\frac{1-\epsilon}{1-\tau}.\]
+As $\epsilon\to0$, $\mu_\epsilon\to(1-\tau)\log\{1/(1-\tau)\}>0$, so $\mu_\epsilon>0$ for all small enough $\epsilon$. By the strong law of large numbers
+$n^{-1}\log E_n\to\mu_\epsilon$ almost surely, so $\log E_n\to\infty$ and the wealth passes $1/\alpha$ with probability one, although the
+release sits exactly at the tolerance.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c22:prop-spend}]
+Let $A_\ell$ be the event that attempt $\ell$ certifies an unsafe release, with $A_\ell$ empty for attempts that never run, which
+carry $\alpha_\ell=0$ without loss. By the union bound and the tower property,
+\[\Prob\Big(\bigcup_\ell A_\ell\Big)\le\sum_\ell\Prob(A_\ell)=\sum_\ell\E\big[\Prob(A_\ell\mid\mathcal G_{\ell-1})\big]\le\sum_\ell\E[\alpha_\ell]=\E\Big[\sum_\ell\alpha_\ell\Big]\le\alpha_P,\]
+where the exchange of sum and expectation holds because every term is nonnegative. The argument needs each attempt's
+share to be in the sum, whatever its outcome. If an attempt may draw its outcomes first and be recorded only when it
+passes, the recorded shares can sum to at most $\alpha_P$ while the unrecorded failures go uncounted; the number of attempts
+actually made is then unbounded, and by the repeated-attempts result of Chapter~\ref{ch:monitoring} the chance that one of them
+certifies an unsafe release, each certifying with some fixed positive probability, tends to one.
+\end{proof}

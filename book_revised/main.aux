@@ -858,60 +858,109 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{ch:planner}{{22}{221}{Learning to plan audits}{chapter.22}{}}
-\@writefile{toc}{\contentsline {part}{VIII\hspace  {1em}Conclusion}{222}{part.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {22.1}A planner trained on counts}{222}{section.22.1}\protected@file@percent }
+\newlabel{c22:sec-planner}{{22.1}{222}{A planner trained on counts}{section.22.1}{}}
+\newlabel{c22:eq-loss}{{22.1}{222}{A planner trained on counts}{equation.22.1.1}{}}
+\newlabel{c22:prop-count}{{22.1}{222}{The count likelihood}{proposition.22.1}{}}
+\citation{guo2017}
+\newlabel{c22:ex-rate}{{22.2}{223}{Two coordinates with the same rate}{proposition.22.2}{}}
+\newlabel{c22:prop-temp}{{22.3}{223}{Temperature changes probabilities, not order}{proposition.22.3}{}}
+\citation{roberts2017}
+\@writefile{lof}{\contentsline {figure}{\numberline {22.1}{\ignorespaces How far each planner's test cross-entropy lies above that of the true probabilities, in nats per trial, for five synthetic seeds. Hatched white bars are the logistic baseline; solid grey bars are the network with two hidden layers. Both models were fitted to the same integer counts and scored on the same held-out groups. The network is closer to the truth in every seed.}}{224}{figure.caption.89}\protected@file@percent }
+\newlabel{c22:fig-depth}{{22.1}{224}{How far each planner's test cross-entropy lies above that of the true probabilities, in nats per trial, for five synthetic seeds. Hatched white bars are the logistic baseline; solid grey bars are the network with two hidden layers. Both models were fitted to the same integer counts and scored on the same held-out groups. The network is closer to the truth in every seed}{figure.caption.89}{}}
+\citation{greshake2023}
+\citation{dwork2015}
+\@writefile{toc}{\contentsline {section}{\numberline {22.2}Four authorities}{225}{section.22.2}\protected@file@percent }
+\newlabel{c22:sec-authorities}{{22.2}{225}{Four authorities}{section.22.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22.2}{\ignorespaces The four authorities of the extension's harness. Each box differs from its neighbours by fill and by border or hatch: the dashed white box is the language model, the hatched light box the evaluator, the solid mid-grey box the planner and the dark double-bordered box the registered gate. The line under each box states what that authority may never do.}}{225}{figure.caption.90}\protected@file@percent }
+\newlabel{c22:fig-auth}{{22.2}{225}{The four authorities of the extension's harness. Each box differs from its neighbours by fill and by border or hatch: the dashed white box is the language model, the hatched light box the evaluator, the solid mid-grey box the planner and the dark double-bordered box the registered gate. The line under each box states what that authority may never do}{figure.caption.90}{}}
+\citation{clopper1934}
+\citation{bayarri2004}
+\@writefile{toc}{\contentsline {section}{\numberline {22.3}A credible interval is not an audit certificate}{226}{section.22.3}\protected@file@percent }
+\newlabel{c22:sec-credible}{{22.3}{226}{A credible interval is not an audit certificate}{section.22.3}{}}
+\newlabel{c22:prop-credible}{{22.4}{226}{Credible and exact bounds}{proposition.22.4}{}}
+\newlabel{c22:ex-thirty}{{22.5}{226}{One success in thirty attacks}{proposition.22.5}{}}
+\citation{shafer2021,waudbysmith2024}
+\citation{kelly1956}
+\@writefile{lof}{\contentsline {figure}{\numberline {22.3}{\ignorespaces Upper bounds on the success probability after $B$ attacks without a success. The solid black line with filled circles is the exact bound at $\alpha =0.05$; the dashed dark line with squares is the exact bound at $\alpha /4$, as needed when four coordinates share the budget; the dotted line with triangles is the credible bound under a uniform prior; the dash-dot light line with open circles is the credible bound under the $\mathrm  {Beta}(1,9)$ prior that the betting audit uses for its forecasts. The thin dashed horizontal line is the tolerance.}}{227}{figure.caption.91}\protected@file@percent }
+\newlabel{c22:fig-bounds}{{22.3}{227}{Upper bounds on the success probability after $B$ attacks without a success. The solid black line with filled circles is the exact bound at $\alpha =0.05$; the dashed dark line with squares is the exact bound at $\alpha /4$, as needed when four coordinates share the budget; the dotted line with triangles is the credible bound under a uniform prior; the dash-dot light line with open circles is the credible bound under the $\mathrm {Beta}(1,9)$ prior that the betting audit uses for its forecasts. The thin dashed horizontal line is the tolerance}{figure.caption.91}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {22.4}Betting with a forecast}{228}{section.22.4}\protected@file@percent }
+\newlabel{c22:sec-betting}{{22.4}{228}{Betting with a forecast}{section.22.4}{}}
+\newlabel{c22:prop-bets}{{22.6}{228}{Predictable Bayesian bets}{proposition.22.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22.4}{\ignorespaces Share of audits that certify a safe release, at three true risks and a tolerance of $0.12$, with $\alpha =0.05$. Solid grey bars are the betting audit with bets from a $\mathrm  {Beta}(1,9)$ forecast, capped at 1,500 attacks, with the median number of attacks used printed above each bar; white cross-hatched bars are the fixed design of 24 attacks that certifies only when none succeeds. Both designs falsely certify a release at the tolerance with probability at most $0.05$.}}{229}{figure.caption.92}\protected@file@percent }
+\newlabel{c22:fig-audit}{{22.4}{229}{Share of audits that certify a safe release, at three true risks and a tolerance of $0.12$, with $\alpha =0.05$. Solid grey bars are the betting audit with bets from a $\mathrm {Beta}(1,9)$ forecast, capped at 1,500 attacks, with the median number of attacks used printed above each bar; white cross-hatched bars are the fixed design of 24 attacks that certifies only when none succeeds. Both designs falsely certify a release at the tolerance with probability at most $0.05$}{figure.caption.92}{}}
+\citation{berenson1995}
+\newlabel{c22:ex-bets}{{22.7}{230}{Naledi's bets}{proposition.22.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {22.5}Spending the budget before the outcome}{230}{section.22.5}\protected@file@percent }
+\newlabel{c22:sec-registry}{{22.5}{230}{Spending the budget before the outcome}{section.22.5}{}}
+\newlabel{c22:prop-spend}{{22.8}{230}{Spending before outcomes}{proposition.22.8}{}}
+\citation{lan1983}
+\@writefile{toc}{\contentsline {section}{\numberline {22.6}What can be claimed today}{231}{section.22.6}\protected@file@percent }
+\newlabel{c22:sec-claims}{{22.6}{231}{What can be claimed today}{section.22.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22.5}{\ignorespaces The seventeen engineering steps of the extension, by phase and status. Done steps are dark grey with a heavy solid border; the partly done step is light grey, hatched, with a solid border; open steps are white with a dashed border; steps not built are near white, dotted, with a dotted border. Steps 10, 16 and 17 are the conditions for any operational claim. The draft counts ten done steps; this drawing counts them from the same list.}}{232}{figure.caption.93}\protected@file@percent }
+\newlabel{c22:fig-steps}{{22.5}{232}{The seventeen engineering steps of the extension, by phase and status. Done steps are dark grey with a heavy solid border; the partly done step is light grey, hatched, with a solid border; open steps are white with a dashed border; steps not built are near white, dotted, with a dotted border. Steps 10, 16 and 17 are the conditions for any operational claim. The draft counts ten done steps; this drawing counts them from the same list}{figure.caption.93}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {22.1}{\ignorespaces The claim ledger of the extension, as recorded in the engine's documentation. ``Synthetic'' means tested on generated data with chosen parameters.}}{232}{table.caption.94}\protected@file@percent }
+\newlabel{c22:tab-claims}{{22.1}{232}{The claim ledger of the extension, as recorded in the engine's documentation. ``Synthetic'' means tested on generated data with chosen parameters}{table.caption.94}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {22.7}The answer}{233}{section.22.7}\protected@file@percent }
+\zref@newlabel{mdf@pagelabel-36}{\default{22.7}\page{233}\abspage{243}\mdf@pagevalue{233}}
+\zref@newlabel{mdf@pagelabel-37}{\default{22.7}\page{233}\abspage{243}\mdf@pagevalue{233}}
+\zref@newlabel{mdf@pagelabel-38}{\default{22.7}\page{234}\abspage{244}\mdf@pagevalue{234}}
+\zref@newlabel{mdf@pagelabel-39}{\default{22.7}\page{235}\abspage{245}\mdf@pagevalue{235}}
+\@writefile{toc}{\contentsline {section}{\numberline {22.8}Proofs}{235}{section.22.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {part}{VIII\hspace  {1em}Conclusion}{238}{part.8}\protected@file@percent }
 \citation{israel2017,ecb2016}
-\@writefile{toc}{\contentsline {chapter}{\numberline {23}What remains open}{223}{chapter.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {23}What remains open}{239}{chapter.23}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{ch:open}{{23}{223}{What remains open}{chapter.23}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {23.1}Real institutional registers}{223}{section.23.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {23.2}Time-varying exposures and dependent loan activity}{224}{section.23.2}\protected@file@percent }
+\newlabel{ch:open}{{23}{239}{What remains open}{chapter.23}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {23.1}Real institutional registers}{239}{section.23.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23.2}Time-varying exposures and dependent loan activity}{240}{section.23.2}\protected@file@percent }
 \citation{narayanan2008}
 \citation{garfinkel2019}
 \citation{abowd2022}
-\@writefile{toc}{\contentsline {section}{\numberline {23.3}Attack coverage}{225}{section.23.3}\protected@file@percent }
-\newlabel{c18:prop-insider}{{23.1}{225}{An exact insider is not governed by a floor}{proposition.23.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {23.3}Attack coverage}{241}{section.23.3}\protected@file@percent }
+\newlabel{c18:prop-insider}{{23.1}{241}{An exact insider is not governed by a floor}{proposition.23.1}{}}
 \citation{skinner2012,dwork2014}
-\@writefile{toc}{\contentsline {section}{\numberline {23.4}Eliciting the harm weight}{226}{section.23.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {23.5}The model-proposed attack line}{226}{section.23.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23.4}Eliciting the harm weight}{242}{section.23.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23.5}The model-proposed attack line}{242}{section.23.5}\protected@file@percent }
 \citation{gdpr2016}
 \citation{ec2533}
-\@writefile{toc}{\contentsline {section}{\numberline {23.6}Claims the method cannot make}{227}{section.23.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {23.7}Open statistical questions}{228}{section.23.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {23.8}How an institution should turn a measured risk into a release decision}{228}{section.23.8}\protected@file@percent }
-\zref@newlabel{mdf@pagelabel-36}{\default{23.8}\page{229}\abspage{239}\mdf@pagevalue{229}}
-\@writefile{toc}{\contentsline {section}{\numberline {23.9}Proofs}{229}{section.23.9}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}The software}{230}{appendix.A}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23.6}Claims the method cannot make}{243}{section.23.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23.7}Open statistical questions}{244}{section.23.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {23.8}How an institution should turn a measured risk into a release decision}{244}{section.23.8}\protected@file@percent }
+\zref@newlabel{mdf@pagelabel-40}{\default{23.8}\page{245}\abspage{255}\mdf@pagevalue{245}}
+\@writefile{toc}{\contentsline {section}{\numberline {23.9}Proofs}{245}{section.23.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}The software}{246}{appendix.A}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\newlabel{app:software}{{A}{230}{The software}{appendix.A}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Layout and installation}{230}{section.A.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}The modules}{230}{section.A.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Modules that implement the method. Chapters are those that report results from the module; the test file is in \texttt  {tests/\allowbreak  {}}.}}{232}{table.caption.90}\protected@file@percent }
-\newlabel{app:tab-core}{{A.1}{232}{Modules that implement the method. Chapters are those that report results from the module; the test file is in \texttt {tests/\allowbreak {}}}{table.caption.90}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {A.2}{\ignorespaces Modules that produce the case-study evidence and assemble a run.}}{233}{table.caption.92}\protected@file@percent }
-\newlabel{app:tab-case}{{A.2}{233}{Modules that produce the case-study evidence and assemble a run}{table.caption.92}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.3}The scripts}{233}{section.A.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.4}Reproducing the evidence}{233}{section.A.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {A.3}{\ignorespaces Modules of the model-proposed attack line and the registered audit.}}{234}{table.caption.94}\protected@file@percent }
-\newlabel{app:tab-prop}{{A.3}{234}{Modules of the model-proposed attack line and the registered audit}{table.caption.94}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {A.5}Modules added for Chapters 18 and 19}{235}{section.A.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.6}Gaps in the code}{235}{section.A.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{The governance record is thinner than the threshold.}{235}{section*.97}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{One tolerance for the programme.}{235}{section*.98}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Falsification bands.}{236}{section*.99}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Counts rebuilt from rates.}{236}{section*.100}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{An unstated normality assumption.}{236}{section*.101}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Version strings.}{236}{section*.102}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Differential privacy.}{236}{section*.103}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Line endings.}{236}{section*.104}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{What is not built.}{236}{section*.105}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Availability.}{237}{section*.106}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Gaps and the claims they touch.}{237}{section*.107}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {A.4}{\ignorespaces The scripts in \texttt  {scripts/\allowbreak  {}}, grouped by purpose, with the chapters that report what they produce.}}{238}{table.caption.95}\protected@file@percent }
-\newlabel{app:tab-scripts}{{A.4}{238}{The scripts in \texttt {scripts/\allowbreak {}}, grouped by purpose, with the chapters that report what they produce}{table.caption.95}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {A.5}{\ignorespaces Modules added for Chapters 18 and 19. The test files are in \texttt  {tests/}.}}{239}{table.caption.96}\protected@file@percent }
-\newlabel{app:tab-ext}{{A.5}{239}{Modules added for Chapters 18 and 19. The test files are in \texttt {tests/}}{table.caption.96}{}}
+\newlabel{app:software}{{A}{246}{The software}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Layout and installation}{246}{section.A.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}The modules}{246}{section.A.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {A.1}{\ignorespaces Modules that implement the method. Chapters are those that report results from the module; the test file is in \texttt  {tests/\allowbreak  {}}.}}{248}{table.caption.96}\protected@file@percent }
+\newlabel{app:tab-core}{{A.1}{248}{Modules that implement the method. Chapters are those that report results from the module; the test file is in \texttt {tests/\allowbreak {}}}{table.caption.96}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {A.2}{\ignorespaces Modules that produce the case-study evidence and assemble a run.}}{249}{table.caption.98}\protected@file@percent }
+\newlabel{app:tab-case}{{A.2}{249}{Modules that produce the case-study evidence and assemble a run}{table.caption.98}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}The scripts}{249}{section.A.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.4}Reproducing the evidence}{249}{section.A.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {A.3}{\ignorespaces Modules of the model-proposed attack line and the registered audit.}}{250}{table.caption.100}\protected@file@percent }
+\newlabel{app:tab-prop}{{A.3}{250}{Modules of the model-proposed attack line and the registered audit}{table.caption.100}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.5}Modules added for Chapters 18 and 19}{251}{section.A.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.6}Gaps in the code}{251}{section.A.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The governance record is thinner than the threshold.}{251}{section*.103}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{One tolerance for the programme.}{251}{section*.104}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Falsification bands.}{252}{section*.105}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Counts rebuilt from rates.}{252}{section*.106}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{An unstated normality assumption.}{252}{section*.107}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Version strings.}{252}{section*.108}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Differential privacy.}{252}{section*.109}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Line endings.}{252}{section*.110}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{What is not built.}{252}{section*.111}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Availability.}{253}{section*.112}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Gaps and the claims they touch.}{253}{section*.113}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {A.4}{\ignorespaces The scripts in \texttt  {scripts/\allowbreak  {}}, grouped by purpose, with the chapters that report what they produce.}}{254}{table.caption.101}\protected@file@percent }
+\newlabel{app:tab-scripts}{{A.4}{254}{The scripts in \texttt {scripts/\allowbreak {}}, grouped by purpose, with the chapters that report what they produce}{table.caption.101}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {A.5}{\ignorespaces Modules added for Chapters 18 and 19. The test files are in \texttt  {tests/}.}}{255}{table.caption.102}\protected@file@percent }
+\newlabel{app:tab-ext}{{A.5}{255}{Modules added for Chapters 18 and 19. The test files are in \texttt {tests/}}{table.caption.102}{}}
 \bibcite{abowd2019}{{1}{2019}{{Abowd and Schmutte}}{{}}}
 \bibcite{abowd2022}{{2}{2022}{{Abowd et~al.}}{{}}}
 \bibcite{balle2020}{{3}{2020}{{Balle et~al.}}{{}}}
@@ -1028,4 +1077,9 @@
 \bibcite{saltelli2007}{{114}{2007}{{Saltelli et~al.}}{{}}}
 \bibcite{shor1997}{{115}{1997}{{Shor}}{{}}}
 \bibcite{sobol2001}{{116}{2001}{{Sobol'}}{{}}}
-\gdef \@abspage@last{257}
+\bibcite{bayarri2004}{{117}{2004}{{Bayarri and Berger}}{{}}}
+\bibcite{greshake2023}{{118}{2023}{{Greshake et~al.}}{{}}}
+\bibcite{guo2017}{{119}{2017}{{Guo et~al.}}{{}}}
+\bibcite{kelly1956}{{120}{1956}{{Kelly}}{{}}}
+\bibcite{roberts2017}{{121}{2017}{{Roberts et~al.}}{{}}}
+\gdef \@abspage@last{273}
