@@ -92,6 +92,8 @@ assumption. It has practical weight because a sampling fraction is often applied
 or omitted without comment, and with a 5 per cent sample that silent choice moves
 the reported risk by a factor of twenty.
 
+The chair's phrase takes a side in this choice without saying so. One chance in ten for a record in a class of ten is the membership-conditional risk: it assumes the adversary already knows that the target is in the file. Naledi found the same sentence in the minutes for the Bank's household survey releases, where the file is a sample and the two risks differ by the sampling fraction. Chapter~\ref{ch:measures} follows Grace's audit of those records.
+
 \section{Where the reciprocal of the key frequency comes from}
 
 The most familiar disclosure measure assigns a record with key $k$ the risk
@@ -123,15 +125,19 @@ is $k$,
 \end{equation}
 \end{proposition}
 
-The result is old \citep{duncan1989,skinner2002}, and the value of restating it
-lies in the list of conditions. Assumption~\ref{as:exch} fails whenever the
+The result is old \citep{duncan1989,skinner2002}, and before turning to its conditions it helps to see it at work on a file small enough to check by hand.
+
+\begin{example}[The chair's phrase on a small file]\label{c2:ex-small}
+The numbers are illustrative. A released file holds ten records whose key values are A, A, A, A, B, B, B, C, C and D. The key frequencies are $f_A=4$, $f_B=3$, $f_C=2$ and $f_D=1$, so under Assumptions~\ref{as:key} to~\ref{as:unif} the prosecutor risks are $0.25$ for each A record, $0.33$ for each B record, $0.5$ for each C record and $1$ for the D record. The mean over the ten records is $0.4$ and the largest is 1. A committee with a tolerance of $0.25$ needs every class to hold at least $\lceil1/0.25\rceil=4$ records, the rule this chapter later calls $k$-anonymity, and only class A does. If the file were a 5 per cent sample and the adversary did not know who was in it, \eqref{eq:factor} would put the risk of an A record at $0.05\times0.25=0.0125$, twenty times smaller, for the same file and the same adversary's key.
+\end{example}
+
+The value of restating the result lies in the list of conditions. Assumption~\ref{as:key} fails under perturbative methods such as data swapping \citep{dalenius1982}, which exchange values between records on purpose so that a released key need not be the true one. Assumption~\ref{as:exch} fails whenever the
 adversary holds a variable, correlated with something the release publishes, that
 distinguishes candidates within a key class. In financial and health data that is
 the normal case: a lender knows roughly how large its own loan to a firm is, and a
 neighbour knows roughly how old someone is. Assumption~\ref{as:obs} fails whenever
 the adversary's own source contains reporting error, which is also the normal case.
-When either fails, the right object is no longer a frequency but a posterior
-probability.
+When either fails, the right object is no longer a frequency but a posterior probability. \citet{duncan1986} framed disclosure in these terms, as a change in what an intruder can infer about a person, and \citet{paass1988} studied intruders who match outside data, subject to error, against released microdata.
 
 At the Bank this is where the chair's phrase runs into trouble. The credit register publishes
 each loan's exposure beside its sector, region and size class. Pieter, a credit analyst at
@@ -151,13 +157,15 @@ file. Bayes' rule gives the posterior
 \begin{equation}\label{eq:post}
 p_{tj} = \frac{q_{tj}L_{tj}}{q_{t0}L_{t0} + \sum_{\ell \in I} q_{t\ell}L_{t\ell}},
 \end{equation}
-and an adversary that names the most probable candidate succeeds with probability
+and an adversary that is forced to name the most probable released candidate succeeds, given that the target is in the file, with probability
 \begin{equation}\label{eq:maxpost}
-R^{\mathrm{in}}_a(t,\theta) = \E\Big[\max_{j \in I} p_{tj} \ \Big|\ S_t = 1,\ \mathcal{B}_a\Big].
+R^{\mathrm{in}}_a(t,\theta) = \E\Big[\frac{\max_{j \in I} p_{tj}}{1-p_{t0}} \ \Big|\ S_t = 1,\ \mathcal{B}_a\Big].
 \end{equation}
-When the compatible records have equal likelihood and the no-match prior is zero,
-\eqref{eq:post} and \eqref{eq:maxpost} reduce to the reciprocal frequency. In every
-other case they can lie above or below it.
+The denominator makes a difference whenever the no-match hypothesis carries weight. Given the observations and membership, candidate $j$ has probability $p_{tj}/(1-p_{t0})$ (Proposition~\ref{c2:prop-renorm}), so the plain maximum of \eqref{eq:post} understates success by the factor $1-p_{t0}$: with $(p_{t0},p_{t1},p_{t2})=(0.5,0.25,0.25)$ the adversary is right half the time, not a quarter of it. An earlier draft of this equation omitted the factor; the simulated attacks behind the book's figures normalise the posterior over the released candidates only, so their results are unaffected. When the compatible records have equal likelihood and the no-match prior is zero, \eqref{eq:post} and \eqref{eq:maxpost} reduce to the reciprocal frequency. In every other case they can lie above or below it. Two further cautions apply. The expectation in \eqref{eq:maxpost} averages over the model's prior on identities; the frequentist success rate for one fixed target is the share of draws, under that target's own observation law, in which the attack names it, and the two agree only on average. And an attack that may abstain, or decline in favour of the no-match state, has a success rate and a precision of its own, both lower or higher than the forced-choice figure.
+
+\begin{proposition}[Membership renormalisation]\label{c2:prop-renorm}
+Suppose the attack always names a maximiser among the released candidates. Under the joint model behind \eqref{eq:post}, its success given the observations $O$ and membership is $\max_{j\in I}p_{tj}(O)/(1-p_{t0}(O))$ whenever $p_{t0}(O)<1$, and its membership-conditional success is the expectation of this ratio over $O$ given $S_t=1$.
+\end{proposition}
 
 Two consequences follow, and both cut against common practice. First, measurement
 error cannot be assumed to reduce risk. It changes the likelihood ratios, and it
@@ -171,7 +179,13 @@ Second, a release can satisfy a minimum cell count on its declared key and still
 expose individual records. If the release publishes a continuous variable, such as
 an exposure or an income, and the adversary holds a noisy reading of it, the
 posterior concentrates on the record whose value is nearest the reading, whatever
-the size of the key class.
+the size of the key class. The documented cases are of this kind. In the Netflix Prize data, a few film ratings and their dates, of the sort a person might post in a public review, were enough to pick out one subscriber's record among about half a million \citep{narayanan2008}. In a mobility data set of 1.5 million people, four points in space and time were enough to single out 95 per cent of them \citep{demontjoye2013}. In neither case could a minimum class size on a declared key have helped, because the variables that separated the records were not part of any key.
+
+This is Pieter's position. He does not need the key class to be small; he needs only his own reading of the exposure, which the register prints beside every loan. Naledi wrote the attack down in those terms before she ran it, so that the committee would see which assumption it broke: an adversary with one noisy reading of a released continuous variable.
+
+\begin{example}[Pieter's reading in a class of three]\label{c2:ex-pieter}
+The numbers are illustrative. A key class holds three loans whose released exposures are 100, 140 and 250 thousand. Pieter's books put his borrower's loan at 145 thousand. Suppose his reading differs from the released exposure by a normal error on the log scale with standard deviation $0.2$, and that he gives the three loans equal prior weight. The log exposures are $4.61$, $4.94$ and $5.52$, and his reading is $4.98$. With no weight on the no-match hypothesis, the posterior \eqref{eq:post} is $0.15$, $0.83$ and $0.02$, so he names the 140 thousand loan, and given this reading he is right with probability $0.83$, against the $0.33$ that the reciprocal frequency assigns. With a standard deviation of $0.5$ the posterior spreads to $0.33$, $0.43$ and $0.24$. With $0.05$ it puts all but about one part in a trillion on the right loan. The class holds three records in every case. What moves the risk is how well Pieter knows the exposure.
+\end{example}
 
 \section{$k$-anonymity is a threshold statement}
 
@@ -251,7 +265,7 @@ adversary might also know. If it does, a minimum cell count on the key alone doe
 not bound the risk, and the assessment needs a simulated attack that uses that
 variable.
 
-\smallskip\noindent\textit{In the software.} The measures of this chapter are in
+\smallskip\noindent\textit{In the software.} The success given membership of Proposition~\ref{c2:prop-renorm} is \texttt{privacy\_risk.linkage.membership\_conditional\_success}, tested in \texttt{tests/test\_ext\_linkage.py} together with Examples~\ref{c2:ex-small} and~\ref{c2:ex-pieter}. The measures of this chapter are in
 \texttt{privacy\_risk.risk} (\texttt{prosecutor\_risk},
 \texttt{marketer\_sample\_risk}, \texttt{marketer\_unconditional\_risk}), and the
 posterior linkage of \eqref{eq:post} and \eqref{eq:maxpost} is in
@@ -271,6 +285,10 @@ contains $t$. By Assumption~\ref{as:exch} the adversary's information is invaria
 to permutations of that set, and by Assumption~\ref{as:unif} it selects each member
 with probability $1/f_k$. Exactly one member is the target, so the probability of
 a correct choice is $\sum_{j} f_k^{-1}\ind{j = t} = 1/f_k$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c2:prop-renorm}]
+For $j\in I$ the hypothesis that record $j$ is the target's implies membership, so by the definition of conditional probability $\Prob(J=j\mid O,S_t=1,\mathcal B_a)=p_{tj}(O)/(1-p_{t0}(O))$. The denominator is the same for every candidate, so the maximiser is unchanged, and the attack that names it is right with probability equal to its conditional probability. Averaging over the membership-conditional law of $O$ given $S_t=1$ gives the second claim.
 \end{proof}
 
 \begin{proof}[Proof of Proposition~\ref{prop:kanon}]

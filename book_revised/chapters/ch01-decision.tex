@@ -57,7 +57,7 @@ attempted linkage: given what a declared adversary knows and what the release sh
 likely is it that the adversary names the right record. The second is a statistical
 estimate of that probability, which in all but the simplest cases comes from simulating
 the attack many times and so carries sampling error. The third is a policy decision: how
-much residual risk is acceptable, for which harm, on whose authority and until when.
+much residual risk is acceptable, for which harm, on whose authority and until when. The separation is not new. \citet{duncan1986} treated disclosure as a change in what an intruder can infer, which ties every risk figure to a model of the intruder, and statistical decision theory has long kept the model of the world, the evidence about it and the loss attached to each action apart \citep{berger1985}.
 
 The first is a modelling problem, the second an inference problem and the third a
 governance problem. Each needs its own discipline. Running them together produces failures
@@ -65,7 +65,7 @@ that are easy to miss, because each looks reasonable from inside one of the thre
 
 The first failure concerns the model. A risk figure means nothing until it states its
 adversary: who attacks, with what knowledge, against which targets, and whether the target
-is assumed to be in the file. Chapter~\ref{ch:scenario} derives the most familiar measure
+is assumed to be in the file. The published cases show how much the adversary's knowledge decides. \citet{sweeney2002} linked hospital records with names removed to a voter list through date of birth, sex and postcode, and \citet{narayanan2008} matched film ratings in a released file to reviews their authors had posted in public. Neither attack would have shown up in a table of key frequencies computed without the outside source. Chapter~\ref{ch:scenario} derives the most familiar measure
 in the field, the reciprocal of the key frequency, from four assumptions, and shows that
 two of them fail in the ordinary case. A release that keeps ten records in every key class
 can still hold a record that an adversary with one extra variable identifies with
@@ -74,16 +74,18 @@ probability 0.74.
 
 The second failure concerns the estimate, and it is the coin toss described above.
 Chapter~\ref{ch:estimate} shows that replacing the point estimate with a one-sided upper
-confidence bound controls the chance of a wrong release at a stated level, and
-Chapter~\ref{ch:selection} extends the control to the choice among several protection
-settings.
+confidence bound controls the chance of a wrong release at a stated level, in the sense of a significance test \citep{neyman1933}, and Chapter~\ref{ch:selection} extends the control to the choice among several protection settings. A small case shows the size of the difference.
+
+\begin{example}[A boundary file on a small budget]\label{c1:ex-boundary}
+The numbers are illustrative. Suppose Naledi can afford only 100 simulated attacks on a file whose true risk is exactly the committee's tolerance of $0.12$. A rule that releases when the estimate is at or below $0.12$ releases whenever 12 or fewer attacks succeed, and at a true risk of $0.12$ that happens with probability $0.58$. Suppose the run gives 11 successes. The estimate is $0.11$, below the line. The exact one-sided 95 per cent upper bound of \citet{clopper1934} for 11 successes in 100 attacks is $0.176$, well above it. The bound rule passes this file only if 6 or fewer attacks succeed, since 6 successes give a bound of $0.115$ and 7 give $0.127$, and at a true risk of $0.12$ that happens with probability $0.037$. The first rule releases the boundary file more often than not. The second releases it fewer than four times in a hundred.
+\end{example}
 
 The third failure concerns the decision. An institution that says ``we apply a minimum
 cell count of ten'' has stated a protection setting and called it a policy. It has not
 stated the probability of harm it accepted, so nobody can check whether the setting
 achieves the policy, and nobody owns the judgement that the residual risk is acceptable.
 When the data or the users change there is no record of what the setting was meant to
-deliver, and so nothing to reassess against.
+deliver, and so nothing to reassess against. Nor does a cell count say anything about the route by which the data reach their users, which the Five Safes framework treats as a control in its own right \citep{desai2016}.
 
 Naledi met the second failure in a meeting that Chapter~\ref{ch:estimate} recounts. Her
 estimate for a household survey extract stood just below the tolerance; her upper bound
@@ -139,9 +141,11 @@ risks.
 
 At the Bank, this is the problem Tomás brings. He is a visiting researcher who wants a
 loan-level file from the credit register for six months, a table of lending by sector and a
-public series, for one study. Each request, judged alone, would pass Naledi's assessment. The
-committee's question is whether the three together do, and its old procedure cannot answer
-it, because the procedure only ever looks at one file.
+public series, for one study. Each request, judged alone, would pass Naledi's assessment. The committee's question is whether the three together do, and its old procedure cannot answer it, because the procedure only ever looks at one file.
+
+\begin{example}[Two tables, one loan]\label{c1:ex-twotables}
+The numbers are illustrative. Seven loans appear in two of Tom\'as's files under the same pseudonyms, numbered 1 to 7. The first file gives the borrower's sector: loans 1 to 4 share one sector and loans 5 to 7 another. The second gives the region: loans 1, 5 and 6 share one region and loans 2, 3, 4 and 7 another. Every class in each file holds at least three loans, so neither file has a unique record. An adversary who knows the sector and region of the firm behind loan 1 finds four candidates in the first file and three in the second. Read one at a time, the files give it chances of $0.25$ and $0.33$, and even adding the two, as a bound on succeeding with either file, gives only $0.58$. Pooled, the candidate sets are $\{1,2,3,4\}$ and $\{1,5,6\}$, their intersection holds loan 1 alone, and the adversary names it with certainty.
+\end{example}
 
 \section{A running example}
 
@@ -178,8 +182,10 @@ the decision: the elements of a governance threshold and the tolerance a stated 
 implies. Part~IV deals with programmes of releases and with formal privacy. Part~V reports the
 evidence from simulation, public microdata, the credit register and a pipeline in which a
 model proposes attacks. Part~VI is for practice: falsification tests, an operational protocol,
-worksheets and the questions that remain open. Appendix~\ref{app:software} maps the software
+worksheets. Part~VII follows the attack after the release: an audit that runs while the attack runs (Chapter~\ref{ch:learning}), exposure that changes over time (Chapter~\ref{ch:change}), dynamic models and Bayesian inference (Chapter~\ref{ch:dynamics}), how far the decision moves when its inputs move (Chapter~\ref{ch:chaos}), and attacks planned and recorded so that every retry is counted (Chapter~\ref{ch:planner}). Part~VIII closes with the questions that remain open. Appendix~\ref{app:software} maps the software
 that produces every number.
+
+Each chapter is built the same way, and the method comes from research on teaching. \citet{muller2008} found that physics students who believed they already understood a topic learned little from a clear explanation of it, and learned much more from a film that first stated their wrong belief and then broke it. Each chapter of this book therefore opens by naming a belief that a careful reader is likely to hold and stating it in its strongest form. It then gives early the first fact that breaks the belief, and asks one question, which the rest of the chapter answers as a connected case. Two threads run through that case: the technical argument, and the people who meet the problem in practice, either in the published record or at the Bank. The main text ends by answering the question plainly, before the \textit{In practice} block and the proofs.
 
 A reader who must decide on a release next month can read this chapter, the \textit{In
 practice} blocks at the end of each chapter, and Part~VI. A reader who wants to check the

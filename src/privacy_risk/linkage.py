@@ -27,6 +27,17 @@ def maximum_posterior_success(posteriors: np.ndarray) -> float:
     return float(posteriors.max(initial=0.0))
 
 
+def membership_conditional_success(posteriors: np.ndarray, no_match_posterior: float) -> float:
+    """Success given membership (Proposition 2.4): the largest posterior divided by 1 - p0.
+
+    ``posteriors`` are the released-candidate posteriors of equation (2.5) and
+    ``no_match_posterior`` is p_t0. The plain maximum understates success by 1 - p0.
+    """
+    if not 0 <= no_match_posterior < 1:
+        raise ValueError("no_match_posterior must lie in [0, 1)")
+    return maximum_posterior_success(posteriors) / (1.0 - no_match_posterior)
+
+
 def exact_match_probabilities(target_keys: np.ndarray, release_keys: np.ndarray) -> np.ndarray:
     release_keys = np.asarray(release_keys)
     target_keys = np.asarray(target_keys)
