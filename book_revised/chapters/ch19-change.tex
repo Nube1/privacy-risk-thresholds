@@ -2,7 +2,7 @@
 
 Every floor this book reports for the credit register was computed on a register that does
 not move. A loan's exposure is the same in every vintage in which it appears, and whether
-it appears is drawn afresh each month, independently of everything else (Chapter~23). A
+it appears is drawn afresh each month, independently of everything else (Chapter~\ref{ch:open}). A
 reader may well take that simplification to be on the safe side. Real exposures amortise, are
 drawn down and are restructured; loans close, reopen and are refinanced. To an adversary
 who has read a loan's exposure once, every later movement puts distance between what he
@@ -134,7 +134,7 @@ attack draws independent errors and would have credited him with twelve.
 
 \section{A model of changing exposure and activity}
 
-The extension proposes a first model for the two features that Chapter~23 left open: exposures
+The extension proposes a first model for the two features that Chapter~\ref{ch:open} left open: exposures
 that change between vintages, and activity that depends on the past. For loan $j$ in
 vintage $t$, let $e_{j,t}$ be its exposure and $a_{j,t}\in\{0,1\}$ its activity. Log exposure follows a first-order autoregression around a long-run level $\bar e$, the simplest of the dynamic panel models of
 econometrics \citep{arellano1991},
@@ -184,7 +184,7 @@ uniformly from twelve.
 
 These are chosen parameters, not estimates, and two of them bite. With $\gamma_2=0$, activity
 in the run does not depend on exposure, so the dependence of activity on loan size that
-Chapter~23 named is in the model and not in the evidence. And the frozen limit is not the
+Chapter~\ref{ch:open} named is in the model and not in the evidence. And the frozen limit is not the
 register of Chapter~\ref{ch:credit}. That register was rebuilt after review, with originations during the
 panel, a monthly exit hazard of $0.04$ with no return and a stock of about 27,000 loans. The
 extension's panel forces every loan to be live in the first vintage and lets loans vanish and
@@ -203,7 +203,7 @@ candidates by the Gaussian likelihood of those readings and names the most likel
 candidate that is absent in a vintage where the target is live offers no published value to
 compare, and the attack rules it out. Absence is information. The first published version of
 the history attack had used only presence, and the referees pointed out that an adversary
-who knows when a loan is live also knows when it is not (Chapter~23).
+who knows when a loan is live also knows when it is not (Chapter~\ref{ch:open}).
 
 The history adversary can be analysed exactly, and the analysis explains its rows in the
 evidence.
@@ -374,7 +374,7 @@ The third says that the rates can be read off transition counts and holding time
 optimisation; \citet{albert1962} derived this estimator, and \citet{lando2002} used it
 for rating transitions. Together they make the graph model cheap and hard to get wrong,
 and those are the reasons it has to stay in any comparison. The extension goes on to propose
-continuous transport models and an optional fluid closure, which Chapter~20 examines. A
+continuous transport models and an optional fluid closure, which Chapter~\ref{ch:dynamics} examines. A
 richer model of movement earns its place only by predicting held-out periods better than
 this baseline, or by supplying a structural constraint that has meaning on its own.
 

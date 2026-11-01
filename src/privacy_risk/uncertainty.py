@@ -41,16 +41,27 @@ def certification_replicates(tolerance: float, alpha: float = 0.05) -> int:
 
 
 def selected_maximum_bound(risks: np.ndarray, replicates: int,
-                           alpha: float = 0.05) -> dict[str, float]:
+                           alpha: float = 0.05,
+                           successes: np.ndarray | None = None) -> dict[str, float]:
     """The worst target's risk with a lower bound corrected for selection.
 
     The worst target is chosen on its own estimate, so its limit is taken at
-    `alpha` divided by the number of targets examined.
+    `alpha` divided by the number of targets examined. Pass the integer
+    `successes` out of `replicates` for each target when they are known; without
+    them the counts are rebuilt by rounding `risks * replicates`, which is exact
+    only when each risk is a count over `replicates` attacks.
     """
     risks = np.asarray(risks, dtype=float)
     if risks.size == 0:
         raise ValueError("no per-target risks supplied")
-    counts = np.rint(risks * replicates).astype(int)
+    if successes is None:
+        counts = np.rint(risks * replicates).astype(int)
+    else:
+        counts = np.asarray(successes)
+        if counts.shape != risks.shape or not np.issubdtype(counts.dtype, np.integer):
+            raise ValueError("successes must be integers with one count per target")
+        if np.any(counts < 0) or np.any(counts > replicates):
+            raise ValueError("each success count must lie between 0 and replicates")
     per_target_alpha = alpha / risks.size
     corrected = np.array([binomial_lower(c, replicates, per_target_alpha) for c in counts])
     individual = np.array([binomial_lower(c, replicates, alpha) for c in counts])
@@ -66,7 +77,10 @@ def nested_variance(estimates: np.ndarray, replicates: int) -> dict[str, float]:
     `estimates` holds one risk estimate per outer replicate, each computed from
     `replicates` inner attacks. The sample variance of those estimates carries both
     sources, so the within part is subtracted to leave the between part, truncated
-    at zero when the finite estimate falls slightly negative.
+    at zero when the finite estimate falls slightly negative. Any interval built
+    from the result by a chi-square argument assumes the outer estimates are roughly
+    normal, which is a poor description when the risk is near zero or the number of
+    outer replicates is small.
     """
     estimates = np.asarray(estimates, dtype=float)
     if estimates.size < 2 or replicates < 1:

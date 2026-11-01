@@ -23,3 +23,11 @@ Not yet recomputed: the extension's evidence-run counts in Table 19.1 and Figure
 ## Code written for Chapters 18 and 19
 
 The modules the two chapters name did not exist in `src/privacy_risk`, so they were written from the chapters' specifications: `gate`, `betting`, `evidence`, `registry`, `dynamics` and `graph`, with `tests/test_ext_learning.py`, `tests/test_ext_models.py` (19 tests, all passing) and `scripts/extension_evidence.py`. The tests replay the checks in Algorithm 18.1, Examples 18.3, 18.4 and 19.6 and the two-loan check of Algorithm 19.1. Table 19.1 and Figures 18.1 and 19.2 still come from the extension's run; the script's own run at seed 2026 agrees in direction and size (see Chapter 19's software note).
+
+## Gaps found and closed
+
+- Code: `uncertainty.selected_maximum_bound` takes integer counts (new `successes` argument, tested); the `nested_variance` docstring states the normality assumption; `__version__` now matches `pyproject.toml` (0.7.0). Appendix A, "Gaps in the code", records the three as closed.
+- Chapter numbering: Chapters 20, 21 and 22 are short placeholders (`\plannedchapter`) stating the question each will answer, so the old "What remains open" chapter is Chapter 23 as in the 304-page draft and the cross-references in Chapters 18 and 19 resolve by label.
+- Appendix A has a new section on the six modules added for Chapters 18 and 19.
+
+Still open: the full text of Chapters 20 to 22, the updated Chapter 23, Appendix A.5's equation-to-code map for the dynamic models, and the chapter-by-chapter check of Chapters 1 to 17 against the code.

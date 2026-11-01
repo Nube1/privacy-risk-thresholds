@@ -411,6 +411,31 @@ and later 183 passing tests for earlier snapshots, and says that a claimed 194 w
 reproduced at the time. % source: VALIDATION.md
 The count of 194 passing tests reported here is from the current branch.
 
+\section{Modules added for Chapters 18 and 19}
+
+Six modules implement the learning-system chapters. Table~\ref{app:tab-ext} lists them. They were written from the
+chapters' specifications and are tested against the checks the chapters print, not against an earlier engine, so
+a figure the book takes from the extension's own run is reproduced in direction and size and not digit for digit.
+\texttt{scripts/\allowbreak{}extension\_\allowbreak{}evidence.\allowbreak{}py} regenerates the pooled-attack table of Chapter~19.
+
+\begin{table}[ht]
+\centering\small
+\caption{Modules added for Chapters 18 and 19. The test files are in \texttt{tests/}.}
+\label{app:tab-ext}
+\begin{tabular}{p{2.1cm}p{5.6cm}p{2.6cm}p{2.3cm}}
+\toprule
+Module & What it computes & Chapter & Test file\\
+\midrule
+\texttt{gate} & The release gate: candidates, required attacks, bounds from audits only & 18 & \texttt{test\_ext\_learning}\\
+\texttt{betting} & Predictable bets and the betting audit & 6, 18 & \texttt{test\_ext\_learning}\\
+\texttt{evidence} & Measurement records as integer counts; refusal of the final-audit split & 18 & \texttt{test\_ext\_learning}\\
+\texttt{registry} & Programme budget, frozen plans and their hashes in SQLite & 18 & \texttt{test\_ext\_learning}\\
+\texttt{dynamics} & Changing and frozen panels, and the pooled attack using presence and absence & 19 & \texttt{test\_ext\_models}\\
+\texttt{graph} & Generator checks, propagation, node risk and the maximum-likelihood generator & 19 & \texttt{test\_ext\_models}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
 \section{Gaps in the code}
 
 A review of the repository before the book was written, and the work for the chapters
@@ -448,17 +473,19 @@ The composition and temporal tests are recorded beside the validity flag and in 
 expiry check, as the long form intends.
 
 \paragraph{Counts rebuilt from rates.} \texttt{uncertainty.\allowbreak{}selected\_\allowbreak{}maximum\_\allowbreak{}bound}
-rebuilds success counts by rounding rates times replicates. It should take the counts
-directly, since a rate that was itself rounded can give a count that is off by one.
+used to rebuild success counts by rounding rates times replicates. It now takes the
+integer counts directly through its \texttt{successes} argument, and keeps the rounding only as a
+fallback for callers that hold rates alone. A test checks that the two agree when the rates are exact counts and that
+non-integer or out-of-range counts are refused.
 
 \paragraph{An unstated normality assumption.} \texttt{uncertainty.\allowbreak{}nested\_\allowbreak{}variance}
-gives a chi-square interval for the share of variance due to the design. That interval
-assumes the outer estimates are roughly normal, and the documentation should say so.
+gives a variance split from which a chi-square interval for the share of variance due to the design
+is built. That interval assumes the outer estimates are roughly normal. The docstring now says so, and
+adds that the assumption is poor when the risk is near zero or the outer replicates are few.
 
-\paragraph{Version strings.} The package metadata says version 0.7.0, archives of
-the repository were named 0.7.1, and the package initialiser still sets
-\texttt{\_\allowbreak{}\_\allowbreak{}version\_\allowbreak{}\_\allowbreak{}} to 0.3.0. % source: pyproject.toml; src/privacy_risk/__init__.py; book/REVIEW.md
-A reader who cites a version cannot tell which is meant.
+\paragraph{Version strings.} The package metadata and the package initialiser now both
+say version 0.7.0. Archives of the repository named 0.7.1 are not matched by any tag.
+A reader who cites a version should cite the commit.
 
 \paragraph{Line endings.} The one failing test, described above, and the long list of
 files that show as modified in the Windows working copy, have the same cause and the
@@ -466,7 +493,7 @@ same remedy.
 
 \paragraph{What is not built.} The registry service that a deployment needs, with
 durable per-programme budgets, signing keys and external time stamps, is specified and
-not built. The adapter for a real register is described and not written. Dependencies
+only partly built: \texttt{registry.Registry} keeps budgets and plan hashes in a local SQLite file, and has no signing keys or external time stamps. The adapter for a real register is described and not written. Dependencies
 other than \texttt{wooldridge} are not pinned, so a fixed seed does not promise
 bit-for-bit equality across library versions. % source: docs/DEPLOYMENT_AND_PENTEST_2026_10_23.md; docs/CLAIMS_EVIDENCE.md; VALIDATION.md
 The pooled attack in \texttt{composition.\allowbreak{}pooled\_\allowbreak{}attack}, by contrast, was checked

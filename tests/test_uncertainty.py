@@ -54,3 +54,17 @@ def test_nested_variance_separates_the_two_sources():
     assert flat["between_variance"] == 0.0
     with pytest.raises(ValueError):
         nested_variance(np.array([0.2]), 100)
+
+
+def test_selected_maximum_bound_takes_counts_directly():
+    import numpy as np
+
+    from privacy_risk.uncertainty import selected_maximum_bound
+    counts = np.array([201, 125, 50])
+    from_counts = selected_maximum_bound(counts / 250, 250, 0.05, successes=counts)
+    rebuilt = selected_maximum_bound(counts / 250, 250, 0.05)
+    assert from_counts["maximum_lower_bound"] == pytest.approx(rebuilt["maximum_lower_bound"])
+    with pytest.raises(ValueError):
+        selected_maximum_bound(counts / 250, 250, 0.05, successes=np.array([1.5, 2.0, 3.0]))
+    with pytest.raises(ValueError):
+        selected_maximum_bound(counts / 250, 250, 0.05, successes=np.array([300, 1, 2]))
