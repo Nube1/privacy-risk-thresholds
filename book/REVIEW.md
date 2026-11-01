@@ -72,6 +72,10 @@ Code changes above are listed here for a separate commit; the book branch does n
 
 ## Discrepancies found while writing the full draft (1 November 2026)
 
+Fixed on branch `review-fixes` (merged into `book`): items 1 (census frontier docs and checker), 5 (calibration
+band now 0.03 with a power check; the frequency-transport point remains open), 6 (one programme tolerance), the README
+part of 14, and 17 (both figures redrawn with shade and line style or hatching). The rest remain open.
+
 Each chapter follows the run it names; these need fixing at the source before publication.
 
 1. Census frontier: docs/REAL_DATA_PROVENANCE.md gives 0.276 to 0.547 (archived run); the paper and the

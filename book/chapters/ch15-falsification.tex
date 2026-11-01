@@ -154,18 +154,18 @@ the register can be refuted by the register, because the model makes a family of
 predictions and the fit pins down only some of them. The calibration test reads
 the predictions the risk figure ignores.
 
-The test has a weakness in the repository as it stands, and the reader should know
-it. The configuration that drives the paper's run sets the band for the mean
-calibration gap at 0.06. % source: configs/paper.json calibration_ece_limit 0.06
-The misspecified model's gap of 0.049 lies inside that band, so the pipeline as
-configured would have passed the wrong model. The pipeline also applies the test to
-the declared model only, so the comparison in Figure~\ref{c15:fig-calib} is reported
-and not gated. % source: src/privacy_risk/pipeline.py validate() uses attack["calibration"][0]
-The long form describes the misspecified model as failing the test, which is true
-of the sevenfold contrast and not of the configured band. A band has to be set from
-the size of error that would change a decision, and a band of 0.06 on a gap whose
-correct value is 0.007 is too wide to catch an error of the kind this chapter
-studies. The band is the institution's choice, and this one should be tightened.
+The test had a weakness in an earlier version of the repository, and the way it was
+repaired is part of the lesson. The configuration that drove the paper's run set the band
+for the mean calibration gap at 0.06, and the misspecified model's gap of 0.049 lay inside
+it, so the pipeline as then configured would have passed the wrong model. A band has to be
+set from the size of error that would change a decision, and a band of 0.06 on a gap whose
+correct value is 0.007 was too wide to catch an error of the kind this chapter studies. The
+band now stands at 0.03, and the pipeline counts the calibration test as valid only if the
+band also rejects the deliberately misspecified model: a band that passes a known wrong
+model cannot show the declared one wrong either.
+% source: configs/paper.json calibration_ece_limit 0.03; artifacts-paper/results.json validation.metrics (ece 0.0075, ece_misspecified 0.0487, check calibration_band_has_power true)
+The value of 0.03 was chosen after the wider band was found wanting, so it was not written down
+before the evidence was seen; its first prespecified use is the next run on fresh draws.
 
 Naledi's sheet for Tomás's request sets the band at 0.02 and records why: on the
 simulated population a correctly specified model sits well below it, and the
@@ -333,13 +333,13 @@ passes on its own with an upper bound of 0.081, and the gate still returns a fai
 because the upper bound on the pooled risk of the declared four-release programme,
 0.464, exceeds the release tolerance of 0.12. % source: artifacts-paper/decision.json (upper_risk 0.0806, pooled_upper_bound 0.4640, tolerance 0.12, status FAIL)
 
-The decision record in the repository shows one loose end. The validation step
-judges the pooled bound against a programme tolerance of 0.5, which it meets, while
-the gate judges the same bound against the release tolerance of 0.12, which it does
-not. % source: artifacts-paper/decision.json programme.programme_tolerance_used_by_validation 0.5; configs/paper.json programme.tau_programme 0.5
-Both statements are in the file, and a reader has to work out which governed the
-outcome. A record should carry one programme tolerance, owned and dated like the
-release tolerance, and the gate should compare the pooled bound with it.
+The decision record now carries one programme tolerance. In an earlier version the
+validation step judged the pooled bound against a programme tolerance of 0.5 while the gate
+judged it against 0.12, and both statements sat in the same file. The validation step and the
+gate now read the same declared value, 0.12, and the record names it; the figure of 0.5
+survives only as the total of the risk budget on the union event of Chapter~\ref{ch:tolerance},
+recorded under that name.
+% source: artifacts-paper/decision.json programme (programme_tolerance 0.12, upper_within_programme_tolerance false, union_risk_budget 0.5)
 
 Tomás's request is a composition question before it is anything else. He asked for
 a research extract in March, a second in June and a third with the year's vintages.
@@ -472,10 +472,14 @@ they carry the sixth test.
 \texttt{governance.\allowbreak{}decide} returns \texttt{INVALID} when the report has not passed.
 The bands come from the configuration file:
 \begin{lstlisting}
-report = full_validation_report(
-    ece, float(config.get("calibration_ece_limit", 0.06)),
-    transport, float(config.get("frequency_mae_limit", 1.5)),
-    violations, stress, composition)
+report = full_validation_report(ece, float(config.get("calibration_ece_limit", 0.03)),
+                                transport,
+                                float(config.get("frequency_mae_limit", 1.5)),
+                                violations, stress, composition,
+                                misspecified_ece=(max(misspecified)
+                                                  if misspecified and config.get(
+                                                      "require_calibration_power", True)
+                                                  else None))
 \end{lstlisting}
 \end{inpractice}
 

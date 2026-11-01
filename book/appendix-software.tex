@@ -428,17 +428,19 @@ Chapter~\ref{ch:thresholds} describes and Table~\ref{c16:tab-record} shows. \tex
 also does not check that the bound it receives was computed at the threshold's error
 level.
 
-\paragraph{Two tolerances for one programme.} The validation step judges the pooled
-bound against a programme tolerance of 0.5 taken from the configuration, while the
-gate judges the same bound against the release tolerance of 0.12, and both appear in
-\texttt{decision.\allowbreak{}json}. % source: artifacts-paper/decision.json; configs/paper.json programme.tau_programme 0.5
-The gate's reading is the one that decides, and the record should carry a single
-programme tolerance, owned and dated.
+\paragraph{One tolerance for the programme.} Validation and the gate now judge the pooled
+bound against one declared value, \texttt{programme.\allowbreak{}pooled\_\allowbreak{}tolerance}
+(0.12 in the paper's configuration, defaulting to the release tolerance), and
+\texttt{decision.\allowbreak{}json} records it once. The entry
+\texttt{tau\_\allowbreak{}programme} (0.5) is the total of the union risk budget and is recorded
+as \texttt{union\_\allowbreak{}risk\_\allowbreak{}budget}. An earlier version judged the same bound
+against both values. % source: configs/paper.json; artifacts-paper/decision.json
 
-\paragraph{Falsification bands.} The calibration band in the configuration is 0.06,
-which a model with a misstated error scale meets with a gap of 0.049, so the pipeline
-as configured would not catch the error that Chapter~\ref{ch:falsification} uses to
-illustrate the test. The pipeline gates calibration for the declared model only. The
+\paragraph{Falsification bands.} The calibration band in the configuration is now 0.03,
+down from 0.06, which a model with a misstated error scale met with a gap of 0.049. The
+pipeline also requires the band to reject that misspecified model before the calibration
+test counts as valid (check \texttt{calibration\_\allowbreak{}band\_\allowbreak{}has\_\allowbreak{}power}),
+which test configurations can switch off with \texttt{require\_\allowbreak{}calibration\_\allowbreak{}power}. The
 frequency test checks the mean population cell size, which the fitted law recovers to
 0.055 cells, and not the uniqueness probability that the journalist measure uses, whose
 error reaches 25 per cent. % source: configs/paper.json; artifacts-paper/results.json validation; paper/generated/numbers.tex runjournalisterrorhigh
