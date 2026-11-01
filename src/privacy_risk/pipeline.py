@@ -26,6 +26,19 @@ from .validation import (
 )
 
 
+def programme_tolerance(config: dict) -> float:
+    """The tolerance the pooled risk of the declared programme must meet.
+
+    One value serves both the programme check in validation and the gate, so the
+    decision record cannot judge the same bound against two tolerances. It defaults to
+    the release tolerance. The separate `tau_programme` entry is the total of the risk
+    budget on the union event (Appendix A of the long form) and is not a tolerance for
+    the pooled attack.
+    """
+    programme = config.get("programme", {})
+    return float(programme.get("pooled_tolerance", config["risk_tolerance"]))
+
+
 def validate(results: dict, config: dict) -> dict:
     """Run the falsification tests that can reject the model behind the risk figure."""
     attack = results["attack"]
@@ -33,7 +46,11 @@ def validate(results: dict, config: dict) -> dict:
     settings = results["grid"]["settings"]
     design = [row for row in measures["journalist"]
               if abs(row["pi"] - results["keys"]["sampling_fraction"]) < 1e-9][0]
+    calibration = {row["name"]: float(row["gap"]) for row in attack["calibration"]}
     ece = float(attack["calibration"][0]["gap"])
+    # the band must also reject the deliberately misspecified model, or the test has
+    # no power to show the linkage model wrong
+    misspecified = [gap for name, gap in calibration.items() if "misspecified" in name]
     transport = frequency_transport_error(design["fitted_mean_cell"],
                                           measures["true_mean_population_cell"])
     protection = np.array([s["min_cell_count"] for s in settings], dtype=float)
@@ -50,12 +67,16 @@ def validate(results: dict, config: dict) -> dict:
                            float(config.get("stress_tolerance", 0.05)))
     programme = results["programme"]
     composition = composition_test(programme["pooled"][-1], programme["union_upper"],
-                                   config.get("programme", {}).get("tau_programme"),
+                                   programme_tolerance(config),
                                    programme.get("pooled_upper"))
-    report = full_validation_report(ece, float(config.get("calibration_ece_limit", 0.06)),
+    report = full_validation_report(ece, float(config.get("calibration_ece_limit", 0.03)),
                                     transport,
                                     float(config.get("frequency_mae_limit", 1.5)),
-                                    violations, stress, composition)
+                                    violations, stress, composition,
+                                    misspecified_ece=(max(misspecified)
+                                                      if misspecified and config.get(
+                                                          "require_calibration_power", True)
+                                                      else None))
     report["metrics"]["protection_levels"] = protection.tolist()
     report["metrics"]["risk_by_setting"] = risk.tolist()
     return report
@@ -87,27 +108,26 @@ def gate(results: dict, config: dict, validation: dict) -> dict:
         record["replicates"] = int(settings[index]["replicates"])
     programme = validation["programme"]
     pooled_final = results["programme"].get("pooled_upper")
+    pooled_tolerance = programme_tolerance(config)
     record["release_status"] = record["status"]
     record["release_reason"] = record["reason"]
     if (record["status"] == "PASS" and pooled_final is not None
-            and pooled_final > tolerance):
+            and pooled_final > pooled_tolerance):
         # a per-release pass does not carry over to the programme: the declared
-        # programme's pooled risk is above the release tolerance, so the gate fails
+        # programme's pooled risk is above the programme tolerance, so the gate fails
         record["status"] = "FAIL"
         record["reason"] = ("per-release upper bound is within tolerance, but the upper "
                             "bound on the pooled risk of the declared programme exceeds "
-                            "the release tolerance")
+                            "the programme tolerance")
     record["programme"] = {
         "pooled_risk": programme["pooled"],
         "union_upper_bound": programme["union_upper"],
         "marginals_bound_the_programme": programme["marginals_bound_the_programme"],
-        "upper_within_programme_tolerance": programme.get(
-            "upper_within_programme_tolerance"),
-        "programme_tolerance_used_by_validation": config.get("programme", {}).get(
-            "tau_programme"),
+        "programme_tolerance": pooled_tolerance,
         "pooled_upper_bound": pooled_final,
-        "pooled_upper_exceeds_release_tolerance": (pooled_final is not None
-                                                   and pooled_final > tolerance),
+        "upper_within_programme_tolerance": (pooled_final is None
+                                             or pooled_final <= pooled_tolerance),
+        "union_risk_budget": config.get("programme", {}).get("tau_programme"),
         "note": ("Marginal risks do not bound a pooled attack. A programme needs its own "
                  "tolerance and its own joint simulation."),
     }

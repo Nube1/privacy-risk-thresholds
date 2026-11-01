@@ -109,7 +109,8 @@ def validation_report(ece: float, ece_limit: float, frequency_mae: float,
 
 def full_validation_report(ece: float, ece_limit: float, frequency_mae: float,
                            frequency_mae_limit: float, violations: list[int],
-                           stress: dict, composition: dict) -> dict:
+                           stress: dict, composition: dict,
+                           misspecified_ece: float | None = None) -> dict:
     """Release-level validation, plus the programme evidence recorded beside it.
 
     The composition result is reported, not folded into release validity: a pooled
@@ -118,6 +119,12 @@ def full_validation_report(ece: float, ece_limit: float, frequency_mae: float,
     """
     report = validation_report(ece, ece_limit, frequency_mae, frequency_mae_limit, violations)
     report["checks"]["adversary_stress"] = bool(stress["stronger_never_materially_lower"])
+    if misspecified_ece is not None:
+        # a band wide enough to pass a known misspecified model cannot show the declared
+        # model wrong either, so the test is only valid if it rejects that model
+        report["checks"]["calibration_band_has_power"] = bool(misspecified_ece > ece_limit)
+        report["metrics"]["ece_misspecified"] = float(misspecified_ece)
+    report["metrics"]["ece_limit"] = float(ece_limit)
     report["passed"] = all(report["checks"].values())
     report["metrics"]["stress"] = stress
     report["programme"] = composition

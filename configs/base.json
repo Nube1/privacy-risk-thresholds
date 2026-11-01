@@ -80,7 +80,8 @@
       0.5,
       0.3
     ],
-    "tau_programme": 0.5
+    "tau_programme": 0.5,
+    "pooled_tolerance": 0.12
   },
   "certification": {
     "taus": [
@@ -115,7 +116,7 @@
   "owner": "Named accountable owner",
   "expiry_date": "2027-09-04",
   "harm_class": "confidential microdata",
-  "calibration_ece_limit": 0.06,
+  "calibration_ece_limit": 0.03,
   "frequency_mae_limit": 1.5,
   "monotonicity_tolerance": 0.025,
   "stress_tolerance": 0.05,

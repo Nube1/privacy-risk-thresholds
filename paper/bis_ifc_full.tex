@@ -1668,8 +1668,10 @@ release check passes, but the upper bound on the pooled risk of the declared
 four-release programme, 0.464, exceeds the release tolerance, and the gate
 therefore returns a fail. The programme check compares the upper bound, not the
 point estimate of 0.4581, with the tolerance, for the reason of Proposition
-\ref{prop:point}. The programme validation check uses its own tolerance of 0.50,
-which is recorded separately and plays no part in that decision. A failed
+\ref{prop:point}. The programme check in validation and the gate use the same
+programme tolerance, 0.12, so the record judges the pooled bound once; the 0.50 of
+Appendix \ref{app:budget} is the total of a risk budget on the union event and is
+not a tolerance for the pooled attack. A failed
 decision is the intended outcome here: the gate fails closed when the programme
 is riskier than the tolerance the release was set. The credit evaluation of Section \ref{sec:eval}
 was also rerun over 20 independent register draws by a separate script,
@@ -2508,8 +2510,12 @@ with a stated failure consequence, and report how the simulation of Section
 must agree with held-out match frequencies within prespecified bands. Figure
 \ref{fig:calib} shows the test passing for the correct model with a mean gap of
 0.007 and failing for a misspecified covariate precision with a gap of 0.049,
-while the two risk estimates differ by 0.007. Failure means the risk figure is not
-supported, whatever its value.
+while the two risk estimates differ by 0.007. The pipeline sets the band at 0.03 and
+counts the test as valid only if the band also rejects the misspecified model, since a
+band wide enough to pass that model could not show the declared one wrong. An earlier
+band of 0.06 failed that requirement; the value of 0.03 was set after it was found, so
+the next run on fresh draws is its first prespecified use. Failure means the risk
+figure is not supported, whatever its value.
 
 \item \textbf{Population-frequency validation.} The model behind
 \eqref{eq:rho} must predict held-out or externally benchmarked key frequencies.
