@@ -35,3 +35,15 @@ def test_algorithm_3_2_checks():
     assert journalist_from_fit(1.0, FrequencyFit(mean=2.0, dispersion=0.5)) == pytest.approx(1.0)
     with pytest.raises(ValueError):
         fit_frequency_model(np.array([3, 1, 1, 2, 5, 1]), 4, 0.1)
+
+
+def test_chapter4_examples():
+    import math
+    from privacy_risk.uncertainty import binomial_upper, certification_replicates
+    assert round(binomial_upper(127, 1200), 4) == 0.1216
+    assert max(x for x in range(100, 140) if binomial_upper(x, 1200) <= 0.12) == 125
+    assert round(binomial_upper(337, 4000), 3) == 0.092
+    assert round(binomial_upper(458, 4000), 3) == 0.123
+    assert certification_replicates(0.12) == 24
+    assert round(1 - 0.05 ** (1 / 24), 3) == 0.117 and round(1 - 0.05 ** (1 / 23), 3) == 0.122
+    assert round(binomial_upper(1, 24), 3) == 0.183

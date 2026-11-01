@@ -177,14 +177,28 @@ If $X \sim \mathrm{Binomial}(B,R)$, then
 $\Prob_R\{\overline{R}_{1-\alpha}(X,B) < R\} \le \alpha$ for every $R \in [0,1]$.
 \end{proposition}
 
+\begin{example}[Naledi's 127 successes]\label{c04:ex-naledi}
+The attack named the target in $x = 127$ of $B = 1{,}200$ attacks, so
+$\widehat{R} = 127/1200 = 0.1058$. Its standard error is
+$\sqrt{0.1058 \times 0.8942/1200} = 0.0089$. The normal approximation gives an upper
+bound of $0.1058 + 1.645 \times 0.0089 = 0.1204$. The exact bound
+\eqref{c04:eq-cp} is the 0.95 quantile of the $\mathrm{Beta}(128, 1073)$ distribution,
+which is $0.1216$. Both lie above the tolerance of 0.12, the exact one by a little more.
+At this number of attacks the largest count of successes whose exact bound is at or
+below 0.12 is 125, so the setting would have passed with two fewer successes and fails
+with 127.
+\end{example}
+
+\begin{example}[A file that passes]\label{c04:ex-pass}
 The worked example of the long-form paper shows the bound in use. On the confirmation
 draw for the single-release attack on the synthetic credit register, the attack named
 the right loan for 337 of 4,000 targets, a rate of 0.084. The 0.95 quantile of the
 $\mathrm{Beta}(338, 3663)$ distribution is 0.092, below the tolerance of 0.12 with a
 margin of 23 per cent of the tolerance, so the file passes for that adversary.
 % source: paper/worked_examples.tex, Example ex:bound (337 of 4,000; 0.084; 0.092; margin 0.23)
-The decision rests on the bound and not the rate. Had the rate been 0.115 on the same
-number of targets, the bound would have been 0.123, and the release would have failed.
+The decision rests on the bound and not the rate. Had 458 of the 4,000 attacks succeeded, a rate of 0.115, the bound would have been
+0.123, and the release would have failed.
+\end{example}
 % source: paper/worked_examples.tex, Example ex:bound and ex:selection (0.115, 0.123)
 
 The case of no successes deserves its own formula, because it is the case a committee
@@ -226,6 +240,24 @@ worked example puts the figure for the credit register's tolerance of 0.12 at 24
 % source: paper/generated/table_certification.tex (59); paper/worked_examples.tex, Example ex:zero (24)
 These counts are lower limits. They assume that every attack fails. If some succeed,
 more are needed, and inverting \eqref{c04:eq-cp} for the observed count gives the number.
+
+\begin{example}[Twenty-four clean attacks]\label{c04:ex-24}
+For the credit register's tolerance of $\tau = 0.12$ at $\alpha = 0.05$,
+\eqref{c04:eq-cert} asks for $B \ge \log 0.05/\log 0.88 = 23.4$, so 24 attacks. With 24
+attacks and no success the bound is $1 - 0.05^{1/24} = 0.117$, which passes. With 23 the
+bound is $0.122$, which fails. A single success among the 24 lifts the bound to $0.183$,
+and the committee would then need many more attacks, not one more. The rule of three
+gives $3/24 = 0.125$, close to the exact $0.117$ and on the safe side.
+\end{example}
+
+The practical content is that a tolerance and an evidence standard are one decision. A
+committee that writes a tolerance of one in a hundred thousand into its policy has
+committed itself to run several hundred thousand independent attacks for every release,
+and to run them so that they really are independent, or else to replace simulation with
+an argument from a model. If it cannot do either, the tolerance is not supported by its
+evidence, and the decision record should say so. Choosing a small tolerance because it
+sounds prudent, without pricing the evidence, produces a rule that no release can pass
+on the evidence.
 
 \begin{figure}[t]
 \centering

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 01:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.10.30)  2 NOV 2026 01:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1283,48 +1283,52 @@ Package pdftex.def Info: ../paper/figures/fig5_journalist.pdf  used on input li
 ne 412.
 (pdftex.def)             Requested size: 291.0733pt x 218.49843pt.
  [21 <../paper/figures/fig5_journalist.pdf>]
-Package mdframed Info: mdframed works in twoside mode on input line 480.
+[22]
+Package mdframed Info: mdframed works in twoside mode on input line 482.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 480.
+(mdframed)              on input line 482.
 
-Underfull \hbox (badness 1845) in paragraph at lines 491--504
+Underfull \hbox (badness 1845) in paragraph at lines 493--506
 \T1/ppl/m/it/10 In the soft-ware. \T1/ppl/m/n/10 The checks of Ex-am-ples []3.3
 [] and []3.5[] and of Al-go-rithms 3.1 and 3.2
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 491--504
+Underfull \hbox (badness 10000) in paragraph at lines 493--506
 \T1/ppl/m/n/10 are in \T1/cmtt/m/n/10 tests/test_ext_measures.py\T1/ppl/m/n/10 
 . The mea-sures are in \T1/cmtt/m/n/10 privacy_risk.risk\T1/ppl/m/n/10 :
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 491--504
+Underfull \hbox (badness 10000) in paragraph at lines 493--506
 \T1/cmtt/m/n/10 prosecutor_risk\T1/ppl/m/n/10 , \T1/cmtt/m/n/10 marketer_sample
 _risk\T1/ppl/m/n/10 , \T1/cmtt/m/n/10 marketer_population_frequency_risk\T1/ppl
 /m/n/10 ,
  []
 
 
-Underfull \hbox (badness 3229) in paragraph at lines 491--504
+Underfull \hbox (badness 3229) in paragraph at lines 493--506
 \T1/cmtt/m/n/10 marketer_unconditional_risk \T1/ppl/m/n/10 and \T1/cmtt/m/n/10 
 journalist_unique_probability \T1/ppl/m/n/10 for a stated prior
  []
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 505.
-[22]
-Package mdframed Info: mdframed works in twoside mode on input line 515.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 507.
+Package mdframed Info: mdframed works in twoside mode on input line 517.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 515.
+(mdframed)              on input line 517.
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 5
-27.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+29.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [23]
-Underfull \hbox (badness 1331) in paragraph at lines 559--561
+)
+Package mdframed Info: Box was splittet wrong
+ starting loop to iterate the splitting point
+(mdframed)              on input line 556.
+ [23]
+Underfull \hbox (badness 1331) in paragraph at lines 561--563
 []\T1/ppl/m/n/10.95 By Propo-si-tion []2.2[], each re-leased record $\OML/zplm/
 m/it/10.95 i$ \T1/ppl/m/n/10.95 has pros-e-cu-tor risk
  []
@@ -1335,35 +1339,37 @@ m/it/10.95 i$ \T1/ppl/m/n/10.95 has pros-e-cu-tor risk
 Chapter 4.
 [27
 
-] [28] [29]
-Package pgfplots info on input line 240: Using 'lua backend=false' for axis: xm
+] [28] [29] [30]
+Package pgfplots info on input line 272: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
-Package pgfplots info on input line 240: Using 'lua backend=false' for axis: ym
+Package pgfplots info on input line 272: Using 'lua backend=false' for axis: ym
 ode=log unsupported (yet).
 
-Underfull \hbox (badness 1259) in paragraph at lines 265--273
+Underfull \hbox (badness 1259) in paragraph at lines 297--305
 []\T1/ppl/m/n/10.95 The pub-lished record of at-tacks of-fers no short-cut. A s
 ys-tem-atic re-view of re-
  []
 
-[30] [31] [32] [33]
-Package mdframed Info: mdframed works in twoside mode on input line 470.
+[31] [32] [33]
+Package mdframed Info: mdframed works in twoside mode on input line 502.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 470.
+(mdframed)              on input line 502.
 
-Underfull \hbox (badness 4328) in paragraph at lines 482--496
-\T1/ppl/m/n/10 (the cor-rected lower bound of Propo-si-tion []4.6[]) and \T1/cm
+Underfull \hbox (badness 4328) in paragraph at lines 514--528
+\T1/ppl/m/n/10 (the cor-rected lower bound of Propo-si-tion []4.9[]) and \T1/cm
 tt/m/n/10 nested_variance \T1/ppl/m/n/10 ([], with a
  []
 
 
-Underfull \hbox (badness 1762) in paragraph at lines 482--496
+Underfull \hbox (badness 1762) in paragraph at lines 514--528
 \T1/ppl/m/n/10 chi-square in-ter-val for the de-sign share that as-sumes roughl
 y nor-mal outer es-ti-mates).
  []
 
-[34] [35]) (./chapters/ch05-selection.tex [36]
+[34]
+Package mdframed Info: Not enough space on this page on input line 543.
+ [35]) (./chapters/ch05-selection.tex [36]
 Chapter 5.
 [37
 
@@ -1449,7 +1455,7 @@ Chapter 8.
 [66
 
 ]
-<../paper/figures/fig2_frontier.pdf, id=2280, 347.70865pt x 229.37105pt>
+<../paper/figures/fig2_frontier.pdf, id=2285, 347.70865pt x 229.37105pt>
 File: ../paper/figures/fig2_frontier.pdf Graphic file (type pdf)
 <use ../paper/figures/fig2_frontier.pdf>
 Package pdftex.def Info: ../paper/figures/fig2_frontier.pdf  used on input line
@@ -1491,13 +1497,13 @@ Chapter 9.
 [77
 
 ]
-<../paper/diagrams/pooling.pdf, id=2469, 752.8125pt x 293.59688pt>
+<../paper/diagrams/pooling.pdf, id=2474, 752.8125pt x 293.59688pt>
 File: ../paper/diagrams/pooling.pdf Graphic file (type pdf)
 <use ../paper/diagrams/pooling.pdf>
 Package pdftex.def Info: ../paper/diagrams/pooling.pdf  used on input line 77.
 (pdftex.def)             Requested size: 343.99329pt x 134.1602pt.
  [78 <../paper/diagrams/pooling.pdf>]
-<../paper/figures/fig4_composition.pdf, id=2505, 340.13347pt x 221.6419pt>
+<../paper/figures/fig4_composition.pdf, id=2510, 340.13347pt x 221.6419pt>
 File: ../paper/figures/fig4_composition.pdf Graphic file (type pdf)
 <use ../paper/figures/fig4_composition.pdf>
 Package pdftex.def Info: ../paper/figures/fig4_composition.pdf  used on input l
@@ -1547,7 +1553,7 @@ Package pdftex.def Info: ../paper/figures/fig5_journalist.pdf  used on input li
 ne 177.
 (pdftex.def)             Requested size: 273.42883pt x 205.252pt.
  [98] [99]
-<../paper/figures/fig3_calibration.pdf, id=2862, 302.50133pt x 230.63847pt>
+<../paper/figures/fig3_calibration.pdf, id=2867, 302.50133pt x 230.63847pt>
 File: ../paper/figures/fig3_calibration.pdf Graphic file (type pdf)
 <use ../paper/figures/fig3_calibration.pdf>
 Package pdftex.def Info: ../paper/figures/fig3_calibration.pdf  used on input l
@@ -1574,7 +1580,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package pgfplots info on input line 285: Using 'lua backend=false' for axis: xm
 ode=log unsupported (yet).
  [101]
-<../paper/figures/fig1_risk_distribution.pdf, id=2922, 339.87665pt x 216.12343p
+<../paper/figures/fig1_risk_distribution.pdf, id=2927, 339.87665pt x 216.12343p
 t>
 File: ../paper/figures/fig1_risk_distribution.pdf Graphic file (type pdf)
 <use ../paper/figures/fig1_risk_distribution.pdf>
@@ -1632,7 +1638,7 @@ Chapter 12.
 [107
 
 ] [108]
-<../paper/diagrams/realdata_audit.pdf, id=3059, 767.86874pt x 255.95625pt>
+<../paper/diagrams/realdata_audit.pdf, id=3064, 767.86874pt x 255.95625pt>
 File: ../paper/diagrams/realdata_audit.pdf Graphic file (type pdf)
 <use ../paper/diagrams/realdata_audit.pdf>
 Package pdftex.def Info: ../paper/diagrams/realdata_audit.pdf  used on input li
@@ -1718,14 +1724,14 @@ Chapter 14.
 [131
 
 ] [132] [133]
-<../paper/figures/fig_neural_predictions.pdf, id=3336, 469.755pt x 180.675pt>
+<../paper/figures/fig_neural_predictions.pdf, id=3341, 469.755pt x 180.675pt>
 File: ../paper/figures/fig_neural_predictions.pdf Graphic file (type pdf)
 <use ../paper/figures/fig_neural_predictions.pdf>
 Package pdftex.def Info: ../paper/figures/fig_neural_predictions.pdf  used on i
 nput line 190.
 (pdftex.def)             Requested size: 441.01773pt x 169.62222pt.
  [134 <../paper/figures/fig_neural_predictions.pdf>]
-<../paper/diagrams/sentry_r_loop.pdf, id=3396, 677.53125pt x 271.0125pt>
+<../paper/diagrams/sentry_r_loop.pdf, id=3401, 677.53125pt x 271.0125pt>
 File: ../paper/diagrams/sentry_r_loop.pdf Graphic file (type pdf)
 <use ../paper/diagrams/sentry_r_loop.pdf>
 Package pdftex.def Info: ../paper/diagrams/sentry_r_loop.pdf  used on input lin
@@ -2203,10 +2209,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 2E508321F67493B888C50553CF2DE38E;51579.
  ) 
 Here is how much of TeX's memory you used:
- 42353 strings out of 476106
- 922180 string characters out of 5793932
- 2103975 words of memory out of 5000000
- 62426 multiletter control sequences out of 15000+600000
+ 42358 strings out of 476106
+ 922244 string characters out of 5793932
+ 2097975 words of memory out of 5000000
+ 62428 multiletter control sequences out of 15000+600000
  642668 words of font info for 232 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  104i,19n,104p,1337b,2597s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2224,10 +2230,10 @@ mri.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on main.pdf (280 pages, 1420736 bytes).
+Output written on main.pdf (280 pages, 1422640 bytes).
 PDF statistics:
- 5460 PDF objects out of 6186 (max. 8388607)
- 4578 compressed objects within 46 object streams
- 1188 named destinations out of 1200 (max. 500000)
+ 5467 PDF objects out of 6186 (max. 8388607)
+ 4585 compressed objects within 46 object streams
+ 1191 named destinations out of 1200 (max. 500000)
  32330 words of extra memory for PDF output out of 35830 (max. 10000000)
 
