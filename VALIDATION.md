@@ -43,3 +43,7 @@ See `RESEARCH_BRIEF.md` for findings and the hiring story, and `EXPERIMENT_PROTO
 ## Paper revision, 23 October 2026
 
 The updated checkout adds a public empirical-file search benchmark and genuine-response replay validation. The final revision suite reports **183 passed, 90.58% source coverage**; Ruff passes. Its full log is `baseline/paper-full-tests.txt`. The new primary run has 30 state blocks and 1,443,840 attack trials, plus a larger-cap sensitivity rerun using the same data and random streams. See `docs/PAPER_RESULTS_2026_10_23.md` and `paper_revision_manifest.json`. Earlier counts and hashes above describe the historical study snapshot.
+
+## Run of 2 November 2026
+
+Run on branch `peer-review-revisions` with `PYTHONPATH=src python -m pytest -o addopts="" tests --ignore=tests/test_realdata.py`: 196 passed and 8 failed before the differential-privacy additions, 202 passed and 8 failed after them. The eight failures are `ModuleNotFoundError: wooldridge`, which the real-data tests and the tests that run the full pipeline need and which was not installed in that environment. `tests/test_realdata.py` was not collected for the same reason. Coverage was not measured. The earlier counts above (178, 183 and the unreproduced 194) belong to earlier snapshots.

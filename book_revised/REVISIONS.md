@@ -31,3 +31,13 @@ The modules the two chapters name did not exist in `src/privacy_risk`, so they w
 - Appendix A has a new section on the six modules added for Chapters 18 and 19.
 
 Still open: the full text of Chapters 20 to 22, the updated Chapter 23, Appendix A.5's equation-to-code map for the dynamic models, and the chapter-by-chapter check of Chapters 1 to 17 against the code.
+
+## Recorded discrepancies fixed (second pass)
+
+- Item 4: `realdata.py` docstring now says 1,989 source rows and 1,986 complete cases.
+- Item 14: the `credit.py` comment now gives the entry share, 1 - 1/(1 + 0.04 x 5) = 0.167, about a sixth.
+- Item 15: bibliography key `ecb2022` renamed `ecb2016` in `book_revised` only; `book/` is untouched.
+- Item 16: `VALIDATION.md` has a dated run of the current suite.
+- Item 18: `dp.py` has `attack_ceiling`, `advanced_composition` and `laplace_epsilon`, with tests, and Appendix A records the sensitivity point.
+
+Items 2, 3, 7, 8, 10, 11, 12 and 13 concern the paper, the JSON artefacts and the JPC article and not the book source; they are listed with the evidence needed in `book_revised/OPEN_ITEMS.md`.

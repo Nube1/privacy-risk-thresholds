@@ -61,7 +61,7 @@ def load_census2000() -> RealFile:
 
 
 def load_loan_applications() -> RealFile:
-    """Boston Fed mortgage application study: 1,989 real applications."""
+    """Boston Fed mortgage application study: 1,989 source rows, 1,986 complete cases."""
     import wooldridge
 
     frame = wooldridge.data("loanapp").copy()

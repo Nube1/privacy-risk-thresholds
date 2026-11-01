@@ -90,8 +90,8 @@ def make_credit_register(config: dict) -> CreditRegister:
     # A monthly panel with a stable stock. Most loans are outstanding when the panel
     # opens; the rest are originated in a later month. Every loan then leaves with a
     # constant monthly hazard, and a loan that has left does not return. With the
-    # default settings about a fifth of the loans ever observed are originated during
-    # the panel and the stock changes by a few per cent a month, as in a register.
+    # default settings (six months, exit hazard 0.04) the entry share is
+    # 1 - 1/(1 + 0.04 * 5) = 0.167, about a sixth of the loans ever observed, and the stock changes by a few per cent a month, as in a register.
     exit_hazard = float(settings.get("exit_hazard", 0.04))
     entry_share = float(settings.get("entry_share", 1.0 - 1.0 / (1.0 + exit_hazard
                                                               * (months - 1))))

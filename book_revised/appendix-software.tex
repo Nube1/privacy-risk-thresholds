@@ -487,6 +487,13 @@ adds that the assumption is poor when the risk is near zero or the outer replica
 say version 0.7.0. Archives of the repository named 0.7.1 are not matched by any tag.
 A reader who cites a version should cite the commit.
 
+\paragraph{Differential privacy.} \texttt{dp} covered the posterior bound and basic composition only. It now
+also has \texttt{attack\_ceiling}, the ceiling $\min(1,e^{\varepsilon}\kappa+\delta)$ of Chapter~\ref{ch:dp},
+\texttt{advanced\_composition}, which is never worse than the basic total, and \texttt{laplace\_epsilon}, which
+reports $\varepsilon$ for a given noise scale and sensitivity. Noise of scale $1/\varepsilon$ on a count gives $\varepsilon$ when a
+record is added or removed and $2\varepsilon$ when one is replaced, and the guarantee is per record: a borrower with several loans
+needs a sensitivity that counts all of them. The code still does not implement a mechanism.
+
 \paragraph{Line endings.} The one failing test, described above, and the long list of
 files that show as modified in the Windows working copy, have the same cause and the
 same remedy.

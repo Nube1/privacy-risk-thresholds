@@ -35,3 +35,15 @@ def test_refuses_impossible_inputs():
         posterior_bound(1, 1.5)
     with pytest.raises(ValueError):
         basic_composition([-1.0])
+
+
+def test_attack_ceiling_and_accountants():
+    import math
+
+    from privacy_risk.dp import advanced_composition, attack_ceiling, laplace_epsilon
+    assert attack_ceiling(0.0, 0.1) == pytest.approx(0.1)
+    assert attack_ceiling(1.0, 0.1, 0.01) == pytest.approx(math.e * 0.1 + 0.01)
+    assert attack_ceiling(10.0, 0.5) == 1.0
+    assert advanced_composition(0.01, 10_000, 1e-6) < 10_000 * 0.01
+    assert advanced_composition(1.0, 2, 1e-6) == 2.0
+    assert laplace_epsilon(2.0, 1.0) == 0.5 and laplace_epsilon(2.0, 2.0) == 1.0
