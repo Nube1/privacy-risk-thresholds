@@ -455,12 +455,11 @@ decision with a named owner. Spend error budget for every attempt, including tho
 are abandoned. Never train on final-audit outcomes. When a weakness is found in a published
 file, document the affected releases and assess the next release jointly with what is already out.
 
-\medskip\noindent\textit{In the software.} The gate is \texttt{gate.decide\_release}, which takes candidate utilities, required
-tolerances and a list of \texttt{gate.Coordinate} bounds whose source must be \texttt{"audit"}; the command line exposes it as \texttt{drisk gate}. Measurement rows are \texttt{evidence.MeasurementRecord}, and
+\medskip\noindent\textit{In the software.} The gate is \texttt{privacy\_risk.gate.decide\_release}, which takes candidate utilities, required
+tolerances and a list of \texttt{gate.Coordinate} bounds whose source must be \texttt{"audit"}. Measurement rows are \texttt{evidence.MeasurementRecord}, and
 \texttt{evidence.training\_rows} refuses the final-audit split. The programme budget and frozen plans
-live in \texttt{registry.Registry} (\texttt{drisk registry}). The betting audit is \texttt{betting.run\_audit}, with
-bets from \texttt{betting.predictable\_bets}. The tests are in \texttt{tests/test\_ext\_learning.py}. Algorithm~18.1 sets out the gate step by step, and its checks replay the run of Figure~\ref{c18:fig-gate}.
-These modules belong to the extension's code bundle and are not in this repository's \texttt{src/privacy\_risk}; Appendix~\ref{app:software} lists them.
+live in \texttt{registry.Registry}, a SQLite store that reserves each share inside a write transaction. The betting audit is \texttt{betting.run\_audit}, with
+bets from \texttt{betting.predictable\_bets}. The tests are in \texttt{tests/test\_ext\_learning.py}, and they replay the checks of Algorithm~18.1, Example~\ref{c18:ex-budget} and Example~\ref{c18:ex-bet}.
 \end{inpractice}
 
 \begin{mdframed}[linecolor=gray!60,backgroundcolor=gray!5]

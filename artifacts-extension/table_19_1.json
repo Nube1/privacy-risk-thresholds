@@ -1,0 +1,144 @@
+{
+  "seed": 2026,
+  "targets": 1200,
+  "rows": [
+    {
+      "vintages": 1,
+      "frozen_key": {
+        "successes": 5,
+        "upper95": 0.009
+      },
+      "frozen_history": {
+        "successes": 4,
+        "upper95": 0.008
+      },
+      "frozen_history_readings": {
+        "successes": 52,
+        "upper95": 0.054
+      },
+      "changing_history": {
+        "successes": 5,
+        "upper95": 0.009
+      },
+      "changing_history_readings": {
+        "successes": 35,
+        "upper95": 0.038
+      }
+    },
+    {
+      "vintages": 2,
+      "frozen_key": {
+        "successes": 2,
+        "upper95": 0.005
+      },
+      "frozen_history": {
+        "successes": 8,
+        "upper95": 0.012
+      },
+      "frozen_history_readings": {
+        "successes": 91,
+        "upper95": 0.09
+      },
+      "changing_history": {
+        "successes": 9,
+        "upper95": 0.013
+      },
+      "changing_history_readings": {
+        "successes": 123,
+        "upper95": 0.118
+      }
+    },
+    {
+      "vintages": 3,
+      "frozen_key": {
+        "successes": 6,
+        "upper95": 0.01
+      },
+      "frozen_history": {
+        "successes": 19,
+        "upper95": 0.023
+      },
+      "frozen_history_readings": {
+        "successes": 171,
+        "upper95": 0.16
+      },
+      "changing_history": {
+        "successes": 21,
+        "upper95": 0.025
+      },
+      "changing_history_readings": {
+        "successes": 239,
+        "upper95": 0.219
+      }
+    },
+    {
+      "vintages": 4,
+      "frozen_key": {
+        "successes": 7,
+        "upper95": 0.011
+      },
+      "frozen_history": {
+        "successes": 33,
+        "upper95": 0.037
+      },
+      "frozen_history_readings": {
+        "successes": 228,
+        "upper95": 0.21
+      },
+      "changing_history": {
+        "successes": 45,
+        "upper95": 0.048
+      },
+      "changing_history_readings": {
+        "successes": 374,
+        "upper95": 0.334
+      }
+    },
+    {
+      "vintages": 5,
+      "frozen_key": {
+        "successes": 6,
+        "upper95": 0.01
+      },
+      "frozen_history": {
+        "successes": 58,
+        "upper95": 0.06
+      },
+      "frozen_history_readings": {
+        "successes": 359,
+        "upper95": 0.322
+      },
+      "changing_history": {
+        "successes": 84,
+        "upper95": 0.083
+      },
+      "changing_history_readings": {
+        "successes": 560,
+        "upper95": 0.491
+      }
+    },
+    {
+      "vintages": 6,
+      "frozen_key": {
+        "successes": 4,
+        "upper95": 0.008
+      },
+      "frozen_history": {
+        "successes": 77,
+        "upper95": 0.077
+      },
+      "frozen_history_readings": {
+        "successes": 434,
+        "upper95": 0.385
+      },
+      "changing_history": {
+        "successes": 147,
+        "upper95": 0.139
+      },
+      "changing_history_readings": {
+        "successes": 740,
+        "upper95": 0.64
+      }
+    }
+  ]
+}

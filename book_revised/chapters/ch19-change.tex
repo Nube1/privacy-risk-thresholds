@@ -486,10 +486,8 @@ it with the graph baseline on held-out periods.
 \medskip\noindent\textit{In the software.} The panel model and attack are in \texttt{privacy\_risk.dynamics}: \texttt{PanelModel}
 (with \texttt{PanelModel.static} for the frozen limit), \texttt{simulate\_panel} and \texttt{pooled\_attack},
 which returns integer counts. The graph baseline is in \texttt{privacy\_risk.graph}:
-\texttt{validate\_generator}, \texttt{propagate}, \texttt{node\_risk} and \texttt{estimate\_generator}. The membership correction is \texttt{linkage.membership\_success}, and \texttt{linkage.fixed\_target\_success}
-counts successes for one fixed target. The tests are in \texttt{tests/test\_ext\_models.py} and
-\texttt{tests/test\_ext\_conditioning.py}, and \texttt{scripts/extension\_evidence.py} regenerates Table~\ref{c19:tab-pooled} and Figure~\ref{c19:fig-graph}. Algorithm~19.1 sets out the pooled attack, including its treatment of
-absence, and its checks reproduce the six-vintage row of Table~\ref{c19:tab-pooled}. These modules belong to the extension's code bundle and are not in this repository's \texttt{src/privacy\_risk}.
+\texttt{validate\_generator}, \texttt{propagate}, \texttt{node\_risk} and \texttt{estimate\_generator}. The tests are in \texttt{tests/test\_ext\_models.py}, and \texttt{scripts/extension\_evidence.py} regenerates the pooled-attack table. Run with seed 2026, it gives 434 and 740 of 1,200 for the adversary with history and readings after six vintages on the frozen and the changing panel, and 77 and 147 for history alone. Table~\ref{c19:tab-pooled} comes from the extension's own run, which gave 403 and 703 and 90 and 134, so the two runs agree in direction and size and differ by sampling error.
+Algorithm~19.1 sets out the pooled attack, including its treatment of absence.
 \end{inpractice}
 
 \begin{mdframed}[linecolor=gray!60,backgroundcolor=gray!5]
