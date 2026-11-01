@@ -35,7 +35,10 @@ Install the project with `python -m pip install -e ".[dev]"` first. For stable C
 
 `artifacts-public-search/` stores the design, public-data snapshot hash, state-level measurements and primary results. `artifacts-public-search-2000/` stores the sensitivity run. Raw person-level source records are not copied into the repository by these scripts. `paper_revision_manifest.json` hashes the revised code and evidence; the earlier `study_manifest.json` is a historical snapshot of the first study.
 
-## Genuine LLM arm: ready to collect, not reported as completed
+## Genuine LLM arm
+
+**Status update, 1 November 2026.** A genuine arm has since been collected with a local open-weight model (qwen3:4b through Ollama) and measured on the 20 states where it produced a valid list; see `docs/LLM_PILOT_LOCAL_2026_10_23.md`. The hosted pilot stopped at a provider error (`docs/LLM_PILOT_STATUS_2026_10_23.md`). The instructions below describe how any further arm should be collected.
+
 
 The current session has no OpenAI, Anthropic or Azure model credential. The experiment does not substitute hand-written or simulated proposals for genuine calls. Exact prospective prompts are saved under `artifacts-public-search/prompts/`; they contain a state code and allowed action tuples, with no individual source records. `manifest.template.json` contains their hashes and placeholder response paths.
 

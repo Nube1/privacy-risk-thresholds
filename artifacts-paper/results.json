@@ -26461,12 +26461,15 @@
       "linkage_calibration": true,
       "frequency_transport": true,
       "mechanism_monotonicity": true,
-      "adversary_stress": true
+      "adversary_stress": true,
+      "calibration_band_has_power": true
     },
     "metrics": {
       "ece": 0.007477540498722562,
       "frequency_mae": 0.055059936341919524,
       "monotonicity_violations": [],
+      "ece_misspecified": 0.04873608169100826,
+      "ece_limit": 0.03,
       "stress": {
         "minimum": 1.0073529411764706,
         "median": 1.4000000000000001,
@@ -26577,13 +26580,13 @@
       "inside_marginal_bounds": false,
       "marginals_bound_the_programme": false,
       "pooled_upper": 0.463974255251962,
-      "programme_tolerance": 0.5,
-      "upper_within_programme_tolerance": true
+      "programme_tolerance": 0.12,
+      "upper_within_programme_tolerance": false
     }
   },
   "decision": {
     "status": "FAIL",
-    "reason": "per-release upper bound is within tolerance, but the upper bound on the pooled risk of the declared programme exceeds the release tolerance",
+    "reason": "per-release upper bound is within tolerance, but the upper bound on the pooled risk of the declared programme exceeds the programme tolerance",
     "upper_risk": 0.08063808061286659,
     "assessment_date": "2026-09-04",
     "threshold": {
@@ -26603,10 +26606,10 @@
       "pooled_risk": 0.4581373258333512,
       "union_upper_bound": 0.25304062783167247,
       "marginals_bound_the_programme": false,
-      "upper_within_programme_tolerance": true,
-      "programme_tolerance_used_by_validation": 0.5,
+      "programme_tolerance": 0.12,
       "pooled_upper_bound": 0.463974255251962,
-      "pooled_upper_exceeds_release_tolerance": true,
+      "upper_within_programme_tolerance": false,
+      "union_risk_budget": 0.5,
       "note": "Marginal risks do not bound a pooled attack. A programme needs its own tolerance and its own joint simulation."
     },
     "adversary": "ErrorModel(age_error=0.15, occupation_error=0.1, covariate_sd=0.75, assumed_sd=None)",

@@ -47,12 +47,17 @@ def figures(results: dict, output: Path) -> list[Path]:
 
 
 def _risk_distribution(results: dict, output: Path) -> Path:
-    styles = [(INK, "-"), (MID, "-"), (ACCENT, "-"), (MID, "--"), (INK, ":")]
+    # every series differs twice, by grey shade and by line style and marker, so the
+    # figure still reads when printed in black and white
+    styles = [("#111111", "-", "o"), ("#3D3D3D", "--", "s"), ("#626262", "-.", "^"),
+              ("#878787", ":", "D"), ("#A9A9A9", (0, (6, 2, 1, 2, 1, 2)), "v")]
     fig, ax = plt.subplots(figsize=(5.2, 3.1))
-    for (level, risks), (colour, dash) in zip(results["risk_distribution"].items(), styles):
+    for (level, risks), (colour, dash, mark) in zip(results["risk_distribution"].items(),
+                                                     styles):
         values = np.asarray(risks)
         ax.step(values, np.arange(1, values.size + 1) / values.size, where="post",
-                color=colour, ls=dash, lw=1.1,
+                color=colour, ls=dash, lw=1.2, marker=mark, ms=3.2,
+                markevery=max(values.size // 6, 1), markerfacecolor="white",
                 label=f"$k_{{\\min}}={level}$ ({values.size:,} records)")
     ax.set_xscale("log")
     ax.set_xlabel("prosecutor risk $1/f_k$")

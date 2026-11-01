@@ -16,6 +16,9 @@ SMALL = {**CONFIG, "population_size": 3000, "sample_fraction": 0.25,
                                "composition_targets": 200},
          "per_target_cap": 10, "minimum_release_size": 20,
          "frequency_mae_limit": 50.0, "calibration_ece_limit": 0.5,
+         # the loose test band cannot reject the misspecified model, so the power
+         # requirement is switched off here; test_calibration_band_needs_power checks it
+         "require_calibration_power": False,
          "monotonicity_tolerance": 0.5, "stress_tolerance": 0.5,
          "credit": {"borrowers": 800, "lenders": 12, "months": 3,
                     "min_cell_counts": [1, 5], "minimum_contributors": [3]},
@@ -56,3 +59,21 @@ def test_validation_records_the_programme_finding(tmp_path: Path):
     programme = result["validation"]["programme"]
     assert np.isfinite(programme["ratio"])
     assert "marginals_bound_the_programme" in programme
+
+
+def test_calibration_band_needs_power(tmp_path: Path):
+    """A band wide enough to pass the misspecified model invalidates the decision."""
+    result = run({**SMALL, "require_calibration_power": True}, tmp_path)
+    checks = result["validation"]["checks"]
+    assert "calibration_band_has_power" in checks
+    assert checks["calibration_band_has_power"] is False
+    assert result["decision"]["status"] == "INVALID"
+
+
+def test_programme_check_and_gate_use_one_tolerance(tmp_path: Path):
+    result = run({**SMALL, "programme": {**SMALL["programme"], "pooled_tolerance": 0.05}},
+                 tmp_path)
+    record = result["decision"]["programme"]
+    assert record["programme_tolerance"] == 0.05
+    assert result["validation"]["programme"]["programme_tolerance"] == 0.05
+    assert "programme_tolerance_used_by_validation" not in record
