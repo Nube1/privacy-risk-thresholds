@@ -1,0 +1,172 @@
+\chapter{A risk figure is not a decision}\label{ch:decision}
+
+Central banks, statistical offices and health registries release granular data
+under a legal duty of confidentiality. The technical means of protecting those
+releases are well developed. Cell suppression, minimum cell counts, global
+recoding, record swapping, the cell-key method, added noise, synthetic data and
+formal privacy mechanisms are documented, implemented in software and taught
+\citep{willenborg2001,hundepool2012,dwork2014}. An institution that wants to
+protect a file has no shortage of tools. What it usually lacks is a rule that turns
+a measured risk into a decision to release or to withhold, a rule that someone
+else could apply to the same evidence and reach the same answer.
+
+This chapter sets out why that rule is missing, what goes wrong without it, and
+what the rest of the book puts in its place.
+
+\section{How release decisions are made now}
+
+In most institutions the decision is made by committee. A disclosure control
+officer presents a table of risk measures for the proposed release: perhaps the
+share of sample-unique records, the smallest cell count, a mean re-identification
+probability. A panel weighs those figures against the public value of the data,
+and a decision follows. The decision is often sound, because the people on the
+panel know the data and the users. It is rarely reproducible, however, and it is
+hard to audit afterwards, because the quantity that decided the matter was never
+written down. That quantity is the residual risk the institution was willing to
+carry for this release, against this kind of harm, on someone's authority.
+
+Better protection does not repair the gap. An institution can adopt a mechanism
+with a formal guarantee, account carefully for its privacy loss parameter
+$\varepsilon$, and still be unable to say what probability of harm it accepted,
+because $\varepsilon$ bounds how far an adversary's beliefs can move rather than
+how often an adversary succeeds (Chapter~10 returns to this). The same is true of
+a minimum cell count. A floor of ten is a setting of the mechanism. It becomes a
+statement about risk only under assumptions about the adversary that the floor
+itself does not record, and Chapter~\ref{ch:scenario} shows how quickly those
+assumptions fail.
+
+\section{Three objects that are routinely run together}
+
+The difficulty comes from treating three different objects as one. The first is a
+probability model for an attempted linkage: given what a declared adversary knows
+and what the release shows, how likely is it that the adversary names the right
+record. The second is a statistical estimate of that probability, which in all
+but the simplest cases comes from simulating the attack many times and so carries
+sampling error. The third is a policy decision: how much residual risk is
+acceptable, for which harm, on whose authority and until when.
+
+The first is a modelling problem, the second an inference problem and the third a
+governance problem. Each needs its own discipline, and running them together
+produces failures that are easy to miss because each looks reasonable from inside
+one of the three. Two examples show the pattern.
+
+The first failure concerns the estimate. Suppose a committee releases a file
+whenever the estimated risk falls below its tolerance. For a release whose true
+risk sits exactly at the tolerance, a sensible estimator lands above and below the
+true value about equally often, so the committee releases about half the time.
+The committee believes it has a rule that keeps risk below the tolerance. It has a
+coin toss at the boundary, and nothing in its records shows this, because the
+records hold point estimates. Chapter~4 states this as a proposition and shows
+that replacing the point estimate with a one-sided upper confidence bound
+controls the chance of a wrong release at a stated level.
+
+The second failure concerns the decision. An institution that says ``we apply a
+minimum cell count of ten'' has stated a protection setting and called it a
+policy. It has not stated the probability of harm it accepted, so nobody can check
+whether the setting achieves the policy, and nobody owns the judgement that the
+residual risk is acceptable. When the data change, or the users change, there is
+no record of what the setting was meant to deliver, so there is nothing to
+reassess against.
+
+\section{What a decision rule needs}
+
+The book's answer is a written decision rule with three parts, one for each of
+the three objects. The model part declares an adversary: who attacks, what it
+knows, which targets it attacks and what conditioning event the risk figure
+assumes. The inference part replaces the point estimate with an upper confidence
+bound at a stated error probability. The governance part states a tolerance and
+attaches to it the things that turn a number into a decision: an owner
+who accepts the residual risk, an expiry date, the harm class the tolerance is set
+for, the legal basis and the parties it protects, the access route through which
+the data will be used, and, for a series of releases, the horizon over which the
+risk is assessed.
+
+A release is then admissible when the upper bound for every target in a declared
+target set lies at or below the tolerance. This is a simple rule, and its
+simplicity is the point. Two analysts given the same declarations and the same
+simulation output reach the same decision, and an auditor can check afterwards
+that the decision followed from the evidence.
+
+The rule has a price, and the book does not hide it. The evidence needed to
+certify a tolerance grows as the tolerance shrinks. If an institution simulates an
+attack many times and the attack never succeeds, the number of clean attempts
+needed for a 95 per cent upper bound to reach a tolerance of one in a hundred is
+299. For one in a thousand it is 2,995, and for one in a hundred thousand it is
+299,572. Observing no successful attack never shows that the risk is zero, and
+choosing a tolerance and choosing the evidence standard turn out to be one decision. Chapter~4 derives these figures and discusses what an institution
+should do when the price is too high.
+
+\section{Several releases from one register}
+
+Single releases are not the operative problem. Institutions publish programmes: a
+quarterly series, a research file and a public extract, all drawn from one
+register. An adversary who holds several of these is not obliged to use them one at
+a time. When records keep the same pseudonym across releases, the adversary can
+intersect the candidate sets that each release leaves, and the result can identify
+a target that no single release exposes.
+
+The consequence is stronger than intuition suggests. Chapter~\ref{ch:programmes}
+proves that no function of the per-release risks can bound the risk of an adversary
+who pools the releases. Each release can be made as safe as one likes, judged on
+its own, while the pooled releases identify the target with certainty. The
+quantity an institution certifies when it reviews releases one by one is therefore
+not the quantity that governs its exposure. On a simulated register, four releases
+that each keep at least three records in every key class, and that contain no
+unique record at all, identify the target with probability 0.458 once pooled,
+against an upper bound of 0.253 implied by the four marginal risks. A quarter of
+targets are identified uniquely by the intersection although none was unique in
+any single release.
+
+This is the question a workshop participant raised in Lisbon, and it is the reason
+the book gives programmes a part of their own.
+
+\section{A running example}
+
+Most chapters return to one example: a synthetic credit register built to share
+the structure of a supervisory collection such as the euro area's AnaCredit
+\citep{israel2017}. It holds 20,000 firms as borrowers, 60 lenders with unequal
+shares, 18 sectors, 12 regions and four size classes, observed over six monthly
+vintages. About 27,000 loans are live at any time. Each released loan carries a
+persistent pseudonym, its sector, region and size class, and its exposure.
+
+The register is synthetic because real loan-level credit data are not released for
+general use, and that choice limits what the example can show. Its parameters are
+chosen by design, so the protection settings it implies describe the simulation
+and not an actual institution. What the example can show is how the decision rule
+behaves when the adversary changes. At an illustrative tolerance of 0.12, an
+assessment of one release at a time passes the file with no suppression. An
+adversary who pools the six vintages and knows in which of them the target's loan
+was live requires a minimum cell count of 75. One who also holds a reading of the
+loan's exposure in each vintage requires 150, and at that floor the file keeps 20
+per cent of loans but only 4 per cent of exposure, with no loan to a large firm.
+Against that adversary a loan-level file is the wrong product, and aggregates or
+access in a secure setting are the realistic options. Part~V develops the example
+in full.
+
+\section{How the book is arranged}
+
+Part~I sets up the problem. Chapter~\ref{ch:scenario} defines disclosure risk as
+the outcome of a declared attack, derives the familiar reciprocal-frequency
+measure from four assumptions and shows what happens when two of them fail.
+Chapter~3 shows that the measures reported under one label answer different
+questions. Part~II treats the risk figure as an estimate: its uncertainty, the
+choice among protection settings, and certification while an attack is being
+monitored. Part~III turns to the decision itself: the elements of a governance
+threshold, and the tolerance implied by a stated weight on harm against utility.
+Part~IV deals with programmes of releases and with formal privacy. Part~V reports
+the evidence from simulation, public microdata, the credit register and a pipeline
+in which a model proposes attacks. Part~VI is for practice: falsification tests, an
+operational protocol and worksheets for six release types.
+
+A reader who must decide on a release next month can read this chapter, the
+\textit{In practice} blocks at the end of each chapter, and Part~VI. A reader who
+wants to check the claims will find each one stated as a proposition with its
+assumptions, and proved in the last section of its chapter.
+
+\begin{inpractice}
+Before the next release decision, write down four things that are usually left
+implicit: the adversary the assessment assumes, the tolerance the release must
+meet, the person who owns that tolerance, and the date after which the assessment
+lapses. If any of the four cannot be written down, the committee is not yet in a
+position to say whether the release is safe, whatever the risk table shows.
+\end{inpractice}

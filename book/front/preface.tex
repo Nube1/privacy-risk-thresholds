@@ -1,0 +1,43 @@
+\chapter{Preface}
+
+This book grew out of a paper presented at the workshop on data security and
+privacy that Banco de Portugal and the Irving Fisher Committee held in Lisbon in
+September 2026. The paper argued that a disclosure risk figure only becomes useful
+to an institution once it is attached to a declared attack, an honest statement of
+its uncertainty and a written decision rule. In discussion, a participant asked
+what happens to the risk when an institution gives several data sets to the same
+researcher. The question went to the centre of the argument, and a conference
+paper could only answer part of it. Chapter~\ref{ch:programmes} answers it in
+full, and the rest of the book builds the framework that answer needs.
+
+The book has two audiences, and it is arranged so that each can read it without
+the other's material getting in the way. The first is the statistician, data
+protection officer or release committee member at a central bank, statistical
+office or health registry who has to decide whether a file goes out. For that
+reader every chapter opens with the problem in institutional terms, states its
+results in words before it states them in symbols, and closes its main text with a
+short block headed \textit{In practice} that says what to write down and what to
+check. The second audience is the researcher in statistics, computer science or
+economics who wants to know exactly what is claimed and under which assumptions.
+For that reader every result carries a numbered statement and a full proof, and
+the proofs sit in a final section of each chapter so that the practitioner can
+pass over them without losing the thread.
+
+Every number in the book comes from one research pipeline, the Python
+package \texttt{privacy\_risk} in the repository that accompanies the book. Where
+a chapter reports a figure, it names the module and function that produced it, so
+that a reader can rerun the calculation, change an assumption and see what moves.
+Most of the evidence is synthetic. That is a limitation and the book says so
+in the chapters it affects: the credit register in Part~V shares the structure of a
+supervisory collection, but its parameters are chosen, not estimated, and the
+floors it implies are conditional on that design.
+
+The book also reports what did not work. The chapter on model-proposed attacks
+includes a pilot in which augmenting the training data did not improve the model,
+and the audit chapter shows how often an analyst who retries a failed audit
+certifies an unsafe release. These results belong in the record because a method
+for governing risk has to be judged on its failures as well as its successes.
+
+This draft holds the preface, the first two chapters and Chapter~9. The other
+chapters appear as short plans so that the reader can see where the argument goes.
+Comments on the draft are welcome.

@@ -1,0 +1,43 @@
+% Preamble for the book. Serif text and maths, restrained colour.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\linespread{1.05}
+\usepackage[a4paper,inner=30mm,outer=25mm,top=28mm,bottom=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array}
+\usepackage{graphicx}
+\graphicspath{{../paper/diagrams/}{../paper/figures/}{figures/}}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=sc}
+\usepackage[expansion=false]{microtype}
+\usepackage{xcolor}
+\definecolor{rule}{gray}{0.55}
+\usepackage[framemethod=default]{mdframed}
+\newmdenv[linecolor=rule,linewidth=0.4pt,topline=true,bottomline=true,
+  leftline=false,rightline=false,innertopmargin=6pt,innerbottommargin=6pt,
+  skipabove=10pt,skipbelow=10pt]{practicebox}
+\usepackage{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\ind}[1]{\mathbf{1}\{#1\}}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{corollary}[proposition]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[proposition]{Definition}
+\newtheorem{assumption}{Assumption}[chapter]
+\newtheorem{example}[proposition]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[proposition]{Remark}
+
+% A short block for release committees at the end of a chapter's main text
+\newenvironment{inpractice}[1][In practice]
+  {\begin{practicebox}\noindent\textsc{#1}\par\smallskip\small}
+  {\end{practicebox}}
+
+% A planned chapter not yet drafted
+\newcommand{\plannedchapter}[2]{\chapter{#1}\noindent\textit{Planned chapter, not yet drafted.}\par\medskip\noindent #2}

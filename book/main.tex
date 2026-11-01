@@ -1,0 +1,49 @@
+\documentclass[11pt,a4paper,openany]{book}
+\input{preamble}
+
+\title{Governing Disclosure Risk\\[6pt]
+  \large Probability, Evidence and Accountable Decisions\\for Repeated Statistical Releases}
+\author{Ronald Rethabile Malamule Mahomane}
+\date{Working draft, November 2026. Not for circulation.}
+
+\begin{document}
+\frontmatter
+\maketitle
+\tableofcontents
+\input{front/preface}
+
+\mainmatter
+\part{The problem}
+\input{chapters/ch01-decision}
+\input{chapters/ch02-scenario}
+\plannedchapter{Measures that answer different questions}{The prosecutor, journalist and marketer measures computed on one release, why they differ by an order of magnitude, the sign of plug-in frequency bias, and the estimation of population uniqueness under a negative binomial frequency model.}
+
+\part{Evidence}
+\plannedchapter{A risk figure is an estimate}{Monte Carlo attack simulation, exact one-sided bounds, why a point estimate at the tolerance passes about half the time, the price of certifying small tolerances, and the split of variance between the simulation and the design.}
+\plannedchapter{Choosing among protection settings}{Fixed-sequence testing from the most protective setting downwards, the independent confirmation draw, and why scanning a grid for any passing setting inflates false certification.}
+\plannedchapter{Monitoring an attack while it runs}{Adaptive simulation budgets, the cost of retrying an audit, test martingales and confidence sequences that stay valid when the analyst looks at the results as they arrive.}
+
+\part{Decisions}
+\plannedchapter{Governance thresholds}{The nine elements of a threshold, the legal basis for central banks and data protection law, the protected parties of a credit register, the access route, and the separation of analyst, owner, reviewer and audit.}
+\plannedchapter{Utility, harm and the tolerance they imply}{The risk--utility frontier, the tolerance a stated harm weight implies, why uniform tolerances across releases are usually inefficient, and how to allocate a programme tolerance as a risk budget.}
+
+\part{Programmes}
+\setcounter{chapter}{8}
+\input{chapters/ch09-programmes}
+\plannedchapter{Formal privacy is a different regime}{What differential privacy bounds and what it does not name, the posterior an adversary may reach for a given $\varepsilon$, accounting across a programme, and how scenario assessment and formal accounting meet in one inequality.}
+
+\part{Evidence from data}
+\plannedchapter{A simulation study}{A synthetic population of 200,000 units with a 5 per cent sample: the measures side by side, the failure of $k$-anonymity under an enriched attack, and the cost of measurement error.}
+\plannedchapter{Public microdata}{Two public files, including the US Census 2000 extract, the pooled attack on real keys, and what the public files can and cannot show about confidential registers.}
+\plannedchapter{A granular credit register}{The synthetic register of 20,000 firms over six monthly vintages, the five harms, the floors each adversary requires, and what each floor keeps.}
+\plannedchapter{Proposing attacks with a model}{The neural release pipeline and SENTRY-R: a model proposes scenarios and bets, a frozen plan records them, and an independent audit decides. The chapter reports the negative results alongside the positive ones.}
+
+\part{Practice}
+\plannedchapter{Testing the model behind the figure}{Six falsification tests, from linkage calibration to adversary stress, and why a failed test blocks the decision rather than adjusting the figure.}
+\plannedchapter{An operational protocol}{Seven steps, the roles they need, a filled decision record for the credit register, and remedies when a release fails.}
+\plannedchapter{Worksheets for six release types}{Starting declarations for the release types common in central banks, with blank worksheets.}
+\plannedchapter{What remains open}{Real institutional registers, time-varying exposures, attack coverage, and the claims the method cannot make.}
+
+\backmatter
+\input{references}
+\end{document}
