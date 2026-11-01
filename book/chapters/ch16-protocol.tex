@@ -1,0 +1,588 @@
+\chapter{An operational protocol}\label{ch:protocol}
+
+Experienced release committees often regard a written protocol with suspicion, and
+the suspicion has a fair basis. The safety of a release comes from the protection
+applied to it and from the judgement of the people who know the data and its users.
+Committees made sound decisions long before anyone asked them to fill in a record
+with nine elements. A protocol adds forms, sign-offs and waiting time, and none of
+that changes a single cell of the file. On this view a protocol is paperwork that
+slows releases without making them safer.
+
+The view fails on the evidence of the method's own audit. Suppose a disclosure
+analyst runs an honest audit of an attack whose true risk sits exactly at the
+tolerance. The audit certifies it falsely in 3.8 per cent of runs, inside its stated
+error level of 5 per cent. Now let the analyst run the same audit ten times with
+different seeds and report the first that passes. The false certification rate
+becomes 32 per cent, and with a hundred tries 98 per cent.
+% source: paper/publication_versions/table_audit_process.tex (0.038, 0.322, 0.979)
+Nothing in the file changed, and no single audit was computed wrongly. What changed
+is that the choice of seed was made after the outcomes could be seen. The control
+that restores the rate of 3.8 per cent is a matter of order: the targets are fixed
+before any outcome exists, and every audit is recorded where it cannot be dropped.
+That is a protocol. The error statement that makes a risk bound worth computing
+holds only when certain things are written down before certain other things happen.
+
+This chapter asks what an institution must write down, in what order and by whom,
+for a release decision to carry the error statement the method promises.
+
+\section{The order is the control}
+
+Every guarantee in the earlier chapters has the same shape. A bound computed from
+simulated attacks lies below the true risk with probability at most $\alpha$, and so
+a release whose true risk exceeds the tolerance passes with probability at most
+$\alpha$. The probability is taken over the attacks, with everything else held fixed:
+the tolerance, the declared adversary, the target set, the setting under test and
+the number of attacks. If any of these is chosen after the outcomes are seen, the
+probability statement is about a different experiment, and in the worst case it says
+nothing.
+
+Proposition~\ref{c16:prop-order} states this for the two choices an institution is
+most tempted to make late: the tolerance itself, and which of several audits to
+report.
+
+\begin{proposition}[The order of declaration]\label{c16:prop-order}
+Let $\overline{R}$ be an upper bound with $\Prob(\overline{R} < R) \le \alpha$ for the
+true risk $R$ of a declared attack.
+\begin{enumerate}
+\item[(i)] If the tolerance $\tau$ is fixed before the attacks are run and
+$R > \tau$, the release passes with probability at most $\alpha$.
+\item[(ii)] If the tolerance may be set after the attacks, as any value in a range
+that contains $\overline{R}$, then a rule that sets $\tau = \overline{R}$ passes
+every release, whatever its risk.
+\item[(iii)] If the operator can run $N$ independent audits of the same attack and
+report one that passes, and a single audit passes with probability $f$, the
+reported audit passes with probability $1 - (1-f)^N$, which tends to one as $N$
+grows whenever $f > 0$.
+\end{enumerate}
+\end{proposition}
+
+Part (iii) produces the figures of the opening paragraph: with $f = 0.038$, ten tries
+give $1 - 0.962^{10} = 0.32$ and a hundred give 0.98. Table~\ref{c16:tab-process}
+reports the full measurement from the repository, for an attack at the tolerance of
+0.12 and for one slightly above it at 0.14, and adds a third way of breaking the order:
+an operator who chooses the bet of a sequential audit after seeing the outcome
+certifies an unsafe attack in every run. With the controls in place, each row returns
+to the rate of a single honest audit.
+
+\begin{table}[ht]
+\centering
+\small
+\caption{Attacks on the audit process: the share of runs in which an attack at or
+above the tolerance of 0.12 is certified, with one coordinate at the full level
+$\alpha = 0.05$. ``Tries'' is the number of seeds or unregistered shadow audits the
+operator can choose among. Without the control, the rate for several tries is
+$1 - (1-f)^{\text{tries}}$ for the single-try rate $f$; with it, the operator has one
+stream of targets fixed in advance.}
+\label{c16:tab-process}
+% source: paper/publication_versions/table_audit_process.tex; scripts/audit_process_attacks.py
+\begin{tabular}{lrrrr}
+\toprule
+Attack on the audit & True risk & Tries & Without control & With control \\
+\midrule
+Seed grinding or shadow audits & 0.12 & 1 & 0.038 & 0.038 \\
+Seed grinding or shadow audits & 0.12 & 10 & 0.322 & 0.038 \\
+Seed grinding or shadow audits & 0.12 & 100 & 0.979 & 0.038 \\
+Seed grinding or shadow audits & 0.14 & 10 & 0.066 & 0.007 \\
+Seed grinding or shadow audits & 0.14 & 100 & 0.495 & 0.007 \\
+Bet chosen after the outcome & 0.14 & 1 & 1.000 & 0.007 \\
+Bet chosen after the outcome & 0.20 & 1 & 1.000 & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The table does not describe dishonest analysts. Each row describes something an
+analyst under a deadline might do without intending harm: rerun an audit that
+failed because the seed looked unlucky, try a few settings in a scratch copy before
+registering the one that works, or adjust the audit's design after a bad early
+result. A protocol that fixes the order of work removes these choices, and with them
+the inflation they cause. The paperwork is the means by which the order can be
+checked afterwards.
+
+Grace, from the Bank's internal audit function, reads decision records after the
+fact, and she reads them for order. Her first question on any record is not whether
+the risk figure is small. It is whether the tolerance was signed before the first
+attack outcome existed, and whether every audit run on the register appears in the
+registry. A record that cannot answer both questions, she reports, carries no error
+statement at all, however careful its arithmetic.
+
+\section{Four roles and three lines}
+
+The protocol needs four roles, and the first and third should not be held by the
+same person. The \emph{release owner} is a named senior officer, at the Bank the
+chair of the statistics release committee, who sets the tolerance, signs the
+decision and owns the residual risk. The \emph{data owner} is the business area that
+collects the source register and knows which products are drawn from it, how often
+and under what legal basis. The \emph{disclosure analyst}, Naledi at the Bank,
+declares the scenarios, runs the attacks and computes the bounds; she owns the
+correctness of the calculation and not the decision. The \emph{reviewer}, outside
+the production line in a risk, audit or methodology function, checks that the
+scenarios are plausible and that the falsification tests of
+Chapter~\ref{ch:falsification} were run.
+
+The roles map onto the three lines of defence that central banks already use for
+operational risk. The analyst and the data owner sit in the first line, the
+reviewer in the second, and internal audit, which checks the filed record and the
+controls on the audit process, in the third. The separation is the point. The
+person who computes the bound should not be the person who decides whether the
+residual risk is acceptable, and neither should be the person who checks afterwards
+that the work was done in the stated order. Chapter~\ref{ch:thresholds} sets out the
+legal basis for this division and the elements of the threshold the owner signs.
+
+\section{Seven steps}
+
+Figure~\ref{c16:fig-steps} shows the seven steps as a decision process, with the
+role that leads each step. Two loops leave the main line. The dotted loop is the
+re-assessment at each new vintage or at expiry, which begins again at the planning
+step and draws on what remains of the programme's error budget. The dashed loop is a
+change of product: when no setting meets the tolerance, the institution moves to a
+different product, such as aggregate tables or access in a secure setting, and
+assesses it from the start.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[font=\small,
+  stp/.style={draw,align=center,text width=6.4cm,minimum height=0.62cm},
+  an/.style={stp},
+  ow/.style={stp,fill=gray!20},
+  rv/.style={stp,pattern=north east lines,pattern color=gray!55}]
+  \node[an] (s1) at (0,0) {1. List the programme, not the release};
+  \node[an] (s2) at (0,-0.95) {2. Declare the scenarios};
+  \node[ow] (s3) at (0,-1.9) {3. Set the tolerance, owner, $\alpha$ and expiry};
+  \node[an] (s4) at (0,-2.85) {4. Plan the measurement};
+  \node[an] (s5) at (0,-3.8) {5. Measure per release and pooled};
+  \node[rv] (s6) at (0,-4.75) {6. Test the model behind the number};
+  \node[ow] (s7) at (0,-5.7) {7. Decide, record and re-assess};
+  \foreach \a/\b in {s1/s2,s2/s3,s3/s4,s4/s5,s5/s6,s6/s7} \draw[->] (\a) -- (\b);
+  \draw[->,densely dotted,thick] (s7.west) -- ++(-0.7,0) |- node[pos=0.25,left,align=right,font=\scriptsize]{new vintage\\or expiry} (s4.west);
+  \draw[->,dashed,thick] (s7.east) -- ++(0.7,0) |- node[pos=0.25,right,align=left,font=\scriptsize]{no setting passes:\\change the product} (s1.east);
+  \node[draw,minimum width=0.5cm,minimum height=0.3cm] at (-3.4,-6.75) {};
+  \node[anchor=west,font=\footnotesize] at (-3.1,-6.75) {analyst};
+  \node[draw,fill=gray!20,minimum width=0.5cm,minimum height=0.3cm] at (-1.5,-6.75) {};
+  \node[anchor=west,font=\footnotesize] at (-1.2,-6.75) {release owner};
+  \node[draw,pattern=north east lines,pattern color=gray!55,minimum width=0.5cm,minimum height=0.3cm] at (1.4,-6.75) {};
+  \node[anchor=west,font=\footnotesize] at (1.7,-6.75) {reviewer};
+\end{tikzpicture}
+\caption{The seven steps of the protocol and the role that leads each one. Plain
+boxes are led by the disclosure analyst, grey boxes by the release owner and hatched
+boxes by the reviewer. The dotted arrow is the re-assessment at a new vintage or at
+expiry; the dashed arrow is a change of product, which needs a new assessment.}
+\label{c16:fig-steps}
+\end{figure}
+
+\paragraph{Step 1. List the programme, not the release.} The analyst starts from the
+source register and not from the product about to be published. Every product drawn
+from the register over the planning horizon is listed: monthly or quarterly
+aggregates, supervisory publications, research extracts, data shared with other
+authorities and answers to ad hoc requests. For each, the inventory records its
+frequency, the population it covers, the variables it publishes and whether any
+identifier or stable ordering persists from one vintage to the next. A persistent
+pseudonym, a stable row order or a rare combination of fields that seldom change lets
+an adversary match records across vintages, which is the condition of
+Proposition~\ref{prop:nopool}. The step ends with a declared horizon $m$, the number
+of vintages the assessment covers.
+
+\paragraph{Step 2. Declare the scenarios.} For each product, and for each
+combination of products an outsider could hold together, the analyst writes down who
+the adversary is, what it knows, which records it targets and what harm follows if it
+succeeds. For a pooled scenario the declaration says whether the adversary knows in
+which vintages the target is present, and why, because on the credit register that
+single piece of knowledge decides whether pooling adds anything
+(Proposition~\ref{prop:nohistory}). The declaration should be specific enough that
+someone can disagree with it. Chapter~\ref{ch:worksheets} gives starting declarations
+for six release types.
+
+\paragraph{Step 3. Set the tolerance.} For each harm class the release owner sets a
+tolerance, an error level, an expiry date and the horizon of Step~1, and records the
+legal basis, the parties the tolerance protects and the access route. The tolerance
+can be stated directly, as the largest probability of successful exposure the
+institution accepts for that harm, or indirectly, as a relative weight on harm
+against lost utility from which the tolerance follows
+(Chapter~\ref{ch:tolerance}). Either way it is written down before any risk is
+measured. Where no tolerance has been agreed for a harm, the record says so and no
+decision is made on that harm.
+
+\paragraph{Step 4. Plan the measurement.} Before running anything, the analyst fixes
+how many attacks each scenario needs. With no observed success, certifying a
+tolerance $\tau$ at $\alpha = 0.05$ needs about $3/\tau$ independent attacks
+\citep{hanley1983}; exactly, 299 for a tolerance of 0.01 and 2{,}995 for 0.001.
+% source: paper/generated/table_certification.tex
+If a floor is to be chosen from a grid, the order in which the floors are tested is
+fixed now (Chapter~\ref{ch:selection}). If the release must pass every one of a fixed
+set of scenarios, each may be assessed at the full level, since that is an
+intersection--union test. If scenarios may be added later, for example because a
+reviewer proposes a stronger adversary, the plan reserves part of the error budget
+for them (Chapter~\ref{ch:monitoring}).
+
+\paragraph{Step 5. Measure, per release and pooled.} The analyst runs the declared
+attacks on the release as it would be published, on fresh targets, and computes the
+exact upper bound for each scenario. The pooled attack is then run over the
+programme of Step~1 with the same auxiliary information. Pooled attacks that add
+knowledge, such as more readings or the target's history across vintages, are
+reported separately, because a committee needs to know which adversary it is
+protecting against. Where a level is chosen from a grid, it is audited again on fresh
+targets. The step reports what the chosen level keeps, in records and in volume.
+
+\paragraph{Step 6. Test the model behind the number.} Before the bound is used, the
+reviewer confirms that the six falsification tests of
+Chapter~\ref{ch:falsification} were run against bands fixed in advance. A failed
+release-level test makes the assessment invalid, not failed: the institution cannot
+release on it and must repair the model first.
+
+\paragraph{Step 7. Decide, record and re-assess.} The release passes a scenario only
+if the upper bound, not the point estimate, is at or below the tolerance, and it
+passes overall only if it passes every declared scenario, pooled ones included. When
+the programme fails, the release fails, even if it passes on its own. The owner signs
+the decision record. Re-assessment is due when the programme is about to pass its
+horizon, when a new product is drawn from the register, when a new public source
+could serve as auxiliary information, when the mechanism changes and at expiry.
+
+The long form of the paper lists six stages where this list has seven. The
+difference is one of presentation: the long form folds the inventory of Step~1 into
+its first declaration stage, and the planning of Step~4 into its computation stage.
+% source: paper/bis_ifc_full.tex sec:protocol (six stages); paper/apply_section.tex sec:apply-steps (seven steps)
+The seven-step version is the one an institution can staff, because each step has
+one output and one lead.
+
+When Grace audited the record for Tomás's third request, she checked the steps
+against their dates. The inventory listed the three extracts and the quarterly
+aggregates drawn from the same register. The scenario sheet was dated a week before
+the tolerance was signed, and the tolerance was signed two days before the registry
+showed its first attack. She noted one finding: the reviewer's sign-off on the
+falsification tests was dated after the decision. The tests had been run on time;
+the sign-off was late. She recorded it as a control weakness, because a late
+sign-off cannot show that the decision waited for it.
+
+\section{A filled decision record for the credit register}
+
+Table~\ref{c16:tab-record} fills the record for the synthetic credit register of
+Chapter~\ref{ch:credit}, for the first vintage and for the programme of six. It
+rebuilds the decision record of the long form of the paper and uses only figures that
+the long form reports from the repository's runs.
+% source: paper/bis_ifc_full.tex tab:record
+The register is synthetic, so the record shows how the method fills a record, not
+what any central bank would find. The tolerance of 0.12 is illustrative, as are the
+owner, the dates and the legal basis.
+
+The declarations common to every row sit outside the table, because they are the
+same for each harm. The legal basis is Council Regulation (EC) No 2533/98,
+Article~8, as amended by Council Regulation (EC) No 951/2009 \citep{ec2533,ec951},
+given here for illustration. The protected parties are the borrowers, the reporting
+agents and the natural persons behind borrowers, such as sole traders. The access
+route is a scientific-use file for accredited researchers. The error level is
+$\alpha = 0.05$. The owner is the chair of the statistics release committee. The
+record expires one year after the assessment, and it is re-assessed earlier on a
+vintage beyond the horizon $m = 6$, on a new auxiliary source available to the
+adversary, on a change of mechanism or on a change of access route. The floor of 150
+was chosen by fixed-sequence testing from 300 down and confirmed on a second,
+independent draw of targets.
+
+\begin{table}[p]
+\centering
+\caption{Decision record for the synthetic credit register, on the first vintage as
+released and on the programme of six vintages, tolerance 0.12 where one is set.
+Declarations common to every row are given in the text. The bound is the exact
+one-sided 95 per cent upper bound from $B$ simulated attacks; where a row reports a
+census of released cells instead of a simulation, the measure is named.}
+\label{c16:tab-record}
+% source: paper/bis_ifc_full.tex tab:record (every figure in this table)
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.9cm}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{0.7cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{2.2cm}@{}}
+\toprule
+Harm & Target set & Adversary & $\tau$ & Evidence & Setting & Decision \\
+\midrule
+Identification, one release & Released loans, first vintage & Linkage attack with
+one exposure reading & 0.12 & At $k_{\min} = 150$: confirmation 0.0135, bound
+0.017, $B = 4{,}000$; this row alone would need no floor & $k_{\min} = 150$ & Pass \\
+\addlinespace
+Identification, programme & Loans over six vintages, $m = 6$ & Pooled attack, one
+reading per live vintage, knows the loan's history & 0.12 & Floor 150 by fixed
+sequence; confirmation 0.101, bound 0.109, $B = 4{,}000$ fresh targets; keeps 20\%
+of loans, 4\% of exposure & $k_{\min} = 150$ & Pass on risk; owner decides whether
+the file is still worth releasing; re-assess before vintage 7 \\
+\addlinespace
+Identification, every size class & Each size class, largest firms on a stratified
+draw & As in the second row & 0.12 & At $k_{\min} = 150$ the worst class bound is
+0.184; no floor up to 200 passes & None found & Fail; offer aggregates or secure
+access \\
+\addlinespace
+Identification by an insider & Released loans & A party to the loan, log exposure
+error 0.01, knows the history & Not set & Success 0.772 at $k_{\min} = 1$, 0.416 at
+$k_{\min} = 300$ & Not governed by $k_{\min}$ & Fails at every floor once a tolerance
+is set; restrict access \\
+\addlinespace
+Relationship allegation & Released borrowers & Names the largest lender in the key
+class & Not set & Predictive value 0.328 at $k_{\min} = 1$, 0.313 at $k_{\min} = 20$
+& Not governed by $k_{\min}$ & No decision until $\tau$ is set \\
+\addlinespace
+Arrears status & Large borrowers & Reads status off a homogeneous key class & Not
+set & Homogeneity share 0.119 at $k_{\min} = 20$ & Attribute rule needed & No
+decision until $\tau$ is set \\
+\addlinespace
+Contribution from totals & 814 published cells & A participating lender, by
+subtraction & -- & 5.9\% of cells recoverable & Three-contributor rule; dominance
+rule not assessed & Rule-based; not a probability \\
+\addlinespace
+Differencing & Consecutive cell pairs & Claims a single move on a unit change & Not
+set & A unit change is a single move in 65\% of cases at $c_{\min} = 1$, 56\% at
+$c_{\min} = 10$ & $c_{\min} = 10$ & No decision until $\tau$ is set \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The record is worth reading row by row, because its value lies in what the rows
+disagree about. The first row is the assessment a committee would have made under
+per-release review: one release, the outside adversary with one reading of exposure,
+and a bound of 0.017 at the chosen floor. On its own this row would need no
+suppression at all. The second row is the programme. The record declares the full
+outside adversary, who pools six vintages, reads exposure in each, and knows in which
+of them the target's loan was live, and against that adversary the floor of 150
+passes with a confirmed bound of 0.109. The row then states what the floor costs, a
+fifth of the loans and 4 per cent of the exposure, because the owner has to weigh
+that cost and cannot do so from a risk figure alone.
+
+The third row fails. When every size class must meet the tolerance, with the largest
+firms drawn on purpose, the worst class bound at the floor of 150 is 0.184 and no
+floor up to 200 passes. The fourth row names the insider, Pieter's position, whose
+success is 0.772 with no suppression and 0.416 at a floor of 300. No floor governs
+him; access does. The next two rows, the relationship allegation and arrears status,
+have no tolerance, because the institution has not decided how much of those harms it
+will accept. The record says so and makes no decision on them. The seventh row is
+governed by a rule and not by a probability: a participating lender can recover 5.9
+per cent of the 814 published cells by subtraction, and the three-contributor rule
+answers it. The last row shows a differencing finding with a floor applied and no
+tolerance yet.
+
+Read together, the rows decide the file. One row passes, one passes at a cost the
+owner must accept, one fails at every floor tested, one would fail at every floor
+once a tolerance is set, three cannot reach a decision, and one is governed by a rule.
+The decision on the file as a whole follows from those rows and not from the one that
+passes. The long form draws the conclusion for this synthetic register: against an
+adversary who knows loan histories, a loan-level file is the wrong product, and
+aggregates or secure access are the options a committee can defend.
+
+The record also shows what per-release review would have hidden. The per-release
+reading of the rule releases all 27{,}167 loans of the first vintage; the programme
+reading against the full adversary releases 5{,}553, with 4 per cent of the exposure.
+% source: paper/bis_ifc_full.tex sec:disc (27,167 and 5,553); paper/generated/numbers.tex runevalperreleasekept
+Whether the adversary knows the loan's history moves the programme floor from 1 to
+75, and whether it also holds a reading in every vintage moves it from 75 to 150.
+% source: paper/generated/table_robustness.tex
+These are the differences between declarations, and a record is the only place where
+a committee can see them side by side.
+
+The chair's first reaction to the record was that it made the decision harder. A
+single pass would have been easier to sign. Naledi's answer was that the single pass
+existed, in the first row, and that it described an adversary the committee did not
+believe in. The chair signed the record with the third row's remedy: Tomás would
+work with the loan-level file inside the Bank's secure environment, and the extract
+that left the building would be aggregate.
+
+\section{When a release fails}
+
+A failed scenario does not end the matter. It tells the committee what to change,
+and the record states which remedy was chosen and why. The remedies fall into five
+groups, in roughly increasing order of what they cost the user.
+
+The first is to change the key: coarsen the published breakdown, or withdraw the
+field the adversary uses most. On the synthetic register the exposure reading, not
+the key, carries the attack; withdrawing it lowers identification from 0.081 to
+0.025. % source: paper/generated/numbers.tex runevalablationfull 0.081, runevalablationnoexposure 0.025
+The second is to raise the floor, choosing the level by fixed-sequence testing on the
+upper bound of the pooled scenario and confirming it on fresh targets. The third is to
+break the link between vintages by rotating pseudonyms, changing the row order or
+publishing some products less often. Rotation controls linkability and does not make
+a record anonymous in the legal sense, and the pseudonym should be a keyed hash under
+a key held apart from the release team. It helps only if the published fields cannot
+relink the records: on the synthetic register the key and the exact exposure relink
+every loan from one vintage to the next, and with exposure rounded to one significant
+figure about one loan in ten (Chapter~\ref{ch:programmes}). The fourth is to add noise
+under a formal mechanism and account for its budget over the horizon, remembering
+that the guarantee bounds posterior odds and does not name a linkage probability
+(Chapter~\ref{ch:dp}). The fifth is to change the access route or the product: move
+the file from public or scientific-use release to a secure research environment,
+where access controls and output checking govern the risk \citep{desai2016}, or
+publish aggregates in place of loan-level records.
+
+Shortening the horizon is also a remedy, but only if the institution is prepared to
+stop the series or re-assess it at the new horizon. A horizon shortened on paper
+while the series continues is no remedy at all.
+
+\section{Starting small}
+
+An institution does not need to apply the protocol to every product at once. A
+workable start is one register and one product family over one quarter. Choose the
+register whose products are published most often. Complete the programme inventory
+for it and agree a horizon. Agree one tolerance, for identification, with a named
+owner. Run one per-release attack and one pooled attack, with the attack counts of
+Step~4. File one decision record and present it to the release committee beside the
+current method, so that the committee can see where the two disagree.
+
+The pilot's purpose is that comparison. A committee that sees its current method and
+the protocol reach the same answer has learnt that its method was sound for that
+product and can say why. A committee that sees them disagree has found the case that
+the protocol was built for, and has found it on one product, before it affects
+many. The pipeline that produces this book runs the attacks and writes the record; it
+needs, for each product, the published file or its specification, the key fields, the
+auxiliary variables the adversary is declared to hold and the tolerance. Its
+demographic path has run on two public files (Chapter~\ref{ch:public}); its credit
+path has so far run only on the synthetic register.
+
+\section{What the method adds to the security of a release system}
+
+A statistical release system can be assessed in the terms used for any other
+information system, and readers in information security, operational risk and
+internal audit will find the method easier to place in those terms. This section
+restates it so, following the long form. It does not claim that the method meets, or
+is certified under, any security standard.
+
+The asset is the confidential register: its units and their attributes. Disclosure
+review faces two adversaries. The first, $\mathcal{A}_{\mathrm{data}}$, holds the
+releases and the declared auxiliary information and tries to identify a unit; on the
+credit register the record declares three outside classes of it and reports the
+insider beside them. The second, $\mathcal{A}_{\mathrm{op}}$, is whoever runs the
+audit and wants a release to pass, through carelessness, deadline pressure or
+intent. Per-release review has a model of neither. The method gives a claim about the
+first that holds only if the second is contained, so both belong in the record.
+
+The claim is this. For each declared adversary and harm class, with probability at
+least $1 - \alpha$, no release is certified whose declared attack succeeds at a rate
+at or above the tolerance. The probability is over the simulated attacks, given the
+register and the declared attack. It holds against $\mathcal{A}_{\mathrm{op}}$ only if
+five things are trusted: the registry that stores the audits and the error budget,
+one per programme; the randomness from which targets are drawn, which the operator
+cannot predict when it registers an audit; the attack code, fixed by a digest when it
+is registered; the list of attacks declared for each release, fixed before its first
+outcome; and a time source the operator does not control. An operator who chooses the
+seed knows every outcome in advance, and then no error statement holds, which is the
+content of Table~\ref{c16:tab-process}.
+
+The repository implements matching controls in its adaptive audit module. Targets are
+derived from a secret committed at registration and a later round of a public
+randomness beacon, so that neither the operator nor the beacon alone chooses them.
+Each bet is recorded in a hash-chained ledger before the attack runs, and its outcome
+after. The ledger's entries cannot be changed, dropped or reordered without breaking
+the chain or changing its head. With the controls in place, and the registry trusted,
+the rates in the table return to those of an honest single audit.
+
+Against the outside adversary the method adds four properties to per-release review.
+It assesses the pooled attack over the declared horizon, which per-release figures
+cannot bound (Proposition~\ref{prop:nopool}). It compares an upper bound with the
+tolerance, so the chance of false assurance is at most $\alpha$, where a point
+estimate passes a release at the boundary about half the time; and when the evidence
+is watched as it arrives, it uses a sequence that stays valid, where twenty looks at a
+fixed-sample bound put it below the true risk in 21 per cent of runs.
+% source: paper/generated/numbers.tex runseqfixederror 21, runseqanytimeerror 0, runseqlooks 20
+It fails closed: an attack that has not been audited is given a bound of one, and the
+pipeline returns a fail when the pooled bound exceeds the tolerance even if each
+release passes on its own. And a new attack proposed by a red team enters with its
+own share of the error budget, without voiding certificates already issued, if budget
+was reserved for it. Against the operator, the method makes audit shopping, the
+repetition of an audit or the scanning of settings until one passes, either impossible
+or paid for out of the error budget. That holds only under complete mediation
+\citep{saltzer1975}: every attack run on the confidential register passes through the
+registry, and development work uses a separate extract.
+
+What the method does not give should be stated as plainly. The implementation is a
+library, not a security boundary: read-only fields in Python are not a security
+control, since code in the same process can change them. The SHA-256 hashes a run
+writes show that a file has changed since the run, but they carry no key or trusted
+time stamp, and the ledger's chain detects changes only if its head is published or
+time-stamped outside the operator's control. A deployment that must hold against the
+operator needs the registry as a separate service with its own storage, signing keys
+and time stamps, which the repository specifies and has not built.
+% source: docs/DEPLOYMENT_AND_PENTEST_2026_10_23.md ("The registry service is specified in the deployment paper and not built")
+It needs separation of duties, in which an independent team writes and signs the
+attack code, a data custodian holds the register and the randomness commitment, and
+the owner signs the tolerance before the first outcome. And it needs verification by
+internal audit inside the secure environment, since the log of which targets were
+identified is itself confidential. The method gives no guarantee against attacks that
+were not registered, and no differential privacy guarantee.
+
+In the language of security practice, the declared scenario is a threat model
+\citep{shostack2014}: asset, adversary, capability and harm written down before
+testing. The attack simulation is red-team testing with a statistical stopping rule.
+The decision record is an assurance case: a claim, the evidence for it and the
+argument that links them, with a named owner and an expiry date. The mapping helps an
+institution place the method within its risk and audit processes. It is not a claim
+of conformity.
+
+For Grace, this section is the part of the method she can test. She cannot judge
+whether the declared adversary is realistic; that is the reviewer's work. She can
+check that the registry holds every audit, that the targets were derived from a
+commitment made before the beacon round, that the ledger's head matches the copy
+published at registration, and that the tolerance's signature predates the first
+entry. Each of those checks either passes or fails on the documents.
+
+\section{What the protocol does not decide}
+
+The protocol makes a decision reproducible. It does not make the decision for the
+institution. It cannot say whether a declared adversary is realistic, whether a
+tolerance is legally or ethically right, or whether a release is worth its risk.
+Those remain judgements for the release owner. The repository's own register of
+claims puts the protocol's benefit in the same terms: that it improves auditability is
+an institutional argument, supported by a machine-readable record, generated tables
+and hashes that show it can be done, and it would be refuted by comparative evidence
+that it does not help or costs too much. % source: docs/CLAIMS_EVIDENCE.md last row
+No such comparison has been run.
+
+The answer to the chapter's question can now be given plainly. For a release
+decision to carry the error statement the method promises, the institution must
+write down, before any attack outcome exists, the programme and its horizon, the
+declared adversaries, the tolerance with its owner, error level and expiry, and the
+plan of measurement, including the order in which settings are tested. The analyst
+then measures and the reviewer tests the model, each recorded in a registry that
+holds every audit. The owner decides from the full record, and internal audit checks
+the order afterwards. The writing is not overhead on a safe release. Without it the
+probability statement attached to the bound does not hold, and with ten unrecorded
+tries an audit at the tolerance passes nearly a third of the time.
+
+\begin{inpractice}[In practice: running the protocol]
+\setlength{\emergencystretch}{3em}%
+Assign the four roles to named people, and keep the analyst and the owner apart.
+Date every output: the inventory, each scenario sheet, the signed tolerance, the
+measurement plan, every registered audit, the falsification results and the signed
+decision. The tolerance's signature must predate the first audit outcome, and every
+attack run on the confidential register must appear in the registry, including
+failed and abandoned runs. File a record with one row per harm, including the harms
+for which no tolerance has been set. When a release fails, record the remedy and
+assess the changed product from Step~1. Start with one register and one product
+family, and compare the protocol's record with the current method before extending
+it.
+
+\smallskip\noindent\textit{In the software.} \texttt{privacy\_\allowbreak{}risk.\allowbreak{}pipeline.\allowbreak{}gate}
+writes the decision record (\texttt{decision.\allowbreak{}json}) with the release and programme
+outcomes, and \texttt{governance.\allowbreak{}decide} applies the tolerance and the expiry date.
+The audit controls are in \texttt{privacy\_\allowbreak{}risk.\allowbreak{}adaptive\_\allowbreak{}audit}, and
+\texttt{scripts/\allowbreak{}audit\_\allowbreak{}process\_\allowbreak{}attacks.\allowbreak{}py} produces Table~\ref{c16:tab-process}. The
+governance record the code writes holds six of the nine elements of the threshold:
+legal basis and protected parties, access route and horizon have to be added by hand
+(Appendix~\ref{app:software}).
+\begin{lstlisting}
+@dataclass(frozen=True)
+class GovernanceThreshold:
+    tolerance: float
+    owner: str
+    expiry_date: str
+    adversary: str
+    harm_class: str
+    alpha: float
+\end{lstlisting}
+\end{inpractice}
+
+\section{Proofs}
+
+\begin{proof}[Proof of Proposition~\ref{c16:prop-order}]
+(i) With $\tau$ fixed before the attacks, the pass event $\{\overline{R} \le \tau\}$ is
+contained in $\{\overline{R} < R\}$ whenever $R > \tau$, and the latter has probability
+at most $\alpha$.
+
+(ii) If $\tau$ may take any value in a range containing $\overline{R}$, the rule
+$\tau = \overline{R}$ is admissible, and under it $\overline{R} \le \tau$ holds on every
+outcome, so the release passes with probability one whatever $R$ is.
+
+(iii) Let $P_1,\dots,P_N$ be the pass indicators of $N$ independent audits, each with
+$\Prob(P_i = 1) = f$. The operator can report a passing audit exactly when at least
+one passes, which has probability $1 - \prod_i \Prob(P_i = 0) = 1 - (1-f)^N$. For
+$0 < f \le 1$, $(1-f)^N \to 0$ as $N \to \infty$.
+\end{proof}

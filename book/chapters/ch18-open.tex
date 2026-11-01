@@ -1,0 +1,387 @@
+\chapter{What remains open}\label{ch:open}
+
+A reader who has followed the book this far may hold a belief that the earlier
+chapters have encouraged. The method has propositions with full proofs, a pipeline
+that regenerates every number from one configuration, falsification tests that can
+refuse a decision, a protocol with roles and a filled record. On this view the
+scientific question is settled, and what remains is adoption: an institution has to
+install the software, train its staff and fill in the worksheets. The view is
+understandable, because the parts of the method fit together and each part has been
+checked.
+
+The view fails on one table. Every floor this book reports for the credit register
+depends on how precisely the adversary can read a loan's exposure, and no institution
+has measured that precision. When the standard deviation of the reading on the log
+scale is 0.6, the programme floor against the full outside adversary has a median of
+150 over twenty draws of the synthetic register. When it is 0.3, the median is 300,
+and in three of the twenty draws no floor up to 300 passes at all. When it is 1, the
+median is 75. % source: paper/generated/table_replication.tex
+The decision rule is settled. The number it produces for a real register is not,
+because the inputs that decide it are declarations about the world outside the
+institution, and the evidence for them has not yet been gathered on any real
+register.
+
+This chapter asks which of the book's claims would change if the method were run on
+a real register by a real institution, and which claims the method cannot make at
+all. It closes by answering the question that Chapter~\ref{ch:decision} put at the
+start of the book.
+
+\section{Real institutional registers}
+
+The credit register of Chapter~\ref{ch:credit} is synthetic. It shares the structure
+of a supervisory collection such as AnaCredit \citep{israel2017,ecb2022}: firms as
+borrowers, lenders with unequal shares, sector, region and size class as the key,
+monthly vintages. Its parameters were chosen, not estimated, and three of the choices
+bear directly on the floors. Exposures do not change between vintages. Whether a loan
+is live in a vintage is drawn independently of its size and its key. And the
+adversary's reading error is a declared normal error on the log scale. The register
+was rebuilt once after referees found that its loan panel gave the history adversary
+a signal no real register has: every loan had been forced to be live in the first
+month, and a third vanished and returned in a fixed pattern. The generator now has
+originations during the panel, a monthly exit hazard of 0.04 with no return, and a
+stable stock of about 27{,}000 loans.
+% source: docs/panel_review/10_round4_panel.md finding 1
+That correction moved the results, which is a measure of how much they depend on the
+generator.
+
+The repository states what an institution would have to supply to replace the
+synthetic evidence with its own. An adapter, written inside the institution and
+outside the package, would emit only aggregates: de-identified key-class counts,
+held-out predicted match probabilities with their outcomes for the calibration test,
+external frequency benchmarks for the transport test, and aligned attack-success
+indicators for every release. % source: docs/CLAIMS_EVIDENCE.md "Required real-data extension"
+No direct identifier, auxiliary register or row-level confidential data would leave
+the secure environment. The demographic path of the code has been run this way on two
+public files (Chapter~\ref{ch:public}). The credit path has not been run on any real
+register.
+
+Three replications would tell an institution most of what the synthetic study cannot.
+The first is the reading precision: the institution has to argue, from what it knows
+of the sources outsiders hold, for the error with which an outsider reads exposure,
+and it should report the floor across a range of precisions, as the replication
+table of the long form does, and not at one value. The second is
+the composition gap on its own programme: the ratio of the pooled risk to the bound the
+marginals imply, which on the simulated population ranged from 1.57 to 2.05 across
+register sizes from 50{,}000 to 400{,}000 units and reached 1.86 on the public Census
+extract. % source: paper/generated/numbers.tex runscalesmallratio 1.57, runscalelargeratio 2.05, runrealpooledratio 1.86
+The third is what a floor keeps of the credit volume. On the synthetic register the
+floor of 150 keeps 20 per cent of loans and 4 per cent of exposure; on a register
+with more lender concentration and regional specialisation, both of which the referees
+asked for and the generator does not yet have, the share could be very different.
+% source: docs/panel_review/10_round4_panel.md (central banking, open items); paper/generated/table_robustness.tex
+
+The book's prose has to carry this limit wherever the credit floors appear, and the
+chapters that report them say so. The floors of 75, 150 and none are properties of a
+synthetic register under declared parameters. The decision rule that produced them is
+the transferable result.
+
+At the Bank, the chair asked Naledi in the first committee meeting of the year which
+of the book's numbers she would put in front of the board. Her answer was none of the
+floors and all of the method. The floors described a register the Bank did not hold.
+What she could present was the record for Tomás's request, filled with the Bank's own
+counts inside the secure environment, and the range of floors it gave across the
+reading precisions the reviewer had accepted as plausible.
+
+\section{Time-varying exposures and dependent loan activity}
+
+Proposition~\ref{prop:nohistory} explains a result that surprised the referees: an
+adversary who pools six vintages without knowing the target's history gains nothing
+over the first vintage, and the floor stays at 1. The proposition rests on two
+conditions that a real register will not meet exactly. Each loan's published key and
+exposure are the same in every vintage in which it appears, and whether a loan is
+live in a vintage is independent of its key, its exposure and the adversary's
+information.
+
+Both conditions fail in ordinary credit data. Exposures amortise, are drawn down and
+are restructured, so a loan's published exposure differs from month to month. An
+adversary who holds a reading of the target in each vintage then compares each
+published value with a different reading, and the later vintages are no longer copies
+of the first. Loan activity also depends on size: large loans to large firms may
+persist longer, and small credit lines may open and close more often. When activity
+depends on the key or the exposure, the pattern of appearances across vintages carries
+information about which candidate is the target, even for an adversary who does not
+know the target's own pattern. In both cases the pooled adversary without history
+would gain something, and the zero gain of the synthetic register is a lower limit.
+
+The referees listed amortising exposure among the open items, together with the
+programme analysis of monthly aggregate tables and the harm that a lender-insider
+causes to other lenders' relationships. % source: docs/panel_review/10_round4_panel.md central banking open items
+None of these needs new theory. Each needs a generator, or better a real register,
+with the feature in it, and a rerun of the joint attack. The proposition says what to
+look for: the gain from pooling without history is exactly the information that
+changing values and dependent activity add, and on a register without them it is zero.
+
+\section{Attack coverage}
+
+Every certificate in this book covers the attacks that were declared. The admissible
+release is one whose declared attacks succeed at a rate below the tolerance with stated
+confidence, and the method says nothing about attacks outside the declared set. Two
+documented cases show what an undeclared attack looks like. \citet{narayanan2008}
+showed that subscribers in a film-rating data set released for a prediction contest
+could be identified from a handful of ratings with approximate dates, using a public
+rating site as the auxiliary source; the release had been reviewed without an
+adversary who held such a source. The United States Census Bureau's experiments on
+the tables of the 2010 census showed that published tables could be inverted to
+reconstruct records \citep{garfinkel2019}, and the Bureau adopted a formal privacy
+mechanism for 2020 \citep{abowd2022}. In each case the attack was not new in
+principle. It was new to the declaration.
+
+The declared attack can also be weaker than the declared knowledge allows. The
+referees found that the history adversary, who knows when the target's loan is live,
+also knows when it is absent, and that the attack first used only half of that
+knowledge. Using both halves raised the risk at the old floor of 40 from 0.105 to
+0.179. % source: docs/panel_review/10_round4_panel.md finding 2
+The attack now requires a candidate's pattern of appearances to match the target's in
+both directions, but it does so through a large penalty in the score and not through
+exact exclusion, and whether the maximum-posterior rule is the best attack for each
+declared information set has not been proved. % source: docs/panel_review/10_round4_panel.md (differential privacy, open)
+Simulation can show what a declared rule achieves. It cannot deliver the supremum over
+rules that a formal guarantee delivers by construction.
+
+The insider is the clearest case of what a floor cannot do, and
+Proposition~\ref{c18:prop-insider} states it without simulation.
+
+\begin{proposition}[An exact insider is not governed by a floor]\label{c18:prop-insider}
+Suppose a release publishes, for each record it keeps, a continuous attribute whose
+values are distinct across records with probability one, and that the protection
+mechanism removes records, by any rule including a minimum cell count, without
+altering the published values of the records it keeps. An adversary who knows the
+target's published value exactly identifies the target with probability one whenever
+the target is released. Its membership-conditional risk is therefore one at every
+setting of the mechanism, and its unconditional risk equals the probability that the
+target is released.
+\end{proposition}
+
+The proposition explains the insider row of the decision record. An insider who reads
+exposure with a log error of 0.01 is close to exact, and on the synthetic register its
+success falls only from 0.772 with no suppression to 0.416 at a floor of 300.
+% source: paper/bis_ifc_full.tex tab:record (insider row)
+What lowers it is the removal of records, not their protection. Against such an
+adversary the levers are the access route, the precision of what is published, or a
+formal mechanism. Rounding exposure to one significant figure halves the insider's
+success on the synthetic register. % source: docs/panel_review/10_round4_panel.md ("It halves the insider's success")
+
+The public-file experiments add a measured view of coverage. On thirty state samples
+of the Census extract, a search guided by a neural network confirmed 31.57 of 32
+high-risk settings on average, and a simple domain heuristic confirmed all 32. A
+quasi-random Sobol search confirmed only 22.03, but it covered 13.83 of 24 scenario
+cells, against 10.07 for the neural search and 11.97 for the heuristic.
+% source: paper/generated/table_public_search.tex
+A search that targets what it already believes is risky finds risky settings and
+covers less of the space. The cells are fixed bins of declared configuration choices,
+not new attack families, so even the widest search here explores a space the analyst
+wrote down. No method in the repository proposes an attack outside the declared space
+and then measures it.
+
+When Grace asked what the Bank's records could not show, Naledi's list began with
+attacks. The record showed what each declared adversary achieved and how confident
+the Bank could be about it. It could not show that the declared adversaries were the
+ones that would come, and she wrote that sentence into the record's limits section.
+
+\section{Eliciting the harm weight}
+
+Chapter~\ref{ch:tolerance} showed that a stated weight on harm relative to lost
+utility implies a tolerance, through the point of the risk--utility frontier that
+maximises utility minus the weighted risk bound. The result is useful only if a
+committee can state the weight, and no committee currently does. The repository
+reports the implied tolerance at six weights on the simulated population: 0.464 at a
+weight of 0.25, 0.345 at 0.5, 0.145 at 1 and at 2, and 0.081 at 5 and at 10.
+% source: paper/generated/table_tolerance.tex; paper/generated/numbers.tex runtolerancekappa*
+
+The figures contain a practical point. Because the frontier is a finite set of
+settings, the implied tolerance is a step function of the weight: every weight between
+1 and 2 implies the same setting, and so does every weight between 5 and 10. A
+committee does not need to state its weight to two decimal places. It needs to place
+the weight in an interval wide enough to contain the steps, and it can do so by
+choosing between pairs of settings shown with what each keeps and what each risks.
+Whether committees can make such choices consistently, and whether their past release
+decisions identify a weight, are empirical questions. The long form proposes estimating
+the weight from revealed institutional behaviour, since agencies have made these
+decisions for decades and their past choices constrain it under the framework. That
+study has not been done.
+
+The harm weight also hides a scope limit. The framework represents harm by a scalar
+within a declared harm class. Harms that fall on groups and not on individuals, and
+harms that arise from correct inference about a population and not from the
+identification of a person, are outside it \citep{skinner2012,dwork2014}.
+
+\section{The model-proposed attack line}
+
+Chapter~\ref{ch:proposals} reported a pipeline in which a model proposes scenarios and
+bets, a frozen plan records them, and an independent audit decides. Its results are
+mostly negative, and the remaining questions are best stated with those results
+beside them. On the synthetic benchmark, trained to convergence over ten seeds, the
+logistic and deep proposal models reach held-out losses that cannot be told apart.
+% source: README.md (SENTRY-R section)
+On the public Census file, one- and three-layer networks improved on plain logistic
+regression in three overlapping state splits, and a logistic model with explicit
+pairwise products and squares did better than both.
+% source: docs/SIX_PERSPECTIVE_REVIEW.md findings
+The evidence supports a role for nonlinearity, not for depth.
+
+The language-model arm is where the gap between what is built and what is measured is
+widest. A hosted pilot was prepared, with prompts saved and hashed before collection,
+and its first request returned an error with no proposal; collection stopped without
+retrying, and no hosted model response exists.
+% source: docs/LLM_PILOT_STATUS_2026_10_23.md
+A second run used a small open-weight model with four billion parameters on the
+author's own machine. It produced a valid list of proposals for 20 of 30 states within
+three attempts, and 50 of its 70 attempts were rejected, most for repeated or
+off-catalogue proposals. On those 20 states its proposals covered 6.05 scenario cells
+on average, against 13.65 for the Sobol search, and confirmed 27.60 of 32 settings. In
+19 of the 20 states every proposal used the finest geography, in the catalogue's own
+order. % source: paper/generated/numbers_llm_local.json
+The model copied the catalogue. Its run settles that this small model, under this
+prompt, adds no coverage over quasi-random or neural search. It does not settle what a
+larger model, a prompt that names the coverage goal, or a worked example would do, and
+any of those is a new experiment to be declared before it is run.
+
+There is therefore no genuine comparison, at a fixed evaluation budget, of a
+capable language model against the strongest baseline that uses no language model, which is the
+primary contrast of the confirmatory protocol in the repository.
+% source: EXPERIMENT_PROTOCOL.md
+The infrastructure for it exists: a replay contract that binds each response to the
+hash of the exact prompt, a schema that refuses counts and code, and a ledger that
+records the order of proposal, review, measurement, training, freeze and audit. Until
+the comparison is run, the claim the line can support is architectural. A model can
+propose scenarios into an audit without being able to change its error statement, and
+a poor model costs attacks, not validity.
+
+\section{Claims the method cannot make}
+
+Some limits are not gaps that more work will close. They follow from what the method
+is, and a release record should state them.
+
+The method cannot establish legal compliance. Data protection law asks whether
+identification is reasonably likely by the means an adversary could use, and gives no
+number \citep{gdpr2016}. The statistical confidentiality duty of the European System of
+Central Banks likewise names no probability \citep{ec2533}. A tolerance is the
+institution's written reading of that phrase for a declared adversary and harm. The
+method makes the reading explicit, owned and dated, and leaves to lawyers the question
+whether it is a reasonable reading.
+
+The method cannot protect against adversaries who were not declared. Its certificate
+covers registered attacks. An adversary with better auxiliary information, a new
+linkage method or a different notion of success lies outside the claim, and
+Proposition~\ref{c18:prop-insider} shows that one such adversary, an insider who knows a
+published value exactly, defeats every floor. The falsification tests and the expiry
+date narrow this gap; they do not close it. The method gives no differential privacy
+guarantee either, and where a guarantee over all attacks is required, a formal
+mechanism with an accountant is the tool (Chapter~\ref{ch:dp}).
+
+The method cannot enforce its own controls. The implementation is a library and not a
+security boundary, the registry service that a deployment needs is specified and not
+built, and the hashes a run writes detect change but do not prove who made it.
+% source: docs/DEPLOYMENT_AND_PENTEST_2026_10_23.md; paper/bis_ifc_full.tex sec:security
+Separation of duties, external time stamps and audit inside the secure environment are
+institutional controls, and the method depends on them.
+
+The method also cannot certify what it has not shown in the open. The papers describe
+the pipeline as open, and a reader's ability to rerun a number is part of the
+evidence for it. At the time of writing the repository is private, and either it is
+made public or that description changes before the papers or this book circulate.
+% source: book/REVIEW.md point 5
+
+\section{Open statistical questions}
+
+Four extensions look tractable, and the long form names them. The selected point of
+the risk--utility frontier is chosen by maximising an estimate, so it is biased in the
+way any such choice is, and the frontier needs a proper inferential treatment. The
+risk budget, which allocates a programme tolerance across releases, controls only the
+union event; a joint accountant that admits dependence between releases would need a
+composition theorem for scenario-conditional risk under a stated class of dependence.
+The implied tolerance could be estimated from revealed behaviour, as above. And the
+calibration test of Chapter~\ref{ch:falsification} could be developed into a formal
+specification test with a distribution under the null, which would replace the
+analyst's band with a level. The sequential audit has open items of its own: a
+truncated Beta mixture in place of the capped bet, exact group-sequential boundaries,
+and a bound on the expected length of the rule actually used.
+% source: docs/panel_review/10_round4_panel.md (sequential statistics, open)
+
+\section{How an institution should turn a measured risk into a release decision}
+
+Chapter~\ref{ch:decision} began with a gap. Institutions have many ways to protect a
+release and few rules that turn a measured risk into a decision to release or to
+withhold, a rule that someone else could apply to the same evidence and reach the
+same answer. The book's answer can now be stated plainly.
+
+An institution should first say what it is measuring. Disclosure risk is the
+probability that a declared adversary, holding declared information, names the right
+record for a declared set of targets. A figure without that declaration has no
+referent, and the familiar measures are answers to different declarations
+(Chapters~\ref{ch:scenario} and~\ref{ch:measures}).
+
+It should then treat the figure as an estimate. The decision compares an exact upper
+confidence bound with the tolerance, not a point estimate, because a point estimate at
+the tolerance passes about half the time. The number of simulated attacks is fixed in
+advance from the tolerance and the error level, a protection setting is chosen by
+testing a fixed sequence from the most protective down and confirmed on fresh
+targets, and an audit that is watched as it runs uses a sequence that stays valid
+under watching (Chapters~\ref{ch:estimate} to~\ref{ch:monitoring}).
+
+The tolerance has to belong to someone. It is written before the risk is measured,
+with a named owner, an expiry date, a harm class, an error level, the legal basis and
+the parties it protects, the access route and, for a programme, a horizon. It can be
+stated directly or read off the risk--utility frontier from a stated weight on harm
+(Chapters~\ref{ch:thresholds} and~\ref{ch:tolerance}).
+
+The object assessed is the programme, not the release. When records keep a pseudonym
+across releases, no function of the per-release risks bounds an adversary who pools
+them, so the joint attack is simulated directly and compared with a programme
+tolerance over the declared horizon (Chapter~\ref{ch:programmes}).
+
+The model behind the figure is tested before the figure is used, against bands fixed
+in advance, and a failed test makes the assessment invalid. The figure is not adjusted
+(Chapter~\ref{ch:falsification}). The whole sequence is carried out in a fixed order
+by separate people, recorded in a registry that holds every audit, and filed as a
+decision record with a row for every harm, including those for which no tolerance has
+been set (Chapter~\ref{ch:protocol}).
+
+The release goes out when the upper bound for every declared scenario, pooled ones
+included, lies at or below its tolerance, the model has passed its tests, and the
+owner has signed. Otherwise the record names the remedy, and the changed product is
+assessed again.
+
+That rule is reproducible: two analysts with the same declarations and the same
+simulation output reach the same decision, and an auditor can check afterwards that
+the decision followed from the evidence and that the evidence was gathered in the
+stated order. The rule does not remove judgement. It places the judgement in the
+declarations and the tolerance, where it can be seen, disagreed with and revised, and
+it leaves the probability calculation open to being proved wrong. What remains open,
+as this chapter has set out, is the evidence from real registers that would show how
+large the numbers are, and the declarations that no method can make on an
+institution's behalf.
+
+\begin{inpractice}[In practice: stating the limits in the record]
+\setlength{\emergencystretch}{3em}%
+Add a limits section to every decision record. State that the certificate covers the
+declared attacks only, name any adversary that was considered and not declared, and
+say why. Report floors across a range of the parameters that decide them, the
+adversary's reading precision above all, and not at one value. State whether
+exposures change between vintages and whether loan activity depends on size, since
+the no-history result needs both to fail. Name any insider separately and govern it
+through access. Record that the tolerance is the institution's reading of its legal
+duty, not a finding of compliance.
+
+\smallskip\noindent\textit{In the software.} The floors across reading precisions and
+register draws come from \texttt{scripts/\allowbreak{}programme\_\allowbreak{}robustness.\allowbreak{}py} and
+\texttt{scripts/\allowbreak{}robustness\_\allowbreak{}table.\allowbreak{}py}. The public-file search and the language-model
+arm are \texttt{privacy\_\allowbreak{}risk.\allowbreak{}injector\_\allowbreak{}search},
+\texttt{privacy\_\allowbreak{}risk.\allowbreak{}llm\_\allowbreak{}pilot\_\allowbreak{}local} and
+\texttt{scripts/\allowbreak{}public\_\allowbreak{}injector\_\allowbreak{}search.\allowbreak{}py}. The adapter for a real register is not
+in the package; \texttt{privacy\_\allowbreak{}risk.\allowbreak{}realdata} is the pattern for writing one.
+\end{inpractice}
+
+\section{Proofs}
+
+\begin{proof}[Proof of Proposition~\ref{c18:prop-insider}]
+Let $v_j$ be the published value of the continuous attribute for each released record
+$j$, and let $t$ be a released target with value $v_t$. The mechanism keeps $v_t$
+unaltered, so the adversary, who knows $v_t$ exactly, can form the set
+$\{j : v_j = v_t\}$ of released records sharing it. With probability one the values
+are distinct across records, so the set is $\{t\}$, and naming its only member
+identifies the target. The membership-conditional risk is therefore one for every rule
+that removes records, at every setting. The unconditional risk is the product of the
+probability that the target is released and the membership-conditional risk, by the
+factorisation of Chapter~\ref{ch:scenario}, and so equals the probability of release.
+\end{proof}

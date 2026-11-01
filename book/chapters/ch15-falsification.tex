@@ -1,0 +1,526 @@
+\chapter{Testing the model behind the figure}\label{ch:falsification}
+
+Many statisticians hold a reasonable belief about risk models fitted inside an
+institution. The model that produces a disclosure risk figure is fitted to the
+institution's own register: its key frequencies, its error rates, its records.
+Checking that model against the same register looks circular. The fit was chosen
+to agree with those data, so a test on those data can only confirm the fit, and
+any real check must wait for an outside attack that nobody hopes to see. On this
+view the risk model is an assumption to be argued about, and the register has
+nothing more to say.
+
+The belief fails because a linkage model does more than describe the register. It
+predicts how often an attack will name the right record, and it predicts this
+separately for each level of confidence the adversary reaches. Those predictions
+can be compared with attack outcomes that the fit never used. On the simulated
+population of Chapter~\ref{ch:simulation}, two linkage models were run side by side.
+One used the adversary's true error precision. The other assumed the adversary's
+covariate was noisier than it was. The two risk figures differed by 0.007. % source: paper/generated/numbers.tex (runattackcovariate 0.4642, runmisspecifiedrate 0.4571)
+Their stated posteriors, set against the realised success rates on held-out
+attacks, differed by a factor of seven: a mean gap of 0.007 for the correct model
+and 0.049 for the wrong one. % source: paper/generated/numbers.tex (runcalibrationgapcorrect, runcalibrationgapwrong)
+The register did contradict one of the models. The risk figure could not see it,
+and a calibration test could.
+
+This chapter asks one question. What evidence can show that the model behind a
+risk figure is wrong, and what should the institution do with the figure when it
+is?
+
+\section{An implementation check is not a validation}
+
+The pipeline that produces this book's numbers reproduces every equation of the
+earlier chapters in code, and a test suite confirms that the code computes what the
+equations say. That is an implementation check. It shows that the reciprocal of a
+key frequency is computed correctly when Assumptions~\ref{as:key} to~\ref{as:unif}
+of Chapter~\ref{ch:scenario} hold. It cannot show that they hold. A model can be
+coded without error and still describe an adversary nobody faces, a population
+that does not exist, or a mechanism that behaves differently from the way it was
+described.
+
+Empirical validation needs a different kind of evidence. A test of the model must
+name a quantity that the model predicts, a source of evidence the model was not
+fitted on, a band inside which agreement counts as agreement, and a consequence if
+the evidence falls outside it. All four are written down before the evidence is
+read. A test without a stated band is a description, and a test without a
+consequence is a report that nobody has to act on.
+
+At the Bank, Naledi keeps a folder for each assessment, and the first sheet in it
+is the list of tests she will run, with their bands, signed and dated before she
+starts the simulations for Tomás's request. The chair once asked why the sheet
+had to come first. Her answer was that a band chosen after the result is read can
+always be drawn to include the result.
+
+The long form of the paper behind this book proposes six tests. Figure~\ref{c15:fig-six} sets them out by the part
+of the model each one examines and by what follows from a failure. Four of them,
+linkage calibration, population-frequency transport, adversary stress and
+mechanism monotonicity, test the model of a single release, and a failure of any
+of them makes the release-level figure invalid. The fifth, the composition test,
+tests whether the release is the right object of assessment at all. The sixth,
+temporal transport, cannot be run when the assessment is made, and the expiry date
+of the governance threshold enforces it instead.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[font=\small,
+  tst/.style={draw,align=center,text width=3.1cm,minimum height=1.05cm},
+  inv/.style={tst,fill=gray!20,pattern=north east lines,pattern color=gray!60},
+  prg/.style={tst,pattern=dots,pattern color=gray!70},
+  exp/.style={tst,dashed}]
+  \node[inv] (cal) at (0,0) {1. Linkage calibration\\\scriptsize the linkage model};
+  \node[inv] (frq) at (4.2,0) {2. Frequency transport\\\scriptsize the population model};
+  \node[inv] (str) at (8.4,0) {3. Adversary stress\\\scriptsize the declared adversary};
+  \node[inv] (mon) at (0,-1.7) {4. Monotonicity\\\scriptsize the mechanism};
+  \node[prg] (cmp) at (4.2,-1.7) {5. Composition\\\scriptsize the object assessed};
+  \node[exp] (tmp) at (8.4,-1.7) {6. Temporal transport\\\scriptsize the time of use};
+  \node[draw,fill=gray!20,pattern=north east lines,pattern color=gray!60,minimum width=0.5cm,minimum height=0.35cm] at (-1.3,-3.2) {};
+  \node[anchor=west,font=\footnotesize] at (-0.95,-3.2) {failure: figure invalid, no decision};
+  \node[draw,pattern=dots,pattern color=gray!70,minimum width=0.5cm,minimum height=0.35cm] at (4.5,-3.2) {};
+  \node[anchor=west,font=\footnotesize] at (4.85,-3.2) {failure: govern the programme};
+  \node[draw,dashed,minimum width=0.5cm,minimum height=0.35cm] at (-1.3,-3.75) {};
+  \node[anchor=west,font=\footnotesize] at (-0.95,-3.75) {cannot run at assessment: enforced by the expiry date};
+\end{tikzpicture}
+\caption{The six falsification tests, each with the part of the model it examines
+(small type) and the consequence of a failure. Grey fill with hatching marks the
+four tests whose failure makes a release-level figure invalid; dotted fill marks
+the composition test, whose failure moves the assessment to the programme; the
+dashed outline marks the test that waits for the passage of time.}
+\label{c15:fig-six}
+\end{figure}
+
+\section{Linkage calibration}
+
+The first test examines the linkage model itself. When the declared adversary
+attacks a target, the model gives a posterior probability that the record it names
+is the right one. If the model is correct, then among all attacks in which the
+adversary named a record with posterior near 0.3, about 30 per cent should be
+right. The test bins the attacks by stated posterior, computes the realised success
+rate in each bin from held-out outcomes, and reports the mean gap between the two.
+
+Figure~\ref{c15:fig-calib} shows the test on the simulated population. With the
+adversary's error model stated correctly, the eight bins lie close to the diagonal
+and the mean gap is 0.007. When the model assumes that the adversary's covariate is
+2.5 times noisier than it is, the stated posteriors fall below the realised rates
+in the middle of the range: in the bin from 0.3 to 0.5, the model says 0.399 and the
+attacks succeed 0.496 of the time. % source: artifacts-paper/results.json attack.calibration (bin 0.3-0.5, misspecified); configs/paper.json misspecified_covariate_factor 2.5
+The mean gap is 0.049. % source: paper/generated/numbers.tex runcalibrationgapwrong
+Meanwhile the success rate of the attack hardly moves: 0.464 with the right model
+and 0.457 with the wrong one. % source: paper/generated/numbers.tex runattackcovariate, runmisspecifiedrate
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.58\textwidth]{fig3_calibration.pdf}
+\caption{Linkage calibration on the simulated population: mean stated posterior
+against realised success rate in eight bins, 20{,}000 attacks per curve. Circles on
+a solid line show the declared model; triangles on a dashed line show a model that
+overstates the adversary's covariate noise by a factor of 2.5. The dotted diagonal
+is perfect calibration.}
+\label{c15:fig-calib}
+\end{figure}
+
+The near equality of the two success rates is not an accident of this simulation.
+Proposition~\ref{c15:prop-invariance} shows why a wrongly scaled error model leaves
+the adversary's choice, and so its success rate, unchanged, while it changes the
+confidence the adversary attaches to that choice.
+
+\begin{proposition}[A misstated error scale leaves success unchanged]\label{c15:prop-invariance}
+Let the target $t$ lie in a candidate set $C$ of released records, all equally
+likely a priori in the adversary's information, with published values $x_j$ for
+$j \in C$. The adversary observes $z = x_t + e$ with $e \sim N(0,\sigma^2)$, assumes a
+standard deviation $s > 0$, forms the posterior $p_s(j) \propto
+\exp\{-(z-x_j)^2/(2s^2)\}$ and names $\hat\jmath$, the candidate of largest posterior,
+with ties broken by a fixed rule. Then
+\begin{enumerate}
+\item[(i)] $\hat\jmath$ does not depend on $s$, so the success probability
+$\Prob(\hat\jmath = t)$ is the same for every $s > 0$;
+\item[(ii)] when $s = \sigma$ the stated posterior is calibrated:
+$\Prob(\hat\jmath = t \mid z) = p_\sigma(\hat\jmath)$;
+\item[(iii)] the stated posterior $p_s(\hat\jmath)$ is non-increasing in $s$,
+tends to $1/|C|$ as $s \to \infty$, and, when the nearest candidate is
+unique, tends to 1 as $s \to 0$.
+\end{enumerate}
+\end{proposition}
+
+Part (i) says that the risk figure, which counts how often the named record is
+right, cannot reveal a wrong error scale. Parts (ii) and (iii) say where the
+evidence lies instead: in the posteriors, which are right only under the right
+scale. An adversary who believes its covariate is noisier than it is reports
+posteriors too close to $1/|C|$, as the dashed curve in Figure~\ref{c15:fig-calib}
+does through most of its range. The attack in the pipeline also carries error in
+the key fields, so the candidate sets differ slightly between the two scales, and
+the success rates differ by 0.007 instead of by nothing. The conclusion is the same.
+
+This answers the belief stated at the start of the chapter. A model calibrated on
+the register can be refuted by the register, because the model makes a family of
+predictions and the fit pins down only some of them. The calibration test reads
+the predictions the risk figure ignores.
+
+The test has a weakness in the repository as it stands, and the reader should know
+it. The configuration that drives the paper's run sets the band for the mean
+calibration gap at 0.06. % source: configs/paper.json calibration_ece_limit 0.06
+The misspecified model's gap of 0.049 lies inside that band, so the pipeline as
+configured would have passed the wrong model. The pipeline also applies the test to
+the declared model only, so the comparison in Figure~\ref{c15:fig-calib} is reported
+and not gated. % source: src/privacy_risk/pipeline.py validate() uses attack["calibration"][0]
+The long form describes the misspecified model as failing the test, which is true
+of the sevenfold contrast and not of the configured band. A band has to be set from
+the size of error that would change a decision, and a band of 0.06 on a gap whose
+correct value is 0.007 is too wide to catch an error of the kind this chapter
+studies. The band is the institution's choice, and this one should be tightened.
+
+Naledi's sheet for Tomás's request sets the band at 0.02 and records why: on the
+simulated population a correctly specified model sits well below it, and the
+misstated scale sits well above it. The chair asked whether 0.02 was a standard
+figure. It is not. It is Naledi's reading of what separates the two cases, signed
+before she runs the attacks, and the reviewer can disagree with it in writing.
+
+\section{Population-frequency transport}
+
+The second test examines the model of the population. Journalist risk, the chance
+that a sample-unique record is also unique in the population
+(Chapter~\ref{ch:measures}), cannot be computed from the sample alone. It rests on a
+fitted law for the population cell sizes, here a negative binomial, and the fitted
+law makes predictions about quantities that can be checked against held-out or
+external counts.
+
+On the simulated population, where the truth is known, the fitted law recovers the
+mean population cell size closely: 14.83 against a true 14.88 at a 5 per cent
+sample. % source: paper/generated/numbers.tex runfittedmeancell 14.83, runtruemeancell 14.88
+It recovers the uniqueness probability less well, with errors between 8 and 25 per
+cent across five sampling fractions, and every error lies on the conservative side,
+since the model's uniqueness probability exceeds the truth at each fraction.
+% source: paper/generated/numbers.tex runjournalisterrorlow 8, runjournalisterrorhigh 25; artifacts-paper/results.json measures.journalist (model > truth at all five fractions)
+The test also exposes a misfit that a single number hides. A negative binomial law
+that is closed under random thinning would keep the same dispersion whatever the
+sampling fraction. The fitted dispersion moves instead, from 0.33 at a 2 per cent
+sample to 0.51 at 20 per cent and 0.59 at 50 per cent.
+% source: artifacts-paper/results.json measures.journalist dispersion 0.325, 0.380, 0.441, 0.505, 0.594
+The family does not describe this population, though it summarises it well enough
+at one fraction.
+
+The paper draws the consequence that its own test demands. A model-based
+uniqueness probability that fails transport is replaced by a bound, or reported
+beside the truth and not used. No decision in the long form rests on the
+model-based figure, and on the public Census extract, where there is no truth to
+check against, the uniqueness probability is reported across a range of sampling
+fractions instead of as one value (Chapter~\ref{ch:public}).
+
+Here too the code is narrower than the text. The pipeline's frequency test checks
+the absolute error of the fitted mean cell size against a band of 1.5 cells.
+% source: src/privacy_risk/validation.py frequency_transport_error; configs/paper.json frequency_mae_limit 1.5
+The measured error is 0.055 cells, so the test passes, but a test of the mean cell
+size would pass a model whose uniqueness probability was wrong by a factor of two.
+% source: artifacts-paper/results.json validation.metrics.frequency_mae 0.0551
+An institution that uses the journalist measure for a decision should test the
+quantity it uses, the uniqueness probability or the share of small cells, against
+external counts, and should set the band on that quantity.
+
+\section{Adversary stress}
+
+The third test examines the declared adversary. Every risk figure in this book is
+conditional on what the adversary is declared to know, and the declaration is a
+guess about sources outside the institution's control. The stress test asks
+whether a materially stronger adversary that is still plausible would change the
+decision. If it would, the release fails or the scenario is revised in writing; the
+figure for the weaker adversary is not quietly kept.
+
+The best-known demonstration that a declared adversary can be too weak is
+\citet{sweeney2000}. Hospital discharge records released without names still
+carried date of birth, sex and postcode, and a public voter list carried the same
+fields with names attached. A release reviewed against an adversary who held only
+the published file faced one who held a second file. The stress test is the
+discipline of asking, before release, what the second file could be.
+
+On the simulated population the stronger adversary holds a covariate twice as
+precise as the declared one. % source: configs/paper.json stronger_covariate_factor 0.5
+Across the 45 mechanism settings of the grid, it raises the simulated risk by between
+1 and 76 per cent, with a median of 40 per cent.
+% source: paper/generated/numbers.tex runstresslow 1, runstresshigh 76, runstressmedian 40; artifacts-paper/results.json validation.metrics.stress
+The stronger adversary is never weaker at any setting, which is what the pipeline
+checks: a capability that lowered the risk would point to a misdeclared scenario or
+a coding error. The size of the movement is the more useful result. A setting that
+passes the tolerance against the declared adversary with a margin of less than 40
+per cent may well fail against an adversary with a better reading, and that is why
+the long form takes the risk under the stronger adversary, the robust risk, as the
+coordinate of the risk--utility frontier (Chapter~\ref{ch:tolerance}).
+
+Capability and modelling are different things, and the test keeps them apart. An
+adversary that keeps its information but misjudges its own error, the case of
+Proposition~\ref{c15:prop-invariance}, succeeds as often as before, so the stress
+test cannot see it; the calibration test can. An adversary with better information
+succeeds more often, so the calibration test may pass while the stress test fails.
+Neither test replaces the other.
+
+The test also removed a protection lever from the pipeline. An early version
+offered record swapping between districts. It lowered the simulated risk, but only
+against an adversary that read the released district at face value, and nothing in
+the declared scenario justified that assumption. An adversary who knew swapping
+was used, or who held a second source for the district, gained the protection
+back. The lever was taken out, and the paper reports the removal. % source: docs/CLAIMS_EVIDENCE.md "What was tried and dropped"
+Reporting its protection would have turned an assumption about the adversary into
+a property of the release.
+
+When Naledi ran the stress test for Tomás's request, the stronger adversary was not
+hypothetical. Pieter, a credit analyst at a reporting lender, knows the exposure of
+his own bank's loans to the last unit. The declared outside adversary reads
+exposure with error; Pieter does not. On the synthetic register an insider who reads
+exposure with a log error of 0.01 and knows the loan's history succeeds against
+77 per cent of targets with no suppression, and against 42 per cent at a minimum
+cell count of 300. % source: paper/bis_ifc_full.tex tab:record insider row (0.772 at k=1, 0.416 at k=300)
+No floor up to 300 stops him. Naledi's record therefore names him as a separate
+adversary with his own row, governed by the access route and not by the floor.
+
+\section{Mechanism monotonicity}
+
+The fourth test examines the protection mechanism. When an institution claims that
+a stronger setting reduces risk, a larger minimum cell count or a coarser key, the
+claim is empirical and can fail. The test looks for settings where stronger
+protection is followed by higher measured risk, and requires that each violation
+be investigated and not smoothed away.
+
+The long form reports four kinds of finding under this test. The first is a large,
+systematic violation of a different claim: every row of the $k$-anonymity table
+breaks the nominal bound $1/k$ on the worst target, with the worst target at
+$k = 10$ identified with probability 0.744 against a nominal 0.1.
+% source: paper/generated/table_kanonymity.tex (k=10 worst 0.744)
+The investigation of that violation produced a proposition, that $k$-anonymity
+delivers $1/k$ only when the adversary holds nothing beyond the key
+(Chapter~\ref{ch:measures}). The other three are small breaks in order. The worst
+target rises from 0.744 at $k = 10$ to 0.768 at $k = 20$, estimates that rest on 250
+replicates each. % source: paper/generated/table_kanonymity.tex
+The pooled rate on the credit register rises from 0.260 with no suppression to
+0.269 under $k$-anonymity with $k = 5$, about one standard error at 4{,}000 attacks
+each. % source: paper/generated/table_evaluation.tex
+The large-firm identification rate rises from 0.247 to 0.273 between the same two
+levels, on a few hundred targets. % source: paper/generated/table_credit.tex (k=1 0.247, k=5 0.273)
+None of the three exceeds what sampling noise explains, and the long form treats
+them as noise after looking for a mechanism and finding none.
+
+The decision depends on this test less than it seems to, for a reason worth stating.
+The choice of a floor in this book does not assume that risk falls as the floor
+rises. Fixed-sequence testing (Chapter~\ref{ch:selection}) tests the floors from the
+strictest down and stops at the first failure, and its error guarantee holds
+whatever the order of the true risks. Monotonicity is tested because a claim that a
+lever protects should be checked, not because the selection rule needs it.
+
+The pipeline's version of the test runs over the minimum cell counts at the finest
+key, with a band of 0.025 for simulation noise, and finds no violation on the paper's
+run. % source: src/privacy_risk/pipeline.py validate(); configs/paper.json monotonicity_tolerance 0.025; artifacts-paper/results.json validation.metrics.monotonicity_violations []
+
+\section{The composition test}
+
+The fifth test asks whether the single release is the right thing to assess. It runs
+the joint attack on the programme, compares the pooled risk with the interval the
+marginal risks imply (Proposition~\ref{prop:boole}), and reports the pooled risk
+against a programme tolerance of its own.
+
+On the simulated population the test fails clearly. Two releases, each 3-anonymous,
+pooled by an adversary who intersects their candidate sets, identify the target with
+probability 0.411, which is 2.8 times the upper bound of 0.148 that their two
+marginal risks imply. % source: paper/generated/numbers.tex runpooledtwo 0.4114; paper/bis_ifc_full.tex sec:falsify (2.8, bound 0.148)
+Four releases reach 0.458, 1.8 times the bound of all four.
+% source: paper/generated/numbers.tex runpooledall 0.4581, runpooledallratio 1.8
+
+A failure of this test does not invalidate the release-level model. The linkage
+model, the population model and the mechanism may all be right, and each release may
+be assessed correctly on its own. What fails is the assumption that the release is
+the object to govern. Proposition~\ref{prop:nopool} says that the marginal risks
+cannot bound the pooled risk, so the consequence is a change of object: the
+programme needs its own simulation, its own tolerance and its own horizon. The
+pipeline records the composition result beside the validation report and keeps it
+out of the validity flag for that reason. % source: src/privacy_risk/validation.py full_validation_report
+It applies the result in the gate instead: on the paper's run, the chosen setting
+passes on its own with an upper bound of 0.081, and the gate still returns a fail,
+because the upper bound on the pooled risk of the declared four-release programme,
+0.464, exceeds the release tolerance of 0.12. % source: artifacts-paper/decision.json (upper_risk 0.0806, pooled_upper_bound 0.4640, tolerance 0.12, status FAIL)
+
+The decision record in the repository shows one loose end. The validation step
+judges the pooled bound against a programme tolerance of 0.5, which it meets, while
+the gate judges the same bound against the release tolerance of 0.12, which it does
+not. % source: artifacts-paper/decision.json programme.programme_tolerance_used_by_validation 0.5; configs/paper.json programme.tau_programme 0.5
+Both statements are in the file, and a reader has to work out which governed the
+outcome. A record should carry one programme tolerance, owned and dated like the
+release tolerance, and the gate should compare the pooled bound with it.
+
+Tomás's request is a composition question before it is anything else. He asked for
+a research extract in March, a second in June and a third with the year's vintages.
+Each was assessed when it came in. Naledi's first act on the new request was to
+assess the three together, with his auxiliary information held fixed across them,
+because the earlier records did not license any statement about the set.
+
+\section{Temporal transport}
+
+The sixth test cannot be run when the assessment is made. An assessment is
+calibrated on the register, the auxiliary sources and the linkage methods of its
+date. New public sources appear, a register changes its coverage, and attack methods
+improve. The test asks that the assessment fail or be re-estimated when any of these
+moves observed attack performance outside the range the assessment declared.
+
+Because the evidence for this test arrives later, the governance threshold enforces
+it through the expiry date $d$ and the re-assessment triggers. The pipeline refuses
+a decision on or after the expiry date. % source: src/privacy_risk/governance.py decide (assessed >= expiry -> FAIL)
+A bound from Chapter~\ref{ch:monitoring} shows how little shift a certificate absorbs.
+If the deployed attack distribution lies within a Kullback--Leibler divergence $\rho$
+of the one assessed, the deployed risk is bounded through the Bernoulli divergence.
+The programme floor of 150 on the credit register has a confirmed upper bound of
+0.109, and it can absorb a divergence of about $6 \times 10^{-4}$ before that bound
+reaches the tolerance of 0.12. % source: paper/bis_ifc_full.tex (kl(0.12||0.109) about 6e-4)
+Halving the standard deviation of the adversary's exposure reading, from 0.6 to
+0.3, is a divergence of about 0.32 per reading, three orders of magnitude larger,
+and it moves the floor from 150 to a median of 300 over twenty register draws.
+% source: paper/bis_ifc_full.tex (divergence 0.32 per reading); paper/generated/table_replication.tex
+The certificate holds for the declared reading precision and for little else. The
+expiry date exists because the world the certificate describes will move.
+
+\section{Why a failed test blocks the decision}
+
+When a test fails, the tempting response is to keep the figure and add a margin. If
+the calibration gap is too large, raise the risk figure by a fifth and compare that
+with the tolerance. The response is tempting because it is cheap and seems prudent.
+It is wrong, and the reason is that a failed test does not say the figure is too
+small by some amount. It says the model that produced the figure does not describe
+the attack, and nothing in the evidence says by how much it errs.
+
+Proposition~\ref{c15:prop-gate} makes both halves of the argument precise. A rule
+that refuses to decide when a test fails can only remove passes, so it keeps the
+error guarantee of the upper bound whatever the dependence between the test and the
+bound. A fixed margin cannot repair a model that omits what the adversary knows,
+because such a model can understate the risk by any factor.
+
+\begin{proposition}[Blocking keeps the level; no margin repairs a wrong model]\label{c15:prop-gate}
+Let $\overline{R}$ be an upper bound for the model risk $R$ with
+$\Prob(\overline{R} < R) \le \alpha$ when the model is correct, let $V$ be any event,
+possibly dependent on the same simulations, on which the validation tests pass, and
+let the decision pass when $V$ occurs and $\overline{R} \le \tau$.
+\begin{enumerate}
+\item[(i)] If the model is correct and $R > \tau$, the decision passes with
+probability at most $\alpha$.
+\item[(ii)] For every margin $c \ge 1$, tolerance $\tau \in (0,1)$ and
+$\varepsilon > 0$, there is a release and a model, satisfying the assumptions of
+Proposition~\ref{prop:recip} for an adversary who holds only the key, such that
+$c\,\overline{R} \le \tau$ with probability at least $1 - \varepsilon$, while an
+adversary who also holds one published attribute exactly identifies every target
+with probability one.
+\end{enumerate}
+\end{proposition}
+
+Part (ii) is the $k$-anonymity finding in its plainest form. The model is correct
+for the adversary it describes and wrong for the one who attacks, and no scaling of
+its output closes the gap, because the gap depends on what the adversary holds and
+not on the model's own error. The only repair is a new model, which means a new
+declaration, new simulations and a new set of tests.
+
+The pipeline encodes the rule. When a release-level test fails, the gate returns
+\texttt{INVALID} and the process exits with a non-zero status, so a failed
+validation cannot be presented as a release decision.
+% source: src/privacy_risk/pipeline.py main(); src/privacy_risk/governance.py decide
+The status differs from a fail. A fail says that the evidence, read by a model the
+institution accepts, shows the risk above the tolerance; the remedies of
+Chapter~\ref{ch:protocol} apply. An invalid result says the institution has no
+accepted model and so no evidence either way. The release cannot go out on it, and
+the work returns to the declaration.
+
+The chair raised the margin idea at the committee meeting on Tomás's request. A
+draft calibration check on a new auxiliary source had come back with a gap above
+Naledi's band, and the chair proposed adding a fifth to the figure and moving on.
+Naledi showed the committee the dashed curve of Figure~\ref{c15:fig-calib} and the
+two success rates beside it. A larger figure would have looked prudent and would
+have been computed from the same wrong model. The committee recorded the result as
+invalid, and Naledi rebuilt the declaration.
+
+\section{What the tests can and cannot show}
+
+The six tests do not prove that a model is right. A model that passes all six can
+still be wrong about an adversary nobody thought to declare, and no test can range
+over adversaries that are not written down; Chapter~\ref{ch:open} returns to this
+limit. What the tests do is give the model a stated chance to fail, so that a
+figure that survives them has survived something. The claims-and-evidence register
+of the repository states for each claim what would refute it, and the last row is
+the governance protocol itself, whose claim to improve auditability rests on an
+institutional argument and has no comparative evidence yet.
+% source: docs/CLAIMS_EVIDENCE.md last row of the table
+
+The answer to the chapter's question is short. Evidence can show that the model
+behind a risk figure is wrong whenever the model predicts something beyond the
+figure: posteriors that can be compared with outcomes, population counts that can
+be compared with external benchmarks, an ordering of risk across settings, a
+response to a stronger adversary, and a range of conditions over time. The
+institution's own data can supply most of that evidence, so the belief that a model
+fitted to the register cannot be refuted by it is false. When a test fails, the
+figure is not adjusted. The assessment is invalid, no decision is taken on it, and
+the model is rebuilt from a new declaration.
+
+\begin{inpractice}[In practice: testing the model before the decision]
+\setlength{\emergencystretch}{3em}%
+Before running any attack, write the test sheet: the six tests, the quantity each
+compares, the evidence it uses and the band for each, signed and dated. Set each
+band from the size of error that would change the decision, not from habit. Test
+the quantity the decision uses: if the journalist measure enters the decision, test
+the uniqueness probability against external counts, not only the mean cell size.
+Run a stronger plausible adversary for every scenario and name any insider as a
+separate adversary. Treat a failed release-level test as an invalid assessment, not
+as a high figure. Treat a failed composition test as a reason to assess the
+programme. Put the expiry date and the re-assessment triggers in the record, since
+they carry the sixth test.
+
+\smallskip\noindent\textit{In the software.} The tests are in
+\texttt{privacy\_\allowbreak{}risk.\allowbreak{}validation}: \texttt{calibration\_\allowbreak{}table} and
+\texttt{calibration\_\allowbreak{}gap} for linkage calibration,
+\texttt{frequency\_\allowbreak{}transport\_\allowbreak{}error} for the population model,
+\texttt{stress\_\allowbreak{}ratios}, \texttt{monotonicity\_\allowbreak{}violations} and
+\texttt{composition\_\allowbreak{}test}, combined by \texttt{full\_\allowbreak{}validation\_\allowbreak{}report}.
+\texttt{privacy\_\allowbreak{}risk.\allowbreak{}pipeline.\allowbreak{}validate} runs them on a pipeline run, and
+\texttt{governance.\allowbreak{}decide} returns \texttt{INVALID} when the report has not passed.
+The bands come from the configuration file:
+\begin{lstlisting}
+report = full_validation_report(
+    ece, float(config.get("calibration_ece_limit", 0.06)),
+    transport, float(config.get("frequency_mae_limit", 1.5)),
+    violations, stress, composition)
+\end{lstlisting}
+\end{inpractice}
+
+\section{Proofs}
+
+\begin{proof}[Proof of Proposition~\ref{c15:prop-invariance}]
+(i) For every $s > 0$ the map $u \mapsto \exp\{-u^2/(2s^2)\}$ is strictly decreasing
+in $u \ge 0$, and the prior is uniform over $C$. The posterior $p_s(j)$ is therefore
+largest exactly for the candidates that minimise $|z - x_j|$. This set does not
+depend on $s$, and the fixed tie-breaking rule picks the same member of it for
+every $s$, so $\hat\jmath$ is a function of $z$ and the $x_j$ alone. The event
+$\{\hat\jmath = t\}$ and its probability are then the same for every $s$.
+
+(ii) When $s = \sigma$ the adversary's likelihood is the true conditional density of
+$z$ given that $j$ is the target, and with a uniform prior on $C$ that matches the
+target's distribution in the adversary's information, Bayes' theorem gives
+$\Prob(t = j \mid z) = p_\sigma(j)$ for each $j \in C$. Since $\hat\jmath$ is a function
+of $z$, $\Prob(\hat\jmath = t \mid z) = p_\sigma(\hat\jmath)$.
+
+(iii) Write $d_j = (z - x_j)^2$ and $d_* = d_{\hat\jmath} = \min_j d_j$. Then
+\[
+p_s(\hat\jmath) = \Big(\sum_{j \in C} \exp\{-(d_j - d_*)/(2s^2)\}\Big)^{-1}.
+\]
+Each term with $d_j > d_*$ increases with $s$ and tends to 1 as $s \to \infty$, and
+each term with $d_j = d_*$ equals 1, so $p_s(\hat\jmath)$ is non-increasing in $s$
+and tends to $1/|C|$. If the nearest candidate is unique, every other term tends to
+0 as $s \to 0$, so $p_s(\hat\jmath) \to 1$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c15:prop-gate}]
+(i) The decision passes on $V \cap \{\overline{R} \le \tau\}$, which is contained in
+$\{\overline{R} \le \tau\}$. When $R > \tau$, $\{\overline{R} \le \tau\} \subseteq
+\{\overline{R} < R\}$, whose probability is at most $\alpha$ when the model is
+correct. No assumption on the dependence between $V$ and $\overline{R}$ is used.
+
+(ii) Choose an integer $k \ge 2$ with $1/k < \tau/c$, and let $\delta = \tau/c - 1/k > 0$.
+Build a release with $n = kM$ records, $M$ key classes of exactly $k$ records each,
+and one further published attribute whose values are distinct across all $n$
+records. For an adversary who holds only the key, Assumptions~\ref{as:key}
+to~\ref{as:unif} hold and Proposition~\ref{prop:recip} gives risk $R = 1/k$ for every
+target. Let $\overline{R}$ be the exact one-sided upper bound from $B$ simulated
+attacks of that adversary. Its success count is binomial with mean $B/k$, and the
+exact bound converges to $1/k$ in probability as $B \to \infty$, so for $B$ large
+enough $\Prob(\overline{R} \le 1/k + \delta) \ge 1 - \varepsilon$, and on that event
+$c\,\overline{R} \le c/k + c\delta = \tau$. An adversary who also holds the target's
+value of the distinct attribute exactly finds a single released record with that
+value, which is the target's, so it identifies every target with probability one.
+\end{proof}

@@ -41,3 +41,14 @@
 
 % A planned chapter not yet drafted
 \newcommand{\plannedchapter}[2]{\chapter{#1}\noindent\textit{Planned chapter, not yet drafted.}\par\medskip\noindent #2}
+
+% Code excerpts from the privacy_risk package
+\usepackage{listings}
+\lstset{language=Python,basicstyle=\ttfamily\footnotesize,columns=fullflexible,
+  keepspaces=true,frame=lines,framesep=4pt,rulecolor=\color{rule},
+  showstringspaces=false,breaklines=true,xleftmargin=0pt,
+  literate={–}{{--}}1 {—}{{---}}1 {’}{{'}}1 {“}{{``}}1 {”}{{''}}1}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usetikzlibrary{patterns}
+\setlength{\emergencystretch}{3em}

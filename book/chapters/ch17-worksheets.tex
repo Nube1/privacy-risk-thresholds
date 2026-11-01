@@ -1,0 +1,295 @@
+\chapter{Worksheets for six release types}\label{ch:worksheets}
+
+A common view among central bank statisticians is that their release types are too
+different for one method. Aggregate tables from a credit register are protected by
+contributor and dominance rules, survey microdata by recoding and the journalist
+measure, ad hoc requests by a reviewer's judgement, and each tradition has its own
+literature \citep{hundepool2012}. On this view a single framework can only be a
+lowest common denominator. The view has a fair basis in the tools, which do differ.
+It does not hold for the decision. Every one of the six release types in this chapter
+fills the same four slots: whom the adversary targets, what it holds, which harm
+follows and which measure answers the question. What changes from type to type is
+the content of the slots, not their number.
+
+The chapter asks one practical question: what should an institution write in the
+worksheets of Chapter~\ref{ch:protocol} for the release types it actually publishes?
+It gives starting declarations for six types, then the blank worksheets and a
+checklist. The declarations are illustrations to be adapted to each institution's
+products, legal basis and users. They do not describe the practice of any
+institution.
+
+\section{Starting declarations}
+
+Table~\ref{c17:tab-map} maps six release types common in central banks to the objects
+of Steps~2 to~5 of the protocol. The first column names the product. The others say
+whom the adversary targets, what it plausibly holds, which harm is at stake, which
+measure in this book applies and where a pooled scenario arises. The last column is
+the one most often left empty in practice, and it is the one
+Proposition~\ref{prop:nopool} says cannot be left empty when records or cells persist
+across vintages.
+
+\begin{table}[ht]
+\centering
+\caption{Starting declarations for six release types common in central banks. The
+entries are illustrations to be adapted to each institution's products, legal basis
+and users; they do not describe the practice of any institution.}
+\label{c17:tab-map}
+% source: paper/apply_section.tex tab:apply-map
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{2.4cm}@{}}
+\toprule
+Release type & Targets & Adversary holds & Harm & Measure & Pooled scenario \\
+\midrule
+Aggregates from a credit register & Borrowers in small cells; lenders in
+concentrated cells & A firm's sector, region and size from public filings; a
+lender's own book & Identification of a borrower; a lender's position revealed &
+Prosecutor risk by cell; residual disclosure from totals & Monthly vintages;
+differencing of consecutive months \\
+\addlinespace
+Loan-level research extract & Every borrower in the extract & Key fields and a noisy
+reading of exposure from other sources & Identification; disclosure of arrears &
+The linkage attack of Chapter~\ref{ch:credit}; an attribute rule & Successive
+extracts for one project; extracts for different projects \\
+\addlinespace
+Supervisory statistics by bank group & Individual banks & Each bank's own figures;
+published annual reports & A bank's confidential figure recovered & Contribution
+from totals; dominance and $p\%$ rules & Quarterly series; tables that share a
+margin \\
+\addlinespace
+Payment and transaction statistics & Merchants or payers in thin cells & Merchant
+category and location; own transactions & Identification; commercial information
+revealed & Prosecutor risk by cell; minimum contributor count & Daily or weekly
+series of the same cells \\
+\addlinespace
+Household or firm survey microdata & Respondents & Demographic or firm
+characteristics from registers or social media & Identification; disclosure of
+wealth or debt & Journalist and marketer measures; the frequency model & Survey
+waves; a public file and a scientific-use file \\
+\addlinespace
+Answers to ad hoc requests & Units in the requested breakdown & Everything already
+published from the same register & Identification by differencing & Differencing
+posterior & Each answer pooled with every earlier publication \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The six rows are discussed in turn below. Each discussion says what the declaration
+must settle before any attack is run, what evidence the earlier chapters offer, and
+where the assessment usually goes wrong.
+
+\subsection*{Aggregates from a credit register}
+
+Tables of credit by sector, region and size class are the most frequent product of a
+credit register, and they face two adversaries at once. An outsider who knows a
+firm's sector, region and size from its public filings looks for the cell where the
+firm sits alone or nearly so. A participating lender knows its own contribution to
+every cell and can subtract it from a published total to read what remains. The
+first is measured by the prosecutor risk of each cell (Chapter~\ref{ch:measures}). The
+second is a matter of arithmetic, not probability: on the synthetic register a
+participating lender can recover 5.9 per cent of 814 published cells by subtraction,
+% source: paper/bis_ifc_full.tex tab:record (5.9 per cent of 814 cells)
+which is what the three-contributor rule is written to prevent. A dominance rule
+usually sits beside the contributor rule, and the record should say whether it was
+assessed. The pooled scenario is the monthly series: a cell that changes by one unit
+between two months may reveal a single loan's movement, and the record should carry
+the differencing posterior for consecutive months (Chapter~\ref{ch:credit}).
+
+\subsection*{Loan-level research extracts}
+
+A research extract puts every borrower in the file, so the target set is the whole
+extract and the adversary holds the key fields plus whatever it can read of the
+exposure from other sources. The declaration that decides the result is the
+precision of that reading. On the synthetic register, halving its standard deviation
+from 0.6 to 0.3 on the log scale moves the programme floor from a median of 150 to a
+median of 300 over twenty register draws.
+% source: paper/generated/table_replication.tex
+The worksheet should therefore record the reading precision and the argument for it.
+The pooled scenario arises when one researcher receives several extracts, for one
+project over time or for different projects, and the declaration must say whether
+the researcher can know in which vintages a target's loan was live. Arrears status
+needs an attribute rule as well, since a key class in which every large borrower is
+in arrears discloses that status without naming anyone.
+
+\subsection*{Supervisory statistics by bank group}
+
+When a table reports figures by bank group, the targets are individual banks and the
+adversary is often another bank, which knows its own figures and can read the
+others' published annual reports. The harm is the recovery of a confidential figure,
+and the relevant tools are the contributor and dominance rules of the sensitivity
+tradition \citep{hundepool2012}. These are rules, not probabilities, and the record
+should report them as such, in the way the seventh row of the decision record in
+Chapter~\ref{ch:protocol} does. The pooled scenario is the quarterly series and any
+pair of tables that share a margin, since a margin shared by two tables can be
+subtracted from both.
+
+\subsection*{Payment and transaction statistics}
+
+Payment statistics are published at high frequency, and their thin cells, a merchant
+category in a small town, can contain one or two merchants. The adversary knows the
+category and the location and, if it is a participant, its own transactions. The
+measures are the prosecutor risk by cell and a minimum contributor count. The pooled
+scenario is the defining feature of this release type: a daily or weekly series of
+the same cells gives an adversary many readings of each, and the horizon of
+Step~1 should be set in days or weeks, not in years.
+
+\subsection*{Household or firm survey microdata}
+
+Survey microdata are the case for which most of the classical measures were built.
+The targets are respondents, and the adversary holds demographic or firm
+characteristics from registers or social media. Because the file is a sample, the
+journalist measure, which asks whether a sample-unique record is unique in the
+population, needs a model for the population cell sizes, and the transport test of
+Chapter~\ref{ch:falsification} applies to that model. The marketer measure, the
+expected share of records an adversary would link correctly, answers a different
+question and protects a different party, and the worksheet should say which of the
+two the tolerance is for. The pooled scenario is a sequence of waves, or a public
+file and a scientific-use file cut from the same survey.
+
+\subsection*{Answers to ad hoc data requests}
+
+An ad hoc request is the release type most often assessed alone and least suited to
+it. The adversary is anyone who holds everything already published from the same
+register, so every answer is pooled with every earlier publication. The harm is
+identification by differencing, and the measure is the differencing posterior. The
+practical consequence is that the inventory of Step~1 has to include past answers,
+which many institutions do not keep in one place.
+
+When Naledi filled the first worksheet for the credit register, the row for ad hoc
+answers took the longest. Three departments had answered requests from the register
+in the previous year, and two kept no list. She recorded what could be found and
+noted the gap in the record, since an inventory that is known to be incomplete is
+more useful to the owner than one that looks complete.
+
+\section{Blank worksheets}
+
+The three worksheets below follow the steps of Chapter~\ref{ch:protocol}. They are
+meant to be copied into an institution's own templates. The decision record of
+Table~\ref{c16:tab-record} shows the third worksheet filled for the synthetic credit
+register, with the declarations common to its rows given in the text.
+
+\subsection*{Worksheet 1. Programme inventory (Step 1)}
+
+One row per product drawn from the source register over the planning horizon. The
+fifth column is the one that decides whether pooled scenarios are needed.
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{1.7cm}>{\raggedright\arraybackslash}p{2.3cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{2.1cm}@{}}
+\toprule
+Product drawn from the register & Frequency & Population covered & Variables
+published & Link across vintages (pseudonym, row order, stable attributes) & Access
+route \\
+\midrule
+ & & & & & \\[12pt]
+ & & & & & \\[12pt]
+ & & & & & \\[12pt]
+ & & & & & \\[12pt]
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Source register: \hrulefill\quad Horizon $m$ (vintages): \hrulefill\quad
+Data owner: \hrulefill
+
+\subsection*{Worksheet 2. Scenario declaration (Step 2), one per scenario}
+
+One sheet per declared adversary, single-release or pooled. The stress-test row
+names the stronger adversary that the falsification test of
+Chapter~\ref{ch:falsification} will run.
+
+\begin{center}
+\small
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{5.4cm}>{\raggedright\arraybackslash}p{8.8cm}@{}}
+\toprule
+Item & Entry \\
+\midrule
+Scenario name and products it holds & \\[8pt]
+Adversary (who, and why it would attack) & \\[8pt]
+Auxiliary information held, with its error & \\[8pt]
+Target set (prosecutor, journalist or marketer) & \\[8pt]
+Success event (what counts as a correct attack) & \\[8pt]
+Harm class & \\[8pt]
+Single release or pooled over the horizon & \\[8pt]
+For a pooled scenario: does the adversary know in which vintages the target is
+present, and why & \\[8pt]
+Stronger adversary for the stress test & \\[8pt]
+Declared by, and date & \\[8pt]
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{Worksheet 3. Decision record (Steps 3 to 7), one row per scenario}
+
+One row per scenario and harm, including those for which no tolerance has been set.
+The decision column takes one of four values: pass, fail, invalid (a falsification
+test failed) or not set (no tolerance has been agreed).
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{1.3cm}>{\raggedright\arraybackslash}p{0.6cm}>{\raggedright\arraybackslash}p{0.6cm}>{\raggedright\arraybackslash}p{1.1cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{1.4cm}@{}}
+\toprule
+Scenario & Legal basis and protected parties & Access route & $\tau$ & $\alpha$ &
+Attacks $B$ & Upper bound & Model tests passed & Decision & Remedy if
+failed \\
+\midrule
+ & & & & & & & & & \\[12pt]
+ & & & & & & & & & \\[12pt]
+ & & & & & & & & & \\[12pt]
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent Release owner: \hrulefill\quad Signed on: \hrulefill\quad Expiry:
+\hrulefill
+
+\noindent Re-assess when the horizon is reached, a new product is drawn from the
+register, a new public source could serve as auxiliary information, the mechanism
+changes, or the record expires.
+
+\section{Checklist before release}
+
+The checklist is for the reviewer and, afterwards, for internal audit. Each item can
+be answered yes or no from the documents.
+
+\begin{enumerate}
+\item Every product drawn from the register over the horizon is listed.
+\item Every scenario names its adversary, auxiliary information, target set and harm.
+\item A tolerance, error level, owner and expiry are recorded for every harm, or the
+record says that none has been set.
+\item The legal basis, the protected parties and the access route are recorded for
+every product.
+\item The number of attacks, the error level of each scenario and the order in which
+any grid of levels is tested were fixed before any result was seen.
+\item Pooled scenarios were run with the same auxiliary information as the
+single-release ones; any pooled scenario that adds knowledge is reported separately;
+all are reported.
+\item The decision uses upper bounds, not point estimates.
+\item All six falsification tests were run against bands fixed in advance, and their
+results are filed.
+\item The reviewer is not the analyst, and the release owner signed the record.
+\end{enumerate}
+
+The answer to the chapter's question is the worksheets themselves, filled from the
+starting declarations of Table~\ref{c17:tab-map} and changed wherever the
+institution's own products, users and law differ from them. The six release types
+differ in their targets, adversaries, harms and measures, and they share the four
+slots and the pooled column. An institution that fills the slots for its own
+products, and leaves none empty without saying why, has done Steps~1 to~3 of the
+protocol.
+
+\begin{inpractice}[In practice: using the worksheets]
+\setlength{\emergencystretch}{3em}%
+Copy the three worksheets into the institution's own templates and keep the column
+for links across vintages and the row on the adversary's knowledge of presence, since
+those decide whether a pooled scenario is needed. Start each declaration from the
+matching row of Table~\ref{c17:tab-map} and record every change from it with a
+reason. Keep ad hoc answers in the programme inventory. Record rows for harms that
+have no tolerance yet, with the decision ``not set''.
+
+\smallskip\noindent\textit{In the software.} The pipeline fills the decision record
+for the declared scenarios of a run (\texttt{privacy\_\allowbreak{}risk.\allowbreak{}pipeline.\allowbreak{}gate}, written to
+\texttt{decision.\allowbreak{}json}); the credit register's harms are measured by
+\texttt{privacy\_\allowbreak{}risk.\allowbreak{}credit} and attacked by \texttt{privacy\_\allowbreak{}risk.\allowbreak{}evaluation}. The
+inventory and scenario sheets have no counterpart in code and are kept as documents.
+\end{inpractice}

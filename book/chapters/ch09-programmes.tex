@@ -1,14 +1,32 @@
 \chapter{Several releases to the same user}\label{ch:programmes}
 
-At the Lisbon workshop where this work was first presented, a participant asked
-what happens to the risk when an institution gives several data sets to the same
-researcher. The question is the right one to ask, because single releases are not
-how institutions publish. A central bank releases a quarterly series, a research
-file and a public extract, all drawn from one register, and a researcher with
-access to one of them often has access to the others. This chapter shows that the
-risk of the combination cannot be read off the risks of the parts, proves that no
-rule based only on the parts can bound it, measures the gap on simulated and public
-data, and sets out what an institution should assess instead.
+At the Lisbon workshop where this work was first presented, a participant asked what
+happens to the risk when an institution gives several data sets to the same researcher. Most
+institutions have an answer ready, and it is a reasonable one: if each file has passed its own
+disclosure review, the set passes too. A careful institution may go further and add up the
+risks of the files, on the grounds that the chance that at least one of them exposes a person
+can never exceed the sum of the separate chances. That sum is a true bound for the event it
+describes, and on this view a set of files each reviewed to a small risk carries at most a
+modest one.
+
+The answer fails on a simple simulation. Four releases are drawn from one simulated register,
+each keyed on ordinary demographic variables, each keeping at least three records in every key
+class, and none containing a unique record. Their separate risks lie between 0.017 and 0.088,
+and their sum is 0.253. An adversary who holds all four and can match records across them
+identifies the target with probability 0.458, and a quarter of all targets are identified
+uniquely, although none was unique in any single file.
+% source: paper/generated/table_programme.tex; paper/generated/numbers.tex (pooled 0.4581, union upper 0.2530)
+The sum bounded the wrong event.
+
+At the Bank the question arrives as a request. Tomás, a visiting researcher, wants three
+products from the credit register for one study: a loan-level research file covering six
+months, a table of lending by sector and region, and the public monthly series. Naledi has
+reviewed each product before, for other users, and each passed. This chapter asks one question
+on Tomás's behalf: \emph{what is the disclosure risk of giving several releases to the same
+user, and what must an institution assess to know it?} It shows that the risk of the
+combination cannot be read off the risks of the parts, proves that no rule based only on the
+parts can bound it, measures the gap on simulated and public data, and sets out what to assess
+instead.
 
 \section{Two different questions about a programme}
 
@@ -96,6 +114,11 @@ with a finer key, and the proposition says that a finer key can carry far more r
 than any of its parts. That reading points to a remedy as well as a warning, and
 Section~\ref{sec:prog-remedies} returns to it.
 
+Naledi read the proposition with Tomás's request open beside it. The loan-level file carries a
+pseudonym for each loan, and it is the same pseudonym in every monthly vintage, because the
+Bank's users had asked for a panel. Her past reviews had each looked at one vintage. None of them
+had looked at what a user holding all six could do with a key that persists.
+
 \section{How large the gap is}
 
 Proposition~\ref{prop:nopool} is an existence result and says nothing about the
@@ -155,6 +178,12 @@ requires a minimum cell count of 75. An adversary who also holds a reading of th
 loan's exposure in each vintage requires 150, and an insider who reads exposure with
 small error is not stopped by any floor up to 300.
 
+The proposition changed what Naledi needed to know about Tomás. Whether he could pool the six
+vintages was settled by the pseudonym; what she had to establish was whether he, or anyone who
+later saw his file, could know in which months a given firm's loan was live. A lender knows this
+about its own customers, and so would a researcher who had already studied the firm. Naledi
+declared the history-aware adversary, and the floor rose from 1 to 75.
+
 \section{What to assess instead}\label{sec:prog-remedies}
 
 Three consequences follow for an institution that publishes programmes. First,
@@ -186,6 +215,20 @@ sets out what that guarantee says and what it leaves unsaid. A programme toleran
 can also be divided among releases as a budget on the union event, but by
 Proposition~\ref{prop:nopool} such a budget governs the union only. It allocates
 attention across releases and does not replace the joint simulation.
+
+\section{The answer}
+
+The question was what the disclosure risk of giving several releases to one user is, and what
+an institution must assess to know it. The risk is the probability that an adversary using all
+the releases together names the target, and it is a different event from any one release
+succeeding. When records keep a pseudonym across releases, no function of the separate risks
+bounds it, and on a simulated register four files that each look safe identify the target far
+more often than their separate risks suggest. To know the risk, the institution must simulate
+the joint attack directly, over a declared horizon, with the targets and the adversary's
+information shared across the releases; it may then rotate keyed pseudonyms, coarsen the linking
+fields or move the user into a secure environment, and simulate again. For Tomás the committee
+did the last: the loan-level file at the floor his adversary required kept too little exposure
+for his study, and Chapter~\ref{ch:credit} follows him into the secure room.
 
 \begin{inpractice}[In practice: giving several files to one user]
 List every release from the same register that the user can access, now and within

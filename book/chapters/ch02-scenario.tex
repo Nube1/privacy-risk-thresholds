@@ -1,14 +1,31 @@
 \chapter{Disclosure risk as the outcome of a declared attack}\label{ch:scenario}
 
-A disclosure risk only has meaning once an attack is specified. The statement
-``this file has a re-identification risk of 2 per cent'' cannot be checked, reused
-or governed until it says who attacks, with what knowledge, against which targets
-and under which conditioning event. This chapter builds that specification from
-the ground up. It starts with the objects every assessment involves, defines risk
-as the probability of one experiment, and shows that the best-known measure in the
-field, the reciprocal of the key frequency, follows from that experiment under four
-assumptions. Stating the assumptions is useful mainly because it shows where they
-fail, and two of them fail in the ordinary case.
+The minutes of the Bank's release committee contain one phrase more often than any other:
+``every cell holds at least ten records, so no record carries a risk above one in ten.''
+The chair wrote it, the committee approved it, and most readers of this book would approve it
+too. It is the belief that a record's disclosure risk is the reciprocal of the number of
+released records that share its key, so that a key class of ten means a one in ten chance.
+
+The belief deserves its standing. The formula is old, it appears in every handbook, and it
+answers a clear experiment: an adversary who knows a person's key, finds the released records
+with that key, and picks one of them at random will be right one time in ten. The rule that
+every class must hold at least $k$ records, known as $k$-anonymity, rests on it, and so do
+most minimum cell counts in use at statistical institutions. If an adversary cannot tell the
+records in a class apart, the formula is exact.
+
+The fact that breaks it comes from a simulated register of 200,000 people with a 5 per cent
+sample. A release that keeps at least ten records in every key class contains a record whose
+own chance of being identified is 0.74, with a one-sided 95 per cent lower bound of 0.64.
+% source: paper/generated/table_kanonymity.tex (k = 10 row: worst target 0.744, lower bound 0.638)
+The adversary in that simulation knows one thing the key leaves out: a noisy reading of a
+continuous variable that the release also publishes. That is enough to tell the ten records
+apart.
+
+This chapter asks one question: \emph{what does a disclosure risk figure measure, and under
+what conditions does the reciprocal of the key frequency answer it?} The answer starts from
+the objects every assessment involves, defines risk as the probability of one experiment, and
+derives the familiar formula from that experiment under four assumptions. Stating the
+assumptions shows where they fail, and two of them fail in the ordinary case.
 
 \section{Population, sample, key and mechanism}
 
@@ -116,6 +133,13 @@ the adversary's own source contains reporting error, which is also the normal ca
 When either fails, the right object is no longer a frequency but a posterior
 probability.
 
+At the Bank this is where the chair's phrase runs into trouble. The credit register publishes
+each loan's exposure beside its sector, region and size class. Pieter, a credit analyst at
+one of the reporting lenders, knows the size of every loan his bank has made, give or take a
+rounding. When he looks for one of his own borrowers in a class of ten, he does not choose at
+random. He chooses the record whose exposure matches his books, and Assumption~\ref{as:exch}
+no longer holds.
+
 \section{When the assumptions fail}
 
 Suppose the adversary's information and the released records are compared through
@@ -190,6 +214,12 @@ distribution. Both protect against attribute disclosure, which can occur without
 any record being identified. They change the risk model rather than the decision
 rule, and they cannot be read as interchangeable tolerances for correct linkage.
 
+Naledi ran Pieter's attack on the register before the next meeting. Against an adversary who
+reads exposure with small error, the minimum cell count that the committee had treated as a
+one in ten guarantee bounded nothing at all: Chapter~\ref{ch:credit} reports that no floor up
+to 300 brings his success below the committee's tolerance. The chair's phrase was true of a
+different adversary, one who knows only the key.
+
 \section{What a risk figure must carry}
 
 The argument of this chapter reduces to a requirement. A reported risk figure
@@ -199,6 +229,19 @@ target is known to be in the file. Chapter~3 shows that three measures commonly
 reported under one label, all computed on the same simulated release, give 0.466,
 0.064 and 0.023. Each is correct for its own experiment, and only a declared
 scenario says which experiment the institution meant.
+
+\section{The answer}
+
+The question was what a disclosure risk figure measures and when the reciprocal of the key
+frequency answers it. A risk figure measures the probability that a declared adversary, with
+declared knowledge, names the right record in one defined experiment, and it means nothing
+until that experiment is stated. The reciprocal of the key frequency is the exact answer when
+the released key is unperturbed, the adversary observes it without error, nothing it knows
+distinguishes the records in a class, and it chooses among them at random. When the adversary
+holds a variable the release also publishes, or observes the key with error, the answer is a
+posterior probability that can lie well above or below $1/f_k$, and a minimum cell count on
+the key alone no longer bounds it. The chair's minutes should have read: ``no record carries a
+risk above one in ten against an adversary who knows only the key.''
 
 \begin{inpractice}
 For every risk figure in a release assessment, record the adversary's auxiliary
