@@ -225,6 +225,19 @@ to say that the worst subgroup lies above some value. Those are claims about the
 evidence. The release decision is a claim about the release, and it needs no
 correction.
 
+\begin{example}[Three size classes at one floor]\label{c07:ex-sizes}
+The counts are illustrative. At one candidate floor Naledi runs the pooled attack on 400
+small firms, 150 medium firms and 60 large firms, and it succeeds on 30, 9 and 2 of them.
+The one-sided Clopper--Pearson bounds at the 5 per cent level are 0.100, 0.102 and 0.101.
+Each is under the tolerance of 0.12, so by Proposition~\ref{c07:prop-iut} the floor
+passes, and the chance that it passes while some size class is unsafe is at most 5 per
+cent. Had Naledi split the level into three parts of 1.67 per cent, in the manner of a
+Bonferroni correction \citep{dunn1961}, the bounds would have been 0.108, 0.116 and 0.123.
+The large firms would then fail, though 2 successes in 60 is a rate of 0.033, and she
+would have needed more attacks on large firms to show what the decision did not require
+her to show.
+\end{example}
+
 The same logic covers several declared adversaries at one setting, which is how the
 release chain of Chapter~\ref{ch:monitoring} tests three attacks at each floor at
 the full level. It does not cover the choice of adversary after the results are
@@ -258,6 +271,18 @@ p \ge p^\star = \frac{c_f + c_a}{h + c_f},
 \end{equation}
 and then $p^\star < 1$. The threshold equals one half exactly when $h = c_f + 2c_a$.
 \end{proposition}
+
+\begin{example}[Three adversaries, one attack]\label{c07:ex-payoffs}
+The repository fixes three payoff structures, each written as benefit $h$, cost of a
+false allegation $c_f$ and cost of acting $c_a$. With $(h, c_f, c_a) = (1, 1, 0)$,
+\eqref{c07:eq-attack} gives $p^\star = (1 + 0)/(1 + 1) = 0.5$, the usual convention. With
+$(10, 1, 0.5)$, a data broker who gains ten times what a wrong match costs it,
+$p^\star = (1 + 0.5)/(10 + 1) = 1.5/11 = 0.136$: it acts whenever its candidate is about
+one chance in seven. With $(1, 5, 0.5)$, a journalist for whom a wrong name brings a
+lawsuit, $p^\star = (5 + 0.5)/(1 + 5) = 5.5/6 = 0.917$. The same posterior of 0.6 on the
+same firm leads the broker to act, the journalist to hold back, and the equal-stakes
+adversary to act.
+\end{example}
 
 The convention of one half is therefore one payoff structure among many: equal
 stakes for right and wrong allegations, with free allegations. The repository reads

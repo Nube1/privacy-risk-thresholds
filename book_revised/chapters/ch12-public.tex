@@ -180,6 +180,17 @@ $\max\{U_j : j \text{ belongs to } \hat\theta\}$ is at least the larger risk of 
 adversaries at $\hat\theta$ on that event.
 \end{proposition}
 
+\begin{example}[One frontier setting and its bound]\label{c12:ex-setting}
+Take the most protective setting on the census frontier: the widest bands and a minimum
+class size of ten. The declared attack named 359 of 1,500 fresh targets, a rate of 0.239.
+Read alone, the one-sided 95 per cent upper bound on that rate is 0.258. But Naledi would
+pick this setting only after seeing all 72 results, so she took the bound at level
+$0.05/72 = 0.000694$, as Proposition~\ref{c12:prop-family} requires, and it rose to
+0.276, the figure the chapter reports. The difference, 0.018, is what it costs to be
+allowed to choose after looking. Had she reported 0.258 for a setting chosen because it
+looked good, the bound would have been too low by about that amount.
+\end{example}
+
 Eight of the 25 settings are nondominated in the plane of the familywise upper bound
 and utility, and their bounds run from 0.276 to 0.942.
 % source: paper/generated/table_real_census.tex; paper/generated/numbers.tex (\runrealfrontier 8, \runrealrisklow 0.276, \runrealriskhigh 0.942)
@@ -401,6 +412,20 @@ hypothesis are at least
 In particular, as the reporting probability $r$ tends to zero the quiet history leaves
 the prior odds unchanged, whatever the number of years and the rate of attempts.
 \end{proposition}
+
+\begin{example}[Ten quiet years]\label{c12:ex-quiet}
+Naledi put numbers to the chair's argument, labelled as illustrative. Suppose the
+template file draws 20 linkage attempts a year and has been public for ten years. Let the
+safe hypothesis be a risk of 0.01 and the unsafe one 0.30, held at even prior odds. If one
+success in twenty is reported, the expected number of reported attempts is
+$\lambda r T = 20 \times 0.05 \times 10 = 10$, and ten quiet years multiply the odds on the
+unsafe file by $\exp(-10 \times 0.29) = 0.055$. The history would then be strong evidence.
+If one success in a hundred is reported, $\lambda r T = 2$ and the factor is
+$\exp(-2 \times 0.29) = 0.56$: after ten years without an incident the unsafe file keeps
+more than half its prior odds. Nothing in the file's history tells the chair which
+reporting rate is true.
+\end{example}
+
 
 The proposition says that a quiet history is evidence of safety only in proportion to
 $\lambda r T$, the expected number of reported attempts. Every factor in that product is

@@ -259,6 +259,19 @@ envelope. Hold the Bank's tolerance of 0.12 and set $\delta$ negligible. At
 $\varepsilon = 1$ the ceiling meets the tolerance whenever the baseline is below
 $0.12/e$, about 0.044; at $\varepsilon = 2$ the baseline must be below about
 0.016.
+
+\begin{example}[Two lenders reading one month of counts]\label{c10:ex-lenders}
+The baselines are illustrative. A lender reads the monthly counts at $\varepsilon = 1$
+with $\delta = 0$. From its own books, and without the target loan's contribution to the
+counts, it can narrow a borrower's loan to 50 candidates, so its baseline is
+$\kappa = 1/50 = 0.02$. By \eqref{c10:eq-ceiling} no attack it could build succeeds with
+probability above $e \times 0.02 = 0.054$, which meets the tolerance of 0.12. A second
+lender, with better information, narrows the loan to 20 candidates, a baseline of 0.05.
+Its ceiling is $e \times 0.05 = 0.136$, above the tolerance. The release and its
+parameter are the same in both cases. What decides whether the guarantee supports the
+release is the baseline, and the Bank must argue for it.
+\end{example}
+
 % derived: tau = 0.12 (paper/generated/numbers.tex \runevaltolerance) divided by e^1 = 2.718 and e^2 = 7.389
 A baseline of 0.044 is the success of a uniform guess among about 23 candidates.
 % derived: 1/0.0441 = 22.7
@@ -447,6 +460,23 @@ largest borrowers are also the ones most easily singled out by other means, so t
 weakest guarantee falls on the most exposed firms. A committee should state the
 unit of protection in its record and choose it to match the party the law
 protects, which for a credit register is usually the borrower.
+
+\begin{example}[A borrower with four loans]\label{c10:ex-four}
+The supervision department's counts are loan-level at $\varepsilon = 1$. For a borrower
+with one loan, an adversary whose prior on the borrower's arrears is 0.1 can end, by
+Proposition~\ref{c10:prop-post}, with a posterior of at most
+$e \times 0.1/(e \times 0.1 + 0.9) = 0.232$. For a borrower with four loans,
+Proposition~\ref{c10:prop-group} gives a borrower-level parameter of 4, and the same
+prior can rise to $e^4 \times 0.1/(e^4 \times 0.1 + 0.9) = 0.858$. With a prior of one
+third the two figures are 0.576 and 0.965. The parameter printed on the release is the
+same for both borrowers; the protection is not.
+\end{example}
+
+Naledi raised the unit with the supervision department. Its counts were of loans, and it
+wanted the guarantee stated for loans, since that was what the counts measured. Naledi
+recorded the point as open, with the borrower-level parameter beside the loan-level one,
+and the record went to the committee in that form.
+
 
 The second is inference from the population. Differential privacy bounds what the
 release reveals about a person beyond what it would reveal if their record were

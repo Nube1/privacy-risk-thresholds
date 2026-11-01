@@ -73,3 +73,59 @@ def test_chapter6_examples():
     w = up ** 9 * 0.25
     assert round(w, 2) == 0.60 and math.ceil(math.log(20 / w) / math.log(up)) == 37
     assert round(a(20, 300), 3) == 0.130 and round(a(40, 600), 2) == 0.11
+
+
+def test_chapters7_8_examples():
+    from privacy_risk.uncertainty import binomial_upper as u
+    cells = ((30, 400), (9, 150), (2, 60))
+    assert [round(u(k, n), 3) for k, n in cells] == [0.1, 0.102, 0.101]
+    assert [round(u(k, n, 0.05 / 3), 3) for k, n in cells] == [0.108, 0.116, 0.123]
+    ps = lambda h, cf, ca: (cf + ca) / (h + cf)
+    assert (ps(1, 1, 0), round(ps(10, 1, .5), 3), round(ps(1, 5, .5), 3)) == (0.5, 0.136, 0.917)
+    pts = {"A": (.08, .40), "B": (.15, .70), "C": (.35, .86), "D": (.46, .90)}
+    s = lambda i, j: (pts[j][1] - pts[i][1]) / (pts[j][0] - pts[i][0])
+    assert [round(x, 2) for x in (s("C", "D"), s("B", "C"), s("A", "B"), s("B", "D"))] == [0.36, 0.8, 4.29, 0.65]
+    e = 1 / 1.23
+    a = 0.2 / (1 + 0.25 ** e)
+    S = lambda r1, r2: r1 ** -0.23 + 0.25 * r2 ** -0.23
+    assert round(a, 3) == 0.151 and round(0.2 - a, 3) == 0.049
+    assert [round(S(*x), 3) for x in ((a, 0.2 - a), (.16, .04), (.1, .1))] == [2.045, 2.048, 2.123]
+
+
+def test_chapter9_examples():
+    import itertools
+    assert round(1 - .96 * .98 * .99, 3) == 0.069
+    loans = list(itertools.product([1, 2, 3], repeat=2))
+    r1, r2 = {}, {}
+    for l in loans:
+        r1.setdefault(l[1], []).append(l)
+        r2.setdefault(l[0], []).append(l)
+    hits = sum(set(r1[t[1]]) & set(r2[t[0]]) == {t} for t in loans)
+    assert hits == 9 and all(len(v) == 3 for v in list(r1.values()) + list(r2.values()))
+
+
+def test_chapter10_examples():
+    import math
+    e = math.e
+    assert (round(e * .02, 3), round(e * .05, 3)) == (0.054, 0.136)
+    post = lambda eps, p: math.exp(eps) * p / (math.exp(eps) * p + 1 - p)
+    assert [round(post(1, .1), 3), round(post(4, .1), 3), round(post(1, 1 / 3), 3), round(post(4, 1 / 3), 3)] == [0.232, 0.858, 0.576, 0.965]
+
+
+def test_chapter11_examples():
+    import numpy as np
+    from scipy.stats import norm
+    from privacy_risk.uncertainty import binomial_lower as lo
+    y = np.array([8.2, 8.9, 9.6])
+    for s, want in ((.75, [0.216, 0.428, 0.355]), (.375, [0.042, 0.65, 0.308])):
+        L = norm.pdf(9.1, y, s)
+        assert list((L / L.sum()).round(3)) == want
+    assert round(lo(186, 250, .05), 3) == 0.695 and round(lo(186, 250, .05 / 230), 3) == 0.638
+    assert sum(1 / k for k in (3, 2, 1, 4) for _ in range(k)) / 10 == 0.4
+
+
+def test_chapter12_examples():
+    import math
+    from privacy_risk.uncertainty import binomial_upper as u
+    assert round(u(359, 1500), 3) == 0.258 and round(u(359, 1500, .05 / 72), 3) == 0.276
+    assert round(math.exp(-10 * .29), 3) == 0.055 and round(math.exp(-2 * .29), 2) == 0.56

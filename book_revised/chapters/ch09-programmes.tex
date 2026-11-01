@@ -55,6 +55,16 @@ independence value is 0.231 inside an interval of $[0.088, 0.253]$. It happens t
 sit near the upper bound, and that agreement is a feature of the design and says
 nothing about independence.
 
+\begin{example}[The interval for Tom\'as's three products]\label{ex:three-products}
+The risks are illustrative. Suppose the loan-level file, used alone, has risk 0.04, the
+table by sector and region 0.02 and the monthly series 0.01. By
+Proposition~\ref{prop:boole} the chance that at least one product, used alone, exposes a
+firm lies between the largest risk, 0.04, and the sum, $0.04 + 0.02 + 0.01 = 0.07$. If
+the three were independent the chance would be $1 - (0.96)(0.98)(0.99) = 1 - 0.931 =
+0.069$, inside the interval and near its top. Neither figure says anything about a study
+that follows each firm through the products together, which is what Tom\'as plans.
+\end{example}
+
 The second question is the one the participant asked, and it concerns a different
 event. An adversary who holds all $m$ releases is not obliged to use them one at a
 time. It can apply a joint linkage rule that looks at all the releases together, and
@@ -95,6 +105,21 @@ the candidate set implied by its key and the adversary chooses uniformly within 
 intersection of those sets, then $R_{\mathrm{pool}}$ does not decrease as releases
 are added, and $R_{\mathrm{pool}} \ge \max_i R_i$.
 \end{proposition}
+
+\begin{example}[Nine loans, two releases]\label{ex:nine-loans}
+Take the construction in the proof with $k = 3$ and $m = 2$. Nine loans carry labels
+$(v_1, v_2)$ with each coordinate in $\{1, 2, 3\}$, and each loan keeps one pseudonym in
+both releases. Release 1 publishes only $v_2$ and release 2 publishes only $v_1$. Every
+key class in each release holds three loans, so each release used alone names the target
+with probability $1/3$, and the sum of the two marginal risks is $2/3$. The adversary
+knows the target is loan $(2, 3)$. In release 1 its candidates are the three loans with
+$v_2 = 3$; in release 2 they are the three with $v_1 = 2$. Only one pseudonym appears in
+both sets, so the pooled attack names every one of the nine targets: the pooled risk is
+1. If the pseudonym were rotated between the releases the two candidate sets could not
+be matched, because the releases share no published field, and the risk would stay at
+$1/3$.
+\end{example}
+
 
 Neither the phenomenon nor its direction is new. \citet{sweeney2002} observed that
 complementary releases, each $k$-anonymous, can be joined to re-identify;

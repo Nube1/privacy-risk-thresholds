@@ -309,6 +309,23 @@ at most 11 points, so a few questions suffice, and the flat stretches of
 Figure~\ref{c08:fig-implied} mean that most of the range of possible weights leads
 to the same handful of settings.
 
+\begin{example}[Three questions to the chair]\label{c08:ex-chair}
+The frontier here is illustrative. Naledi's hull for one product has four settings, from
+safest to least safe $A = (0.08, 0.40)$, $B = (0.15, 0.70)$, $C = (0.35, 0.86)$ and
+$D = (0.46, 0.90)$, each pair giving the upper risk bound and the utility. The trades
+between neighbours are $s_{CD} = 0.04/0.11 = 0.36$, $s_{BC} = 0.16/0.20 = 0.80$ and
+$s_{AB} = 0.30/0.07 = 4.29$, and they rise along the hull from the least safe setting
+towards the safest, so the hull is concave. Naledi puts three lines to the chair. Moving
+from $D$ to $C$ cuts the bound by 0.11 and costs 0.04 of utility: the chair says yes, so
+$\kappa \ge 0.36$. Moving from $C$ to $B$ cuts it by 0.20 and costs 0.16: yes again, so
+$\kappa \ge 0.80$. Moving from $B$ to $A$ cuts it by 0.07 and costs 0.30: the chair says
+no, so $\kappa \le 4.29$. By \eqref{c08:eq-bracket} the weights that select $B$ are those
+with $\max(s_{BC}, s_{BD}) = \max(0.80, 0.65) \le \kappa \le s_{AB} = 4.29$, which is the
+interval the answers found. The record keeps the three questions, the answers, the
+interval $[0.80, 4.29]$ and the setting $B$, whose bound of 0.15 is the implied
+tolerance. Any weight in the interval, 1, 2 or 4, selects the same setting.
+\end{example}
+
 The procedure produces three things the record should keep: the questions as put
 and the owner's answers, the interval of weights they imply, and the setting
 selected. It also catches two errors. A setting that lies below the hull cannot be
@@ -359,6 +376,22 @@ the value weights are equal. The proportional rule is just as particular: it is
 right for the logarithmic value curve and for no other. For the power family, the
 exponent $1/(1-\gamma)$ is below one when $\gamma < 0$, so the allocation is flatter
 than value, and it tends to the equal split as $\gamma \to -\infty$.
+
+\begin{example}[Two products, one budget]\label{c08:ex-two}
+The inputs are illustrative, apart from the exponent. Naledi has a programme budget of
+0.2 for two products: the monthly series, with value weight 1.0, and a small research
+table, with weight 0.25. She uses the curve fitted to the simulated frontier, with
+$\gamma = -0.23$, so the exponent in Proposition~\ref{c08:prop-budget} is
+$1/(1 + 0.23) = 0.81$. The weights raised to that power are 1 and $0.25^{0.81} = 0.32$,
+so the series receives $0.2 \times 1/1.32 = 0.151$ and the table 0.049. The equal split
+gives each 0.1, and shares proportional to value give 0.16 and 0.04. Since $b < 0$,
+total value is a constant plus $b \sum_i w_i r_i^{\gamma}$, so the better allocation is the
+one with the smaller sum.
+That sum is 2.045 for the optimal shares, 2.048 for the proportional shares and 2.123
+for the equal split. The optimum cuts the loss term by 3.7 per cent against the equal
+split and by 0.2 per cent against the proportional rule.
+\end{example}
+
 
 The repository fits the power curve to the simulated frontier, with $R^2 = 0.964$
 and $\gamma = -0.23$, which gives an exponent of 0.81. For four releases with value

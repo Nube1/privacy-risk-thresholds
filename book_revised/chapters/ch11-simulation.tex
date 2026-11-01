@@ -91,6 +91,25 @@ second adversary, identical except that its reading of $y$ is twice as precise,
 forms the uncertainty set for the worst-case figures. All results come from one
 program with one seed, so that every number in the chapter can be regenerated.
 
+\begin{example}[One simulated target]\label{c11:ex-target}
+The inputs are illustrative. After the adversary has read the target's district, sex, age
+band and occupation group, three released records remain in its candidate set, with
+confidential values $y = 8.2$, $8.9$ and $9.6$. The target is the second. On the key alone
+the three are alike, and the adversary succeeds with probability $1/3$. Now give the
+adversary its noisy reading of the target, $z = 9.1$, with standard deviation 0.75. The
+likelihood of each candidate is the normal density of $z$ around that candidate's $y$:
+0.259, 0.513 and 0.426. Under a flat prior the posterior is each likelihood divided by
+their sum, 1.198, which gives 0.216, 0.428 and 0.355. The adversary names the second
+record, which is right, and the posterior it attaches to the guess is 0.428 against $1/3$
+from the key. The more capable adversary, whose reading has standard deviation 0.375,
+puts 0.650 on the same record. A second draw of the reading could have fallen nearer 9.6
+and put the largest posterior on the wrong record. The study repeats this calculation for
+thousands of targets, each with a fresh reading and, for the age band and occupation
+group, fresh reading errors that can move the target out of its own candidate set. The
+share of targets named correctly is the simulated success rate.
+\end{example}
+
+
 One lever was built and then removed. Swapping districts between records reduced
 the simulated risk, but only against an adversary that takes the released district
 at face value. The declared scenario gives no reason to assume that, so the
@@ -144,6 +163,16 @@ first is 7.3 times the second and 20 times the third.
 % source: paper/generated/table_measures.tex; paper/generated/numbers.tex (\runpluginratio 7.3, \rununconditionalratio 20)
 Multiplying the population-frequency measure by $\pi$ as well gives 0.0032, which
 answers no experiment at all and has been reported anyway.
+
+\begin{example}[Why the mean prosecutor risk is the marketer measure]\label{c11:ex-marketer}
+The inputs are illustrative. A release of ten records has four distinct keys: three
+records share the first, two the second, one the third and four the fourth. The
+prosecutor risks $1/f_k$ are $1/3$ three times, $1/2$ twice, 1 once and $1/4$ four times.
+Their sum is $1 + 1 + 1 + 1 = 4$, because each key contributes $f_k$ terms of $1/f_k$,
+and their mean is $4/10 = 0.4$, which is the number of distinct keys over the number of
+records.
+\end{example}
+
 
 The formulas of Chapter~\ref{ch:measures} order these measures. They do not say
 by how much they differ on a file of a given shape, and on this file the spread is
@@ -329,6 +358,19 @@ distribution of the formula's own risk $1/f_k$ across released records under eac
 minimum class size. Reaching $k = 10$ keeps 15.5 per cent of the released records,
 and reaching $k = 20$ keeps 4.8 per cent.
 % source: paper/generated/numbers.tex (\runkanon10retainedpct 15.5, \runkanon20retainedpct 4.8)
+
+\begin{example}[The worst of 230 targets]\label{c11:ex-worst}
+At $k = 10$ the study examined 230 targets in the smallest released classes and attacked
+each 250 times. The worst was named in 186 of its 250 attacks, a rate of 0.744. Read as
+if it had been chosen in advance, its one-sided 95 per cent Clopper--Pearson lower bound
+is 0.695. It was not chosen in advance: it was picked for having the largest count among
+230. Proposition~\ref{c11:prop-worst} therefore takes the bound at level
+$0.05/230 = 0.000217$, which gives 0.638. The correction costs 0.057 of the bound, and
+what is left is still more than six times the nominal $1/k$ of 0.1. Naledi put the
+corrected figure in her note to the chair and the uncorrected one in a footnote, with a
+line saying why the smaller number was the one to read.
+\end{example}
+
 A release governed by its maximum prosecutor risk alone is pushed towards
 discarding most of its content, and against this adversary it still fails.
 
