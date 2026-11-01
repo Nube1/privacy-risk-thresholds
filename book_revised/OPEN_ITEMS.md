@@ -10,3 +10,23 @@ Each needs the stored run or the paper source, and none is a book-source change.
 - Item 11: the IFC long form calls 1.05 a ratio of interval widths, but `monitoring_study` returns a ratio of mean upper bounds. Reword.
 - Item 12: the per-cell differencing posterior of 0.65 is an average of per-cell posteriors, not "at the rate of the cell". Reword.
 - Item 13: `robustness.json` `fixed_sequence_subgroup` and the table's stratified floors come from different draws. Label the JSON.
+
+## Status after Chapters 20 to 23 and Appendix A.5 (2 November 2026)
+
+- Chapters 20, 21 and 22 are rebuilt from the draft text with every printed number recomputed by code
+  (`transport`, `bayes`, `sensitivity`, `planner`, `proposals`, `betting`, `uncertainty`, `dp`).
+  Where the repository's seeds give different digits from the draft, the chapter prints the repository's
+  value and names the draft's. Differences: Ch 20 posterior means (one noise draw); Ch 21 flip counts
+  (290/595 against 293/624); Ch 22 per-seed planner gains, calibration temperatures, the median at true
+  risk 0.09 (638 against 669) and the retry study (52.2 per cent against 50.2).
+- Chapter 23 was patched, not rewritten: Examples 23.2 and 23.3, the dynamics paragraph, the Part VII
+  paragraphs of the closing section and the scene paragraphs were added. Its numbers that depend on the
+  author's stored runs (floors by reading precision, Census search results, language-model arm) are
+  unchanged and still unverified here.
+- Bibliography: the entries added from memory for Chapters 20 to 22 were checked against the draft's own
+  bibliography (authors, years, titles, journals); four were corrected. They have not been checked against
+  the original publications.
+- Still open: the six-versus-nine governance elements; the 'drisk' commands and the reviewer workflow named
+  in the draft do not exist in the repository; hard-coded cross-references in Chapters 1 to 17; the
+  overfull and underfull box warnings; Chapters 1 to 17 have not been re-checked against the draft's
+  revisions chapter by chapter.

@@ -111,6 +111,21 @@ with the feature in it, and a rerun of the joint attack. The proposition says wh
 look for: the gain from pooling without history is exactly the information that
 changing values and dependent activity add, and on a register without them it is zero.
 
+The software now carries a first model of this kind, in \texttt{privacy\_risk.dynamics}:
+log exposure follows an autoregressive path that continues as a latent value while a
+loan is inactive, activity follows a logistic transition that can depend on the
+previous state and on exposure, and the pooled attack uses absence as well as
+presence. Its static limit holds exposure constant and makes activity independent of
+the past, which is the assumption of Chapter~\ref{ch:credit}; it is not that chapter's
+register, because the panel has no originations or exits. Chapter~\ref{ch:change}
+reports what the model shows on synthetic panels. An adversary with six vintages of
+history and readings identified 0.34 of targets on a frozen panel and 0.59 on one
+whose exposures drift and whose activity persists in the extension's run (the
+repository's rerun with seed 2026 gives 0.36 and 0.62), so the frozen register
+understated this adversary's risk. The model is still code and tests, not evidence
+about a real register: no floor in this book has been recomputed under it, and its
+parameters have to be estimated on a governed register.
+
 \section{Attack coverage}
 
 Every certificate in this book covers the attacks that were declared. The admissible
@@ -124,7 +139,9 @@ adversary who held such a source. The United States Census Bureau's experiments 
 the tables of the 2010 census showed that published tables could be inverted to
 reconstruct records \citep{garfinkel2019}, and the Bureau adopted a formal privacy
 mechanism for 2020 \citep{abowd2022}. In each case the attack was not new in
-principle. It was new to the declaration.
+principle. It was new to the declaration. Sampling gives less cover than it seems to as
+well: \citet{rocher2019} showed that a model fitted to an incomplete data set can
+estimate how likely a given match is to be correct.
 
 The declared attack can also be weaker than the declared knowledge allows. The
 referees found that the history adversary, who knows when the target's loan is live,
@@ -136,7 +153,9 @@ both directions, but it does so through a large penalty in the score and not thr
 exact exclusion, and whether the maximum-posterior rule is the best attack for each
 declared information set has not been proved. % source: docs/panel_review/10_round4_panel.md (differential privacy, open)
 Simulation can show what a declared rule achieves. It cannot deliver the supremum over
-rules that a formal guarantee delivers by construction.
+rules that a formal guarantee delivers by construction. Audits of differentially
+private training meet the same limit: an attack run in an audit gives a lower bound
+on what an adversary can do, never an upper one \citep{jagielski2020,steinke2023}.
 
 The insider is the clearest case of what a floor cannot do, and
 Proposition~\ref{c18:prop-insider} states it without simulation.
@@ -151,6 +170,19 @@ the target is released. Its membership-conditional risk is therefore one at ever
 setting of the mechanism, and its unconditional risk equals the probability that the
 target is released.
 \end{proposition}
+
+\begin{example}[Pieter and an outsider on one key class]\label{c18:ex-pieter}
+The numbers are illustrative. A key class at the floor keeps five loans whose published
+exposures are $1.20$, $1.35$, $2.10$, $2.40$ and $3.05$ million, and the target is the loan of $2.10$.
+An outsider reads the target's exposure with a log error of standard deviation $0.6$, and
+suppose the reading comes out half a standard deviation high, at $2.84$. The outsider's
+posterior over the five loans is $0.098$, $0.127$, $0.241$, $0.263$ and $0.271$, so it names the loan of
+$3.05$ and is wrong. Pieter reads the same exposure with a log error of $0.01$. Half a standard
+deviation high gives $2.11$, and his posterior puts $1.000$ on the loan of $2.10$. A higher floor can
+only drop this key class from the release. If the class stays, the value $2.10$ stays with it,
+and Pieter finds it. (The posteriors are the normal-error posterior on the log scale with a
+flat prior over the five loans, recomputed here.)
+\end{example}
 
 The proposition explains the insider row of the decision record. An insider who reads
 exposure with a log error of 0.01 is close to exact, and on the synthetic register its
@@ -183,7 +215,11 @@ ones that would come, and she wrote that sentence into the record's limits secti
 Chapter~\ref{ch:tolerance} showed that a stated weight on harm relative to lost
 utility implies a tolerance, through the point of the risk--utility frontier that
 maximises utility minus the weighted risk bound. The result is useful only if a
-committee can state the weight, and no committee currently does. The repository
+committee can state the weight, and no committee currently does. The trade has been
+framed before: \citet{abowd2019} treat the balance of privacy loss against accuracy as
+a social choice with a rate of exchange between the two, and \citet{hotz2022} argue
+that statistical agencies should weigh the usefulness of their data beside privacy
+when they choose a protection. The repository
 reports the implied tolerance at six weights on the simulated population: 0.464 at a
 weight of 0.25, 0.345 at 0.5, 0.145 at 1 and at 2, and 0.081 at 5 and at 10.
 % source: paper/generated/table_tolerance.tex; paper/generated/numbers.tex runtolerancekappa*
@@ -200,10 +236,27 @@ the weight from revealed institutional behaviour, since agencies have made these
 decisions for decades and their past choices constrain it under the framework. That
 study has not been done.
 
+\begin{example}[Placing the chair's weight]\label{c18:ex-weight}
+The numbers are illustrative. A frontier has four settings, with upper risk bounds of
+$0.40$, $0.25$, $0.12$ and $0.05$ and utilities of $1.00$, $0.90$, $0.78$ and $0.60$. The setting chosen is
+the one that maximises utility minus the weight times the bound. The second setting beats
+the first when the weight exceeds $0.10/0.15=0.667$, the third beats the second above
+$0.12/0.13=0.923$, and the fourth beats the third above $0.18/0.07=2.571$. Every weight between
+$0.923$ and $2.571$ therefore implies the tolerance of $0.12$. The chair need not say whether her
+weight is 1 or 2. She has to answer two questions: would she give up $0.12$ of utility to
+lower the bound from $0.25$ to $0.12$, and would she give up a further $0.18$ to lower it to
+$0.05$? A yes and a no place her weight in the interval, and the tolerance follows.
+\end{example}
+
 The harm weight also hides a scope limit. The framework represents harm by a scalar
 within a declared harm class. Harms that fall on groups and not on individuals, and
 harms that arise from correct inference about a population and not from the
 identification of a person, are outside it \citep{skinner2012,dwork2014}.
+
+The chair had never been asked for a weight on harm, and when Naledi asked she gave a
+tolerance instead. Naledi wrote both into the record for Tom\'as's request: the
+tolerance the chair signed, and a note that the weight it implies had not been
+elicited. Grace later put that note first on the Bank's list of open items.
 
 \section{The model-proposed attack line}
 
@@ -269,12 +322,17 @@ date narrow this gap; they do not close it. The method gives no differential pri
 guarantee either, and where a guarantee over all attacks is required, a formal
 mechanism with an accountant is the tool (Chapter~\ref{ch:dp}).
 
+Naledi's limits section for Tom\'as's record grew with each of these paragraphs. It
+names the declared adversaries and says the certificate covers them alone. It names
+Pieter and says that no floor governs him. And it leaves to the Bank's lawyers the
+question whether a tolerance of $0.12$ is a reasonable reading of the law.
+
 The method cannot enforce its own controls. The implementation is a library and not a
 security boundary, the registry service that a deployment needs is specified and not
-built, and the hashes a run writes detect change but do not prove who made it.
+built beyond a single-host ledger (Chapter~\ref{ch:planner}), and the hashes a run writes detect change but do not prove who made it.
 % source: docs/DEPLOYMENT_AND_PENTEST_2026_10_23.md; paper/bis_ifc_full.tex sec:security
 Separation of duties, external time stamps and audit inside the secure environment are
-institutional controls, and the method depends on them.
+institutional controls, of the kind that guidance on de-identifying government data sets places under governance \citep{garfinkel2023}, and the method depends on them.
 
 The method also cannot certify what it has not shown in the open. The papers describe
 the pipeline as open, and a reader's ability to rerun a number is part of the
@@ -296,14 +354,23 @@ specification test with a distribution under the null, which would replace the
 analyst's band with a level. The sequential audit has open items of its own: a
 truncated Beta mixture in place of the capped bet, exact group-sequential boundaries,
 and a bound on the expected length of the rule actually used.
+
+Tom\'as read this list when the committee sent him its decision. Two of the items, the
+inference for the frontier and the joint accountant, lay close to his own field, and he
+asked whether the Bank would share the synthetic register so that he could work on them.
+Naledi added the request to the inventory as a fourth product, with a row of its own.
 % source: docs/panel_review/10_round4_panel.md (sequential statistics, open)
 
 \section{How an institution should turn a measured risk into a release decision}
 
-Chapter~\ref{ch:decision} began with a gap. Institutions have many ways to protect a
-release and few rules that turn a measured risk into a decision to release or to
-withhold, a rule that someone else could apply to the same evidence and reach the
-same answer. The book's answer can now be stated plainly.
+Chapter~\ref{ch:decision} asked one question: what must an institution add to a measured
+risk before the result can be called a decision? Its brief answer named three additions: the
+attack the figure describes, an upper bound in place of the estimate, and a tolerance with an
+owner. The chapters since have added three more: the programme as the object assessed, a test
+of the model before its figure is used, and a fixed order of work kept in a record. Part VII
+added a condition on learning: what the institution learns about attacks may plan its audits,
+but it may not stand in for them. The answer, in the order an institution should act on it, is
+as follows.
 
 An institution should first say what it is measuring. Disclosure risk is the
 probability that a declared adversary, holding declared information, names the right
@@ -336,6 +403,26 @@ in advance, and a failed test makes the assessment invalid. The figure is not ad
 by separate people, recorded in a registry that holds every audit, and filed as a
 decision record with a row for every harm, including those for which no tolerance has
 been set (Chapter~\ref{ch:protocol}).
+
+What the institution learns over time changes how it plans, not what it certifies. A
+system that keeps searching for weaknesses may propose attacks, size audits and set their
+bets, but each attempt is charged to an error budget before its first outcome, and the
+release is certified only by fresh attacks through the same gate (Chapters~\ref{ch:learning}
+and~\ref{ch:planner}). A register that changes over time gives a watching adversary more to
+work with, so a frozen register cannot be assumed to be the safe case
+(Chapter~\ref{ch:change}). A model of how the population moves may enter a decision only
+after it forecasts held-out periods better than a simpler baseline, which no model in this
+book has yet done (Chapter~\ref{ch:dynamics}). And when the adversary changes, the
+institution measures how sensitive its decision is and reassesses; a new kind of computer
+changes the encryption that protects the register, and leaves unchanged what a release
+shows (Chapter~\ref{ch:chaos}).
+
+Tom\'as's request went through each of these steps. Its record names the adversaries, sets
+upper bounds against a tolerance the chair signed, assesses his three products as one
+programme, files the model's tests against bands fixed in advance and names the remedy the
+committee chose, the secure room. Grace could check every entry against its date. None of
+this made the floors less uncertain. It made the decision one that someone else could
+follow and dispute.
 
 The release goes out when the upper bound for every declared scenario, pooled ones
 included, lies at or below its tolerance, the model has passed its tests, and the

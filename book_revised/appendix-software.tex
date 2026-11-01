@@ -411,30 +411,68 @@ and later 183 passing tests for earlier snapshots, and says that a claimed 194 w
 reproduced at the time. % source: VALIDATION.md
 The count of 194 passing tests reported here is from the current branch.
 
-\section{Modules added for Chapters 18 and 19}
+\section{Modules added by the mathematics and code extension}
 
-Six modules implement the learning-system chapters. Table~\ref{app:tab-ext} lists them. They were written from the
-chapters' specifications and are tested against the checks the chapters print, not against an earlier engine, so
-a figure the book takes from the extension's own run is reproduced in direction and size and not digit for digit.
-\texttt{scripts/\allowbreak{}extension\_\allowbreak{}evidence.\allowbreak{}py} regenerates the pooled-attack table of Chapter~19.
+The extension of November 2026 added modules that implement its corrections and its development plan, and the
+revision of this book added the code that Chapters~18 to~22 print numbers from. Table~\ref{app:tab-ext} lists them.
+They were written from the chapters' specifications and are tested against the checks the chapters print, not against
+an earlier engine, so a figure the book takes from the extension's own run is reproduced in direction and size, and
+usually to the printed digit, but not always; each chapter says where its numbers differ from the draft's.
+\texttt{scripts/\allowbreak{}extension\_\allowbreak{}evidence.\allowbreak{}py} regenerates the pooled-attack table of Chapter~19, and
+\texttt{scripts/\allowbreak{}chapter22\_\allowbreak{}evidence.\allowbreak{}py} regenerates the numbers of Chapter~22.
 
 \begin{table}[ht]
 \centering\small
-\caption{Modules added for Chapters 18 and 19. The test files are in \texttt{tests/}.}
+\caption{Modules added or extended for Chapters 18 to 22. The test files are in \texttt{tests/}.}
 \label{app:tab-ext}
-\begin{tabular}{p{2.1cm}p{5.6cm}p{2.6cm}p{2.3cm}}
+\begin{tabular}{p{2.1cm}p{6.0cm}p{1.7cm}p{3.0cm}}
 \toprule
 Module & What it computes & Chapter & Test file\\
 \midrule
-\texttt{gate} & The release gate: candidates, required attacks, bounds from audits only & 18 & \texttt{test\_ext\_learning}\\
-\texttt{betting} & Predictable bets and the betting audit & 6, 18 & \texttt{test\_ext\_learning}\\
-\texttt{evidence} & Measurement records as integer counts; refusal of the final-audit split & 18 & \texttt{test\_ext\_learning}\\
-\texttt{registry} & Programme budget, frozen plans and their hashes in SQLite & 18 & \texttt{test\_ext\_learning}\\
+\texttt{uncertainty} & Simultaneous bounds at $\alpha/M$; Beta posterior quantiles and beta-binomial mixtures, as planning figures & 22 & \texttt{test\_ext\_planner}\\
+\texttt{evidence} & Measurement records as integer counts; refusal of the final-audit split & 18, 22 & \texttt{test\_ext\_learning}\\
 \texttt{dynamics} & Changing and frozen panels, and the pooled attack using presence and absence & 19 & \texttt{test\_ext\_models}\\
-\texttt{graph} & Generator checks, propagation, node risk and the maximum-likelihood generator & 19 & \texttt{test\_ext\_models}\\
+\texttt{graph} & Generator checks, propagation, node risk and the maximum-likelihood generator & 19, 20 & \texttt{test\_ext\_models}\\
+\texttt{transport} & The finite-volume solver under the exact shear; refuses unstable steps and never clips & 20 & \texttt{test\_ext\_transport}\\
+\texttt{bayes} & Finite-prior posteriors, predictive mixture and the identifiability spectrum & 20 & \texttt{test\_ext\_transport}\\
+\texttt{planner} & Count-likelihood planner with hand-written gradients, temperature calibration, grouped splits & 22 & \texttt{test\_ext\_planner}\\
+\texttt{proposals} & Strict intake for proposed scenarios and plan hashes & 22 & \texttt{test\_ext\_planner}\\
+\texttt{betting} & Predictable bets with a lower margin, log wealth and the sequential audit & 6, 18, 22 & \texttt{test\_ext\_learning}, \texttt{test\_ext\_planner}\\
+\texttt{registry} & Programme budget, frozen plans, reservation before outcomes in SQLite & 18, 22 & \texttt{test\_ext\_learning}, \texttt{test\_ext\_planner}\\
+\texttt{sensitivity} & Finite-time growth rates, the diagnostic horizon, decision flip rates and the stress gate & 21 & \texttt{test\_ext\_sensitivity}\\
+\texttt{gate} & The release gate, which withholds rather than relaxes & 18 & \texttt{test\_ext\_learning}\\
+\texttt{dp} & Attack ceiling, advanced composition, Laplace scale to $\varepsilon$, and the postprocessing inequality for a $[0,1]$-valued computation & 10, 21 & \texttt{test\_dp}, \texttt{test\_ext\_sensitivity}\\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\paragraph{From equation to code.} Table~\ref{app:tab-eqmap} maps the main displayed results of Chapters~20 to~22 to the functions that compute them, so a reader can check one against the other.
+
+\begin{table}[ht]
+\centering\small
+\caption{Results of Chapters 20 to 22 and the code that computes them.}
+\label{app:tab-eqmap}
+\begin{tabular}{p{4.6cm}p{5.2cm}p{3.0cm}}
+\toprule
+Result & Function & Chapter\\
+\midrule
+Upwind--diffusion update and stability bound $\Delta t\,R\le0.8$ & \texttt{transport.transport} & 20\\
+Exact diffusion benchmark & \texttt{transport.exact\_diffusion} & 20\\
+Finite-prior posterior and predictive mixture & \texttt{bayes.grid\_posterior}, \texttt{predictive\_pmf} & 20\\
+Singular values of the sensitivity matrix & \texttt{bayes.sensitivity\_spectrum} & 20\\
+Finite-time growth rate and diagnostic horizon & \texttt{sensitivity.finite\_time\_growth}, \texttt{diagnostic\_horizon} & 21\\
+Flip rate and the stress gate & \texttt{sensitivity.decision\_flip\_rate}, \texttt{robust\_gate} & 21\\
+Postprocessing inequality & \texttt{dp.postprocessing\_bound} & 21\\
+Count loss and its gradient & \texttt{planner.objective} & 22\\
+Temperature calibration & \texttt{planner.calibrate\_temperature} & 22\\
+Credible against exact bound & \texttt{uncertainty.beta\_posterior\_upper}, \texttt{binomial\_upper} & 22\\
+Predictable bets and the betting audit & \texttt{betting.predictable\_bets}, \texttt{run\_audit} & 22\\
+Spending before outcomes & \texttt{registry.Registry.reserve} & 22\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Not in this repository.} The draft's command-line entries \texttt{drisk proposals} and \texttt{drisk registry}, and its hosted-model adapter, are not in this repository. The reviewer workflow, the dispatcher from approved proposals to evaluators, an external timestamp for the registry and an adapter for a real register are specified and not built.
 
 \section{Gaps in the code}
 
