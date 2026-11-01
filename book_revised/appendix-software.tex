@@ -1,0 +1,487 @@
+\chapter{The software}\label{app:software}
+\setlength{\emergencystretch}{3em}%
+
+Every number in this book comes from one Python package, \texttt{privacy\_\allowbreak{}risk},
+in the repository that accompanies it, and from the scripts beside it. This appendix
+is a reader's map of that code. It says what each module computes, names its main
+functions, gives the chapters that use it and the test file that checks it, and then
+explains how to reproduce the evidence. It ends with the gaps a review of the code
+found, which the book reports and does not repair, since the book branch does not
+change code.
+
+The map is written for two readers. A release committee member who wants to know
+where a figure in a decision record came from can follow a module name to a chapter
+and back. A researcher who wants to change an assumption and rerun a result can follow
+a chapter to the function that computes it and the test that pins it down.
+
+\section{Layout and installation}
+
+The repository has five parts that matter to a reader of this book: the package in
+\texttt{src/\allowbreak{}privacy\_\allowbreak{}risk/\allowbreak{}}, the scripts in \texttt{scripts/\allowbreak{}}, the tests in
+\texttt{tests/\allowbreak{}}, the configurations in \texttt{configs/\allowbreak{}} and the recorded runs in the
+directories whose names begin with \texttt{artifacts-}. The manuscripts in
+\texttt{paper/\allowbreak{}} read their tables from \texttt{paper/\allowbreak{}generated/\allowbreak{}}, which a script copies
+from a recorded run, so a table in a paper cannot disagree with the run behind it once
+that step has been taken.
+
+The package needs Python 3.10 to 3.12 and installs with its development extras from
+the repository root. It depends on NumPy, pandas, SciPy and Matplotlib, and on version
+0.5.0 of the \texttt{wooldridge} package, which supplies the two public microdata
+files of Chapter~\ref{ch:public}. % source: pyproject.toml
+No confidential data and no network access are needed, and no module reads real
+confidential data. The installation defines four commands: \texttt{privacy-risk-run}
+runs the paper's experiments and the governance gate, \texttt{privacy-risk-neural}
+runs the neural release pipeline, \texttt{privacy-risk-neural-demo} runs a small
+synthetic example of the proposal-and-audit method, and \texttt{sentry-r} drives the
+proposal model of Chapter~\ref{ch:proposals}.
+
+\section{The modules}
+
+The package has 27 modules besides its initialiser. % source: src/privacy_risk/ (28 .py files including __init__.py)
+They fall into three groups, shown in Tables~\ref{app:tab-core}, \ref{app:tab-case}
+and~\ref{app:tab-prop}: the core of the method, which implements the definitions and
+propositions of Parts~I to~IV; the case studies and the run machinery, which produce
+the evidence of Part~V; and the model-proposed attack line with its audit, which
+Chapter~\ref{ch:proposals} reports.
+
+\subsection*{The core of the method}
+
+Table~\ref{app:tab-core} lists the eleven modules that implement the method itself.
+The first four build the objects of Chapter~\ref{ch:scenario}. \texttt{synthetic}
+generates the simulated register of 200{,}000 units, the sampling design and the
+protection mechanisms, and \texttt{keys} computes the sample and population key
+frequencies. \texttt{linkage} holds the posterior linkage rule and the Monte Carlo
+attack of the declared scenario, with the adversary's error model as a small class
+whose \texttt{scaled} and \texttt{misspecified} methods produce the stronger and the
+mistaken adversaries of Chapter~\ref{ch:falsification}. \texttt{risk} computes the
+prosecutor, journalist and marketer measures of Chapter~\ref{ch:measures} and fits the
+negative binomial model for population cell sizes.
+
+The next three implement the evidence of Part~II. \texttt{uncertainty} gives the exact
+one-sided Clopper--Pearson bounds, the number of attacks needed to certify a tolerance
+with no success, the selection-corrected bound on the worst target and the split of
+variance between simulation and design. \texttt{sequential} gives the beta--binomial
+e-process and the confidence sequence it induces, the posterior threshold at which a
+paid adversary acts, and the transport bound used for the temporal test.
+\texttt{governance} holds the threshold record, the rule \texttt{decide}, the implied
+tolerance and the programme risk budget, and \texttt{frontier} finds the nondominated
+settings and fits the value curve from which a harm weight implies a tolerance.
+
+The last three serve Part~IV and Part~VI. \texttt{composition} computes the sharp
+bounds that marginal risks imply and runs the pooled intersection attack of
+Chapter~\ref{ch:programmes}; \texttt{dp} states what a privacy budget permits as a
+bound on posterior movement; and \texttt{validation} holds the falsification tests of
+Chapter~\ref{ch:falsification}.
+
+\begin{table}[ht]
+\centering
+\caption{Modules that implement the method. Chapters are those that report results
+from the module; the test file is in \texttt{tests/\allowbreak{}}.}
+\label{app:tab-core}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{2.8cm}@{}}
+\toprule
+Module & What it computes & Main functions & Chapters & Test file \\
+\midrule
+\texttt{synthetic} & Simulated register, sampling design, mechanisms, small-cell
+suppression & \texttt{make\_\allowbreak{}register}, \texttt{apply\_\allowbreak{}mechanism},
+\texttt{suppress\_\allowbreak{}small\_\allowbreak{}cells} & \ref{ch:scenario}, \ref{ch:simulation} &
+\texttt{test\_\allowbreak{}synthetic} \\
+\texttt{keys} & Sample and population key frequencies & \texttt{key\_\allowbreak{}frequencies},
+\texttt{sample\_\allowbreak{}population\_\allowbreak{}frequencies} & \ref{ch:scenario} &
+\texttt{test\_\allowbreak{}keys} \\
+\texttt{linkage} & Posterior linkage and the Monte Carlo attack; error models &
+\texttt{posterior\_\allowbreak{}linkage}, \texttt{attack}, \texttt{per\_\allowbreak{}target\_\allowbreak{}risk},
+\texttt{ErrorModel} & \ref{ch:scenario}, \ref{ch:simulation}, \ref{ch:falsification}
+& \texttt{test\_\allowbreak{}linkage} \\
+\texttt{risk} & Prosecutor, journalist and marketer measures; frequency model &
+\texttt{prosecutor\_\allowbreak{}risk}, \texttt{fit\_\allowbreak{}frequency\_\allowbreak{}model},
+\texttt{journalist\_\allowbreak{}from\_\allowbreak{}fit} & \ref{ch:measures}, \ref{ch:falsification} &
+\texttt{test\_\allowbreak{}risk} \\
+\texttt{uncertainty} & Exact bounds, certification cost, selection-corrected worst
+target, nested variance & \texttt{binomial\_\allowbreak{}upper},
+\texttt{certification\_\allowbreak{}replicates}, \texttt{selected\_\allowbreak{}maximum\_\allowbreak{}bound},
+\texttt{nested\_\allowbreak{}variance} & \ref{ch:estimate}, \ref{ch:selection} &
+\texttt{test\_\allowbreak{}uncertainty} \\
+\texttt{sequential} & E-process, confidence sequence, adversary's acting threshold,
+transport bound & \texttt{anytime\_\allowbreak{}upper}, \texttt{attack\_\allowbreak{}threshold},
+\texttt{transport\_\allowbreak{}bound\_\allowbreak{}kl}, \texttt{monitoring\_\allowbreak{}study} & \ref{ch:monitoring},
+\ref{ch:falsification} & \texttt{test\_\allowbreak{}sequential} \\
+\texttt{governance} & Threshold record, decision rule, implied tolerance, risk budget
+& \texttt{GovernanceThreshold}, \texttt{decide}, \texttt{implied\_\allowbreak{}tolerance},
+\texttt{risk\_\allowbreak{}budget} & \ref{ch:thresholds}, \ref{ch:tolerance}, \ref{ch:protocol} &
+\texttt{test\_\allowbreak{}governance} \\
+\texttt{frontier} & Nondominated settings, fitted value curve &
+\texttt{nondominated}, \texttt{choose\_\allowbreak{}max\_\allowbreak{}utility}, \texttt{fit\_\allowbreak{}value\_\allowbreak{}curve} &
+\ref{ch:tolerance} & \texttt{test\_\allowbreak{}frontier} \\
+\texttt{composition} & Marginal bounds and the pooled intersection attack &
+\texttt{marginal\_\allowbreak{}bounds}, \texttt{independent\_\allowbreak{}union}, \texttt{pooled\_\allowbreak{}attack},
+\texttt{pooled\_\allowbreak{}attack\_\allowbreak{}from\_\allowbreak{}sets} & \ref{ch:programmes} &
+\texttt{test\_\allowbreak{}composition} \\
+\texttt{dp} & Posterior bound a privacy budget permits; basic composition &
+\texttt{posterior\_\allowbreak{}bound}, \texttt{basic\_\allowbreak{}composition} & \ref{ch:dp} &
+\texttt{test\_\allowbreak{}dp} \\
+\texttt{validation} & The falsification tests & \texttt{calibration\_\allowbreak{}table},
+\texttt{stress\_\allowbreak{}ratios}, \texttt{composition\_\allowbreak{}test},
+\texttt{full\_\allowbreak{}validation\_\allowbreak{}report} & \ref{ch:falsification} &
+\texttt{test\_\allowbreak{}validation} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Case studies and the run}
+
+Table~\ref{app:tab-case} lists the six modules that produce the evidence of Part~V and
+assemble a run. \texttt{credit} builds the synthetic credit register of 20{,}000 firms
+and 60 lenders over six monthly vintages and measures its five harms: borrower
+identification, the predictive value of an alleged lending relationship, attribute
+disclosure of arrears status, reconstruction of a lender's position from published
+totals, and differencing across vintages. \texttt{evaluation} attacks the same
+register as a security evaluation would: seven protection policies against several
+attacks, scored by precision, recall, worst subgroup and calibration under a wrong
+error model, with the search for the floor a tolerance implies, per release and
+pooled, and the share of loans a rotated pseudonym still allows to be relinked.
+\texttt{realdata} runs the demographic path on the two public files.
+
+\texttt{experiments} calls the others and returns each number the long form reports,
+keeping four kinds of work apart: proof checks, simulation checks, falsification tests
+and the gate. \texttt{pipeline} runs the experiments, applies the falsification tests
+and the gate, and writes the evidence; it is the entry point of
+\texttt{privacy-risk-run}. \texttt{reporting} draws the figures, writes the LaTeX table
+fragments and the file of numbers, and writes the manifest of SHA-256 hashes.
+
+\begin{table}[ht]
+\centering
+\caption{Modules that produce the case-study evidence and assemble a run.}
+\label{app:tab-case}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.0cm}>{\raggedright\arraybackslash}p{3.6cm}>{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{2.8cm}@{}}
+\toprule
+Module & What it computes & Main functions & Chapters & Test file \\
+\midrule
+\texttt{credit} & Synthetic credit register and its five harms &
+\texttt{make\_\allowbreak{}credit\_\allowbreak{}register}, \texttt{borrower\_\allowbreak{}identification},
+\texttt{relationship\_\allowbreak{}disclosure}, \texttt{reconstruction\_\allowbreak{}from\_\allowbreak{}totals},
+\texttt{differencing\_\allowbreak{}risk} & \ref{ch:credit}, \ref{ch:protocol} &
+\texttt{test\_\allowbreak{}credit} \\
+\texttt{evaluation} & Seven policies against the credit attacks; floor search;
+pooled attack; relinking & \texttt{evaluate}, \texttt{identification\_\allowbreak{}attack},
+\texttt{programme\_\allowbreak{}attack}, \texttt{relink\_\allowbreak{}share} & \ref{ch:credit},
+\ref{ch:programmes}, \ref{ch:protocol} & \texttt{test\_\allowbreak{}evaluation} \\
+\texttt{realdata} & Census 2000 extract and mortgage file as releases; pooled attack
+on real keys & \texttt{load\_\allowbreak{}census2000}, \texttt{build\_\allowbreak{}release}, \texttt{attack},
+\texttt{composition} & \ref{ch:public} & \texttt{test\_\allowbreak{}realdata} \\
+\texttt{experiments} & Every experiment of the long form & \texttt{run\_\allowbreak{}all},
+\texttt{programme}, \texttt{programme\_\allowbreak{}scaling}, \texttt{credit\_\allowbreak{}register} & all of
+Part~V & \texttt{test\_\allowbreak{}experiments} \\
+\texttt{pipeline} & Falsification, gate and evidence for one run & \texttt{validate},
+\texttt{gate}, \texttt{run} & \ref{ch:falsification}, \ref{ch:protocol} &
+\texttt{test\_\allowbreak{}pipeline} \\
+\texttt{reporting} & Figures, table fragments, numbers, SHA-256 manifest &
+\texttt{figures}, \texttt{paper\_\allowbreak{}tables}, \texttt{paper\_\allowbreak{}numbers},
+\texttt{write\_\allowbreak{}evidence} & this appendix & \texttt{test\_\allowbreak{}reporting} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection*{Model-proposed attacks and the registered audit}
+
+Table~\ref{app:tab-prop} lists the ten modules of the line that Chapter~\ref{ch:proposals}
+reports and Chapter~\ref{ch:open} assesses. \texttt{adaptive\_\allowbreak{}audit} is the registered
+sequential gate of the companion journal article: coordinates with their own error
+shares, release chains that audit floors from the strictest down, the zero-success
+budget, and the controls on the audit process that Chapter~\ref{ch:protocol} describes,
+with targets derived from a committed secret and a beacon and bets recorded in a
+hash-chained ledger before each outcome. \texttt{neural\_\allowbreak{}pipeline} is the package's main
+entry point for the proposal line: a network fitted to development attacks proposes the
+bets and starting floor, a plan is frozen with a digest, and the release chain decides
+on fresh targets. \texttt{neural\_\allowbreak{}trust} is an earlier proposal-and-audit procedure that
+supplies no input to the book's tables. \texttt{sentry\_\allowbreak{}r} holds the scenario schema,
+the intake of language-model proposals, the review and evidence join, the deep and
+logistic models, the shortlist freeze and the final audit. \texttt{provenance} is the
+keyed, hash-chained ledger that records every stage of that line in order and debits
+each audit against a programme error budget. \texttt{multiscale} adds a feature
+dictionary, exact sensitivities of the network and an audit bound under a declared
+distribution shift.
+
+The remaining four are experiments around the line. \texttt{injector\_\allowbreak{}search} runs the
+budget-matched search on public Census states and confirms the selected settings on
+fresh draws. \texttt{llm\_\allowbreak{}pilot} collects proposals from a hosted model under a fixed
+cost cap and never invents a response; \texttt{llm\_\allowbreak{}pilot\_\allowbreak{}local} does the same through
+a local open-weight model. \texttt{redteam} turns penetration-test findings into
+declared adversary capabilities and audits the release against the stronger view they
+grant.
+
+\begin{table}[ht]
+\centering
+\caption{Modules of the model-proposed attack line and the registered audit.}
+\label{app:tab-prop}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{3.9cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{2.9cm}@{}}
+\toprule
+Module & What it computes & Main functions & Chapters & Test file \\
+\midrule
+\texttt{adaptive\_\allowbreak{}audit} & Registered sequential gate; release chains;
+committed targets; ledger & \texttt{AdaptiveAudit}, \texttt{register\_\allowbreak{}release\_\allowbreak{}chain},
+\texttt{zero\_\allowbreak{}success\_\allowbreak{}budget}, \texttt{target\_\allowbreak{}seed}, \texttt{AuditLedger} &
+\ref{ch:monitoring}, \ref{ch:protocol}, \ref{ch:proposals} &
+\texttt{test\_\allowbreak{}adaptive\_\allowbreak{}audit} \\
+\texttt{neural\_\allowbreak{}pipeline} & Network proposes bets and start floor; frozen
+plan; release chain & \texttt{run}, \texttt{fit}, \texttt{release\_\allowbreak{}chain} &
+\ref{ch:proposals} & \texttt{test\_\allowbreak{}neural\_\allowbreak{}pipeline} \\
+\texttt{neural\_\allowbreak{}trust} & Earlier proposal and simultaneous audit &
+\texttt{certify}, \texttt{propose\_\allowbreak{}and\_\allowbreak{}audit}, \texttt{zero\_\allowbreak{}success\_\allowbreak{}budget} &
+\ref{ch:proposals} & \texttt{test\_\allowbreak{}neural\_\allowbreak{}trust} \\
+\texttt{sentry\_\allowbreak{}r} & Schema, language-model intake, review, models, freeze, final
+audit & \texttt{stage\_\allowbreak{}llm}, \texttt{review\_\allowbreak{}proposals}, \texttt{DeepRiskNet},
+\texttt{shortlist}, \texttt{final\_\allowbreak{}audit} & \ref{ch:proposals} &
+\texttt{test\_\allowbreak{}sentry\_\allowbreak{}r}, \texttt{test\_\allowbreak{}injector\_\allowbreak{}integrity} \\
+\texttt{provenance} & Keyed hash-chained ledger of every stage; error budget &
+\texttt{ProvenanceLedger}, \texttt{record\_\allowbreak{}audit}, \texttt{verify} &
+\ref{ch:proposals}, \ref{ch:protocol} & \texttt{test\_\allowbreak{}provenance},
+\texttt{test\_\allowbreak{}injector\_\allowbreak{}integrity} \\
+\texttt{multiscale} & Feature dictionary, network sensitivities, shifted audit &
+\texttt{MultiscaleFeatures}, \texttt{shifted\_\allowbreak{}audit},
+\texttt{zero\_\allowbreak{}success\_\allowbreak{}plan} & \ref{ch:proposals} & \texttt{test\_\allowbreak{}multiscale} \\
+\texttt{injector\_\allowbreak{}search} & Budget-matched search on public states;
+fresh confirmation & \texttt{select\_\allowbreak{}and\_\allowbreak{}measure}, \texttt{confirm},
+\texttt{paired\_\allowbreak{}bootstrap} & \ref{ch:proposals}, \ref{ch:open} &
+\texttt{test\_\allowbreak{}injector\_\allowbreak{}search} \\
+\texttt{llm\_\allowbreak{}pilot} & Hosted-model proposal collection with a cost cap &
+\texttt{collect}, \texttt{request\_\allowbreak{}payload} & \ref{ch:open} &
+\texttt{test\_\allowbreak{}llm\_\allowbreak{}pilot} \\
+\texttt{llm\_\allowbreak{}pilot\_\allowbreak{}local} & Local open-weight proposal collection &
+\texttt{collect}, \texttt{response\_\allowbreak{}schema} & \ref{ch:open} &
+\texttt{test\_\allowbreak{}llm\_\allowbreak{}pilot\_\allowbreak{}local} \\
+\texttt{redteam} & Penetration-test findings as adversary capabilities; audit &
+\texttt{adversary\_\allowbreak{}view}, \texttt{PenTestPlan}, \texttt{run} & \ref{ch:protocol} &
+\texttt{test\_\allowbreak{}redteam} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Three test files check code outside the package: \texttt{test\_\allowbreak{}linkage\_\allowbreak{}injector}
+checks the executable linkage experiment in \texttt{scripts/\allowbreak{}}, and
+\texttt{test\_\allowbreak{}colab\_\allowbreak{}setup} checks the helper that clones and synchronises the
+repository from a notebook. The initialiser itself only sets a version string.
+
+\section{The scripts}
+
+The package computes; the scripts run studies, write tables and check manuscripts.
+Table~\ref{app:tab-scripts} groups the 33 scripts in \texttt{scripts/\allowbreak{}} by what they do,
+leaving aside the superseded scripts in \texttt{scripts/\allowbreak{}archive}.
+% source: scripts/ (33 .py files)
+The first group writes the evidence the book reports, and each of its scripts names
+its output file at the top of its source. The second group checks that the manuscripts
+agree with that evidence. The third covers the public-file and model-proposed attack
+studies, and the fourth is housekeeping.
+
+\begin{table}[ht]
+\centering
+\caption{The scripts in \texttt{scripts/\allowbreak{}}, grouped by purpose, with the chapters that
+report what they produce.}
+\label{app:tab-scripts}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.6cm}>{\raggedright\arraybackslash}p{7.6cm}>{\raggedright\arraybackslash}p{2.2cm}@{}}
+\toprule
+Script & What it does & Chapters \\
+\midrule
+\multicolumn{3}{@{}l}{\emph{Evidence for the book}}\\
+\texttt{rebuild\_\allowbreak{}evidence} & Rewrites figures, tables, numbers and manifest from a
+stored run without re-simulating; \texttt{--publish} copies tables and figures to
+the manuscripts & all \\
+\texttt{programme\_\allowbreak{}robustness} & Floors by adversary knowledge, tolerance, register
+draw and reading noise; writes \texttt{artifacts-robustness/\allowbreak{}robustness.\allowbreak{}json} &
+\ref{ch:credit}, \ref{ch:open} \\
+\texttt{robustness\_\allowbreak{}table} & Tables of floors from that file & \ref{ch:credit},
+\ref{ch:open} \\
+\texttt{audit\_\allowbreak{}process\_\allowbreak{}attacks} & Seed grinding, shadow audits and post-hoc bets,
+with and without controls & \ref{ch:protocol} \\
+\texttt{adaptive\_\allowbreak{}audit\_\allowbreak{}chain} & The release chain on the credit register &
+\ref{ch:monitoring}, \ref{ch:proposals} \\
+\texttt{adaptive\_\allowbreak{}audit\_\allowbreak{}comparison} & Operating characteristics of the gate on
+Bernoulli streams & \ref{ch:monitoring} \\
+\texttt{estimand\_\allowbreak{}check} & Checks that two identification tables share one estimand
+& \ref{ch:credit} \\
+\texttt{worked\_\allowbreak{}examples} & Recomputes every number in the worked examples &
+\ref{ch:protocol} \\
+\texttt{neural\_\allowbreak{}results} & Figure and table of the network's predictions &
+\ref{ch:proposals} \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Checks on the manuscripts}}\\
+\texttt{check\_\allowbreak{}paper\_\allowbreak{}numbers} & Every run value appears in the long form; every
+quoted decimal in the article has a source & all \\
+\texttt{check\_\allowbreak{}float\_\allowbreak{}refs} & Every table, figure and algorithm is labelled and cited
+& -- \\
+\texttt{check\_\allowbreak{}realdata\_\allowbreak{}paper} & Archived public-data claims checked separately &
+\ref{ch:public} \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Public files and model-proposed attacks}}\\
+\texttt{realdata\_\allowbreak{}replication}, \texttt{realdata\_\allowbreak{}neural\_\allowbreak{}pilot},
+\texttt{realdata\_\allowbreak{}neural\_\allowbreak{}comparison}, \texttt{plot\_\allowbreak{}realdata\_\allowbreak{}neural} &
+Public-file replication with source hashes; state-held-out neural pilot and
+comparison; their plot & \ref{ch:public}, \ref{ch:proposals} \\
+\texttt{public\_\allowbreak{}injector\_\allowbreak{}search}, \texttt{report\_\allowbreak{}public\_\allowbreak{}search} & Budget-matched
+search on 30 Census states and its tables & \ref{ch:proposals}, \ref{ch:open} \\
+\texttt{collect\_\allowbreak{}llm\_\allowbreak{}pilot}, \texttt{collect\_\allowbreak{}llm\_\allowbreak{}pilot\_\allowbreak{}local},
+\texttt{report\_\allowbreak{}llm\_\allowbreak{}local} & Language-model proposal collection, hosted and local, and
+the local arm's table & \ref{ch:open} \\
+\texttt{injector\_\allowbreak{}experiment}, \texttt{linkage\_\allowbreak{}injector\_\allowbreak{}experiment} & Synthetic
+injector ablation; executable nearest-record linkage pilot & \ref{ch:proposals} \\
+\texttt{sentry\_\allowbreak{}r\_\allowbreak{}example}, \texttt{sentry\_\allowbreak{}r\_\allowbreak{}benchmark} & Synthetic inputs and the
+logistic against deep benchmark & \ref{ch:proposals} \\
+\texttt{multiscale\_\allowbreak{}demo} & Training, sensitivity and shifted-audit demonstration &
+\ref{ch:proposals} \\
+\texttt{pentest\_\allowbreak{}demo} & Penetration-test findings on a public Census release &
+\ref{ch:protocol} \\
+\addlinespace
+\multicolumn{3}{@{}l}{\emph{Housekeeping}}\\
+\texttt{write\_\allowbreak{}manifest} & SHA-256 manifest of a list of files & this appendix \\
+\texttt{build\_\allowbreak{}diagrams}, \texttt{build\_\allowbreak{}notebook}, \texttt{validate\_\allowbreak{}notebook} &
+Editable diagrams; the Colab notebook and its check & -- \\
+\texttt{make\_\allowbreak{}acmart}, \texttt{sync} & ACM version of the earlier manuscript;
+repository synchronisation & -- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Reproducing the evidence}
+
+The evidence for Parts~II to~V comes from one configuration, \texttt{configs/\allowbreak{}paper.\allowbreak{}json},
+which fixes a seed, a register of 200{,}000 units with a 5 per cent sample, 45
+mechanism settings, the credit register, and the bands of the falsification tests.
+% source: configs/paper.json
+A run with it takes a few minutes on one core. A smaller configuration,
+\texttt{configs/\allowbreak{}base.\allowbreak{}json}, finishes in seconds and is what continuous integration
+runs. The sequence below installs the package, reruns the paper's configuration,
+publishes the tables, checks the manuscript against the run and runs the test suite.
+
+\begin{lstlisting}[language={}]
+python -m pip install -e ".[dev]"
+privacy-risk-run --config configs/paper.json --output artifacts-paper
+python scripts/rebuild_evidence.py --artifacts artifacts-paper \
+    --publish paper/generated
+python scripts/check_paper_numbers.py --artifacts artifacts-paper \
+    --paper paper/bis_ifc_full.tex
+python scripts/programme_robustness.py
+python scripts/robustness_table.py
+python scripts/audit_process_attacks.py
+pytest
+\end{lstlisting}
+
+A run writes six things into its output directory: the configuration copied verbatim,
+\texttt{results.\allowbreak{}json} with every experiment's output, \texttt{decision.\allowbreak{}json} with the
+governance record, the figures, the LaTeX table fragments with a file of named numbers,
+and \texttt{manifest.\allowbreak{}json}, which holds the SHA-256 hash of every other file. Figures
+are written without creation dates and the results are strict JSON, so two runs of one
+configuration produce identical files and an identical manifest.
+% source: README.md "Reproducibility contract"; src/privacy_risk/reporting.py write_evidence
+\texttt{rebuild\_\allowbreak{}evidence} rewrites the presentation from a stored run without
+simulating again, which is the step to use when only a table's layout changes.
+
+The manifest proves less than it may appear to. A hash shows that a file has changed
+since the run that wrote the manifest. It carries no key and no trusted time stamp, so
+anyone who can rewrite the files can rewrite the manifest as well; for evidence against
+the operator the manifest's own hash has to be published or time-stamped outside the
+operator's control. The script \texttt{write\_\allowbreak{}manifest} says this in its documentation.
+% source: scripts/write_manifest.py docstring
+
+The test suite has 195 tests in 30 files. On 1 November 2026, run in the Linux
+environment used to build this book, 194 passed and one failed.
+% source: pytest run on the book branch, 1 November 2026 (131+1, 46 and 17 in three batches)
+The failure, \texttt{test\_\allowbreak{}shipped\_\allowbreak{}manifest\_\allowbreak{}matches\_\allowbreak{}the\_\allowbreak{}files\_\allowbreak{}it\_\allowbreak{}lists}, is an
+artefact of line endings: the repository now asks Git to store JSON with Unix line
+endings, but the Windows working copy still holds files with Windows line endings, so
+\texttt{artifacts-paper/\allowbreak{}config.\allowbreak{}json} hashes differently from the committed file, which
+matches the manifest. Checking the files out again, or renormalising them once and
+committing, removes the failure. The suite's configuration also requires 85 per cent
+line coverage of the package. % source: pyproject.toml addopts --cov-fail-under=85
+Continuous integration runs the linter, the tests, the notebook, the fast pipeline,
+the public-file scripts and both number checks on Python 3.10, 3.11 and 3.12, and a
+second workflow reruns the paper's configuration on each push to the main branch that
+touches code or configuration, publishes the tables and commits the refreshed
+evidence. % source: .github/workflows/ci.yml, refresh-evidence.yml
+
+The repository holds an older count of its own tests. Its validation note records 178
+and later 183 passing tests for earlier snapshots, and says that a claimed 194 was not
+reproduced at the time. % source: VALIDATION.md
+The count of 194 passing tests reported here is from the current branch.
+
+\section{Gaps in the code}
+
+A review of the repository before the book was written, and the work for the chapters
+of Part~VI, found the following gaps. None affects a number the book reports, since
+each number is checked against the stored run, but several affect what the code can
+be trusted to do on its own, and an institution that adopts the code should close
+them.
+
+\paragraph{The governance record is thinner than the threshold.}
+\texttt{governance.GovernanceThreshold} records six of the nine elements of the
+threshold: tolerance, owner, expiry date, adversary, harm class and error level. The
+legal basis with the protected parties, the access route and the programme horizon are
+missing, so the record the code writes is thinner than the one
+Chapter~\ref{ch:thresholds} describes and Table~\ref{c16:tab-record} shows. \texttt{decide}
+also does not check that the bound it receives was computed at the threshold's error
+level.
+
+\paragraph{One tolerance for the programme.} Validation and the gate now judge the pooled
+bound against one declared value, \texttt{programme.\allowbreak{}pooled\_\allowbreak{}tolerance}
+(0.12 in the paper's configuration, defaulting to the release tolerance), and
+\texttt{decision.\allowbreak{}json} records it once. The entry
+\texttt{tau\_\allowbreak{}programme} (0.5) is the total of the union risk budget and is recorded
+as \texttt{union\_\allowbreak{}risk\_\allowbreak{}budget}. An earlier version judged the same bound
+against both values. % source: configs/paper.json; artifacts-paper/decision.json
+
+\paragraph{Falsification bands.} The calibration band in the configuration is now 0.03,
+down from 0.06, which a model with a misstated error scale met with a gap of 0.049. The
+pipeline also requires the band to reject that misspecified model before the calibration
+test counts as valid (check \texttt{calibration\_\allowbreak{}band\_\allowbreak{}has\_\allowbreak{}power}),
+which test configurations can switch off with \texttt{require\_\allowbreak{}calibration\_\allowbreak{}power}. The
+frequency test checks the mean population cell size, which the fitted law recovers to
+0.055 cells, and not the uniqueness probability that the journalist measure uses, whose
+error reaches 25 per cent. % source: configs/paper.json; artifacts-paper/results.json validation; paper/generated/numbers.tex runjournalisterrorhigh
+The composition and temporal tests are recorded beside the validity flag and in the
+expiry check, as the long form intends.
+
+\paragraph{Counts rebuilt from rates.} \texttt{uncertainty.\allowbreak{}selected\_\allowbreak{}maximum\_\allowbreak{}bound}
+rebuilds success counts by rounding rates times replicates. It should take the counts
+directly, since a rate that was itself rounded can give a count that is off by one.
+
+\paragraph{An unstated normality assumption.} \texttt{uncertainty.\allowbreak{}nested\_\allowbreak{}variance}
+gives a chi-square interval for the share of variance due to the design. That interval
+assumes the outer estimates are roughly normal, and the documentation should say so.
+
+\paragraph{Version strings.} The package metadata says version 0.7.0, archives of
+the repository were named 0.7.1, and the package initialiser still sets
+\texttt{\_\allowbreak{}\_\allowbreak{}version\_\allowbreak{}\_\allowbreak{}} to 0.3.0. % source: pyproject.toml; src/privacy_risk/__init__.py; book/REVIEW.md
+A reader who cites a version cannot tell which is meant.
+
+\paragraph{Line endings.} The one failing test, described above, and the long list of
+files that show as modified in the Windows working copy, have the same cause and the
+same remedy.
+
+\paragraph{What is not built.} The registry service that a deployment needs, with
+durable per-programme budgets, signing keys and external time stamps, is specified and
+not built. The adapter for a real register is described and not written. Dependencies
+other than \texttt{wooldridge} are not pinned, so a fixed seed does not promise
+bit-for-bit equality across library versions. % source: docs/DEPLOYMENT_AND_PENTEST_2026_10_23.md; docs/CLAIMS_EVIDENCE.md; VALIDATION.md
+The pooled attack in \texttt{composition.\allowbreak{}pooled\_\allowbreak{}attack}, by contrast, was checked
+against Proposition~\ref{prop:nopool}: a target absent from a release contributes zero
+to that release's marginal risk and does not narrow the intersection, as the
+proposition and the paper state.
+
+\paragraph{Availability.} The papers describe the pipeline as open. At the time of
+writing the repository is private. Either it is made public before the papers or this
+book circulate, or the description changes.
+
+\paragraph{Gaps and the claims they touch.} The gaps above and the fit of
+Chapter~\ref{ch:tolerance} bear on specific claims. The governance record that omits three
+elements limits the completeness claims of Chapters~\ref{ch:thresholds} and~\ref{ch:protocol};
+the work to close it is to fill those fields from a signed form and test the strict check on
+the record. The value-curve fit returns no standard errors, which limits the implied tolerance
+of Chapter~\ref{ch:tolerance}; the work is to return the covariance and bootstrap over the
+frontier points.

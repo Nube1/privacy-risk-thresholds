@@ -1,0 +1,695 @@
+\chapter{Monitoring an attack while it runs}\label{ch:monitoring}
+
+An analyst who simulates an attack on a release can look at the results whenever
+she likes. If the bound she computes at each look is exact, the argument runs, then
+whatever she concludes at that look is exact as well. Looking more often uses more
+of the evidence and never less of it. If an audit fails narrowly, a second audit on
+freshly drawn targets is new and independent evidence, and it deserves its own
+hearing. Each step of this argument holds up when it is examined alone. The
+one-sided Clopper--Pearson bound of Chapter~\ref{ch:estimate} has exactly the
+coverage it claims at the sample size where it is computed, and a fresh draw of
+targets owes nothing to the draw before it. An analyst who worked this way would
+be doing what careful people do with any measurement that comes in slowly, and a
+committee that read her record would find a valid bound beside the decision to
+release.
+
+The argument fails, and the size of the failure is easy to measure. Take a release
+whose true risk is 0.201 against a tolerance of 0.2, so that any certificate it
+receives is false. % source: RESEARCH_BRIEF.md; scripts/injector_experiment.py (audit_restarts)
+Audit it with 500 simulated attacks and a one-sided bound at the 5 per cent level,
+and the bound passes in about 3.5 per cent of audits.
+% source: artifacts-injector/results.json, audit_restarts, attempts=1, exact_rate 0.03497
+Now let the analyst try again on fresh targets after each failure, up to 20
+attempts, each judged as a new test at the 5 per cent level. Over 20,000 simulated
+programmes the release was certified in 51.0 per cent of them. Had the same 5 per
+cent been divided among the 20 attempts before the first one ran, the rate would
+have been 3.9 per cent.
+% source: artifacts-injector/results.json, audit_restarts, attempts=20: reset_alpha rate 0.50975 (95% interval 0.50280 to 0.51670), preallocated_budget rate 0.03875 (0.03612 to 0.04152); RESEARCH_BRIEF.md
+Every single bound in the first procedure was exact. The decision built from them
+was a coin toss.
+
+At the Bank, the problem arrived in the ordinary way. Naledi had been asked to
+audit the full pooled attack on the credit register at a minimum cell count of 150,
+the attack in which the adversary holds all six monthly vintages, a reading of the
+loan's exposure in each, and the loan's history. The chair wanted the result for
+the committee on Thursday. Naledi started the simulation on Monday evening, and on
+Tuesday morning she opened the output to see how it was going. Nothing in her
+training told her that this was a decision.
+
+This chapter answers one question. What must an audit fix before it starts, and
+what may it leave open, so that the analyst can look at the evidence as it arrives,
+stop when it is clear and try again when it is not, and still hand the committee a
+certificate whose error probability is the one written on it?
+
+\section{Why valid looks add up to an invalid decision}\label{c06:sec-retry}
+
+The retry experiment has a short explanation. Write $A_j$ for the event that
+attempt $j$ certifies a release whose true risk is at or above the tolerance. Each
+attempt, taken alone, has $\Prob(A_j) \le \alpha$. The committee, however, does not
+act on one attempt. It acts on the event that some attempt certified, which is the
+union $A_1 \cup \dots \cup A_n$, and a union of events can be far more probable
+than any one of them.
+
+\begin{proposition}[Retrying an audit]\label{c06:prop-retry}
+Let a release have true risk $r \ge \tau$, and let an analyst run up to $n$ audits,
+stopping at the first that certifies.
+\begin{enumerate}
+\item If the audits use independent draws of targets and each certifies with
+probability $f > 0$, the probability that the release is certified is
+$1 - (1-f)^n$, which tends to one as $n$ grows.
+\item If audit $j$ is run at a level $\alpha_j$ fixed before the first audit begins,
+with $\sum_{j=1}^n \alpha_j \le \alpha$, the probability that the release is
+certified is at most $\alpha$, whatever the dependence between the audits and
+whatever rule the analyst uses to decide whether to run another.
+\end{enumerate}
+\end{proposition}
+
+The first part reproduces the repository's figures. With 500 attacks and a
+tolerance of 0.2, the 95 per cent bound passes only when the count of successes is
+small enough, and at a true risk of 0.201 that happens with probability $f \approx
+0.035$. The single-audit rate sits below 5 per cent because the binomial count is
+discrete and the exact bound is conservative. Twenty independent attempts give
+$1 - (1-0.035)^{20} \approx 0.51$, which is what the simulation found.
+% source: artifacts-injector/results.json: exact_rate 0.03497 (one attempt), 0.50934 (20 attempts, reset alpha)
+The second part is the remedy, and it rests on nothing more than the union bound.
+Its condition is that the levels are written down before any outcome is seen. A
+level chosen after the third failure, once the analyst has a feeling about the
+fourth, is a level chosen with the data, and the union bound no longer applies to
+it.
+
+Figure~\ref{c06:fig-retry} shows the two rules side by side at one, five and twenty
+attempts. With one attempt they coincide. With five, resetting the level each time
+already certifies an unsafe release in 16.5 per cent of programmes, against 4.1
+per cent when the level is divided in advance. With twenty the gap is the one
+reported above. The pre-allocated rule stays close to its single-attempt rate
+however many attempts it allows, because the extra attempts are paid for out of a
+budget that does not grow.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  ybar, bar width=14pt, width=0.78\textwidth, height=6cm,
+  symbolic x coords={1,5,20}, xtick=data,
+  xlabel={Audit attempts allowed}, ylabel={False certification (per cent)},
+  ymin=0, ymax=70, enlarge x limits=0.25,
+  legend style={at={(0.03,0.97)},anchor=north west,draw=none,font=\small},
+  area legend, nodes near coords, nodes near coords style={font=\scriptsize},
+  every node near coord/.append style={/pgf/number format/fixed,/pgf/number format/precision=1}]
+\addplot[fill=gray!70, draw=black] coordinates {(1,3.6) (5,16.5) (20,51.0)};
+\addplot[fill=white, draw=black, postaction={pattern=north east lines}] coordinates {(1,3.6) (5,4.1) (20,3.9)};
+\legend{Level reset to 5\% at each attempt, 5\% divided among attempts in advance}
+\end{axis}
+\end{tikzpicture}
+% source: artifacts-injector/results.json, audit_restarts (rates 0.03595, 0.16525, 0.50975; 0.03595, 0.0409, 0.03875)
+\caption{Retrying a failed audit. A release with true risk 0.201 is audited against
+a tolerance of 0.2 with 500 attacks per attempt, so every certificate is false.
+Solid dark bars reset the level to 5 per cent at each attempt; hatched light bars
+divide 5 per cent among the attempts before the first one runs. Each bar is a share
+of 20,000 simulated programmes.}
+\label{c06:fig-retry}
+\end{figure}
+
+Two features of the experiment deserve a plain statement. First, the analyst in it
+is honest. She does not fabricate an outcome or hide a bound; she runs a valid audit,
+and when it fails she runs another valid audit. The error is in the record, which
+shows the last audit and not the attempts before it. Second, the experiment
+assumes independent attempts, which is the most favourable case for the analyst.
+If the attempts share anything, such as a pool of targets from which the failures
+are quietly removed, the inflation can be worse, and Section~\ref{c06:sec-process}
+returns to that.
+
+The same mechanism works inside a single run. An analyst who computes the
+fixed-sample bound after every batch of attacks and stops at the first batch where
+it passes has also turned one test into many, though the tests are now dependent,
+because each look contains the looks before it. The repository measures this on the
+credit register. The reference attack is the pooled attack against a release that
+keeps at least five loans in every cell, whose success rate is 0.269.
+% source: paper/generated/numbers.tex, \runseqrisk 0.269
+An institution simulates 4,000 attacks and computes the 95 per cent bound 20 times
+along the way. In 500 such runs, the bound fell below the true risk at some look in
+21 per cent of them. Any of those runs could have ended in a release on a bound that
+was wrong.
+% source: paper/generated/numbers.tex, \runseqmonitorreplicates 4,000, \runseqlooks 20, \runseqruns 500, \runseqfixederror 21
+The stated level of a fixed-sample bound is a statement about one sample size
+chosen in advance. With unlimited looks the inflation does not stop at 21 per cent:
+the law of the iterated logarithm implies that a fixed-sample bound, recomputed
+forever, eventually falls below the truth with probability one. Online experiments
+in commerce met the same problem when analysts watched their tests daily and
+stopped on a good day \citep{johari2022}.
+
+On Tuesday morning Naledi's bound for the floor of 150 stood just above the
+tolerance. On Wednesday it stood just below. The chair asked whether Wednesday's
+figure was the answer. Naledi could not say yes, because the 95 per cent printed
+beside it referred to a number of attacks that nobody had fixed, and she had
+already looked once.
+
+\section{Betting against the hypothesis that the release is unsafe}\label{c06:sec-martingale}
+
+The way out begins by asking the question the other way round. The committee wants
+to release only when there is strong evidence that the risk lies below the
+tolerance. The hypothesis to be rejected is therefore that the release is unsafe,
+\[
+H : r \ge \tau ,
+\]
+and a certificate is a rejection of $H$. The tool that allows looking at will is a
+measure of evidence against $H$ that cannot grow large, on average, while $H$ is
+true. A betting game gives one.
+
+Let $X_b \in \{0,1\}$ record whether the $b$th simulated attack succeeds, each on a
+freshly drawn target. Before attack $b$ the auditor chooses a number
+$q_b \in [0, \tau)$, using only what she has seen so far. She starts with wealth
+$E_0 = 1$ and updates it after each attack by
+\begin{equation}\label{c06:eq-bet}
+E_b = E_{b-1} \Big(\frac{q_b}{\tau}\Big)^{X_b}
+\Big(\frac{1-q_b}{1-\tau}\Big)^{1-X_b} .
+\end{equation}
+The factor is the ratio of the probability of the observed outcome under a
+success rate of $q_b$ to its probability under a success rate of $\tau$, as in the
+sequential test of \citet{wald1945}, with an alternative that may change from draw
+to draw. A failed attack multiplies the wealth by $(1-q_b)/(1-\tau) > 1$; a
+successful one multiplies it by $q_b/\tau < 1$. The auditor is betting that attacks
+fail more often than $H$ allows, and she gains when they do.
+
+If $H$ is true, the bet is unfavourable to her. For a success probability $p \ge
+\tau$ and any $q < \tau$, the expected factor is
+\begin{equation}\label{c06:eq-factor}
+p\,\frac{q}{\tau} + (1-p)\,\frac{1-q}{1-\tau}
+= 1 + \frac{(p-\tau)(q-\tau)}{\tau(1-\tau)} \le 1 ,
+\end{equation}
+because $p - \tau \ge 0$ and $q - \tau < 0$. Her wealth then has the structure of
+a gambler's fortune in a game that does not favour her.
+
+\begin{definition}[Test supermartingale]\label{c06:def-test}
+A sequence $(E_b)_{b \ge 0}$ of nonnegative random variables, adapted to the
+information $(\mathcal{F}_b)$ available after each attack, is a test
+supermartingale for $H$ if $E_0 = 1$ and
+$\E[E_b \mid \mathcal{F}_{b-1}] \le E_{b-1}$ for every $b$ whenever $H$ is true.
+\end{definition}
+
+The process \eqref{c06:eq-bet} is a test supermartingale for $H$ provided each
+attack, given everything recorded before it, succeeds with probability at least
+$\tau$ when $H$ is true, and provided each $q_b$ is fixed before $X_b$ is seen.
+The first condition concerns how targets are drawn, and it is not automatic;
+Section~\ref{c06:sec-process} shows how it fails. The second is the rule that a bet
+is placed before the card is turned. Under both, a classical inequality limits how
+often a test supermartingale can ever become large.
+
+\begin{proposition}[Ville's inequality]\label{c06:prop-ville}
+If $(E_b)$ is a test supermartingale for $H$ and $H$ is true, then for every
+$c > 0$,
+\begin{equation}\label{c06:eq-ville}
+\Prob\Big\{\sup_{b \ge 0} E_b \ge c\Big\} \le \frac{1}{c} .
+\end{equation}
+\end{proposition}
+
+The inequality is due to \citet{ville1939}, and its force lies in the supremum.
+The bound holds for the largest value the wealth ever reaches, so it holds at the
+moment the auditor chooses to stop, whatever rule she used to choose it. The audit
+rule follows at once: certify the release the first time $E_b \ge 1/\alpha$, and
+never otherwise. The chance of certifying an unsafe release is then at most
+$\alpha$, and the auditor may look after every attack, stop when the evidence is
+clear, or continue when a reviewer asks for more, without changing that figure.
+Looking costs nothing in validity, because the guarantee was never tied to a
+sample size.
+
+The simplest bet shows what the guarantee costs. With $q_b = 0$ throughout, each
+failure multiplies the wealth by $1/(1-\tau)$ and the first success sets it to zero
+for good. After $B$ failures $E_B = (1-\tau)^{-B}$, and the audit certifies once
+$B \ge \log(1/\alpha)/\{-\log(1-\tau)\}$. That is the zero-success count of the
+fixed-sample bound in Chapter~\ref{ch:estimate}. At a tolerance of 0.12 and
+$\alpha = 0.05$ it is 24 attacks.
+% source: computed with privacy_risk.adaptive_audit.zero_success_budget(0.12, 0.05, 1.0) = 24; formula paper/publication_versions/jpc_main.tex, Proposition prop:cost
+For an audit that expects no successes, monitoring is free. The catch is in the
+last clause of the rule: a single success ends the audit, and an attack that
+succeeds even rarely will produce one. A bet that leaves room for successes has to
+be placed at $q_b > 0$, and then each failure earns less.
+
+\section{Confidence sequences}\label{c06:sec-cs}
+
+A committee often wants a number as well as a verdict: an upper bound on the risk
+that it can report, which remains valid however long the simulation ran and however
+often someone looked at it. A confidence sequence supplies one. Instead of one
+betting process for one tolerance, take one for every candidate risk $r$ and mix the
+alternative over all values with a beta prior. With $S_B$ successes in $B$ attacks,
+the mixed process is
+\begin{equation}\label{c06:eq-mixture}
+E_B(r) = \frac{\mathrm{B}(a + S_B,\ b + B - S_B)}
+{\mathrm{B}(a,b)\, r^{S_B} (1-r)^{B - S_B}} ,
+\end{equation}
+where $\mathrm{B}$ is the beta function and $(a,b)$ are the prior's parameters
+\citep{howard2021,ramdas2023}.
+
+\begin{proposition}[Anytime-valid confidence sequence]\label{c06:prop-cs}
+If the simulated attacks are conditionally Bernoulli with risk $r_0$, then
+$E_B(r_0)$ is a nonnegative martingale with $E_0(r_0) = 1$, and the sets
+\begin{equation}\label{c06:eq-cs}
+\mathcal{C}_B = \{ r \in (0,1) : E_B(r) < 1/\alpha \}
+\end{equation}
+contain $r_0$ at every $B$ simultaneously with probability at least $1 - \alpha$.
+\end{proposition}
+
+The upper end of $\mathcal{C}_B$ is a bound the analyst may compute after every
+attack. In the monitoring study above, the confidence sequence fell below the true
+risk at some look in none of the 500 runs, against 21 per cent for the fixed-sample
+bound.
+% source: paper/generated/numbers.tex, \runseqanytimeerror 0, \runseqfixederror 21
+The price is a wider interval. On the same counts the fixed-sample upper bound
+averaged 0.281 and the anytime bound 0.296, so the anytime bound was larger by a
+factor of about 1.05.
+% source: paper/generated/numbers.tex, \runseqfixedupper 0.281, \runseqanytimeupper 0.296, \runseqwidthratio 1.05
+For a release whose risk sits well away from its tolerance, that difference
+changes nothing.
+
+Near zero risk the price is larger, and Table~\ref{c06:tab-anytime} gives it. To
+certify a tolerance of one in a hundred at the 5 per cent level with no observed
+success, a sample size fixed in advance needs 299 attacks, and the confidence
+sequence with a uniform prior needs 984. For one in a thousand the figures are 2,995
+and 12,417. The ratio, between three and four, is not the price of monitoring.
+The zero bet of the previous section is also valid under monitoring, and it
+certifies after the fixed-sample count. What the larger count buys is the ability
+to keep going after a success. The mixture spends part of its evidence on
+alternatives at which successes are plausible, so a single success does not end the
+audit. An institution that expects some successes, as it will whenever the risk is
+not negligible, needs that ability and pays for it.
+
+\begin{table}[ht]
+\centering
+\caption{Successless attacks needed to certify a tolerance at the 5 per cent level.
+The fixed-sample count holds at one sample size chosen in advance; the anytime
+count holds while the run is watched, using the confidence sequence
+\eqref{c06:eq-cs} with a uniform prior.}
+\label{c06:tab-anytime}
+% source: paper/generated/table_anytime.tex; paper/generated/numbers.tex (\runseqcertfixed001, \runseqcertanytime001, \runseqcertfixed0001, \runseqcertanytime0001)
+\begin{tabular}{rrrr}
+\toprule
+Tolerance $\tau$ & Fixed sample & Anytime & Ratio \\
+\midrule
+0.01 & 299 & 984 & 3.3 \\
+0.001 & 2{,}995 & 12{,}417 & 4.1 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The confidence sequence and the betting rule of the previous section answer
+different questions, and a record should not mix them. The upper end of
+$\mathcal{C}_B$ is a bound on the risk. The wealth $E_b$ of \eqref{c06:eq-bet} is
+evidence against one hypothesis at one tolerance; neither it nor its reciprocal is
+an estimate of risk, and reporting it as one is an error. A decision record can
+carry both, in separate fields, each with its level.
+
+Naledi switched the Thursday audit to the confidence sequence and started it again
+from zero on fresh targets, recording that she had done so and why. She could now
+look each morning without spending anything. What she could not do was erase
+Tuesday, and the next section is about how a programme keeps account of Tuesdays.
+
+\section{The registered sequential audit}\label{c06:sec-gate}
+
+A single release against a single attack is the simplest case. A programme meets a
+harder one. The list of attacks worth testing is not fixed when the work begins:
+analysts read one audit and propose another, reviewers ask for a pooled version of
+an attack already run, and Chapter~\ref{ch:programmes} shows why pooled attacks
+need audits of their own. A procedure that controls error for a family fixed in
+advance does not cover a family that grows in response to its own results. The
+journal article that accompanies this book sets out an audit for that situation,
+and this section gives its structure. The error control is the online form of the
+Bonferroni rule \citep{foster2008,tian2021}, applied to betting processes of the
+kind in \eqref{c06:eq-bet}; what is specific to disclosure is the object being
+audited and the conditions on how its targets are drawn.
+
+Each pair of a candidate release and a declared attack is a \emph{coordinate}. A
+coordinate is registered before its first outcome, and registration fixes four
+things: the release and attack, the tolerance $\tau_i$, the attack code and target
+law, and a share $w_i \ge 0$ of the programme's error budget. The shares must
+satisfy $\sum_i w_i \le 1$ on every path, counting coordinates that are later
+withdrawn. Coordinate $i$ runs its own betting process $E_{i,b}$ and is certified the
+first time $E_{i,b} \ge (\alpha w_i)^{-1}$, after which it accepts no more
+outcomes. A release is eligible only when every coordinate declared for it has been
+registered and certified; an attack that has not been audited is not treated as
+having zero risk.
+
+\begin{assumption}[Conditional attack validity]\label{c06:as-fresh}
+For each registered coordinate $i$ whose true risk satisfies $r_i \ge \tau_i$, and
+for each of its draws $b$, the conditional probability that the attack succeeds,
+given everything recorded before the draw on every coordinate, is at least
+$\tau_i$.
+\end{assumption}
+
+The assumption holds when each draw attacks a fresh target from the registered
+target law, with fresh noise in the adversary's information, independently of
+everything recorded so far. It is stronger than a statement about the average
+success rate, and Section~\ref{c06:sec-process} shows designs that break it.
+
+\begin{proposition}[Familywise control under adaptive registration]\label{c06:prop-gate}
+Suppose each coordinate's release, attack, tolerance and share are fixed at its
+registration, with $w_i = 0$ for a coordinate never registered; the coordinate to
+be audited at each step is chosen from what has already been recorded; each bet
+$q_{i,b} \in [0, \tau_i)$ is fixed before $X_{i,b}$ is seen; $\sum_i w_i \le 1$ on
+every path; and Assumption~\ref{c06:as-fresh} holds. Then, for any sequence of
+registrations and any rule for stopping or continuing audits,
+\begin{equation}\label{c06:eq-family}
+\Prob\big\{\text{some coordinate with } r_i \ge \tau_i \text{ is certified}\big\}
+\le \alpha .
+\end{equation}
+\end{proposition}
+
+The retry problem of Section~\ref{c06:sec-retry} now has a home. A second attempt
+at an audit is a new coordinate, and it needs its own share of the budget. The
+analyst may retry as often as she likes, provided each retry is paid for, and the
+sum of what she pays cannot exceed one. An open-ended programme can fix the share
+of the $i$th coordinate in advance as $w_i = 6/(\pi^2 i^2)$, which sums to one over
+all $i$, so that the threshold of the $i$th coordinate grows only as $2 \log i$.
+A programme that knows part of its family can give most of the budget to that part
+and hold the rest in reserve for coordinates proposed later.
+In log-wealth terms the threshold for coordinate $i$ is
+$A_i = \ln\bigl(\pi^2/(6\alpha)\bigr) + 2\ln i$. At $\alpha = 0.05$ the first term is
+3.49, so $A_1 = 3.49$, $A_2 = 4.88$, $A_5 = 6.71$, $A_{10} = 8.10$ and $A_{20} = 9.48$.
+The shares should be revisited whenever the programme changes.
+
+How the known part should be divided is a question of cost, and the article
+answers it. If attack $i$ costs $c_i$ per draw and is planned at a risk with
+per-draw drift $\mu_i$, defined in Section~\ref{c06:sec-cost}, the allocation that
+minimises a bound on expected total cost is $w_i \propto c_i/\mu_i$. Costly attacks,
+and attacks whose risk is planned close to the tolerance, receive more of the
+budget. The planning values must be fixed before any outcome is seen; a plan that
+proves optimistic makes the audit longer and leaves it valid.
+
+The article first ran the audit on Bernoulli streams of known risk, where
+Assumption~\ref{c06:as-fresh} holds by construction. One coordinate had share
+$w = 1/8$ of $\alpha = 0.05$, a tolerance of 0.12 and a fixed bet of 0.03, so its
+threshold was 160 and its own error bound $0.00625$. At the boundary risk of 0.12,
+over 2,000 runs of at most 300 attacks, it certified falsely in 0.50 per cent of
+runs, below its bound. A safe stream at a risk of 0.04 was certified in 95.6 per cent
+of runs after a median of 98 attacks, against 99.9 per cent for a Clopper--Pearson
+test applied once after attack 300.
+% source: paper/publication_versions/adaptive_audit_toy.json; paper/publication_versions/jpc_evidence.tex, Table tab:new-audit
+The monitored audit gave up a little power and finished in a third of the attacks.
+
+The more telling run was on the credit register. The committee in that experiment
+declared three attacks in advance: one release with one exposure reading; six
+vintages with one reading and the loan's history; and six vintages with a reading
+in every live vintage and the history. It wanted the least protective floor, from
+an ordered grid running from 300 down to 1, at which all three met a tolerance of
+0.12. Choosing from an ordered grid by testing in a fixed order is the subject of
+Chapter~\ref{ch:selection}, and requiring every declared attack to pass at a setting
+is the intersection--union logic of Chapter~\ref{ch:thresholds}; the article joins
+the two into a \emph{release chain}, which tests each setting only after the one
+before it has passed, and spends one share of the budget on the whole chain with no
+split over settings or attacks.
+
+The true floor, estimated from a separate draw of 100,000 targets per coordinate,
+was 100. There the full pooled attack succeeds at 0.116, just under the tolerance;
+at 75 it succeeds at 0.133, and at 150 at 0.091.
+% source: paper/publication_versions/chain_audit.json (truth.full_pooled: 0.11619, 0.13312, 0.0913; true_floor 100); jpc_evidence.tex
+Over 20 independent attack streams, the release chain chose 150 in 19 and 100 in
+one, and never chose an unsafe floor. Run 400 times on Bernoulli streams at the
+estimated risks, it never chose an unsafe floor; with every risk raised by 0.01 it
+did so in 6 runs, a rate of 0.015, within the budget of 0.05.
+% source: paper/publication_versions/chain_audit.json, summary.release_chain and operating_characteristics; jpc_evidence.tex
+Figure~\ref{c06:fig-designs} sets the median number of attacks each design spent
+on the same 20 streams. The release chain used 6,422. Registering all 39
+coordinates at the start and stopping at the first failing floor used 9,002. One
+chain per attack at $\alpha/3$, which is the price of choosing the adversary after
+the audit, used 13,764. The fixed-sample designs used 10,000 to 36,000.
+% source: paper/publication_versions/table_chain_audit.tex; chain_audit.json summary (median_attacks 6422, 9001.5, 13764, 10000, 12000, 36000)
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  xbar, bar width=9pt, bar shift=0pt, width=0.62\textwidth, height=6.4cm,
+  xlabel={Median attacks over 20 streams}, xmin=0, xmax=44000,
+  symbolic y coords={Fixed sample 3000 each,Fixed sample 1000 each,Looks every 500,One chain per attack,All 39 at start,Release chain},
+  ytick={Fixed sample 3000 each,Fixed sample 1000 each,Looks every 500,One chain per attack,All 39 at start,Release chain},
+  yticklabel style={font=\small},
+  scaled x ticks=false, xtick={0,10000,20000,30000,40000},
+  xticklabel style={/pgf/number format/1000 sep={\mbox{,}},font=\small},
+  nodes near coords, nodes near coords style={font=\scriptsize,/pgf/number format/1000 sep={\mbox{,}}},
+  legend style={at={(0.97,0.97)},anchor=north east,draw=none,font=\small},
+  area legend]
+\addplot[fill=white, draw=black, postaction={pattern=north east lines}]
+  coordinates {(36000,Fixed sample 3000 each) (12000,Fixed sample 1000 each) (10000,Looks every 500)};
+\addplot[fill=gray!70, draw=black]
+  coordinates {(13764,One chain per attack) (9002,All 39 at start) (6422,Release chain)};
+\legend{Fixed-sample designs, Sequential designs}
+\end{axis}
+\end{tikzpicture}
+% source: paper/publication_versions/table_chain_audit.tex
+\caption{Attacks spent choosing a floor on the synthetic credit register, tolerance
+0.12, $\alpha = 0.05$. Hatched light bars are designs that test after a planned
+number of attacks; solid dark bars are sequential designs that may stop at any
+attack. ``One chain per attack'' runs a separate chain for each declared attack at
+$\alpha/3$; ``All 39 at start'' registers every floor and attack before the audit.
+All six see the same draws, and none chose an unsafe floor.}
+\label{c06:fig-designs}
+\end{figure}
+
+The chain chose 150 and not the true floor of 100 for a reason the next section
+makes exact. At 100 the full pooled attack succeeds at 0.116, so close to 0.12 that
+no feasible audit could certify it reliably. The cost of the sequential audit is
+not paid in error. It is paid in the floor: the audit settles on a setting it can
+certify in a few thousand attacks, and that setting keeps 5,553 of the 27,167
+loans in the first release.
+% source: paper/publication_versions/chain_audit.json, released["150"] 5553, released["1"] 27167
+
+\section{What monitoring costs}\label{c06:sec-cost}
+
+The length of an audit depends on how far the true risk lies below the tolerance.
+For a fixed bet $q$ and a true risk $p$, each attack adds to $\log E_b$ an
+increment whose mean is
+\begin{equation}\label{c06:eq-drift}
+\mu(p,q) = p \log\frac{q}{\tau} + (1-p)\log\frac{1-q}{1-\tau} .
+\end{equation}
+When $\mu > 0$ the log-wealth drifts upwards and the audit will end; when $\mu \le
+0$ it may never end.
+
+\begin{proposition}[Expected audit length]\label{c06:prop-length}
+Let the outcomes be independent Bernoulli$(p)$ with $p < \tau$, let the bet be fixed
+at $q \in (0,\tau)$ with $\mu(p,q) > 0$, write $A = \log\{1/(\alpha w)\}$ for the
+log-threshold and $u = \log\{(1-q)/(1-\tau)\}$ for the gain from one failure, and let
+$N$ be the number of attacks to certification. Then
+\[
+\frac{A}{\mu(p,q)} \le \E N \le \frac{A + u}{\mu(p,q)} .
+\]
+Over $q$, $\mu(p,q)$ is largest at $q = p$, where it equals the Kullback--Leibler
+divergence between Bernoulli laws with parameters $p$ and $\tau$.
+\end{proposition}
+
+Near the tolerance that divergence is about $(\tau - p)^2/\{2\tau(1-\tau)\}$, so
+halving the margin between the risk and the tolerance roughly quadruples the
+audit. At a tolerance of 0.12 and an error share $\alpha w = 1/60$, an attack whose
+true risk is 0.10 needs about 2,100 draws with the best fixed bet, and one at 0.06
+needs about 200.
+% source: paper/publication_versions/jpc_main.tex, after Proposition prop:length; checked with privacy_risk.adaptive_audit.expected_length_bound (2065 and 204)
+The bound is close to the best possible for any valid test, so no cleverer
+procedure escapes it. An auditor does not know $p$, and the credit-register run
+used a bet that learns it, the shrunk running rate $(S_b + 1/2)/(b + 1)$ capped at
+0.11. A cap set below the true risk turns the drift negative. That is what happened
+at the floor of 100, where the risk of 0.116 lies above the cap: the chain could
+certify that floor only by chance, as it did in one stream, and even the best fixed
+bet would need tens of thousands of attacks on average.
+% source: paper/publication_versions/jpc_evidence.tex, paragraph "Audit length"
+
+So the cost of monitoring is real, and it has three parts. The first is the wider
+interval of the confidence sequence, small when the risk is far from the
+tolerance. The second is the larger zero-success count of
+Table~\ref{c06:tab-anytime}, which buys the ability to continue after a success.
+The third is the one Proposition~\ref{c06:prop-length} describes, and it is shared
+with every valid procedure: a release whose risk sits just under its tolerance is
+expensive to certify by any method. An institution facing that cost can spend more
+attacks or choose a stricter setting. It cannot buy the certificate by looking more
+often.
+
+\section{When the audit process is the target}\label{c06:sec-process}
+
+Every guarantee in this chapter rests on two conditions that the mathematics
+cannot check: that each attack runs on a target drawn afresh, and that each bet is
+placed before its outcome is seen. Both are properties of how the audit is
+conducted, and an operator under pressure can break either, through carelessness,
+a deadline or intent.
+
+The first fails in quiet ways. Suppose the same target is attacked again after a
+failure. Let a hidden fact about the target decide the attack, so that every repeat
+gives the same result: the success probability across targets may be one half, but
+after one failure on this target the chance of a later success is zero. An auditor
+who treats the repeats as fresh draws can drive her evidence as high as she
+pleases. The same happens if two interleaved audits share a hidden feature of their
+targets, or if the adversary's information is changed after outcomes are seen.
+Assumption~\ref{c06:as-fresh} fails in each case, and no bound follows.
+
+The second fails when the operator has a choice the record does not show. The
+article measured three such choices on Bernoulli streams at a risk equal to the
+tolerance of 0.12, with one coordinate at the full level. An operator who can pick
+among seeds, or who runs shadow audits outside the record and files only the one
+that passed, turns a false-certification rate of 0.038 into 0.322 with ten tries and
+0.979 with a hundred. An operator who chooses each bet after seeing the outcome
+certified an attack with true risk 0.20 in every one of 2,000 runs.
+% source: paper/publication_versions/table_audit_process.tex; jpc_main.tex, Section sec:security
+These are the retry experiment of Section~\ref{c06:sec-retry} in another form: the
+error lives in attempts the record does not hold.
+
+The repository implements three controls that close these routes when the registry
+that holds them is trusted. Targets are derived from a secret the operator commits
+to at registration, combined with a later round of a public randomness beacon, so
+neither the operator nor the beacon alone chooses them. Each bet is written to the
+ledger before the registry runs the attack and records its outcome. The ledger is
+hash-chained, so an entry cannot be changed, dropped or moved without breaking the
+chain. With these in place the measured rates return to the honest ones. The
+controls are a library, and a library is not a security boundary: code in the same
+process can still change private state, and the hash chain detects a rewrite only
+if its head is published or time-stamped outside the operator's control. An
+institution that needs protection against its own operator must run the registry as
+a separate service, with the attack code signed by someone other than the analyst
+and every attack on the confidential register passing through it
+\citep{saltzer1975}.
+
+Some weeks later Grace, from internal audit, read the record of the Thursday
+decision. She did not recompute the bound. She checked that the coordinate had been
+registered before its first outcome, that every bet in the ledger preceded the
+outcome it was placed on, that the chain of hashes was unbroken from the head the
+Bank had published, and that the abandoned Tuesday run appeared in the ledger with
+the share of the budget it had spent. Each check was a question about the process,
+and each could be answered from the record without trusting the analyst.
+
+\section{The answer}\label{c06:sec-answer}
+
+The chapter asked what an audit must fix in advance so that its analyst may look
+at will, stop when she likes and retry when she must. The answer has four parts.
+The audit must fix, before the first outcome, the hypothesis it will reject, which
+is that the release is unsafe; the tolerance; the attack and the law from which its
+targets are drawn; and the share of the error budget it spends. It must use a
+measure of evidence that is a test supermartingale under that hypothesis, either a
+betting process with bets placed before outcomes or a confidence sequence. It must
+treat every retry and every new attack as a new coordinate that pays for itself out
+of a budget whose total is fixed. And it must keep a record, outside the analyst's
+control, of every attempt, every bet and every outcome. With these four in place the
+analyst may look after every attack, and the certificate means what it says. Without
+them, each look can be exact and the decision can still be wrong half the time.
+
+\begin{inpractice}[In practice: watching an audit]\sloppy
+Before a simulated audit starts, write down the tolerance, the attack and its
+target law, the error level and, if the programme will run more than one audit,
+the share of the level this audit spends. Use an anytime-valid method if anyone
+will look at results before the planned end. Record every audit attempt, including
+those abandoned, and treat a retry as a new audit with its own share of the
+budget. Draw targets from randomness the analyst cannot choose, and log each bet
+before its outcome. Report the confidence-sequence bound as the risk figure and the
+crossing of the betting process as the verdict, in separate fields. When a release
+sits just under its tolerance, expect a long audit and consider a stricter setting.
+
+\smallskip\noindent\textit{In the software.} The confidence sequence of
+Proposition~\ref{c06:prop-cs} is in \texttt{privacy\_risk.sequential}
+(\texttt{log\_e\_process}, \texttt{confidence\_sequence}, \texttt{anytime\_upper},
+and \texttt{certification\_replicates} for Table~\ref{c06:tab-anytime});
+\texttt{monitoring\_study} runs the 20-look experiment. The registered audit is in
+\texttt{privacy\_risk.adaptive\_audit}: \texttt{AdaptiveAudit.register} spends a
+share of the budget and refuses one that would overspend it,
+\texttt{register\_release\_chain} opens a release chain, and
+\texttt{AuditCoordinate.observe} advances the betting process, refusing a bet
+outside $[0,\tau)$ and any outcome after certification. \texttt{zero\_success\_budget},
+\texttt{expected\_length\_bound} and \texttt{drift\_weights} give the cost results.
+\texttt{commit}, \texttt{target\_seed}, \texttt{CommittedCoordinate} and
+\texttt{AuditLedger} are the controls of Section~\ref{c06:sec-process}; the
+coordinate itself accepts outcomes from any caller, so the committed path binds only
+when a registry enforces it. The retry experiment is \texttt{audit\_restarts} in
+\texttt{scripts/injector\_experiment.py}, and the credit-register runs are
+\texttt{scripts/adaptive\_audit\_comparison.py} and
+\texttt{scripts/adaptive\_audit\_chain.py}. The update at the centre of the audit is
+short:
+\begin{lstlisting}
+success = int(success)
+self._log_e += (math.log(alternative / self.tolerance) if success and alternative
+                else -math.inf if success else
+                math.log1p(-alternative) - math.log1p(-self.tolerance))
+self._trials += 1
+self._successes += success
+self._log.append((success, alternative))
+self._crossed = self._log_e >= self._threshold
+\end{lstlisting}
+\end{inpractice}
+
+\section{Proofs}\label{c06:sec-proofs}
+
+\begin{proof}[Proof of Proposition~\ref{c06:prop-retry}]
+For the first part, the release escapes certification only if every one of the $n$
+audits fails to certify. The audits are independent and each fails with
+probability $1-f$, so the probability that none certifies is $(1-f)^n$ and the
+probability that some audit certifies is $1-(1-f)^n$. Since $0 < 1-f < 1$, this
+tends to one as $n \to \infty$.
+
+For the second part, imagine that the targets for all $n$ audits are drawn in
+advance, whether or not the analyst will run them, and let $A_j$ be the event that
+audit $j$, applied to its own draw at its prearranged level $\alpha_j$, certifies.
+Because each audit is a valid level-$\alpha_j$ test of a hypothesis that is true,
+$\Prob(A_j) \le \alpha_j$. The release is certified only if some audit that was
+actually run certifies, and that event is contained in $A_1 \cup \dots \cup A_n$
+whatever rule decided which audits to run. By the union bound,
+$\Prob(\text{certified}) \le \sum_j \Prob(A_j) \le \sum_j \alpha_j \le \alpha$. No
+step uses independence between the audits.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c06:prop-ville}]
+Fix $c > 0$ and let $T = \inf\{b : E_b \ge c\}$, with $T = \infty$ if the set is
+empty. For each $n$, the stopped process $E_{b \wedge T}$ is a nonnegative
+supermartingale, so $\E[E_{n \wedge T}] \le E_0 = 1$. On the event $\{T \le n\}$ we
+have $E_{n \wedge T} = E_T \ge c$, and $E_{n \wedge T} \ge 0$ elsewhere, hence
+$c\,\Prob(T \le n) \le \E[E_{n \wedge T}] \le 1$. Letting $n \to \infty$ and using
+continuity of probability gives $\Prob(T < \infty) \le 1/c$, and $\{T < \infty\}$
+is the event $\{\sup_b E_b \ge c\}$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c06:prop-gate}]
+Fix a coordinate $i$ and work on the event $H_i = \{r_i \ge \tau_i\}$. By the
+measurability conditions, the coordinate's scenario, tolerance and share are known
+at its registration time $\sigma_i$, so $H_i$ and $w_i$ are determined by the
+information at $\sigma_i$. Between its own draws the process $E_{i,b}$ is constant.
+At draw $b$, the bet $q_{i,b}$ is known beforehand and, by
+Assumption~\ref{c06:as-fresh}, the conditional success probability $p$ satisfies
+$p \ge \tau_i$, so by \eqref{c06:eq-factor} the conditional expectation of the
+update factor is at most one. Hence, on $H_i$, the process indexed by the global
+sequence of recorded events and started at $\sigma_i$ is a nonnegative
+supermartingale starting at one. Applying Proposition~\ref{c06:prop-ville}
+conditionally on the information at $\sigma_i$, with $c = (\alpha w_i)^{-1}$, gives
+$\Prob(\text{$i$ certified} \mid \mathcal{F}_{\sigma_i})\,\ind{H_i} \le \alpha w_i
+\ind{H_i}$; when $w_i = 0$ the threshold is infinite and the left side is zero. Taking
+expectations, $\Prob(\text{$i$ certified},\ H_i) \le \alpha\,\E[w_i]$. Summing over
+$i$, using the union bound and monotone convergence for countably many
+coordinates, and then $\sum_i w_i \le 1$ on every path, gives
+$\Prob(\exists i : \text{$i$ certified},\ H_i) \le \alpha\,\E[\sum_i w_i] \le
+\alpha$, which is \eqref{c06:eq-family}.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c06:prop-cs}]
+For fixed $u \in (0,1)$, the likelihood ratio after $B$ attacks of a success rate $u$
+against the rate $r_0$ is $L_B(u) = (u/r_0)^{S_B}\{(1-u)/(1-r_0)\}^{B-S_B}$. Given
+the past, the next factor has expectation $r_0 (u/r_0) + (1-r_0)(1-u)/(1-r_0) = 1$
+under conditionally Bernoulli$(r_0)$ outcomes, so $L_B(u)$ is a nonnegative
+martingale with $L_0(u) = 1$. Let $\pi$ be the beta$(a,b)$ density. By Tonelli's
+theorem, $\int L_B(u)\pi(u)\,du$ is again a nonnegative martingale starting at one,
+and evaluating the integral,
+\[
+\int_0^1 \frac{u^{S_B}(1-u)^{B-S_B}}{r_0^{S_B}(1-r_0)^{B-S_B}}
+\frac{u^{a-1}(1-u)^{b-1}}{\mathrm{B}(a,b)}\,du
+= \frac{\mathrm{B}(a+S_B,\, b+B-S_B)}{\mathrm{B}(a,b)\,r_0^{S_B}(1-r_0)^{B-S_B}}
+= E_B(r_0) .
+\]
+By Proposition~\ref{c06:prop-ville} with $c = 1/\alpha$, the probability that
+$E_B(r_0) \ge 1/\alpha$ for some $B$ is at most $\alpha$. On the complementary event
+$r_0 \in \mathcal{C}_B$ for every $B$, which proves the claim.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{c06:prop-length}]
+Write $Y_b$ for the increment of $\log E_b$ at attack $b$. The $Y_b$ are independent
+with mean $\mu = \mu(p,q) > 0$, and each is at most $u$, the value taken on a
+failure. Fix a cap $B$ and let $T = \min(N, B)$, a bounded stopping time. Wald's
+identity gives $\E[\log E_T] = \mu\,\E T$. If $T = N$, then $\log E_{N-1} < A$ and
+$\log E_N < A + u$; if $T = B < N$, then $\log E_B < A$. In both cases
+$\log E_T < A + u$, so $\mu\,\E T < A + u$, that is $\E\min(N,B) \le (A+u)/\mu$.
+Letting $B \to \infty$ and using monotone convergence gives $\E N \le (A+u)/\mu$; in
+particular $\E N < \infty$, so Wald's identity applies to $N$ itself. Since
+$\log E_N \ge A$ at certification, $\mu\,\E N = \E[\log E_N] \ge A$, which is the
+lower bound. Finally, $\partial \mu / \partial q = p/q - (1-p)/(1-q)$, which is
+positive for $q < p$ and negative for $q > p$, so $\mu$ is maximised at $q = p$,
+where $\mu(p,p) = p\log(p/\tau) + (1-p)\log\{(1-p)/(1-\tau)\}$, the
+Kullback--Leibler divergence of Bernoulli$(\tau)$ from Bernoulli$(p)$.
+\end{proof}

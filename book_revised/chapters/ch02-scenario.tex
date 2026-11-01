@@ -1,0 +1,293 @@
+\chapter{Disclosure risk as the outcome of a declared attack}\label{ch:scenario}
+
+The minutes of the Bank's release committee contain one phrase more often than any other:
+``every cell holds at least ten records, so no record carries a risk above one in ten.''
+The chair wrote it, the committee approved it, and most readers of this book would approve it
+too. It is the belief that a record's disclosure risk is the reciprocal of the number of
+released records that share its key, so that a key class of ten means a one in ten chance.
+
+The belief deserves its standing. The formula is old, it appears in every handbook, and it
+answers a clear experiment: an adversary who knows a person's key, finds the released records
+with that key, and picks one of them at random will be right one time in ten. The rule that
+every class must hold at least $k$ records, known as $k$-anonymity, rests on it, and so do
+most minimum cell counts in use at statistical institutions. If an adversary cannot tell the
+records in a class apart, the formula is exact.
+
+The fact that breaks it comes from a simulated register of 200,000 people with a 5 per cent
+sample. A release that keeps at least ten records in every key class contains a record whose
+own chance of being identified is 0.74, with a one-sided 95 per cent lower bound of 0.64.
+% source: paper/generated/table_kanonymity.tex (k = 10 row: worst target 0.744, lower bound 0.638)
+The adversary in that simulation knows one thing the key leaves out: a noisy reading of a
+continuous variable that the release also publishes. That is enough to tell the ten records
+apart.
+
+This chapter asks one question: \emph{what does a disclosure risk figure measure, and under
+what conditions does the reciprocal of the key frequency answer it?} The answer starts from
+the objects every assessment involves, defines risk as the probability of one experiment, and
+derives the familiar formula from that experiment under four assumptions. Stating the
+assumptions shows where they fail, and two of them fail in the ordinary case.
+
+\section{Population, sample, key and mechanism}
+
+Let the finite population be $P = \{1,\dots,N\}$. The institution holds a
+confidential sample, indexed by a random set $I \subseteq P$ of size $n$, and we
+write $S_i = \ind{i \in I}$ for the inclusion indicator of unit $i$ and
+$\pi_i = \Prob(S_i = 1)$ for its inclusion probability. A census is the case
+$I = P$. Each unit has a confidential record $X_i$.
+
+An adversary does not see all of $X_i$. It works through a key, a map $K_a$ from
+records to a set of key values, where the subscript $a$ names the attack scenario.
+The key collects the variables the adversary can observe about a person or firm
+from outside: for a household survey perhaps age band, sex and district, for a
+credit register perhaps sector, region and size class. For each key value $k$ the
+population and sample frequencies are
+\begin{equation}\label{eq:freq}
+F_k = \sum_{i \in P} \ind{K_a(X_i) = k}, \qquad
+f_k = \sum_{i \in P} S_i\, \ind{K_a(X_i) = k},
+\end{equation}
+so that $0 \le f_k \le F_k$. A record is sample unique when $f_k = 1$ and population
+unique when $F_k = 1$.
+
+The institution does not publish $X_I$ itself. It applies a protection mechanism,
+which we write as a probability kernel $M_\theta$ indexed by a setting $\theta$, and
+publishes a release $Y_\theta$ drawn from $M_\theta(\cdot \mid X_I)$. The notation
+covers deterministic transformations, such as recoding or suppressing small cells,
+as the case in which the kernel puts all its mass on one output. A minimum cell
+count of five, a coarser age classification and a Laplace mechanism with
+$\varepsilon = 1$ are all settings in this sense, and nothing so far requires a
+setting to carry a formal guarantee.
+
+Everything that follows depends on the randomness in the release, because a
+disclosure risk is a probability over four sources at once: the sampling design,
+the mechanism, the error in the adversary's own information, and any randomness in
+the adversary's choice. An assessment that integrates over some of these and
+conditions on others must say which, since the same file can give risk figures an
+order of magnitude apart depending on that choice.
+
+\section{One experiment}
+
+Fix a target $t$ in the population. The adversary holds auxiliary information
+$Z_t$ about the target, observes the release, and applies a linkage rule
+$\delta_a$ that either names a released record as the target's or abstains.
+Correct identification is the event that the target is in the file and the rule
+names its record.
+
+\begin{definition}[Scenario-conditional risk]\label{def:risk}
+Given the background information $\mathcal{B}_a$ that scenario $a$ grants the
+adversary, the unconditional and membership-conditional risks for target $t$ are
+\begin{equation}\label{eq:tworisks}
+R^{\mathrm{unc}}_a(t,\theta) = \Prob\{S_t = 1,\ \delta_a(Z_t,Y_\theta) = t \mid \mathcal{B}_a\},
+\qquad
+R^{\mathrm{in}}_a(t,\theta) = \Prob\{\delta_a(Z_t,Y_\theta) = t \mid S_t = 1,\ \mathcal{B}_a\}.
+\end{equation}
+\end{definition}
+
+The two differ by the chance that the target is in the file at all. If a correct
+link is impossible when the target is absent,
+\begin{equation}\label{eq:factor}
+R^{\mathrm{unc}}_a(t,\theta) = \pi_t\, R^{\mathrm{in}}_a(t,\theta).
+\end{equation}
+This is the multiplication rule of probability and involves no independence
+assumption. It has practical weight because a sampling fraction is often applied
+or omitted without comment, and with a 5 per cent sample that silent choice moves
+the reported risk by a factor of twenty.
+
+\section{Where the reciprocal of the key frequency comes from}
+
+The most familiar disclosure measure assigns a record with key $k$ the risk
+$1/f_k$: if three released records share the target's key, the adversary has a one
+in three chance. The formula is usually presented as self-evident. It is in fact
+the answer to the experiment above under four assumptions, which are worth stating
+one by one.
+
+\begin{assumption}\label{as:key}
+The released key is unperturbed: applied to the release, the key map gives the
+same values as applied to the confidential sample.
+\end{assumption}
+\begin{assumption}\label{as:obs}
+The adversary observes the target's key without error.
+\end{assumption}
+\begin{assumption}\label{as:exch}
+All records that share the target's key are exchangeable in the adversary's
+information: nothing the adversary knows favours one of them over another.
+\end{assumption}
+\begin{assumption}\label{as:unif}
+The adversary chooses uniformly among the records compatible with what it knows.
+\end{assumption}
+
+\begin{proposition}[Reciprocal frequency]\label{prop:recip}
+Under Assumptions~\ref{as:key} to~\ref{as:unif}, for a target in the file whose key
+is $k$,
+\begin{equation}\label{eq:recip}
+\Prob\{\delta_a = t \mid S_t = 1,\ K_a(X_t) = k,\ f_k\} = \frac{1}{f_k}.
+\end{equation}
+\end{proposition}
+
+The result is old \citep{duncan1989,skinner2002}, and the value of restating it
+lies in the list of conditions. Assumption~\ref{as:exch} fails whenever the
+adversary holds a variable, correlated with something the release publishes, that
+distinguishes candidates within a key class. In financial and health data that is
+the normal case: a lender knows roughly how large its own loan to a firm is, and a
+neighbour knows roughly how old someone is. Assumption~\ref{as:obs} fails whenever
+the adversary's own source contains reporting error, which is also the normal case.
+When either fails, the right object is no longer a frequency but a posterior
+probability.
+
+At the Bank this is where the chair's phrase runs into trouble. The credit register publishes
+each loan's exposure beside its sector, region and size class. Pieter, a credit analyst at
+one of the reporting lenders, knows the size of every loan his bank has made, give or take a
+rounding. When he looks for one of his own borrowers in a class of ten, he does not choose at
+random. He chooses the record whose exposure matches his books, and Assumption~\ref{as:exch}
+no longer holds.
+
+\section{When the assumptions fail}
+
+Suppose the adversary's information and the released records are compared through
+a likelihood, in the sense of record linkage under error \citep{fellegi1969}. Let
+$L_{tj}$ be the likelihood of what the adversary observes under the hypothesis that
+released record $j$ belongs to target $t$, let $q_{tj}$ be the prior weight on that
+hypothesis, and let $j = 0$ stand for the hypothesis that the target is not in the
+file. Bayes' rule gives the posterior
+\begin{equation}\label{eq:post}
+p_{tj} = \frac{q_{tj}L_{tj}}{q_{t0}L_{t0} + \sum_{\ell \in I} q_{t\ell}L_{t\ell}},
+\end{equation}
+and an adversary that names the most probable candidate succeeds with probability
+\begin{equation}\label{eq:maxpost}
+R^{\mathrm{in}}_a(t,\theta) = \E\Big[\max_{j \in I} p_{tj} \ \Big|\ S_t = 1,\ \mathcal{B}_a\Big].
+\end{equation}
+When the compatible records have equal likelihood and the no-match prior is zero,
+\eqref{eq:post} and \eqref{eq:maxpost} reduce to the reciprocal frequency. In every
+other case they can lie above or below it.
+
+Two consequences follow, and both cut against common practice. First, measurement
+error cannot be assumed to reduce risk. It changes the likelihood ratios, and it
+may spread the posterior across candidates or concentrate it on one. In the
+simulation study of Part~V, adding reporting error to the key lowers the
+adversary's success from 0.466 to 0.381, while giving the adversary one noisy
+reading of a continuous variable brings it back to 0.464. The reciprocal-frequency
+figure was close to the truth in that case by cancellation, not by argument.
+
+Second, a release can satisfy a minimum cell count on its declared key and still
+expose individual records. If the release publishes a continuous variable, such as
+an exposure or an income, and the adversary holds a noisy reading of it, the
+posterior concentrates on the record whose value is nearest the reading, whatever
+the size of the key class.
+
+\section{$k$-anonymity is a threshold statement}
+
+The rule that every released key class should contain at least $k$ records,
+$k$-anonymity in the sense of \citet{sweeney2002}, is the most widely used
+protection criterion in this field. The experiment above shows exactly what it
+delivers.
+
+\begin{proposition}[$k$-anonymity as a decision rule]\label{prop:kanon}
+Under Assumptions~\ref{as:key} to~\ref{as:unif}, and for a tolerance
+$\tau \in (0,1]$, the largest prosecutor risk in the release is at most $\tau$ if
+and only if every occupied key class has at least $\lceil 1/\tau \rceil$ members:
+\begin{equation}\label{eq:kanon}
+\sup_{t \in I} \frac{1}{f_{K_a(X_t)}} \le \tau
+\iff \min_{k:\,f_k>0} f_k \ge \lceil 1/\tau \rceil .
+\end{equation}
+If Assumption~\ref{as:exch} fails, for instance because the release publishes a
+continuous variable of which the adversary holds a noisy reading, the implication
+from right to left fails: there are releases that are $k$-anonymous on the declared
+key in which some target's risk exceeds $1/k$.
+\end{proposition}
+
+Read this way, $k$-anonymity is a special case of the decision rule developed in
+Part~III. It is the case in which the risk model is exact exchangeable matching,
+the estimate carries no uncertainty, and the tolerance is the reciprocal of an
+integer. Each of these simplifications is a place where an institution can be
+wrong, and only the third is a policy choice. The failure in the second half of
+the proposition is not hypothetical. On a simulated register of 200,000 units with
+a 5 per cent sample, a release that is 10-anonymous on its declared key contains a
+record whose own re-identification probability is 0.74, with a one-sided 95 per
+cent lower bound of 0.64. Raising the minimum class size on that key does not
+establish a bound for the enriched attack, because the variable that separates the
+records is not part of the key.
+
+The refinements of $k$-anonymity follow the same pattern. The $\ell$-diversity
+criterion \citep{machanavajjhala2007} addresses the case in which all records in a
+key class share a sensitive value, and $t$-closeness \citep{li2007} limits how far
+the distribution of a sensitive value within a class may differ from its overall
+distribution. Both protect against attribute disclosure, which can occur without
+any record being identified. They change the risk model rather than the decision
+rule, and they cannot be read as interchangeable tolerances for correct linkage.
+
+Naledi ran Pieter's attack on the register before the next meeting. Against an adversary who
+reads exposure with small error, the minimum cell count that the committee had treated as a
+one in ten guarantee bounded nothing at all: Chapter~\ref{ch:credit} reports that no floor up
+to 300 brings his success below the committee's tolerance. The chair's phrase was true of a
+different adversary, one who knows only the key.
+
+\section{What a risk figure must carry}
+
+The argument of this chapter reduces to a requirement. A reported risk figure
+should specify its scenario: who the adversary is, what it knows, which targets it
+attacks, and which conditioning event the figure assumes, in particular whether the
+target is known to be in the file. Chapter~3 shows that three measures commonly
+reported under one label, all computed on the same simulated release, give 0.466,
+0.064 and 0.023. Each is correct for its own experiment, and only a declared
+scenario says which experiment the institution meant.
+
+\section{The answer}
+
+The question was what a disclosure risk figure measures and when the reciprocal of the key
+frequency answers it. A risk figure measures the probability that a declared adversary, with
+declared knowledge, names the right record in one defined experiment, and it means nothing
+until that experiment is stated. The reciprocal of the key frequency is the exact answer when
+the released key is unperturbed, the adversary observes it without error, nothing it knows
+distinguishes the records in a class, and it chooses among them at random. When the adversary
+holds a variable the release also publishes, or observes the key with error, the answer is a
+posterior probability that can lie well above or below $1/f_k$, and a minimum cell count on
+the key alone no longer bounds it. The chair's minutes should have read: ``no record carries a
+risk above one in ten against an adversary who knows only the key.''
+
+\begin{inpractice}
+For every risk figure in a release assessment, record the adversary's auxiliary
+variables and how precisely it observes them, whether the target is assumed to be
+in the file, and whether the release publishes any variable outside the key that the
+adversary might also know. If it does, a minimum cell count on the key alone does
+not bound the risk, and the assessment needs a simulated attack that uses that
+variable.
+
+\smallskip\noindent\textit{In the software.} The measures of this chapter are in
+\texttt{privacy\_risk.risk} (\texttt{prosecutor\_risk},
+\texttt{marketer\_sample\_risk}, \texttt{marketer\_unconditional\_risk}), and the
+posterior linkage of \eqref{eq:post} and \eqref{eq:maxpost} is in
+\texttt{privacy\_risk.linkage} (\texttt{posterior\_linkage},
+\texttt{maximum\_posterior\_success}, and \texttt{attack} for the simulated
+version).
+\end{inpractice}
+
+\section{Proofs}
+
+\begin{proof}[Proof of Proposition~\ref{prop:recip}]
+Condition on $S_t = 1$ and $K_a(X_t) = k$. By Assumption~\ref{as:key} every
+released record carries its confidential key, and by Assumption~\ref{as:obs} the
+adversary observes $k$. The compatible set is therefore
+$\{j \in I : K_a(X_j) = k\}$, which has $f_k$ members by \eqref{eq:freq} and
+contains $t$. By Assumption~\ref{as:exch} the adversary's information is invariant
+to permutations of that set, and by Assumption~\ref{as:unif} it selects each member
+with probability $1/f_k$. Exactly one member is the target, so the probability of
+a correct choice is $\sum_{j} f_k^{-1}\ind{j = t} = 1/f_k$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:kanon}]
+By Proposition~\ref{prop:recip}, the largest prosecutor risk in the release is
+$1/\min_{k:\,f_k>0} f_k$. It is at most $\tau$ if and only if
+$\min_k f_k \ge 1/\tau$, and since frequencies are integers this holds if and only
+if $\min_k f_k \ge \lceil 1/\tau \rceil$, which is $k$-anonymity with
+$k = \lceil 1/\tau \rceil$.
+
+For the failure claim, drop Assumption~\ref{as:exch}. Let the release publish a
+confidential variable $y$ beside the key, let a key class have exactly $k$ members
+with distinct values of $y$, and let the adversary observe
+$z_t = y_t + \sigma\xi$ with $\xi$ standard normal. Under the Gaussian likelihood
+the posterior \eqref{eq:post} is largest for the member whose $y$ is nearest $z_t$.
+Let $d > 0$ be the smallest gap between two values of $y$ in the class. The
+maximum-posterior rule is correct whenever $|\sigma\xi| < d/2$, an event whose
+probability tends to one as $\sigma \to 0$. Hence for all sufficiently small
+$\sigma$ the target's risk exceeds $1/k$, while the release is $k$-anonymous on the
+key for every $\sigma$.
+\end{proof}
