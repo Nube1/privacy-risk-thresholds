@@ -63,12 +63,14 @@ def run(cmd: list[str], cwd: Path, accept: tuple[int, ...] = (0,)) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    mode = ap.add_mutually_exclusive_group(required=True)
+    mode = ap.add_mutually_exclusive_group()
     mode.add_argument("--fast", action="store_true")
     mode.add_argument("--full", action="store_true")
     ap.add_argument("--only", default="", help="comma-separated stage names")
     ap.add_argument("--list", action="store_true")
     a = ap.parse_args()
+    if not (a.fast or a.full or a.list):
+        ap.error("choose --fast, --full or --list")
     work = ROOT / "build"
     if a.fast:
         work.mkdir(exist_ok=True)
