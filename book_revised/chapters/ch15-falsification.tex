@@ -140,6 +140,18 @@ unique, tends to 1 as $s \to 0$.
 \end{enumerate}
 \end{proposition}
 
+\begin{example}[One reading, two scales]\label{c15:ex-scales}
+The numbers are illustrative. A key class holds four released loans whose published log
+exposures are 0, 0.5, 1.0 and 1.6, and the target is the second loan. The adversary's
+reading of the target's log exposure is 0.65, and the true error standard deviation is
+0.3. With $s = 0.3$ the posterior over the four loans is 0.064, 0.592, 0.340 and 0.004,
+so the adversary names the second loan and states 0.59. With $s = 0.75$, the scale
+overstated by the factor of 2.5 used in the chapter's simulation, the posterior is 0.228,
+0.325, 0.298 and 0.149. The adversary names the same loan, because it is still the
+nearest, and states 0.33. Over many such attacks the two versions succeed equally often.
+Only the stated confidence differs, and only a calibration test reads it.
+\end{example}
+
 Part (i) says that the risk figure, which counts how often the named record is
 right, cannot reveal a wrong error scale. Parts (ii) and (iii) say where the
 evidence lies instead: in the posteriors, which are right only under the right
@@ -166,6 +178,23 @@ model cannot show the declared one wrong either.
 % source: configs/paper.json calibration_ece_limit 0.03; artifacts-paper/results.json validation.metrics (ece 0.0075, ece_misspecified 0.0487, check calibration_band_has_power true)
 The value of 0.03 was chosen after the wider band was found wanting, so it was not written down
 before the evidence was seen; its first prespecified use is the next run on fresh draws.
+
+\begin{example}[A calibration test by hand]\label{c15:ex-calib}
+The numbers are illustrative. Naledi runs 100 held-out attacks and sorts them by the
+posterior the model states for the record each one names. Forty attacks fall in the bin
+from 0 to 0.3, all with a stated posterior of 0.20, and 9 name the right record, a
+realised rate of 0.225. Forty fall in the bin from 0.3 to 0.6 with a posterior of 0.45,
+and 19 succeed, a rate of 0.475. Twenty fall above 0.6 with a posterior of 0.80, and 16
+succeed, a rate of 0.80. The three gaps are 0.025, 0.025 and 0, and their mean, 0.017,
+lies inside the band of 0.03. Now keep the outcomes and let a second model, which
+overstates the adversary's error, state posteriors of 0.15, 0.35 and 0.62 for the same
+attacks. Its gaps are 0.075, 0.125 and 0.18, with a mean of 0.127, and the band rejects
+it. The band has power against this error, so the check that the band rejects the
+misstated model also passes, and the validation report passes. Had Naledi set the band at
+0.15, the declared model would still have passed, but so would the wrong one, and the
+pipeline would have marked the band as having no power and failed the report.
+\end{example}
+
 
 Naledi's sheet for Tomás's request sets the band at 0.02 and records why: on the
 simulated population a correctly specified model sits well below it, and the
@@ -405,9 +434,21 @@ with probability one.
 
 Part (ii) is the $k$-anonymity finding in its plainest form. The model is correct
 for the adversary it describes and wrong for the one who attacks, and no scaling of
-its output closes the gap, because the gap depends on what the adversary holds and
-not on the model's own error. The only repair is a new model, which means a new
+its output closes the gap, because the gap depends on what the adversary holds and not on the model's own error. The only repair is a new model, which means a new
 declaration, new simulations and a new set of tests.
+
+\begin{example}[A margin that passes a wrong model]\label{c15:ex-margin}
+The numbers are illustrative. Take the chair's margin of a fifth, $c = 1.2$, and the
+tolerance of 0.12, and build the release of part (ii) with key classes of $k = 11$
+records, so that an adversary who holds only the key succeeds with probability
+$1/11 = 0.091$. Suppose 11,000 simulated attacks by that adversary give 1,000 successes.
+The exact one-sided 95 per cent bound is 0.0955, and the margin raises it to 0.115, still
+under the tolerance, so the record shows a pass with the margin applied. Now let each
+released loan also carry an exact exposure that no other loan shares. An adversary who
+knows the target's exposure finds it every time. Its risk is 1, more than eight times the
+tolerance, and nothing in the first adversary's attacks could have warned of it.
+\end{example}
+
 
 The pipeline encodes the rule. When a release-level test fails, the gate returns
 \texttt{INVALID} and the process exits with a non-zero status, so a failed

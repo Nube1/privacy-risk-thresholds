@@ -213,6 +213,19 @@ intersection--union test. If scenarios may be added later, for example because a
 reviewer proposes a stronger adversary, the plan reserves part of the error budget
 for them (Chapter~\ref{ch:monitoring}).
 
+\begin{example}[Sizing the plan for Tom\'as's programme]\label{c16:ex-size}
+With no successes, certifying a tolerance of 0.12 at $\alpha = 0.05$ takes 24 attacks,
+since $0.88^{24} = 0.047$ is the first power of 0.88 below 0.05. Naledi plans for far
+more, because she expects successes. The programme row of the long form ran 4,000 attacks
+on fresh targets with a confirmation rate of 0.101, that is 404 successes, and the exact
+one-sided bound on that count is 0.109, under the tolerance. Now suppose the reviewer may
+later propose a stronger adversary. If the plan holds 0.01 of the 0.05 in reserve for it,
+the declared scenarios run at 0.04 and their zero-success count rises from 24 to 26
+attacks, while the later scenario, run at 0.01, needs 37. The reserve costs two attacks
+when it is set aside at the start. Once the first outcome is in, it cannot be set aside at
+all, because the 0.05 has been spent.
+\end{example}
+
 \paragraph{Step 5. Measure, per release and pooled.} The analyst runs the declared
 attacks on the release as it would be published, on fresh targets, and computes the
 exact upper bound for each scenario. The pooled attack is then run over the
@@ -242,6 +255,22 @@ its first declaration stage, and the planning of Step~4 into its computation sta
 % source: paper/bis_ifc_full.tex sec:protocol (six stages); paper/apply_section.tex sec:apply-steps (seven steps)
 The seven-step version is the one an institution can staff, because each step has
 one output and one lead.
+
+\begin{example}[Five answers from two bounds]\label{c16:ex-five}
+The owner, dates and legal basis here are illustrative. Take the programme row of the
+record below: an upper bound of 0.109 at $\alpha = 0.05$, a tolerance of 0.12 signed by
+the chair, a horizon of six vintages, an expiry date of 31 March 2027 and an assessment
+dated 1 April 2026. With every element of the threshold filled and the model tests
+passed, the decision is a pass. Now change one input at a time. If the reviewer reports a
+failed calibration test, the same bound gives \texttt{INVALID}, because no accepted model
+stands behind it. If the assessment is dated 1 April 2027, the decision is a fail, with
+the reason that the assessment has expired. If the threshold names the owner and the
+tolerance but leaves out the legal basis, the protected parties, the access route and the
+horizon, the strict check returns \texttt{INCOMPLETE} and lists those four. And the
+size-class row, with a bound of 0.184 at the same floor, fails on the bound. Three of the
+five answers have nothing to do with the size of the number.
+\end{example}
+
 
 When Grace audited the record for Tomás's third request, she checked the steps
 against their dates. The inventory listed the three extracts and the quarterly

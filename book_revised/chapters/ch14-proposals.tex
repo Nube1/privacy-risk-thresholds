@@ -285,6 +285,23 @@ Proposition~\ref{c14:prop-labels} states it. A proposal network trained on measu
 counts learns the attack's success frequency; trained on anything else, it learns that
 thing.
 
+\begin{example}[Three proposals at the intake]\label{c14:ex-intake}
+Naledi tried the intake with three answers. The inputs are illustrative; the checks are
+the validator's own. A schema declares four features with bounds: geography width from 1
+to 100, education width from 1 to 8, minimum cell from 1 to 10, and reading standard
+deviation from 0.1 to 2. The model is asked which neighbours could link records, and
+returns three answers on three calls. The first proposes a neighbour who knows the area,
+the schooling and the income roughly, with features $(1, 4, 1, 0.25)$, and adds a field
+\texttt{successes} set to 0. The intake refuses it, because each object must hold exactly
+an identifier, a description and the features, and a count is not one of them. The
+second drops the count but sets the reading standard deviation to 0.05, below the
+declared floor of 0.1; the validator refuses it as out of range. The third is the first
+without the count. It is staged with the status ``unverified LLM proposal'', the model
+name the caller supplied and the SHA-256 hash of the prompt. It has not yet been
+reviewed, and no attack has been run on it.
+\end{example}
+
+
 \begin{proposition}[Only measured counts teach the risk]\label{c14:prop-labels}
 For a feature vector $x$ and a trial count $B$ fixed before outcomes, let the training
 label be a count $K$ out of $B$ with $\E[K \mid x, B] = B\pi(x)$, and let the
@@ -301,10 +318,27 @@ $\widetilde K$ with $\E[\widetilde K \mid x,B] = B\widetilde\pi(x)$, the minimis
 becomes $\widetilde\pi(x)$, whatever the attack's true success probability.
 \end{proposition}
 
+
+\begin{example}[A generated label pulls the model away]\label{c14:ex-label}
+The inputs are illustrative. At some setting a declared attack succeeds with probability
+$\pi = 0.2$. A model trained on measured counts has an expected loss per trial of 0.500
+at the prediction 0.2. Suppose a language model's output had been accepted as labels,
+with counts that imply $\widetilde\pi = 0.05$. A model that learns those labels predicts
+0.05, and against the true attack its expected loss per trial is 0.640. The gap, 0.140,
+is the Kullback--Leibler divergence of \eqref{c14:eq-kl} with $B = B_\bullet$, and the
+model now reports a quarter of the true risk. Nothing in its fit to the generated labels
+warns of this, because it fits them well.
+\end{example}
+
 A prompt that asserts a small risk is therefore no evidence of a small risk, however
 plausible its prose. The same identity explains the order of the stages: the network
 can only be as right about risk as the measured attacks it is trained on, and the
 final audit, which the network never sees, is what checks it.
+
+Naledi walked the innovation group through this path with their draft tool open. It let
+the model return a success count with each scenario, and the group had expected those
+counts to save attack runs. Under the rules above the validator refuses them, and the
+group agreed to remove the field before the tool went any further.
 
 \subsection{The provenance ledger}
 
@@ -666,6 +700,20 @@ marked confirmed, the injection theoretical, and the scripting flaw confirmed bu
 granting nothing. The tolerance is 0.2, the cycle's budget share 0.05, split equally
 over the five audited rows, and each row gets 600 fresh trials.
 % source: paper/deployment/main.tex (Worked example, Table tab:php); docs/DEPLOYMENT_AND_PENTEST_2026_10_23.md
+
+
+\begin{example}[From findings to a bound]\label{c14:ex-findings}
+Start from the release as published, with view $(100, 8, 10, 2)$: geography width 100,
+education width 8, floor 10, reading standard deviation 2. The bypass grants read
+suppressed cells, which sets the floor to 1, so its view is $(100, 8, 1, 2)$. The leak
+grants sharpen the reading, which halves the standard deviation, so its view is
+$(100, 8, 10, 1)$. Pooled, each component takes the smaller of its values, giving
+$(100, 8, 1, 1)$, in whichever order the two are listed. The scripting flaw grants
+nothing and leaves the published view. The budget of 0.05 split over five rows gives each
+a level of 0.01. The pooled row named 257 of 600 targets, a rate of 0.428, and its exact
+upper bound at level 0.01 is 0.477, above the tolerance of 0.2. The bypass alone, 222 of
+600, gives 0.417, and the leak alone, 87 of 600, gives 0.182.
+\end{example}
 
 \begin{table}[ht]
 \centering

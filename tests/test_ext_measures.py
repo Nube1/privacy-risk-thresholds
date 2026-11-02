@@ -129,3 +129,75 @@ def test_chapter12_examples():
     from privacy_risk.uncertainty import binomial_upper as u
     assert round(u(359, 1500), 3) == 0.258 and round(u(359, 1500, .05 / 72), 3) == 0.276
     assert round(math.exp(-10 * .29), 3) == 0.055 and round(math.exp(-2 * .29), 2) == 0.56
+
+
+def test_chapter13_examples():
+    import math
+    from scipy.special import iv
+    from scipy.stats import norm
+    ppv = lambda p, s, q: p * s / (p * s + (1 - p) * (1 - q))
+    assert round(ppv(.0243, .225, .9885), 3) == 0.328 and round(ppv(.0243, .225, .989), 3) == 0.337
+    assert round(54.675 / (54.675 + 9757 * .0115), 3) == 0.328
+    post = lambda lam: lam / iv(1, 2 * lam)
+    assert [round(post(x), 3) for x in (.1, 1.35, 3)] == [0.995, 0.448, 0.049]
+    assert round(2 * norm.cdf(.1 / 1.2) - 1, 3) == 0.066
+    assert 2 * norm.cdf(5) - 1 > 0.9999994
+
+
+def test_chapter14_examples():
+    import json, math
+    from privacy_risk.proposals import validate_proposals
+    from privacy_risk.uncertainty import binomial_upper as u
+    schema = {"g": (int, 1, 100), "e": (int, 1, 8), "c": (int, 1, 10), "sd": (float, 0.1, 2.0)}
+
+    def batch(sd, extra=None):
+        d = {"id": "p", "description": "neighbour", "features": {"g": 1, "e": 4, "c": 1, "sd": sd}}
+        d.update(extra or {})
+        return json.dumps([d]).encode()
+
+    for raw in (batch(.25, {"successes": 0}), batch(.05)):
+        try:
+            validate_proposals(raw, schema)
+            raise AssertionError("should have been refused")
+        except ValueError:
+            pass
+    assert len(validate_proposals(batch(.25), schema)) == 1
+    H = lambda pi, p: -(pi * math.log(p) + (1 - pi) * math.log(1 - p))
+    assert (round(H(.2, .2), 3), round(H(.2, .05), 3), round(H(.2, .05) - H(.2, .2), 3)) == (0.5, 0.64, 0.14)
+    assert [round(u(k, 600, .01), 3) for k in (257, 222, 87)] == [0.477, 0.417, 0.182]
+    assert round(u(60, 600, .01), 3) == 0.132
+
+
+def test_chapter15_examples():
+    import numpy as np
+    from scipy.stats import norm
+    from privacy_risk.uncertainty import binomial_upper as u
+    x = np.array([0, .5, 1, 1.6])
+    for s, want in ((.3, [.064, .592, .340, .004]), (.75, [.228, .325, .298, .149])):
+        L = norm.pdf(.65, x, s)
+        assert list((L / L.sum()).round(3)) == want
+    gaps = lambda stated: [abs(a - b) for a, b in zip(stated, (9 / 40, 19 / 40, 16 / 20))]
+    assert round(float(np.mean(gaps((.2, .45, .8)))), 3) == 0.017
+    assert round(float(np.mean(gaps((.15, .35, .62)))), 3) == 0.127
+    b = u(1000, 11000)
+    assert round(b, 4) == 0.0955 and round(1.2 * b, 3) == 0.115 and 1.2 * b < 0.12
+
+
+def test_chapter16_17_examples():
+    import math
+    from privacy_risk.governance import GovernanceThreshold, decide, missing_elements
+    from privacy_risk.uncertainty import binomial_upper as u, certification_replicates as c
+    assert (c(.12), c(.12, .04), c(.12, .01)) == (24, 26, 37)
+    assert round(.88 ** 24, 3) == 0.047 and round(u(404, 4000), 3) == 0.109
+    full = GovernanceThreshold(.12, "Chief Risk Officer", "2027-03-31", "pooled", "re-identification", .05,
+                               "legal basis", "borrowers", "scientific-use file", "six vintages")
+    assert decide(.109, full, True, "2026-04-01", strict=True)["status"] == "PASS"
+    assert decide(.109, full, False, "2026-04-01", strict=True)["status"] == "INVALID"
+    d = decide(.109, full, True, "2027-04-01", strict=True)
+    assert d["status"] == "FAIL" and "expired" in d["reason"]
+    bare = GovernanceThreshold(.12, "Chief Risk Officer", "2027-03-31", "pooled", "re-identification", .05)
+    d = decide(.109, bare, True, "2026-04-01", strict=True)
+    assert d["status"] == "INCOMPLETE" and missing_elements(bare) == ["legal_basis", "protected_parties", "access_route", "horizon"]
+    assert decide(.109, bare, True, "2026-04-01")["status"] == "PASS"
+    assert decide(.184, full, True, "2026-04-01", strict=True)["status"] == "FAIL"
+    assert round(1 - .95 * .96 * .97, 3) == 0.115

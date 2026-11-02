@@ -154,8 +154,9 @@ the sensitivity $s$ of the rule and its specificity $q$:
 \begin{equation}\label{c13:eq-ppv}
 \Prob(\text{true} \mid \text{alleged}) = \frac{ps}{ps + (1-p)(1-q)} .
 \end{equation}
-On the register $p = 0.0243$, $s = 0.225$ and $q = 0.989$, and
-\eqref{c13:eq-ppv} returns 0.328, the realised share of correct allegations.
+On the register $p = 0.0243$, $s = 0.225$ and $q = 0.9885$, which is 0.989 to three
+places, and \eqref{c13:eq-ppv} returns 0.328, the realised share of correct allegations.
+The rounded 0.989 would return 0.337, so the unrounded specificity is the one to carry.
 % source: paper/bis_ifc_full.tex l.1914-1920; paper/generated/numbers.tex (runcreditppv 0.328)
 A specificity of 0.989 sounds protective and is not, because the prevalence is low.
 An allegation right a third of the time is 1.4 times the success rate of always
@@ -164,6 +165,17 @@ two borrowers in three. The floor barely moves it: 0.328 at $k_{\min}=1$ and 0.3
 at $k_{\min}=20$.
 % source: paper/generated/numbers.tex (runcreditppvlift 1.4, runcreditppvstrict 0.313)
 The lever that governs identification does not govern relationship disclosure.
+
+\begin{example}[Ten thousand pairs]\label{c13:ex-pairs}
+Count instead of multiplying. Among 10,000 possible borrower--lender pairs, 243 are real
+($p = 0.0243$). The rule names the right lender for 22.5 per cent of them, about 54.7
+pairs. Of the 9,757 pairs that are not real, it wrongly names 1.15 per cent ($1 - q$),
+about 112.2 pairs. So the rule makes about 166.9 allegations, of which 54.7 are true:
+$54.7/166.9 = 0.328$. Two allegations in three are false although the rule is wrong about
+only one false pair in 87, because false pairs outnumber real ones forty to one. Naledi
+used this count when the chair asked why a specificity of 0.99 was not reassuring.
+\end{example}
+
 
 \paragraph{Status can be disclosed without identification.} A key class whose members
 all share an arrears status discloses that status for every member, whatever the
@@ -210,7 +222,19 @@ strictly decreasing in $\lambda$ and tends to one as $\lambda \to 0$.
 
 The proposition turns an intuition into a number: a unit change in a quiet cell
 almost certainly reveals one loan, and in a busy cell it may be offsetting moves.
+\begin{example}[A quiet cell and a busy one]\label{c13:ex-cells}
+The rates are illustrative. In a cell of large firms in a small region, a loan arrives
+or leaves about once in ten months, so $\lambda = 0.1$. Equation~\eqref{c13:eq-diff}
+gives $0.1/I_1(0.2) = 0.995$: when the published count moves by one, the change in the
+published total is one loan's exposure with near certainty. In a cell of micro firms with
+$\lambda = 1.35$, the pooled rate on the register, the posterior is 0.448, and a unit
+change is more likely than not to hide offsetting moves. At $\lambda = 3$ it is 0.049.
+Naledi's monthly series carries both kinds of cell, and the quiet ones are those of the
+large borrowers Tom\'as wants to study.
+\end{example}
+
 Across consecutive months 36.1 per cent of comparable cell pairs show a unit change
+
 at a count floor $c_{\min}=1$, and 39.0 per cent at $c_{\min}=10$, because a higher
 count floor keeps only the busier cells, where counts move more.
 % source: paper/bis_ifc_full.tex l.1975-1979
@@ -498,6 +522,21 @@ the insider's success at $k_{\min}=1$ halves, to 0.388. The outside adversaries,
 whose readings are already coarse, barely notice the rounding: their floors are 1,
 50 and 150.
 % source: paper/bis_ifc_full.tex l.2297-2302; paper/generated/table_robustness.tex
+
+\begin{example}[Pieter's reading of one loan]\label{c13:ex-pieter}
+The inputs are illustrative. A cell holds four loans with log exposures 11.6, 12.0, 12.1
+and 12.9, and the target is the loan at 12.0. The nearest other loan is 0.1 away, so
+$g = 0.1$. For an outside adversary with $\sigma = 0.6$, part 1 of
+Proposition~\ref{c13:prop-insider} guarantees only $2\Phi(0.1/1.2) - 1 = 0.066$; its
+reading cannot tell 12.0 from 12.1. For Pieter, with $\sigma = 0.01$, the guarantee is
+$2\Phi(5) - 1$, which is 1 to six decimal places, and adding a hundred loans to the cell
+leaves that guarantee where it is as long as none lands closer than 0.1 to the target.
+Now publish exposure to one significant figure. The four amounts, about 109,000, 163,000,
+180,000 and 400,000, become 100,000, 200,000, 200,000 and 400,000. The target ties with
+one other loan, so $r = 2$, and part 2 caps Pieter's success at one half however precise
+his reading.
+\end{example}
+
 
 Pieter is a credit analyst at one of the Bank's reporting lenders. He knows, to the
 euro, the exposure of every loan his bank has reported, and the months in which each

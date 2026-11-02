@@ -15,17 +15,45 @@ class GovernanceThreshold:
     adversary: str
     harm_class: str
     alpha: float
+    legal_basis: str = ""
+    protected_parties: str = ""
+    access_route: str = ""
+    horizon: str = ""
+
+
+# Elements a record must fill before a number may be read as a decision (Chapters 7 and 16).
+REQUIRED_ELEMENTS = ("tolerance", "owner", "expiry_date", "adversary", "harm_class", "alpha",
+                     "legal_basis", "protected_parties", "access_route", "horizon")
+
+
+def missing_elements(threshold: GovernanceThreshold) -> list[str]:
+    """Names of required elements that are empty. A blank string or None counts as empty."""
+    out = []
+    for name in REQUIRED_ELEMENTS:
+        v = getattr(threshold, name)
+        if v is None or (isinstance(v, str) and not v.strip()):
+            out.append(name)
+    return out
 
 
 def decide(upper_risk: float, threshold: GovernanceThreshold,
-           validation_passed: bool, assessment_date: str | None = None) -> dict:
+           validation_passed: bool, assessment_date: str | None = None,
+           strict: bool = False) -> dict:
+    """PASS, FAIL, INVALID or, under ``strict``, INCOMPLETE.
+
+    INCOMPLETE is returned first: a number with unnamed legal basis, protected parties,
+    access route or horizon is not yet a decision, whatever its size.
+    """
     assessed = (
         date.fromisoformat(assessment_date)
         if assessment_date
         else datetime.now(tz=timezone.utc).date()
     )
     expiry = date.fromisoformat(threshold.expiry_date)
-    if not validation_passed:
+    missing = missing_elements(threshold) if strict else []
+    if missing:
+        status, reason = "INCOMPLETE", "unfilled elements: " + ", ".join(missing)
+    elif not validation_passed:
         status, reason = "INVALID", "prespecified validation failed"
     elif assessed >= expiry:
         status, reason = "FAIL", "assessment expired"

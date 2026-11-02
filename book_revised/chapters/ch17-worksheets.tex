@@ -28,6 +28,21 @@ the one most often left empty in practice, and it is the one
 Proposition~\ref{prop:nopool} says cannot be left empty when records or cells persist
 across vintages.
 
+\begin{example}[Why the pooled column cannot be left empty]\label{c17:ex-pooled}
+The numbers are illustrative. A department answers an ad hoc request whose own
+identification risk is 0.03. Two earlier publications from the same register carry risks
+of 0.05 and 0.04 for the same targets. Assessed alone, each is far below a tolerance of
+0.12. Pooled, the three marginal risks only bound the chance that at least one of the
+three attacks succeeds: it lies between 0.05 and 0.12, and if the attacks succeed
+independently it is 0.115. The programme already stands at the tolerance by this count.
+An adversary who intersects the candidate sets of the three products can do better still,
+because Proposition~\ref{prop:nopool} says no function of the marginal risks bounds the
+pooled attack, and on the simulated population such an adversary beat the union bound by
+a factor of 2.8 (Chapter~\ref{ch:falsification}). A worksheet that leaves the pooled
+column empty records the first number of this example and none of the others.
+\end{example}
+
+
 \begin{table}[ht]
 \centering
 \caption{Starting declarations for six release types common in central banks. The
@@ -246,6 +261,96 @@ failed \\
 \noindent Re-assess when the horizon is reached, a new product is drawn from the
 register, a new public source could serve as auxiliary information, the mechanism
 changes, or the record expires.
+
+\section{The three worksheets for one request}\label{c17:sec-filled}
+
+\begin{example}[The three worksheets for Tom\'as's request]\label{c17:ex-tomas}
+The register is synthetic. The owner, the dates, the legal basis as applied here and the
+content of the public monthly series are illustrative; every risk figure comes from the
+long form's decision record.
+
+\medskip\noindent\textbf{Worksheet 1, the inventory.} Naledi listed the three products he
+asked for and nothing else, then found that the inventory would not stop there: the
+Bank's supervisory tables draw on the same register, and the first draft of this sheet
+had to grow. The rows for Tom\'as's products read as follows.
+
+\begin{center}\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.2cm}>{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.9cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{1.9cm}@{}}
+\toprule
+Product & Frequency & Population & Variables published & Link across vintages & Access route \\
+\midrule
+Loan-level research file & Monthly, six vintages & Loans to firms; 27,167 in the first vintage & Sector, region, size class, exposure, lender, arrears status & Key and exact exposure relink every loan from one vintage to the next & Scientific-use file, as requested \\
+Lending by sector and region & Monthly & The same loans, as 814 cells & Total exposure and number of contributors per cell & Cells persist; consecutive months can be differenced & Published \\
+Public monthly series & Monthly & All reported credit & National totals by size class (illustrative) & Totals persist & Public \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Source register: the credit register. Horizon: $m = 6$ vintages. Data owner:
+the register's business area.
+
+\medskip\noindent\textbf{Worksheet 2, one scenario sheet.} Of the sheets she wrote, the one that decided the file was the pooled outside researcher who knows the loan's history.
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}p{9.2cm}@{}}
+\toprule
+Item & Entry \\
+\midrule
+Scenario name and products held & Outside researcher, pooled; holds all three products \\
+Adversary & A researcher outside the Bank who wants to name a large firm's loans \\
+Auxiliary information, with its error & Sector, region and size class from public filings; a reading of the loan's exposure with a standard deviation of 0.6 on the log scale, in each vintage the loan is live \\
+Target set & Released loans (prosecutor) \\
+Success event & Names the target's loan \\
+Harm class & Identification \\
+Single or pooled & Pooled over $m = 6$ vintages \\
+Knows the vintages in which the target is live & Yes: a firm's filings say when a facility was drawn and repaid \\
+Stronger adversary for the stress test & Reading standard deviation 0.3, which moves the median programme floor from 150 to 300 over twenty register draws \\
+Declared by, and date & Naledi, dated before the tolerance was signed \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{Worksheet 3, the decision record.} The rows share a legal basis (Council
+Regulation (EC) No 2533/98, Article 8, given for illustration), the protected parties
+(borrowers, reporting agents and the natural persons behind borrowers), the access route
+asked for (a scientific-use file) and an error level of $\alpha = 0.05$. Each bound is the
+exact one-sided 95 per cent bound from $B$ attacks.
+
+\begin{center}\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{0.9cm}>{\raggedright\arraybackslash}p{1.0cm}>{\raggedright\arraybackslash}p{3.3cm}>{\raggedright\arraybackslash}p{1.2cm}>{\raggedright\arraybackslash}p{1.6cm}>{\raggedright\arraybackslash}p{2.3cm}@{}}
+\toprule
+Scenario & $\tau$ & $B$ & Upper bound or measure & Model tests & Decision & Remedy or note \\
+\midrule
+First vintage alone, one reading & 0.12 & 4,000 & 54 successes at $k_{\min} = 150$; bound 0.017 & Passed & Pass & This row alone needs no floor \\
+Programme of six, history known & 0.12 & 4,000 & 404 successes at $k_{\min} = 150$; bound 0.109 & Passed & Pass on risk & Keeps 20\% of loans, 4\% of exposure; owner decides if worth releasing \\
+Every size class, largest firms drawn on purpose & 0.12 & Not stated & Worst class bound 0.184 at $k_{\min} = 150$; no floor up to 200 passes & Passed & Fail & Secure environment or aggregates \\
+Insider at a reporting lender & Not set & --- & Success 0.772 at $k_{\min} = 1$, 0.416 at $k_{\min} = 300$ & --- & Not set & Govern by access, not by the floor \\
+Contribution from totals (sector and region table) & --- & Census & 5.9\% of 814 cells recoverable by subtraction & --- & Rule-based & Three-contributor rule \\
+Differencing of consecutive months & Not set & Census & Unit change is a single move in 65\% of cases at $c_{\min} = 1$, 56\% at $c_{\min} = 10$ & --- & Not set & $c_{\min} = 10$ applied \\
+Public series pooled with the table & Not set & --- & Not yet assessed & --- & Not set & Open item, recorded as such \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent Release owner: the chair. Signed: on the date of the committee meeting. Expiry:
+one year after the assessment, or earlier on any trigger listed in Worksheet~3.
+
+The arithmetic behind the first two rows can be checked by hand. A confirmation rate of
+0.0135 over 4,000 attacks is 54 successes, whose exact bound is 0.017, and a rate of
+0.101 is 404 successes, whose bound is 0.109. Applied to the programme row, the decision
+rule of Chapter~\ref{ch:protocol} returns a pass, and applied to the size-class row it
+returns a fail. The record as a whole therefore fails for the file as requested, and the
+chair chose the remedy of the third row: Tom\'as works with the loan-level file inside
+the Bank's secure environment \citep{desai2016}, and what leaves the building is
+aggregate.
+\end{example}
+
+The last row of the record is the one Grace asked about. Nobody had assessed the public
+series together with the sector and region table, and the sheet said so in a row of its
+own. She counted that as a finding in the Bank's favour: an empty cell with a reason can
+be audited, and a missing row cannot.
 
 \section{Checklist before release}
 
