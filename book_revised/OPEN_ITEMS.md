@@ -30,3 +30,9 @@ Each needs the stored run or the paper source, and none is a book-source change.
   in the draft do not exist in the repository; hard-coded cross-references in Chapters 1 to 17; the
   overfull and underfull box warnings; Chapters 1 to 17 have not been re-checked against the draft's
   revisions chapter by chapter.
+
+## Status against the second review (attachment of 2 November 2026)
+
+Closed in code and text: boxed synthetic-register warning in Chapter 13 and a repeated one-line caution in Chapters 1, 5, 6, 7, 8, 16, 18, 19; reading-precision procedure, error-budget procedure, composition-gap decision tree, defence-of-tolerance record, test-repair procedure and the ethics questions (Appendix B, `procedures.py`, tests); uniqueness-probability transport test in `validation.py` and `pipeline.py` (limit 0.30, set after the errors were seen, so not yet prespecified); governance record holds all nine elements (ten fields) with `strict` mode; Table 16.2 first-row note; Table 13.1 noise note; Chapter 15 monotonicity standard errors and calibration-band note; Appendix A gap-to-claims table.
+
+Not done, and why: the six-versus-nine wording in Chapters 7 and 16 is the author's decision; splitting Chapter 14, shortening Chapter 20, merging Chapters 21 and 22, moving the claim ledger to Chapter 1 and the sensitivity analysis of the synthetic parameters are structural choices for the author; the Appendix B precision table uses the repository's own attack, so its floors differ from Chapter 13's by design; the remedy-tree test inputs are illustrative because no remedy has been re-simulated; bibliography duplicates (European Parliament and Council 2016; NIST 2024a,b,c citation style; the Yang et al. 2025 author list) and page references still need a check against the author's source; the literature-review appendix suggested by the review is not written.

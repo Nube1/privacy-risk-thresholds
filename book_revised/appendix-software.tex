@@ -482,14 +482,15 @@ each number is checked against the stored run, but several affect what the code 
 be trusted to do on its own, and an institution that adopts the code should close
 them.
 
-\paragraph{The governance record is thinner than the threshold.}
-\texttt{governance.GovernanceThreshold} records six of the nine elements of the
-threshold: tolerance, owner, expiry date, adversary, harm class and error level. The
-legal basis with the protected parties, the access route and the programme horizon are
-missing, so the record the code writes is thinner than the one
-Chapter~\ref{ch:thresholds} describes and Table~\ref{c16:tab-record} shows. \texttt{decide}
-also does not check that the bound it receives was computed at the threshold's error
-level.
+\paragraph{The governance record held six of the nine elements; it now holds all of them.}
+\texttt{governance.GovernanceThreshold} first recorded tolerance, owner, expiry date,
+adversary, harm class and error level. It now also carries the legal basis, the protected
+parties, the access route and the programme horizon, which are the remaining three
+elements stored as four fields. Called with \texttt{strict=True}, \texttt{decide} returns
+INCOMPLETE, before any other status, when one of them is blank, because a number with no
+named legal basis is not yet a decision. The default stays lenient so that earlier records
+still load. \texttt{decide} still does not check that the bound it receives was computed
+at the threshold's error level.
 
 \paragraph{One tolerance for the programme.} Validation and the gate now judge the pooled
 bound against one declared value, \texttt{programme.\allowbreak{}pooled\_\allowbreak{}tolerance}
@@ -505,8 +506,9 @@ pipeline also requires the band to reject that misspecified model before the cal
 test counts as valid (check \texttt{calibration\_\allowbreak{}band\_\allowbreak{}has\_\allowbreak{}power}),
 which test configurations can switch off with \texttt{require\_\allowbreak{}calibration\_\allowbreak{}power}. The
 frequency test checks the mean population cell size, which the fitted law recovers to
-0.055 cells, and not the uniqueness probability that the journalist measure uses, whose
-error reaches 25 per cent. % source: configs/paper.json; artifacts-paper/results.json validation; paper/generated/numbers.tex runjournalisterrorhigh
+0.055 cells. A second check now compares the modelled journalist uniqueness probability
+with its truth, whose relative error reaches 25 per cent on the paper's register, against a
+limit of 0.30 that was set after the errors were seen. % source: configs/paper.json; artifacts-paper/results.json validation; paper/generated/numbers.tex runjournalisterrorhigh
 The composition and temporal tests are recorded beside the validity flag and in the
 expiry check, as the long form intends.
 
@@ -557,3 +559,45 @@ the work to close it is to fill those fields from a signed form and test the str
 the record. The value-curve fit returns no standard errors, which limits the implied tolerance
 of Chapter~\ref{ch:tolerance}; the work is to return the covariance and bootstrap over the
 frontier points.
+
+\section{Which gap touches which claim}\label{app:gapclaims}
+
+Table~\ref{app:tab-gaps} sets each known gap against the claims it can affect and the work
+that would close it. A reader who wants to rely on one claim need read only its row.
+
+\begin{table}[t]
+\centering
+\caption{Gaps, the claims they touch, and the work that closes them.}\label{app:tab-gaps}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{3.0cm}>{\raggedright\arraybackslash}p{4.4cm}>{\raggedright\arraybackslash}p{4.6cm}@{}}
+\toprule
+Gap & Claims it affects & Work to close it \\
+\midrule
+Synthetic register with chosen parameters & Every floor (75, 150, none) in Chapters 1, 5 to 8,
+13, 16, 18, 19 & Rerun the selection on the institution's own register \\
+\addlinespace
+Reading precision not measured & Floors in Chapter 13 and the insider result &
+Appendix~\ref{app:b-precision}, then the sources the institution holds \\
+\addlinespace
+Frequency test had checked the mean cell size & The validity flag for the journalist measure &
+Closed in code; limit of 0.30 set after the errors were seen, so first valid use is the next run \\
+\addlinespace
+Calibration band chosen after the wider band failed & Validity of the calibration test &
+A run on fresh draws with the band fixed beforehand \\
+\addlinespace
+Governance record held six elements & Completeness of the decision record &
+Closed in code, with \texttt{strict} mode; the book's six-versus-nine wording is the author's \\
+\addlinespace
+Registry service specified, not built & Claim that retries cannot silently spend the budget &
+A service with authenticated writes and a stored reservation time \\
+\addlinespace
+Adapter for a real register not written & Every transfer claim in Chapter 23 &
+An institution's adapter that emits only aggregates \\
+\addlinespace
+Composition gap measured only on synthetic and Census data & The ratio of 1.57 to 2.05 and 1.86 &
+Measure the ratio on the institution's own programme \\
+\bottomrule
+\end{tabular}
+\end{table}
+

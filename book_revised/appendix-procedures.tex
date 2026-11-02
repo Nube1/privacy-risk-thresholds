@@ -1,0 +1,171 @@
+\chapter{Procedures the chapters call for}\label{app:procedures}
+
+Several chapters say that an input matters and stop short of saying how to set it. This
+appendix gives the procedure for each: arguing for a reading precision, dividing the error
+budget, choosing a remedy when programme risk exceeds the tolerance, defending a tolerance
+to an authority, repairing a failed test, and weighing who bears the harm. The arithmetic is
+in \texttt{privacy\_risk.procedures} and \texttt{privacy\_risk.validation}, with tests in
+\texttt{tests/test\_ext\_procedures.py}. The procedures organise an institution's judgement.
+They do not supply the inputs that only the institution holds.
+
+\section{Arguing for a reading precision}\label{app:b-precision}
+
+The adversary reads a continuous variable, here log exposure, with an error of standard
+deviation $s$. Chapter~\ref{ch:credit} declares $s = 0.6$ and reports floors at 0.3 and 1.0.
+The institution has to say why its own value is not very different.
+
+\begin{enumerate}
+\item \textbf{List the sources an outsider can hold.} Commercial databases, public filings,
+the outsider's own transactions with the borrower, and published accounts are the usual
+ones. Name each one and who can buy or read it.
+\item \textbf{Bound the error of each source.} A figure rounded to the nearest $h$ carries a
+rounding error of standard deviation $h/\sqrt{12}$, and on the log scale that is divided by
+the level. Exposure rounded to the nearest 1,000 on a loan of 50,000 gives
+$1000/\sqrt{12}/50000 = 0.0058$. A figure that is stale, estimated or modelled needs an
+error taken from a comparison with the institution's own records, not from the source's
+description of itself.
+\item \textbf{Combine sources only if their errors are independent.} Independent unbiased
+readings combine to a standard deviation of $\bigl(\sum_k s_k^{-2}\bigr)^{-1/2}$, which is
+below the best single source: two readings of 0.6 give $0.6/\sqrt{2} = 0.424$, and a source
+of 0.3 joined by one of 1.0 gives 0.287. Sources that copy one another add nothing, so the
+institution should say what it knows about the lineage of each.
+\item \textbf{Declare the smallest value the evidence allows, then report the floors across a
+range.} The decision uses the declared precision. The record also shows the floor at a
+coarser and a finer value, so that a reader can see how far the answer depends on the
+argument.
+\end{enumerate}
+
+Table~\ref{app:tab-prec} shows step four on the repository's synthetic register, with the
+fixed-sequence procedure of Chapter~\ref{ch:selection} over the floors 150, 75, 50, 20, 10, 5
+and 1, a tolerance of 0.12, $\alpha = 0.05$ and 1,500 attacks per floor. The attack is the
+repository's single-release linkage on the borrower key, which is not the attack that
+Chapter~\ref{ch:credit} uses to select its floors, so these floors do not reproduce that
+chapter's and are not meant to. What the table shows is the shape of the dependence.
+
+\begin{table}[t]
+\centering
+\caption{Exact upper bounds at each floor and the floor the fixed sequence selects, by
+reading precision. Synthetic register of 32,581 loans; 1,500 attacks per cell; seed from
+\texttt{configs/paper.json}. A dash means the sequence had stopped.}\label{app:tab-prec}
+\small
+\begin{tabular}{@{}lrrrrrrrl@{}}
+\toprule
+$s$ & 150 & 75 & 50 & 20 & 10 & 5 & 1 & Selected \\
+\midrule
+0.3 & 0.035 & 0.052 & 0.062 & 0.107 & 0.138 & --- & --- & 20 \\
+0.6 & 0.024 & 0.031 & 0.046 & 0.067 & 0.086 & 0.088 & 0.088 & none \\
+1.0 & 0.010 & 0.022 & 0.029 & 0.039 & 0.055 & 0.065 & 0.070 & none \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A sharper adversary needs a floor of 20 where a coarser one needs none, so the precision is
+a decision input. An institution that cannot argue for 0.6 over 0.3 should adopt the floor
+that 0.3 requires.
+
+\section{Setting the error budget}\label{app:b-budget}
+
+Chapter~\ref{ch:monitoring} gives two rules: the cost rule $w_i \propto c_i/\mu_i$ for
+coordinates known in advance, and the schedule $w_i = 6/(\pi^2 i^2)$ for an open-ended
+family. The procedure joins them.
+
+\begin{enumerate}
+\item Fix the total error $\alpha$ for the programme, for example 0.05. It does not change
+once outcomes have been seen.
+\item Decide a reserve fraction $\rho$ for coordinates not yet proposed. The reserve costs the
+known coordinates a factor $1-\rho$ of their budget, which is the trade-off to state: a large
+reserve makes every audit under the budget longer, and a small one leaves no room for a
+stronger adversary.
+\item Divide $(1-\rho)\alpha$ among the known coordinates in proportion to $c_i/\mu_i$, with
+the costs and planning drifts fixed before any outcome.
+\item Spread $\rho\alpha$ over later coordinates by $6/(\pi^2 j^2)$.
+\item When a product is added, pay for it from the reserve. If the reserve cannot cover it,
+the total cannot be raised afterwards, and the choice is a smaller share or a later
+programme.
+\end{enumerate}
+
+For $\alpha = 0.05$, $\rho = 0.2$ and three known attacks with costs 1, 2 and 4 per draw and
+planning drifts 0.02, 0.02 and 0.04, the weights $c_i/\mu_i$ are 50, 100 and 100, and the
+shares are 0.008, 0.016 and 0.016. The log-wealth thresholds $\ln(1/w_i)$ are 4.83, 4.14 and
+4.14. The reserve is 0.010, and the first five later coordinates receive 0.00608, 0.00152,
+0.00068, 0.00038 and 0.00024.
+
+\section{Choosing a remedy for the composition gap}\label{app:b-remedy}
+
+Chapter~\ref{ch:programmes} shows that no function of per-release risks bounds the pooled
+risk, so the remedy is chosen by re-simulating the pooled attack, not by arithmetic on the
+releases. The tree has three branches.
+
+\begin{description}
+\item[Small gap.] The upper bound on the pooled risk is within the programme tolerance.
+Release as planned.
+\item[Moderate gap.] The pooled bound exceeds the tolerance, but some remedy restores it. Try
+the remedies in order of cost, coarsening linking fields, rotating pseudonyms, reducing
+frequency, then moving to a secure environment, and re-run the pooled attack after each. Take
+the first that brings the bound within the tolerance. A remedy is not credited until the
+pooled attack has been run against it.
+\item[Large gap.] No remedy restores the tolerance. Change the product, for example to
+aggregates, and assess the new product from the start.
+\end{description}
+
+The rule is \texttt{procedures.\allowbreak{}composition\_\allowbreak{}remedy}. In Chapter~\ref{ch:falsification}
+the declared four-release programme has a pooled bound of 0.464 against a tolerance of 0.12, so
+it sits on the second or third branch, and which one depends on re-runs that the repository
+has not made. The inputs in the function's test are illustrative.
+
+\section{Defending the tolerance}\label{app:b-legal}
+
+A data protection authority may ask why a tolerance of 0.12 is a reasonable reading of
+``reasonably likely''. The record answers with items that can be checked for presence, though
+not for correctness. The institution should hold:
+
+\begin{enumerate}
+\item the legal reading, written down and dated, with the provision it interprets;
+\item the reasons for the number, in terms of the harm class, the protected parties and the
+access route;
+\item the owner, who is senior enough to answer for it in public;
+\item the trigger for review: a change in the law, the technology or the access route, and the
+expiry date.
+\end{enumerate}
+
+\texttt{procedures.DefenceRecord} lists these and reports which are blank. It checks
+completeness. Whether the reading is reasonable is for lawyers, and the book does not claim to
+settle it.
+
+\section{Repairing a failed test}\label{app:b-repair}
+
+A failed falsification test makes the assessment invalid. The repair keeps the failure on the
+record.
+
+\begin{enumerate}
+\item Record the failed result, the band and the data it was run on. It is not overwritten.
+\item Name the assumption the test touches. A calibration failure points at the error scale or
+the linkage model, a transport failure at the frequency model, a monotonicity failure at the
+mechanism or the noise.
+\item Revise the model on development data only.
+\item Fix the new band before the rerun, from the size of error that would change the
+decision, and say so in the record.
+\item Rerun on fresh draws. The earlier run motivated the band, so it cannot be used to show
+the band valid.
+\end{enumerate}
+
+The calibration band of 0.03 and the uniqueness limit of 0.30 are both at step three of this
+list for that reason: each was set after the evidence was seen.
+
+\section{Who bears the harm}\label{app:b-ethics}
+
+The method treats harm as a probability inside a declared harm class, and a tolerance as a
+social choice. Four questions sit outside what it computes, and an institution should answer
+them in the record.
+
+\paragraph{Whose interests.} The institution wants defensible decisions, data subjects do not
+want to be identified, and users want useful data. The tolerance and the floor are where those
+interests are weighed, and the owner should say how.
+\paragraph{Distribution of harm.} A risk of 0.12 averaged over targets can hide a group for
+whom it is far higher. The worst-target and subgroup bounds of Chapters~\ref{ch:estimate} and
+\ref{ch:credit} are the tools; the record should name the groups examined.
+\paragraph{Consent.} The legal basis may not need the subjects' consent. Whether it should be
+sought is a question the method cannot answer.
+\paragraph{Accountability.} The owner accepts the residual risk. The record should say what
+follows if a release identifies a person: who is told, who answers for it, and what is done
+about the programme.

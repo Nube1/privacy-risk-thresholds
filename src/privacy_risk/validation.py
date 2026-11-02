@@ -53,6 +53,18 @@ def frequency_transport_error(fitted_mean: float, true_mean: float) -> float:
     return float(abs(fitted_mean - true_mean))
 
 
+def uniqueness_transport_error(model: float, truth: float) -> float:
+    """Relative error of the modelled journalist uniqueness probability against its truth.
+
+    The mean cell size can be right while the share of unique cells is wrong, because the
+    decision rests on the lower tail of the frequency distribution. This test compares the
+    quantity the decision uses.
+    """
+    if truth <= 0:
+        raise ValueError("the benchmark uniqueness probability must be positive")
+    return float(abs(model - truth) / truth)
+
+
 def stress_ratios(declared: np.ndarray, stronger: np.ndarray,
                   tolerance: float = 0.0) -> dict[str, float]:
     """How far a materially stronger adversary moves the risk of each setting.
@@ -98,26 +110,36 @@ def composition_test(pooled: float, union_upper: float,
 
 
 def validation_report(ece: float, ece_limit: float, frequency_mae: float,
-                      frequency_mae_limit: float, violations: list[int]) -> dict:
+                      frequency_mae_limit: float, violations: list[int],
+                      uniqueness_error: float | None = None,
+                      uniqueness_limit: float | None = None) -> dict:
     checks = {"linkage_calibration": ece <= ece_limit,
               "frequency_transport": frequency_mae <= frequency_mae_limit,
               "mechanism_monotonicity": len(violations) == 0}
-    return {"passed": all(checks.values()), "checks": checks,
-            "metrics": {"ece": ece, "frequency_mae": frequency_mae,
-                        "monotonicity_violations": violations}}
+    metrics = {"ece": ece, "frequency_mae": frequency_mae,
+               "monotonicity_violations": violations}
+    if uniqueness_error is not None:
+        if uniqueness_limit is None:
+            raise ValueError("a uniqueness error needs a limit fixed in advance")
+        checks["uniqueness_transport"] = uniqueness_error <= uniqueness_limit
+        metrics["uniqueness_relative_error"] = uniqueness_error
+    return {"passed": all(checks.values()), "checks": checks, "metrics": metrics}
 
 
 def full_validation_report(ece: float, ece_limit: float, frequency_mae: float,
                            frequency_mae_limit: float, violations: list[int],
                            stress: dict, composition: dict,
-                           misspecified_ece: float | None = None) -> dict:
+                           misspecified_ece: float | None = None,
+                           uniqueness_error: float | None = None,
+                           uniqueness_limit: float | None = None) -> dict:
     """Release-level validation, plus the programme evidence recorded beside it.
 
     The composition result is reported, not folded into release validity: a pooled
     attack that beats the marginal bound says the programme needs its own tolerance,
     which is a different decision from whether this release may go out.
     """
-    report = validation_report(ece, ece_limit, frequency_mae, frequency_mae_limit, violations)
+    report = validation_report(ece, ece_limit, frequency_mae, frequency_mae_limit, violations,
+                               uniqueness_error, uniqueness_limit)
     report["checks"]["adversary_stress"] = bool(stress["stronger_never_materially_lower"])
     if misspecified_ece is not None:
         # a band wide enough to pass a known misspecified model cannot show the declared

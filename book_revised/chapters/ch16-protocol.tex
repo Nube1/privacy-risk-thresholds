@@ -305,6 +305,9 @@ adversary, on a change of mechanism or on a change of access route. The floor of
 was chosen by fixed-sequence testing from 300 down and confirmed on a second,
 independent draw of targets.
 
+\syntheticnote
+
+
 \begin{table}[p]
 \centering
 \caption{Decision record for the synthetic credit register, on the first vintage as
@@ -322,7 +325,7 @@ Harm & Target set & Adversary & $\tau$ & Evidence & Setting & Decision \\
 \midrule
 Identification, one release & Released loans, first vintage & Linkage attack with
 one exposure reading & 0.12 & At $k_{\min} = 150$: confirmation 0.0135, bound
-0.017, $B = 4{,}000$; this row alone would need no floor & $k_{\min} = 150$ & Pass \\
+0.017, $B = 4{,}000$; this row alone would need no floor$^{\dagger}$ & $k_{\min} = 150$ & Pass \\
 \addlinespace
 Identification, programme & Loans over six vintages, $m = 6$ & Pooled attack, one
 reading per live vintage, knows the loan's history & 0.12 & Floor 150 by fixed
@@ -358,6 +361,11 @@ $c_{\min} = 10$ & $c_{\min} = 10$ & No decision until $\tau$ is set \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The mark $\dagger$ in the first row needs reading with care. The bound of 0.017 is the one
+measured at the chosen floor of 150, so that the rows are compared at one setting. The
+statement that the row alone would need no floor comes from the selection run of the long
+form and is not read off that bound.
 
 The record is worth reading row by row, because its value lies in what the rows
 disagree about. The first row is the assessment a committee would have made under

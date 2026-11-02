@@ -20,6 +20,7 @@ from .reporting import write_evidence
 from .validation import (
     composition_test,
     frequency_transport_error,
+    uniqueness_transport_error,
     full_validation_report,
     monotonicity_violations,
     stress_ratios,
@@ -53,6 +54,7 @@ def validate(results: dict, config: dict) -> dict:
     misspecified = [gap for name, gap in calibration.items() if "misspecified" in name]
     transport = frequency_transport_error(design["fitted_mean_cell"],
                                           measures["true_mean_population_cell"])
+    unique_error = uniqueness_transport_error(float(design["model"]), float(design["truth"]))
     protection = np.array([s["min_cell_count"] for s in settings], dtype=float)
     risk = np.array([s["risk"] for s in settings], dtype=float)
     finest = [s for s in settings
@@ -76,7 +78,9 @@ def validate(results: dict, config: dict) -> dict:
                                     misspecified_ece=(max(misspecified)
                                                       if misspecified and config.get(
                                                           "require_calibration_power", True)
-                                                      else None))
+                                                      else None),
+                                    uniqueness_error=unique_error,
+                                    uniqueness_limit=float(config.get("uniqueness_relative_limit", 0.30)))
     report["metrics"]["protection_levels"] = protection.tolist()
     report["metrics"]["risk_by_setting"] = risk.tolist()
     return report

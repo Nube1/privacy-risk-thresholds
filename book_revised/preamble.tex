@@ -52,3 +52,9 @@
 \pgfplotsset{compat=1.17}
 \usetikzlibrary{patterns}
 \setlength{\emergencystretch}{3em}
+
+% A caution repeated wherever the synthetic register's floors are used.
+\newcommand{\syntheticnote}{\par\medskip\noindent\begin{minipage}{\dimexpr\linewidth-1em\relax}\small\itshape
+The floors quoted here come from a synthetic register under declared parameters. They
+are not recommendations for any real register. The rule that produced them is what
+transfers.\end{minipage}\par\medskip}

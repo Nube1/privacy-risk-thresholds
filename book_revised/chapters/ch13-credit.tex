@@ -20,6 +20,18 @@ The records that a floor removes first are the ones in thin cells, and in a cred
 register the thin cells hold the largest borrowers, whose loans carry most of the
 money. Counting records measures the wrong loss.
 
+\begin{mdframed}[linecolor=black,linewidth=0.8pt,backgroundcolor=gray!8,innerleftmargin=8pt,innerrightmargin=8pt]
+\textbf{Read this before the floors.} The floors of 75, 150 and ``none'' in this chapter, and
+in every chapter that quotes them, are properties of a synthetic register under declared
+parameters. The generator's parameters were chosen, not estimated from a real register. The
+adversary's reading precision, 0.6 on the log scale, was not measured. The panel has no
+originations or exits in the frozen case and a simplified dynamic model in the changing
+case. The key of sector, region and size class may match no real register. These floors are
+not recommendations for any real register. The decision rule that produced them is the
+transferable result. Section~\ref{app:b-precision} shows how an institution argues for its
+own precision.
+\end{mdframed}
+
 This chapter asks one question: \emph{for each adversary an institution might
 declare against a loan-level release of its credit register, what minimum cell count
 does a tolerance require, and what is left of the file once that floor is applied?}
@@ -136,7 +148,7 @@ Both look comfortable as averages. Split by size class, the relationship figure 
 of a micro borrower.
 % source: paper/bis_ifc_full.tex l.1896-1898
 The large-firm column of Table~\ref{c13:tab-harms} is not monotone in the floor: it
-is 0.273 at $k_{\min}=5$ and 0.119 at $k_{\min}=10$. The class rests on few targets
+is 0.273 at $k_{\min}=5$ and 0.119 at $k_{\min}=10$; read the whole column as noisy. The class rests on few targets
 in a uniform draw, and its interval at $k_{\min}=1$, $[0.192, 0.309]$, overlaps the
 interval at $k_{\min}=20$, $[0.085, 0.250]$.
 % source: paper/generated/numbers.tex (runcreditidentificationlargelow/high, ...strictlow/high)

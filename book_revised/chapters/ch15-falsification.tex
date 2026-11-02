@@ -177,7 +177,9 @@ band also rejects the deliberately misspecified model: a band that passes a know
 model cannot show the declared one wrong either.
 % source: configs/paper.json calibration_ece_limit 0.03; artifacts-paper/results.json validation.metrics (ece 0.0075, ece_misspecified 0.0487, check calibration_band_has_power true)
 The value of 0.03 was chosen after the wider band was found wanting, so it was not written down
-before the evidence was seen; its first prespecified use is the next run on fresh draws.
+before the evidence was seen; its first prespecified use is the next run on fresh draws. The run that motivated the
+band therefore shows that the wider band lacked power. It does not establish the power
+of the narrower one, which can be shown only by a run whose band was fixed beforehand.
 
 \begin{example}[A calibration test by hand]\label{c15:ex-calib}
 The numbers are illustrative. Naledi runs 100 held-out attacks and sorts them by the
@@ -233,7 +235,7 @@ model-based figure, and on the public Census extract, where there is no truth to
 check against, the uniqueness probability is reported across a range of sampling
 fractions instead of as one value (Chapter~\ref{ch:public}).
 
-Here too the code is narrower than the text. The pipeline's frequency test checks
+Here the earlier code was narrower than the text. The pipeline's frequency test checked
 the absolute error of the fitted mean cell size against a band of 1.5 cells.
 % source: src/privacy_risk/validation.py frequency_transport_error; configs/paper.json frequency_mae_limit 1.5
 The measured error is 0.055 cells, so the test passes, but a test of the mean cell
@@ -242,6 +244,18 @@ size would pass a model whose uniqueness probability was wrong by a factor of tw
 An institution that uses the journalist measure for a decision should test the
 quantity it uses, the uniqueness probability or the share of small cells, against
 external counts, and should set the band on that quantity.
+
+The repository now does so. The pipeline adds a uniqueness check to the frequency test:
+the relative error of the modelled journalist uniqueness probability against its truth,
+with a limit of 0.30 in the configuration. On the paper's survey register the relative
+errors at the five sampling fractions 0.02, 0.05, 0.10, 0.20 and 0.50 are 0.131, 0.205,
+0.077, 0.248 and 0.156, while the mean cell size is wrong by less than one per cent at
+every fraction. The check passes, and it separates the two quantities: a model with the
+right mean cell size can be a quarter out on the figure that enters the decision, and the
+old test could not have said so.
+% source: scripts run of conventional_measures on configs/paper.json; src/privacy_risk/validation.py uniqueness_transport_error; tests/test_ext_procedures.py
+The limit of 0.30 was set after these errors were seen, so, like the calibration band, it
+is not yet a prespecified test; its first valid use is the next run on fresh draws.
 
 \section{Adversary stress}
 
@@ -315,7 +329,9 @@ The investigation of that violation produced a proposition, that $k$-anonymity
 delivers $1/k$ only when the adversary holds nothing beyond the key
 (Chapter~\ref{ch:measures}). The other three are small breaks in order. The worst
 target rises from 0.744 at $k = 10$ to 0.768 at $k = 20$, estimates that rest on 250
-replicates each. % source: paper/generated/table_kanonymity.tex
+replicates each. At a rate near 0.75 the standard error of one such estimate is
+$\sqrt{0.75 \times 0.25/250} = 0.027$, and that of the difference between two is 0.039,
+so the rise of 0.024 is 0.6 standard errors and is indistinguishable from noise. % source: paper/generated/table_kanonymity.tex
 The pooled rate on the credit register rises from 0.260 with no suppression to
 0.269 under $k$-anonymity with $k = 5$, about one standard error at 4{,}000 attacks
 each. % source: paper/generated/table_evaluation.tex
