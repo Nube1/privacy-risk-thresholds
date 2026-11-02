@@ -201,3 +201,51 @@ def test_chapter16_17_examples():
     assert decide(.109, bare, True, "2026-04-01")["status"] == "PASS"
     assert decide(.184, full, True, "2026-04-01", strict=True)["status"] == "FAIL"
     assert round(1 - .95 * .96 * .97, 3) == 0.115
+
+
+def test_chapters_5_to_8_examples():
+    import math
+    from scipy.stats import binom
+    from privacy_risk.sequential import anytime_upper, attack_threshold
+    from privacy_risk.uncertainty import binomial_upper as u
+    assert [round(u(c, 400), 3) for c in (30, 36, 44, 35, 52, 60)] == [0.1, 0.117, 0.139, 0.114, 0.161, 0.183]
+    assert max(x for x in range(100) if u(x, 400) <= 0.12) == 37
+    assert [round(1 - 0.95 ** k, 3) for k in (2, 5, 10)] == [0.098, 0.226, 0.401]
+    assert round(u(384, 4000), 3) == 0.104
+    assert round(u(84, 500), 4) == 0.1979 and round(u(85, 500), 4) == 0.2001
+    assert round(binom.cdf(84, 500, 0.201), 4) == 0.035
+    assert max(x for x in range(200) if u(x, 500, 0.05 / 20) <= 0.2) == 75
+    up, dn = 0.97 / 0.88, 0.03 / 0.12
+    assert min(n for n in range(1, 99) if up ** n >= 20) == 31
+    assert round(up ** 9 * dn, 2) == 0.60
+    assert [round(u(a, b), 3) for a, b in ((30, 400), (9, 150), (2, 60))] == [0.1, 0.102, 0.101]
+    assert [round(u(a, b, 0.05 / 3), 3) for a, b in ((30, 400), (9, 150), (2, 60))] == [0.108, 0.116, 0.123]
+    assert round(attack_threshold(10, 1, 0.5), 3) == 0.136
+    assert round(attack_threshold(1, 5, 0.5), 3) == 0.917
+    assert round(anytime_upper(20, 300), 3) == 0.130 and round(anytime_upper(40, 600), 3) == 0.110
+    e = 1 / 1.23
+    assert round(0.2 / (1 + 0.25 ** e), 3) == 0.151
+
+
+def test_chapters_9_to_12_examples():
+    import itertools
+    import math
+    import numpy as np
+    from scipy.stats import norm
+    from privacy_risk.uncertainty import binomial_lower as lo, binomial_upper as u
+    assert round(1 - 0.96 * 0.98 * 0.99, 3) == 0.069
+    # nine loans, two releases: release 1 shows v2, release 2 shows v1, pseudonyms shared
+    loans = list(itertools.product((1, 2, 3), repeat=2))
+    solo = np.mean([1 / sum(1 for l in loans if l[1] == t[1]) for t in loans])
+    pooled = np.mean([1 / sum(1 for l in loans if l[1] == t[1] and l[0] == t[0]) for t in loans])
+    assert solo == pytest.approx(1 / 3) and pooled == 1.0
+    assert round(math.e * 0.02, 3) == 0.054 and round(math.e * 0.05, 3) == 0.136
+    odds = lambda p, eps: math.exp(eps) * p / (math.exp(eps) * p + 1 - p)
+    assert [round(odds(p, e), 3) for p, e in ((0.1, 1), (0.1, 4), (1 / 3, 1), (1 / 3, 4))] == [0.232, 0.858, 0.576, 0.965]
+    y = np.array([8.2, 8.9, 9.6])
+    for sd, post in ((0.75, [0.216, 0.428, 0.355]), (0.375, [0.042, 0.650, 0.308])):
+        d = norm.pdf(9.1, y, sd)
+        assert [round(x, 3) for x in d / d.sum()] == post
+    assert round(lo(186, 250), 3) == 0.695 and round(lo(186, 250, 0.05 / 230), 3) == 0.638
+    assert round(u(359, 1500), 3) == 0.258 and round(u(359, 1500, 0.05 / 72), 3) == 0.276
+    assert round(math.exp(-10 * 0.29), 3) == 0.055 and round(math.exp(-2 * 0.29), 2) == 0.56
