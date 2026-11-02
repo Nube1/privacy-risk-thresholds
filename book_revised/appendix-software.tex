@@ -351,6 +351,20 @@ repository synchronisation & -- \\
 
 \section{Reproducing the evidence}
 
+One command regenerates everything the book and the paper print. From the repository
+root, \texttt{python reproduce.py --full} runs the paper's configuration, rewrites the
+tables, figures and number files, recomputes the numbers of the book's worked examples and
+checks them against the chapter text, runs the test suite and builds the book;
+\texttt{--fast} does the same with reduced replicates in a scratch directory and leaves the
+committed files alone. The script names the committed files that a run changed. When the
+paper's configuration was rerun on 2 November 2026 in the environment used to build this
+book, the headline results agreed with the stored run to about $10^{-8}$ in the least
+significant digits, and the figure files differed at the byte level. The numbers printed in
+the text did not change. The run also added the uniqueness check of
+Chapter~\ref{ch:falsification} and the four new governance fields to the stored results, which
+the stored run predated. Byte-identical output across machines is therefore not something
+the repository can promise; agreement of the printed numbers is.
+
 The evidence for Parts~II to~V comes from one configuration, \texttt{configs/\allowbreak{}paper.\allowbreak{}json},
 which fixes a seed, a register of 200{,}000 units with a 5 per cent sample, 45
 mechanism settings, the credit register, and the bands of the falsification tests.
@@ -390,15 +404,14 @@ the operator the manifest's own hash has to be published or time-stamped outside
 operator's control. The script \texttt{write\_\allowbreak{}manifest} says this in its documentation.
 % source: scripts/write_manifest.py docstring
 
-The test suite has 195 tests in 30 files. On 1 November 2026, run in the Linux
-environment used to build this book, 194 passed and one failed.
-% source: pytest run on the book branch, 1 November 2026 (131+1, 46 and 17 in three batches)
-The failure, \texttt{test\_\allowbreak{}shipped\_\allowbreak{}manifest\_\allowbreak{}matches\_\allowbreak{}the\_\allowbreak{}files\_\allowbreak{}it\_\allowbreak{}lists}, is an
-artefact of line endings: the repository now asks Git to store JSON with Unix line
-endings, but the Windows working copy still holds files with Windows line endings, so
-\texttt{artifacts-paper/\allowbreak{}config.\allowbreak{}json} hashes differently from the committed file, which
-matches the manifest. Checking the files out again, or renormalising them once and
-committing, removes the failure. The suite's configuration also requires 85 per cent
+The test suite has more tests than the 195 it held when this section was first
+written. On 2 November 2026, run in the Linux environment used to build this book, 271
+passed. Eight tests that need the \texttt{wooldridge} package failed until it was
+installed. The earlier count, from 1 November, was 194 passed and one failed.
+% source: pytest runs on the book branch, 1 and 2 November 2026
+The one failure of 1 November, in the test that checks the shipped manifest against the
+files it names, was attributed to Windows line endings in a working copy; the test passed in the
+Linux run of 2 November. The suite's configuration also requires 85 per cent
 line coverage of the package. % source: pyproject.toml addopts --cov-fail-under=85
 Continuous integration runs the linter, the tests, the notebook, the fast pipeline,
 the public-file scripts and both number checks on Python 3.10, 3.11 and 3.12, and a

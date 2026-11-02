@@ -118,6 +118,7 @@
   "harm_class": "confidential microdata",
   "calibration_ece_limit": 0.03,
   "frequency_mae_limit": 1.5,
+  "uniqueness_relative_limit": 0.3,
   "monotonicity_tolerance": 0.025,
   "stress_tolerance": 0.05,
   "credit": {

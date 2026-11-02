@@ -9,7 +9,11 @@
     "expiry_date": "2027-09-04",
     "adversary": "declared key error plus one noisy covariate",
     "harm_class": "confidential microdata",
-    "alpha": 0.05
+    "alpha": 0.05,
+    "legal_basis": "",
+    "protected_parties": "",
+    "access_route": "",
+    "horizon": ""
   },
   "chosen_setting": "20-year bands, 3 groups, k_min = 20",
   "point_estimate": 0.0675,

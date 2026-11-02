@@ -332,3 +332,28 @@ and ACM TOPS builds use those PDF counterparts; the source SVGs remain editable.
 ## Version 0.6 mathematics expansion
 
 The expanded derivations are integrated into the full paper and journal supplement. See `docs/MULTISCALE_MATHEMATICS.md` for the new analytic sensitivities, multiscale proposal dictionary, TV-shift audit bounds and trial-budget planner, and `docs/EXPANSION_CHANGELOG.md` for validation and scope. Run `python scripts/multiscale_demo.py` after installing the package. Neural sensitivity bounds describe a predictor, while independent audit trials supply eligibility evidence.
+
+## Regenerating everything
+
+One command rebuilds every table, number, figure and the book from the code in this repository:
+
+```
+python reproduce.py --fast     # reduced replicates, writes to build/, touches nothing committed
+python reproduce.py --full     # the paper's settings; rewrites the committed evidence in place
+python reproduce.py --list     # the stage names; --only pipeline,book runs a subset
+```
+
+Stages: `pipeline` (the end-to-end run), `evidence` (tables, figures and the number file),
+`robustness` (programme floors), `extension` (Chapter 19 table), `chapter22`,
+`worked` (the long form's worked examples), `audit` (attacks on the audit process),
+`book-numbers` (the numbers the book's examples and Appendix B print, checked against the
+chapter text, and the Appendix B precision table, which the book inputs from
+`book_revised/generated/`), `tests`, and `book` (the LaTeX build). After a `--full` run the
+script lists the committed files that changed; an empty list means the stored evidence is what
+the code produces. The pipeline stage exits with status 2 when its decision is not a PASS;
+the runner treats that as a result, not a failure. `make reproduce`, `make test`,
+`make numbers` and `make book` are shortcuts.
+
+Not regenerated here: figures that come from the author's stored language-model pilots
+(`artifacts-llm-*`, `artifacts-public-search-llm-*`), which need a model and are kept as
+recorded runs; the real-data stage needs the `wooldridge` package and network access.

@@ -1,0 +1,153 @@
+[
+ {
+  "precision": 0.3,
+  "floor": 20,
+  "detail": [
+   {
+    "floor": 150,
+    "successes": 41,
+    "trials": 1500,
+    "bound": 0.03532020372937634,
+    "released": 5553
+   },
+   {
+    "floor": 75,
+    "successes": 63,
+    "trials": 1500,
+    "bound": 0.05154594952548106,
+    "released": 12182
+   },
+   {
+    "floor": 50,
+    "successes": 78,
+    "trials": 1500,
+    "bound": 0.062435861188969426,
+    "released": 15827
+   },
+   {
+    "floor": 20,
+    "successes": 141,
+    "trials": 1500,
+    "bound": 0.10732500596609955,
+    "released": 23113
+   },
+   {
+    "floor": 10,
+    "successes": 185,
+    "trials": 1500,
+    "bound": 0.13818120350642038,
+    "released": 26019
+   }
+  ]
+ },
+ {
+  "precision": 0.6,
+  "floor": 1,
+  "detail": [
+   {
+    "floor": 150,
+    "successes": 26,
+    "trials": 1500,
+    "bound": 0.02397013989338537,
+    "released": 5553
+   },
+   {
+    "floor": 75,
+    "successes": 35,
+    "trials": 1500,
+    "bound": 0.030818137470176046,
+    "released": 12182
+   },
+   {
+    "floor": 50,
+    "successes": 56,
+    "trials": 1500,
+    "bound": 0.046421937111764976,
+    "released": 15827
+   },
+   {
+    "floor": 20,
+    "successes": 84,
+    "trials": 1500,
+    "bound": 0.06676336075217021,
+    "released": 23113
+   },
+   {
+    "floor": 10,
+    "successes": 111,
+    "trials": 1500,
+    "bound": 0.0860828962725125,
+    "released": 26019
+   },
+   {
+    "floor": 5,
+    "successes": 113,
+    "trials": 1500,
+    "bound": 0.08750550356071018,
+    "released": 26885
+   },
+   {
+    "floor": 1,
+    "successes": 113,
+    "trials": 1500,
+    "bound": 0.08750550356071018,
+    "released": 27167
+   }
+  ]
+ },
+ {
+  "precision": 1.0,
+  "floor": 1,
+  "detail": [
+   {
+    "floor": 150,
+    "successes": 9,
+    "trials": 1500,
+    "bound": 0.010446745965834375,
+    "released": 5553
+   },
+   {
+    "floor": 75,
+    "successes": 24,
+    "trials": 1500,
+    "bound": 0.02242833857210604,
+    "released": 12182
+   },
+   {
+    "floor": 50,
+    "successes": 33,
+    "trials": 1500,
+    "bound": 0.029307335259986265,
+    "released": 15827
+   },
+   {
+    "floor": 20,
+    "successes": 46,
+    "trials": 1500,
+    "bound": 0.03904229163575964,
+    "released": 23113
+   },
+   {
+    "floor": 10,
+    "successes": 68,
+    "trials": 1500,
+    "bound": 0.055188418146092245,
+    "released": 26019
+   },
+   {
+    "floor": 5,
+    "successes": 81,
+    "trials": 1500,
+    "bound": 0.06460142548271088,
+    "released": 26885
+   },
+   {
+    "floor": 1,
+    "successes": 88,
+    "trials": 1500,
+    "bound": 0.06964060510410099,
+    "released": 27167
+   }
+  ]
+ }
+]

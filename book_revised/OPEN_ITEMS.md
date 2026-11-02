@@ -40,3 +40,14 @@ Not done, and why: the six-versus-nine wording in Chapters 7 and 16 is the autho
 ## Chapters 4 to 17 against draft 2
 
 Structural comparison (worked examples, propositions, algorithms) shows `book_revised` matches the draft in every chapter from 4 to 17. Chapter 4 gained Examples 4.3, 4.4 and 4.6 and Chapter 5 gained the Maurer et al. paragraph and Example 5.10 as a numbered example in this pass; the rest were already present. Every number in the draft's Examples 4.3 to 12.4 was recomputed from `uncertainty.py`, `sequential.py` or direct arithmetic and agrees with the draft to the digits printed (tests in `tests/test_ext_measures.py`). The examples the draft labels illustrative remain labelled so. Not re-derived: the figures in Chapters 13 to 15 that come from the author's stored runs (`artifacts-paper`), which this repository cannot regenerate; each carries a `% source:` comment naming its origin.
+
+## Reproduction from the repository (2 November 2026)
+
+`python reproduce.py --full` ran every stage: pipeline, evidence, robustness, extension, chapter 22, worked examples, audit-process attacks, book-number check, 271 tests and the book build. What the rerun showed:
+
+- The paper-configuration results agree with the stored run to about 1e-8 in the last digits (platform arithmetic), and the figure PDFs differ at the byte level. The printed numbers do not change. The stored results predated the uniqueness check and the four new governance fields, so they now carry them; `decision.json` still holds blank legal basis, protected parties, access route and horizon, because the paper configuration names none and inventing them is the institution's decision.
+- `artifacts-robustness/robustness.json` regenerates with identical values (the apparent differences are NaN placeholders compared as unequal) and a different key order, so its diff is large and empty of content.
+- `paper/publication_versions/table_audit_process.tex` regenerates with different Monte Carlo values at the default seed and 20,000 streams (for example 0.038 where the stored table has 0.042 for the one-attempt row). The stored table came from a run whose settings are not recorded. No chapter quotes these figures; the stored file now holds the regenerated ones.
+- `scripts/check_paper_numbers.py` reports two of 225 run values absent from the long-form manuscript (`eval_counts_precision`, `eval_counts_utility`); this is the same on the stored run, so it predates this work.
+- The fast configuration (`configs/base.json`) fails the uniqueness check (relative error 0.42 on its small register), so its decision is INVALID. This is the check working on a noisy fit; the paper configuration passes at 0.205.
+- Not regenerated: the language-model pilots and public-search runs (they need a model), and the real-data stage (needs `wooldridge` and the network).
