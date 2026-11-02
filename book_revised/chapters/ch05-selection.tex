@@ -41,6 +41,14 @@ five, and since it cannot know in advance how many floors sit near the line, it 
 know which of the three figures applies to it.
 \end{example}
 
+Clinical trials met this problem decades ago. A sponsor testing several doses of a drug
+against a placebo, and claiming an effect for whichever doses beat it, multiplies its
+chances of a false claim. \citet{maurer1995} described the remedy for the case in which
+the hypotheses can be put in order before the data are seen, as doses can: test them in
+that order, each at the full level, and stop at the first that fails. A disclosure grid
+has the same structure, because its settings can be ordered by how much protection they
+give before any attack is simulated.
+
 The chapter therefore asks one question. How can a committee choose a protection setting
 from a menu, using the same simulated evidence that certifies it, and keep the chance of
 releasing an unsafe setting at its stated level?
@@ -320,6 +328,7 @@ never do is move the other way. Choosing a less protective setting after a faile
 confirmation, or after seeing that a setting below the first failure would have passed on
 the confirmation draw, is a scan with extra steps.
 
+\begin{example}[Confirmation with fallback on the register]\label{c05:ex-confirm}
 The adversary who pools six vintages with one reading and the history shows the procedure
 at work. Selection chose 50. On the confirmation draw the same attack at 50 named the
 target for 458 of 4,000 targets, a rate of 0.115 with a bound of 0.123, above the
@@ -331,6 +340,8 @@ The full pooled adversary, selected at 150, confirmed there at 0.101 with a boun
 % source: paper/generated/table_robustness.tex (150, 0.101 (0.109))
 The single-release adversary confirmed at a floor of 1 with 0.084 and a bound of 0.092.
 % source: paper/generated/table_robustness.tex (1, 0.084 (0.092))
+\end{example}
+
 
 When Naledi presented these results the chair asked the question that a committee always
 asks at this point: if 50 failed by so little, why not 40, which would keep more loans?
